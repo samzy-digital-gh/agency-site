@@ -1,0 +1,50 @@
+:root {
+    --bg: #0b0f1a;
+    --card: #151c2e;
+    --primary: #3b82f6;
+    --text: #f1f5f9;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background: var(--bg); color: var(--text); line-height: 1.6; }
+
+/* BIG GLOW TEXT HERO SECTION */
+.hero-glow { padding: 120px 8% 60px; text-align: center; }
+.hero-glow h1 {
+    font-size: 4.5rem;
+    letter-spacing: 10px;
+    color: var(--primary);
+    text-shadow: 0 0 25px var(--primary), 0 0 60px var(--primary);
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+/* Navbar with Hire Me Button */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: rgba(11, 15, 26, 0.98); border-bottom: 1px solid #1e293b; position: sticky; top: 0; z-index: 1000; }
+.logo span { color: var(--primary); font-weight: 800; }
+.nav-links a { color: #94a3b8; text-decoration: none; margin-left: 25px; font-weight: 600; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary); }
+.btn-hire-nav { background: var(--primary); color: white !important; padding: 10px 25px; border-radius: 6px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+
+/* Vertical Stacking Cards */
+.scroll-stack { display: flex; flex-direction: column; gap: 60px; padding: 40px 8%; align-items: center; }
+.info-card { background: var(--card); width: 100%; max-width: 850px; padding: 60px; border-radius: 28px; border: 1px solid #1e293b; text-align: center; }
+.info-card h3 { font-size: 2.2rem; margin-bottom: 25px; color: #fff; }
+
+/* Profile Centering for About Page */
+.profile-section { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; margin: 40px 0; }
+.rounded-image { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 6px solid var(--primary); box-shadow: 0 0 40px var(--primary); margin-bottom: 25px; }
+
+/* Side-by-Side Footer */
+.main-footer { background: #070b14; padding: 60px 8%; border-top: 1px solid #1e293b; margin-top: 100px; }
+.footer-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; }
+.footer-left { text-align: left; flex: 1; }
+.footer-right { text-align: right; flex: 1; }
+.motto { color: var(--primary); font-weight: 900; letter-spacing: 4px; font-size: 2rem; text-transform: uppercase; }
+.sister-link { display: inline-block; color: var(--primary); text-decoration: none; border: 1px solid var(--primary); padding: 8px 16px; border-radius: 4px; margin-top: 15px; font-weight: bold; }
+
+@media (max-width: 768px) {
+    .hero-glow h1 { font-size: 2.8rem; }
+    .footer-container { flex-direction: column; text-align: center; }
+    .footer-left, .footer-right { text-align: center; }
+}
