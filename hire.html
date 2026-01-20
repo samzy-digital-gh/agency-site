@@ -27,22 +27,22 @@
         </div>
 
         <div class="info-card" style="text-align: left;">
-            <form action="https://formspree.io/f/maqqdela" method="POST">
+            <form action="https://formspree.io/f/maqqdela" method="POST" id="hireForm">
                 
                 <label style="color:white; display:block; margin-bottom:5px;">Customer Name:</label>
-                <input type="text" name="Name" placeholder="Full Name" style="width:100%; padding:15px; background:#0b0f1a; border:1px solid #1e293b; color:white; margin-bottom:15px;" required>
+                <input type="text" id="userName" name="Name" placeholder="Full Name" style="width:100%; padding:15px; background:#0b0f1a; border:1px solid #1e293b; color:white; margin-bottom:15px;" required>
                 
                 <label style="color:white; display:block; margin-bottom:5px;">Customer Email:</label>
-                <input type="email" name="Email" placeholder="Email Address" style="width:100%; padding:15px; background:#0b0f1a; border:1px solid #1e293b; color:white; margin-bottom:15px;" required>
+                <input type="email" id="userEmail" name="Email" placeholder="Email Address" style="width:100%; padding:15px; background:#0b0f1a; border:1px solid #1e293b; color:white; margin-bottom:15px;" required>
                 
                 <label style="color:white; display:block; margin-bottom:5px;">Project Description:</label>
-                <textarea name="Description" placeholder="Describe your project vision..." rows="5" style="width:100%; padding:15px; background:#0b0f1a; border:1px solid #1e293b; color:white; margin-bottom:20px;" required></textarea>
+                <textarea id="userDesc" name="Description" placeholder="Describe your project vision..." rows="5" style="width:100%; padding:15px; background:#0b0f1a; border:1px solid #1e293b; color:white; margin-bottom:20px;" required></textarea>
                 
                 <button type="submit" class="btn-hire-nav" style="width:100%; border:none; padding:20px; cursor:pointer; font-weight:bold;">Send via Email</button>
                 
                 <p style="text-align:center; margin:15px 0;">— OR —</p>
                 
-                <a href="https://wa.me/233539929190?text=I%20want%20to%20hire%20you" style="display:block; text-align:center; background:#25D366; color:white; padding:15px; text-decoration:none; font-weight:bold; border-radius:5px;">Chat on WhatsApp</a>
+                <a href="#" onclick="sendWhatsApp()" style="display:block; text-align:center; background:#25D366; color:white; padding:15px; text-decoration:none; font-weight:bold; border-radius:5px;">Chat on WhatsApp</a>
             </form>
         </div>
     </section>
@@ -52,8 +52,32 @@
             <div class="footer-left">
                 <h3>SAMZY DIGITAL</h3>
                 <p>@ Kanda, Accra | samuelahiaba3@gmail.com</p>
+                <a href="https://samzy-digital-gh.github.io/rams_beauty_salon/" target="_blank" style="color: #3b82f6; text-decoration: none; font-size: 0.9rem;">Ramstouch Beauty Salon →</a>
+            </div>
+            <div class="footer-right">
+                <p class="motto" style="color: gray; font-style: italic;">"I BUILD VERY FAST"</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        function sendWhatsApp() {
+            // This gets the info the user typed into the boxes
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const desc = document.getElementById('userDesc').value;
+
+            if(!name || !email) {
+                alert("Please fill in your Name and Email first so I know who I'm chatting with!");
+                return;
+            }
+
+            // This creates the professional message format
+            const message = `Hello Samzy! %0A%0A*New Project Inquiry*%0A*Name:* ${name}%0A*Email:* ${email}%0A*Description:* ${desc}`;
+            
+            // This opens WhatsApp with the full details
+            window.open(`https://wa.me/233539929190?text=${message}`, '_blank');
+        }
+    </script>
 </body>
 </html>
