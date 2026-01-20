@@ -3,13 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="google-site-verification" content="OtItKdjksBvZmtclLf-EJFSeS1O406RxOavsIQ35Qxk" />
-
-    <title>Hire Me | Samzy Digital - Professional Web Developer in Accra</title>
-    <meta name="description" content="Hire Samzy Digital for fast, elite web development in Accra. Get a personalized digital strategy and high-speed website today.">
-    <meta name="keywords" content="Web Developer Accra, Hire Developer Ghana, Samzy Digital, Fast Website Builder, Kanda Web Design">
-
+    <title>Hire Me | Samzy Digital</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -68,6 +62,7 @@
 
     <script>
         function sendWhatsApp() {
+            // This gets the info the user typed into the boxes
             const name = document.getElementById('userName').value;
             const email = document.getElementById('userEmail').value;
             const desc = document.getElementById('userDesc').value;
@@ -77,7 +72,10 @@
                 return;
             }
 
+            // This creates the professional message format
             const message = `Hello Samzy! %0A%0A*New Project Inquiry*%0A*Name:* ${name}%0A*Email:* ${email}%0A*Description:* ${desc}`;
+            
+            // This opens WhatsApp with the full details
             window.open(`https://wa.me/233539929190?text=${message}`, '_blank');
         }
     </script>
