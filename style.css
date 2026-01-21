@@ -51,6 +51,7 @@ footer { background: var(--dark); color: white; padding: 80px 8%; }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
 .social-box { display: flex; gap: 10px; margin-top: 20px; }
 .coin { width: 40px; height: 40px; background: #222; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
+
 /* --- BUSINESS PAGE SPECIFIC --- */
 .sub-text {
     max-width: 700px;
@@ -72,7 +73,7 @@ footer { background: var(--dark); color: white; padding: 80px 8%; }
     border-radius: 15px;
     text-align: left;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border-top: 5px solid #eee; /* Default neutral border */
+    border-top: 5px solid #eee;
     transition: 0.3s;
 }
 
@@ -87,13 +88,13 @@ footer { background: var(--dark); color: white; padding: 80px 8%; }
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
-/* Specific Border Colors */
 .blue-border { border-top: 5px solid var(--blue); }
 .orange-border { border-top: 5px solid var(--orange); }
 
 .dark-section {
     background: var(--dark);
 }
+
 /* --- BUSINESS PAGE UPDATES --- */
 .blue-text {
     color: var(--blue) !important;
@@ -101,7 +102,7 @@ footer { background: var(--dark); color: white; padding: 80px 8%; }
 
 .vertical-stack {
     display: flex;
-    flex-direction: column; /* Forces vertical arrangement */
+    flex-direction: column;
     gap: 20px;
     max-width: 900px;
     margin: 0 auto;
@@ -116,7 +117,6 @@ footer { background: var(--dark); color: white; padding: 80px 8%; }
     transition: 0.3s;
 }
 
-/* The "Ending Color" (Bottom Border) */
 .blue-end { border-bottom: 6px solid var(--blue); }
 .orange-end { border-bottom: 6px solid var(--orange); }
 
@@ -155,6 +155,7 @@ footer { background: var(--dark); color: white; padding: 80px 8%; }
     background: white;
     color: var(--blue);
 }
+
 /* --- ABOUT PAGE SPECIFIC --- */
 .founder-flex {
     display: flex;
@@ -163,32 +164,6 @@ footer { background: var(--dark); color: white; padding: 80px 8%; }
     max-width: 1000px;
     margin: 0 auto;
     flex-wrap: wrap;
-}
-
-.founder-image {
-    flex: 1;
-    min-width: 300px;
-}
-
-.founder-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.founder-text p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    color: #444;
-}
-/* --- ABOUT PAGE FOUNDER SECTION --- */
-.founder-flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    max-width: 1000px;
-    margin: 0 auto;
-    flex-wrap: wrap; /* This makes it mobile friendly */
 }
 
 .founder-image-container {
@@ -200,8 +175,8 @@ footer { background: var(--dark); color: white; padding: 80px 8%; }
 .profile-circle {
     width: 280px;
     height: 280px;
-    border-radius: 50%; /* This makes it round */
-    object-fit: cover; /* This makes sure your face doesn't look stretched */
+    border-radius: 50%;
+    object-fit: cover;
     border: 8px solid #f9f9f9;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
@@ -219,12 +194,6 @@ footer { background: var(--dark); color: white; padding: 80px 8%; }
     line-height: 1.8;
 }
 
-/* Mobile Fix for Founder Section */
-@media (max-width: 768px) {
-    .founder-text {
-        text-align: center;
-    }
-}
 /* --- CONTACT PAGE SPECIFIC --- */
 .contact-container {
     max-width: 800px;
@@ -267,4 +236,84 @@ footer { background: var(--dark); color: white; padding: 80px 8%; }
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ==========================================
+   NEW: MOBILE RESPONSIVENESS UPDATES
+   ========================================== */
+
+@media (max-width: 992px) {
+    .center-title { font-size: 3rem; }
+    .hero h1 { font-size: 2.5rem; }
+}
+
+@media (max-width: 768px) {
+    /* Navbar Mobile */
+    .navbar { padding: 15px 5%; flex-direction: column; gap: 15px; }
+    .nav-links { gap: 15px; font-size: 0.9rem; flex-wrap: wrap; justify-content: center; }
+
+    /* Layout Spacing */
+    .section-padding { padding: 60px 5%; }
+    .center-title { font-size: 2.2rem; margin-bottom: 25px; }
+
+    /* Hero Section */
+    .hero { height: 60vh; }
+    .hero h1 { font-size: 1.8rem; }
+
+    /* Stats Bar */
+    .stats-blue-bar { flex-direction: column; gap: 30px; }
+    .stat-divider { width: 60px; height: 1px; }
+
+    /* Service Cards (Horizontal to Vertical) */
+    .vertical-service-container { flex-direction: column; height: auto; }
+    .v-card { height: 300px; width: 100%; }
+
+    /* Reviews */
+    .review-row { flex-direction: column; }
+
+    /* Founder Section */
+    .founder-text { text-align: center; }
+    .founder-image-container { flex: 0 0 100%; }
+
+    /* Contact Form */
+    .contact-form-box { padding: 25px; }
+}
+
+@media (max-width: 480px) {
+    .center-title { font-size: 1.8rem; }
+    .btn-white-outline { padding: 12px 25px; width: 100%; }
+    .profile-circle { width: 200px; height: 200px; }
+}
+/* 1. Setup for Scroll Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 2. Enhanced Card Hover (Updating your existing hover) */
+.price-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
+}
+
+.price-card:hover {
+    transform: translateY(-15px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(0, 174, 239, 0.15) !important;
+    border-color: var(--blue) !important; /* Changes border to blue on hover */
+}
+
+/* 3. Button Pulse Animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.btn-white-outline:hover, .btn-blue:hover, .btn-orange:hover {
+    animation: pulse 1s infinite;
 }

@@ -13,3 +13,22 @@ setInterval(slide, 5000);
 
 // Run immediately on load
 slide();
+function reveal() {
+  var reveals = document.querySelectorAll(".section-padding, .price-card, .v-detail-card");
+
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+  }
+}
+
+// Attach the animation to the scroll event
+window.addEventListener("scroll", reveal);
+
+// Run once on load to show elements already in view
+reveal();
