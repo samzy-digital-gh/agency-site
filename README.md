@@ -1,1 +1,1 @@
-a website develper  wlling to build any lind of website for small businesses in accra 
+Samzy-Digital is a professional digital solutions website for Ghanaian businesses. The site features 6 fully responsive pages with iOS‑style glassmorphism design, brand colour system (blue, white, orange), and an intelligent chatbot assistant.
