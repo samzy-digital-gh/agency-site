@@ -1,1 +1,1 @@
-a website develper  wlling to build any lind of websitr for smal businesses 
+a website develper  wlling to build any lind of website for small businesses in accra 
