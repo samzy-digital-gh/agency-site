@@ -2,166 +2,469 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Solutions | Samzy-Digital</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        /* Internal styles for elements not yet in your style.css */
-        .pricing-grid {
-            display: grid       ;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-        .price-card {
-            background: #fff;
-            padding: 40px 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .price-card:hover { transform: translateY(-10px); }
-        .price-card h2 { color: var(--blue); font-size: 2.5rem; margin: 15px 0; }
-        .price-card ul { list-style: none; padding: 0; margin-bottom: 30px; text-align: left; }
-        .price-card li { margin-bottom: 12px; color: #555; }
-        .faq-item {
-            background: white;
-            margin-bottom: 15px;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            border-left: 5px solid var(--blue);
-        }
-        .faq-item h4 { margin-bottom: 10px; color: var(--dark); }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>SamzyDigital · Business Solutions</title>
+    <!-- Font Awesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- GLOBAL – DO NOT EDIT -->
+    <link rel="stylesheet" href="header-footer.css">
+    <link rel="stylesheet" href="samzy-chatbot.css">
+    <!-- PAGE‑SPECIFIC BUSINESS CSS -->
+    <link rel="stylesheet" href="business.css">
 </head>
 <body>
 
+    <!-- ========== HEADER – EXACT COPY ========== -->
     <nav class="navbar">
-        <div class="logo">SAMZY<span>DIGITAL</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="business.html">Business</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html" class="btn-contact">Contact Us</a></li>
-        </ul>
+        <div class="nav-container glass-panel">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                SAMZY<span>DIGITAL</span>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-menu glass-panel" id="mobileMenu">
+                <button class="mobile-close" id="mobileClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul class="mobile-nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="business.html" class="active"><i class="fas fa-briefcase"></i> Business</a></li>
+                    <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="business.html" class="active"><i class="fas fa-briefcase"></i> Business</a></li>
+                <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <section class="section-padding grey-bg">
-        <h1 class="center-title blue-text">BUSINESS SOLUTIONS</h1>
-        <p class="sub-text">Empowering Accra's entrepreneurs with world-class digital tools and automation.</p>
-    </section>
+    <!-- MAIN BUSINESS CONTENT – 12 SECTIONS, ALL business-* PREFIXED -->
+    <main class="business-main">
 
-    <section class="section-padding">
-        <h1 class="center-title blue-text">OUR PRICING Tiers</h1>
-        <div class="pricing-grid">
-            
-            <div class="price-card" style="border: 2px solid var(--orange);">
-                <h3>BASIC</h3>
-                <h2>GHC 800</h2>
-                <ul>
-                    <li>✓ Single Landing Page</li>
-                    <li>✓ 1 Year Free Hosting</li>
-                    <li>✓ Mobile Responsive</li>
-                    <li>✓ Social Media Links</li>
+        <!-- 1. Authority Hero -->
+        <section class="business-hero">
+            <div class="business-hero-backdrop"></div>
+            <div class="business-hero-content">
+                <h1 class="business-hero-title">Professional Business Solutions That Drive Real Growth</h1>
+                <div class="business-trust-badges">
+                    <div class="business-badge-chip"><i class="fas fa-flag"></i> Ghana‑Based</div>
+                    <div class="business-badge-chip"><i class="fas fa-chart-line"></i> Proven Results</div>
+                    <div class="business-badge-chip"><i class="fas fa-headset"></i> 24/7 Support</div>
+                    <div class="business-badge-chip"><i class="fas fa-rocket"></i> Fast Delivery</div>
+                </div>
+                <div class="business-hero-ctas">
+                    <a href="#pricing" class="business-cta-primary">View Pricing Plans</a>
+                    <a href="#roi-calculator" class="business-cta-secondary">Calculate Your ROI</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Process Timeline (4 steps) -->
+        <section class="business-timeline-section">
+            <h2 class="business-section-title">Our proven 4‑phase process</h2>
+            <div class="business-timeline">
+                <div class="business-timeline-step">
+                    <div class="business-step-icon"><i class="fas fa-search"></i></div>
+                    <h3>Discovery & Strategy</h3>
+                    <span class="business-step-duration">1-2 weeks</span>
+                    <p class="business-step-desc">Deep research, competitor analysis, goal mapping.</p>
+                    <div class="business-step-tags">
+                        <span>Market Research</span>
+                        <span>Tech Audit</span>
+                    </div>
+                </div>
+                <div class="business-timeline-step">
+                    <div class="business-step-icon"><i class="fas fa-pencil-ruler"></i></div>
+                    <h3>Design & Development</h3>
+                    <span class="business-step-duration">2-4 weeks</span>
+                    <p class="business-step-desc">UI/UX, agile sprints, responsive builds.</p>
+                    <div class="business-step-tags">
+                        <span>Wireframes</span>
+                        <span>Prototype</span>
+                    </div>
+                </div>
+                <div class="business-timeline-step">
+                    <div class="business-step-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Launch & Training</h3>
+                    <span class="business-step-duration">1 week</span>
+                    <p class="business-step-desc">Deployment, staff onboarding, documentation.</p>
+                    <div class="business-step-tags">
+                        <span>SEO Setup</span>
+                        <span>Analytics</span>
+                    </div>
+                </div>
+                <div class="business-timeline-step">
+                    <div class="business-step-icon"><i class="fas fa-chart-simple"></i></div>
+                    <h3>Growth & Optimization</h3>
+                    <span class="business-step-duration">ongoing</span>
+                    <p class="business-step-desc">Continuous improvement, A/B testing, scale.</p>
+                    <div class="business-step-tags">
+                        <span>CRO</span>
+                        <span>Retention</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Pricing Cards – id="pricing" -->
+        <section id="pricing" class="business-pricing-section">
+            <h2 class="business-section-title">Flexible plans for every ambition</h2>
+            <div class="business-pricing-grid">
+                <!-- Starter -->
+                <div class="business-pricing-card">
+                    <div class="business-card-header">
+                        <h3>Starter</h3>
+                        <div class="business-price">GHS 1,500<span>/project</span></div>
+                    </div>
+                    <ul class="business-feature-list">
+                        <li><i class="fas fa-check"></i> Responsive website (5 pages)</li>
+                        <li><i class="fas fa-check"></i> Contact form & map</li>
+                        <li><i class="fas fa-check"></i> Basic SEO</li>
+                        <li><i class="fas fa-times"></i> E‑commerce</li>
+                        <li><i class="fas fa-times"></i> Automation tools</li>
+                    </ul>
+                    <a href="#" class="business-card-cta">Get Started</a>
+                </div>
+                <!-- Business – FEATURED -->
+                <div class="business-pricing-card business-featured-card">
+                    <div class="business-most-popular">Most Popular</div>
+                    <div class="business-card-header">
+                        <h3>Business</h3>
+                        <div class="business-price">GHS 3,500<span>/project</span></div>
+                    </div>
+                    <ul class="business-feature-list">
+                        <li><i class="fas fa-check"></i> Custom website (10 pages)</li>
+                        <li><i class="fas fa-check"></i> E‑commerce integration</li>
+                        <li><i class="fas fa-check"></i> Advanced SEO & analytics</li>
+                        <li><i class="fas fa-check"></i> CRM handover</li>
+                        <li><i class="fas fa-times"></i> Custom automation</li>
+                    </ul>
+                    <a href="#" class="business-card-cta">Get Started</a>
+                </div>
+                <!-- Enterprise -->
+                <div class="business-pricing-card">
+                    <div class="business-card-header">
+                        <h3>Enterprise</h3>
+                        <div class="business-price">GHS 6,500+<span>/project</span></div>
+                    </div>
+                    <ul class="business-feature-list">
+                        <li><i class="fas fa-check"></i> Unlimited pages / custom dev</li>
+                        <li><i class="fas fa-check"></i> ERP / POS integration</li>
+                        <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                        <li><i class="fas fa-check"></i> Tailored automation</li>
+                        <li><i class="fas fa-check"></i> 24/7 priority support</li>
+                    </ul>
+                    <a href="#" class="business-card-cta">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PDF Download Card -->
+        <section class="business-pdf-section">
+            <div class="business-pdf-card">
+                <i class="fas fa-file-pdf business-pdf-icon"></i>
+                <h3>Need detailed service specifications?</h3>
+                <p>Download our complete pricing guide with technical scope, delivery timelines, and case studies.</p>
+                <a href="pricing-guide.pdf" download class="business-pdf-button">
+                    <i class="fas fa-download"></i> Get Pricing Guide (PDF)
+                </a>
+            </div>
+        </section>
+
+        <!-- 5. ROI CALCULATOR – SHOWPIECE (id="roi-calculator") -->
+        <section id="roi-calculator" class="business-roi-section">
+            <h2 class="business-section-title">ROI Calculator – See your potential growth</h2>
+            <div class="business-roi-calculator">
+                <div class="business-roi-controls">
+                    <div class="business-slider-group">
+                        <label>Monthly Sales (GHS) <span id="business-sales-val">100,000</span></label>
+                        <input type="range" id="business-sales" min="0" max="500000" value="100000" step="1000">
+                    </div>
+                    <div class="business-slider-group">
+                        <label>Customers per month <span id="business-customers-val">200</span></label>
+                        <input type="range" id="business-customers" min="0" max="1000" value="200" step="5">
+                    </div>
+                    <div class="business-select-group">
+                        <label>Service Type</label>
+                        <select id="business-service-type">
+                            <option value="web">Web Dev</option>
+                            <option value="ecom">E‑commerce</option>
+                            <option value="auto">Automation</option>
+                            <option value="brand">Branding</option>
+                        </select>
+                    </div>
+                    <div class="business-select-group">
+                        <label>Timeframe</label>
+                        <select id="business-timeframe">
+                            <option value="3">3 months</option>
+                            <option value="6">6 months</option>
+                            <option value="12" selected>1 year</option>
+                        </select>
+                    </div>
+                    <button id="business-calc-btn" class="business-calc-button">Calculate ROI →</button>
+                </div>
+                <div class="business-roi-results">
+                    <div class="business-result-card">
+                        <span class="business-result-label">Sales Increase</span>
+                        <span class="business-result-number" id="result-sales">GHS 0</span>
+                    </div>
+                    <div class="business-result-card">
+                        <span class="business-result-label">New Customers</span>
+                        <span class="business-result-number" id="result-customers">0</span>
+                    </div>
+                    <div class="business-result-card">
+                        <span class="business-result-label">Time Saved (hrs/mo)</span>
+                        <span class="business-result-number" id="result-hours">0</span>
+                    </div>
+                    <div class="business-result-card">
+                        <span class="business-result-label">ROI Estimate</span>
+                        <span class="business-result-number" id="result-roi">0%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Automation & Branding Deep Dive -->
+        <section class="business-deepdive-section">
+            <div class="business-deepdive-grid">
+                <div class="business-deepdive-card">
+                    <i class="fas fa-robot business-deep-icon"></i>
+                    <h3>Business Automation</h3>
+                    <ul class="business-deep-features">
+                        <li><i class="fas fa-check-circle"></i> Workflow automation (Zapier, n8n)</li>
+                        <li><i class="fas fa-check-circle"></i> CRM & ERP integration</li>
+                        <li><i class="fas fa-check-circle"></i> Inventory sync</li>
+                    </ul>
+                    <a href="#" class="business-deep-cta">Learn More →</a>
+                </div>
+                <div class="business-deepdive-card">
+                    <i class="fas fa-paint-brush business-deep-icon"></i>
+                    <h3>Branding & Identity</h3>
+                    <ul class="business-deep-features">
+                        <li><i class="fas fa-check-circle"></i> Visual identity / logo</li>
+                        <li><i class="fas fa-check-circle"></i> Brand strategy & voice</li>
+                        <li><i class="fas fa-check-circle"></i> Packaging design</li>
+                    </ul>
+                    <a href="#" class="business-deep-cta">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Case Study – id="case-studies" -->
+        <section id="case-studies" class="business-case-section">
+            <div class="business-case-card">
+                <span class="business-case-tag">Success story</span>
+                <h3>Accra Markets – Digital transformation</h3>
+                <div class="business-case-stats">
+                    <div class="business-stat"><strong>+200%</strong> sales</div>
+                    <div class="business-stat"><strong>+150</strong> customers/mo</div>
+                    <div class="business-stat"><strong>4 months</strong> ROI</div>
+                </div>
+                <p class="business-testimonial">“SamzyDigital turned our manual inventory into an automated e‑commerce engine. Our revenue doubled in less than half a year.”</p>
+                <div class="business-client">
+                    <div class="business-client-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="business-client-info">
+                        <strong>Esi Mensah</strong>
+                        <span>Operations Lead, Accra Markets</span>
+                    </div>
+                </div>
+                <div class="business-case-tags">
+                    <span>E‑commerce</span>
+                    <span>Inventory</span>
+                    <span>Sales Growth</span>
+                </div>
+                <a href="#" class="business-case-cta">Read Full Case Study →</a>
+            </div>
+        </section>
+
+        <!-- 8. Trust Badges -->
+        <section class="business-trust-section">
+            <h2 class="business-section-title">Recognised excellence</h2>
+            <div class="business-trust-grid">
+                <div class="business-badge-large"><i class="fab fa-google"></i> Google Partner</div>
+                <div class="business-badge-large"><i class="fas fa-certificate"></i> ISO Certified</div>
+                <div class="business-badge-large"><i class="fas fa-award"></i> Ghana Digital Innovation Award</div>
+                <div class="business-badge-large"><i class="fas fa-users"></i> 100+ Clients</div>
+            </div>
+        </section>
+
+        <!-- 9. FAQ Accordion (6 questions) -->
+        <section class="business-faq-section">
+            <h2 class="business-section-title">Frequently Asked Questions</h2>
+            <div class="business-accordion">
+                <div class="business-accordion-item">
+                    <button class="business-accordion-btn">
+                        <span>What is your typical development process?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="business-accordion-content">
+                        <p>We follow a 4‑phase agile approach: discovery, design & development, launch, and continuous optimization. You’ll receive weekly updates.</p>
+                    </div>
+                </div>
+                <div class="business-accordion-item">
+                    <button class="business-accordion-btn">
+                        <span>Do you offer ongoing support after launch?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="business-accordion-content">
+                        <p>Yes, all plans include 3 months of bug fixes and support. Extended maintenance packages are available.</p>
+                    </div>
+                </div>
+                <div class="business-accordion-item">
+                    <button class="business-accordion-btn">
+                        <span>Can you integrate with my existing CRM/ERP?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="business-accordion-content">
+                        <p>Absolutely. We have experience with Salesforce, HubSpot, Odoo, and custom APIs.</p>
+                    </div>
+                </div>
+                <div class="business-accordion-item">
+                    <button class="business-accordion-btn">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="business-accordion-content">
+                        <p>Bank transfer, mobile money (MTN, Vodafone), and card payments. 50% deposit, 50% on completion.</p>
+                    </div>
+                </div>
+                <div class="business-accordion-item">
+                    <button class="business-accordion-btn">
+                        <span>How long does a typical project take?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="business-accordion-content">
+                        <p>Most websites go live in 4‑6 weeks. Complex e‑commerce or automation projects may take 8‑12 weeks.</p>
+                    </div>
+                </div>
+                <div class="business-accordion-item">
+                    <button class="business-accordion-btn">
+                        <span>Do you offer custom automation solutions?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="business-accordion-content">
+                        <p>Yes, we build tailor‑made workflows using n8n, Power Automate, or custom scripts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Consultation Booking CTA -->
+        <section class="business-cta-section">
+            <div class="business-cta-card">
+                <h2>Ready to grow your business?</h2>
+                <p>Schedule a free consultation with our digital strategists – no obligation.</p>
+                <a href="contact.html" class="business-cta-giant">Schedule Consultation</a>
+            </div>
+        </section>
+
+        <!-- 12. Back to Top (optional, page-specific) -->
+        <button id="business-back-to-top" class="business-back-to-top" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+
+    </main> <!-- end of business-main -->
+
+    <!-- 11. FOOTER – EXACT COPY, NOW OUTSIDE MAIN (NO WHITE SPACE) -->
+    <footer class="business-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>SAMZY<span>DIGITAL</span></span>
+                </div>
+                <p class="footer-description">
+                    Professional digital solutions for Ghanaian businesses. 
+                    Based in Accra, serving clients nationwide.
+                </p>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+233539929190">0539929190</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:samuelahaiaba3@gmail.com">samuelahaiaba3@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Accra, Ghana</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="business.html">Business</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                 </ul>
-                <a href="contact.html" class="btn-blue" style="display:block; text-decoration:none; background: var(--blue); color: #fff; padding: 10px; border-radius: 5px; font-weight: bold;">GET STARTED</a>
             </div>
-            
-            <div class="price-card" style="border: 2px solid var(--orange);">
-                <p style="color: var(--orange); font-weight: bold;">MOST POPULAR</p>
-                <h3>STANDARD</h3>
-                <h2>GHC 2,500</h2>
-                <ul>
-                    <li>✓ Up to 5 Web Pages</li>
-                    <li>✓ SEO Optimization</li>
-                    <li>✓ Business Email</li>
-                    <li>✓ Google Maps Setup</li>
+            <div class="footer-column">
+                <h3 class="footer-title">Community</h3>
+                <ul class="footer-links">
+                    <li><a href="#mentors">Mentors</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#join">Join</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                 </ul>
-                <a href="contact.html" class="btn-orange" style="display:block; text-decoration:none; background: var(--orange); color: #fff; padding: 10px; border-radius: 5px; font-weight: bold;">CHOOSE PLAN</a>
             </div>
-
-            <div class="price-card" style="border: 2px solid var(--orange);">
-                <h3>E-COMMERCE</h3>
-                <h2>GHC 5,500+</h2>
-                <ul>
-                    <li>✓ Full Online Store</li>
-                    <li>✓ Momo Payment Integration</li>
-                    <li>✓ Inventory Tracking</li>
-                    <li>✓ Sales Reports</li>
-                </ul>
-                <a href="contact.html" class="btn-blue" style="display:block; text-decoration:none; background: var(--blue); color: #fff; padding: 10px; border-radius: 5px; font-weight: bold;">RESERVE NOW</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding grey-bg">
-        <h1 class="center-title blue-text">AUTOMATION & BRANDING</h1>
-        <div class="vertical-stack">
-            <div class="v-detail-card orange-end">
-                <h3>Business Automation (Zoho)</h3>
-                <p>Stop wasting time on manual paperwork. We set up automated workflows that handle your leads, invoices, and customer follow-ups automatically.</p>
-            </div>
-            <div class="v-detail-card blue-end">
-                <h3>Digital Branding</h3>
-                <p>We provide high-quality logo designs, brand guidelines, and social media kits that ensure your business looks professional across all platforms.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding">
-        <h1 class="center-title blue-text">FREQUENTLY ASKED QUESTIONS</h1>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="faq-item">
-                <h4>How long does a website take?</h4>
-                <p>Basic sites take 5-7 days. Standard and E-commerce sites usually take 2-4 weeks depending on the complexity and content provided.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Do I own the website?</h4>
-                <p>Yes! Once full payment is made, you own 100% of the code and assets. We also provide training so you can manage it yourself.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Do you offer maintenance?</h4>
-                <p>Absolutely. We offer monthly maintenance packages to keep your site secure, updated, and backed up.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-blue-bar">
-        <h2>Transform Your Business Today</h2>
-        <p>Let's discuss which solution fits your current goals.</p>
-        <a href="contact.html" class="btn-white-outline">Book Free Consultation</a>
-    </section>
-
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <p>Samzy-Digital is dedicated to transforming local businesses in Accra through innovative web solutions.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Our Services</h4>
-                <a href="business.html">Web Development</a>
-                <a href="business.html">Branding</a>
-                <a href="business.html">Automation</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Info</h4>
-                <p>📞 0553018973</p>
-                <p>📧 samuelahaiaba3@gmail.com</p>
-                <div class="social-box">
-                    <a href="https://wa.me/233553018973" class="coin">W</a>
-                    <a href="#" class="coin">T</a>
-                    <a href="#" class="coin">I</a>
-                    <a href="#" class="coin">X</a>
-                    <a href="#" class="coin">F</a>
+            <div class="footer-column">
+                <h3 class="footer-title">Connect</h3>
+                <div class="footer-social">
+                    <a href="https://wa.me/233539929190" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="footer-legal">
+                    <p>© 2026 Samzy-Digital. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- ========== GLOBAL SCRIPTS – DO NOT TOUCH ========== -->
+    <script src="header-footer.js"></script>
+
+    <!-- ===== SAMZY CHATBOT v7.1 – EXACT SNIPPET ===== -->
+    <div id="samzy-chatbot-root">
+        <div id="samzy-bubble" class="samzy-chat-bubble">
+            <svg viewBox="0 0 24 24" width="36" height="36">
+                <circle cx="12" cy="12" r="10" fill="white" />
+                <circle cx="8" cy="9" r="1.5" fill="black" />
+                <circle cx="16" cy="9" r="1.5" fill="black" />
+                <path d="M8 14 Q12 18, 16 14" stroke="black" stroke-width="1.8" fill="none" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div id="samzy-window" class="samzy-chat-window">
+            <div class="samzy-chat-header">
+                <h3><span></span> Samzy Assistant</h3>
+                <button id="samzy-close" class="samzy-close-btn">×</button>
+            </div>
+            <div id="samzy-messages" class="samzy-messages"></div>
+            <div class="samzy-input-area">
+                <input type="text" id="samzy-user-input" placeholder="Ask me anything..." autocomplete="off">
+                <button id="samzy-send" class="samzy-send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="samzy-chatbot.js"></script>
+
+    <!-- PAGE-SPECIFIC BUSINESS JS -->
+    <script src="business.js"></script>
 </body>
 </html>

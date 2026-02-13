@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Resources – Samzy Digital</title>
+    
+    <!-- Font Awesome 6 (Kit or CDN – CDN used here for reliability) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- GLOBAL ASSETS – PROVIDED BY LEAD ARCHITECT, DO NOT EDIT -->
+    <link rel="stylesheet" href="header-footer.css">
+    <link rel="stylesheet" href="samzy-chatbot.css">
+    <!-- PAGE SPECIFIC CSS – YOURS ONLY -->
+    <link rel="stylesheet" href="resources.css">
+</head>
+<body>
+    <!-- ========== HEADER – iOS 26 Ultra Glass (EXACT COPY) ========== -->
+    <nav class="navbar">
+        <div class="nav-container glass-panel">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                SAMZY<span>DIGITAL</span>
+            </div>
+            
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Mobile Menu (full glass, compact) -->
+            <div class="mobile-menu glass-panel" id="mobileMenu">
+                <button class="mobile-close" id="mobileClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul class="mobile-nav-links">
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
+                    <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
+                <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========== YOUR PAGE CONTENT – RESOURCES SECTIONS ========== -->
+    <main class="resources-main">
+        <!-- 1. RESOURCES HERO -->
+        <section class="resources-hero">
+            <div class="resources-container">
+                <div class="resources-hero-content">
+                    <i class="fas fa-laptop-code resources-hero-icon"></i>
+                    <h1 class="resources-hero-title">Free Coding Resources for Beginners.</h1>
+                    <p class="resources-hero-subtitle">Everything you need to start your tech journey in Ghana.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PDF DOWNLOAD – STARTER GUIDE (MAIN CTA) -->
+        <section class="resources-pdf-section">
+            <div class="resources-container">
+                <div class="resources-pdf-card">
+                    <div class="resources-pdf-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h2 class="resources-pdf-title">How to Get Started in Coding – Starter Guide</h2>
+                    <p class="resources-pdf-description">
+                        A free 20‑page PDF covering basics, tools, and first project ideas.
+                    </p>
+                    <!-- ORANGE BUTTON – EXACT SPEC -->
+                    <a href="starter-guide.pdf" download class="resources-btn resources-btn-download">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. RECOMMENDED LEARNING PATHS (3 CARDS) -->
+        <section class="resources-paths-section">
+            <div class="resources-container">
+                <h2 class="resources-section-title">Recommended Learning Paths</h2>
+                <div class="resources-paths-grid">
+                    <!-- Web Development -->
+                    <div class="resources-path-card">
+                        <div class="resources-path-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="resources-path-title">Web Development</h3>
+                        <p class="resources-path-desc">
+                            HTML, CSS, JavaScript, React – build responsive websites and web apps.
+                        </p>
+                        <a href="#" class="resources-btn resources-btn-path">Start Learning</a>
+                    </div>
+                    <!-- Mobile Apps -->
+                    <div class="resources-path-card">
+                        <div class="resources-path-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="resources-path-title">Mobile Apps</h3>
+                        <p class="resources-path-desc">
+                            Flutter, Kotlin, Swift – create native and cross‑platform mobile experiences.
+                        </p>
+                        <a href="#" class="resources-btn resources-btn-path">Start Learning</a>
+                    </div>
+                    <!-- Data Science -->
+                    <div class="resources-path-card">
+                        <div class="resources-path-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="resources-path-title">Data Science</h3>
+                        <p class="resources-path-desc">
+                            Python, Pandas, SQL – analyse data and build machine learning models.
+                        </p>
+                        <a href="#" class="resources-btn resources-btn-path">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FREE TOOLS & WEBSITES (GRID OF 8) -->
+        <section class="resources-tools-section">
+            <div class="resources-container">
+                <h2 class="resources-section-title">Free Tools & Websites</h2>
+                <div class="resources-tools-grid">
+                    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="resources-tool-item">
+                        <i class="fas fa-code"></i>
+                        <span>VS Code</span>
+                    </a>
+                    <a href="https://github.com/" target="_blank" rel="noopener" class="resources-tool-item">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener" class="resources-tool-item">
+                        <i class="fab fa-free-code-camp"></i>
+                        <span>FreeCodeCamp</span>
+                    </a>
+                    <a href="https://www.w3schools.com/" target="_blank" rel="noopener" class="resources-tool-item">
+                        <i class="fas fa-code"></i>
+                        <span>W3Schools</span>
+                    </a>
+                    <a href="https://developer.mozilla.org/" target="_blank" rel="noopener" class="resources-tool-item">
+                        <i class="fas fa-file-alt"></i>
+                        <span>MDN</span>
+                    </a>
+                    <a href="https://www.figma.com/" target="_blank" rel="noopener" class="resources-tool-item">
+                        <i class="fab fa-figma"></i>
+                        <span>Figma</span>
+                    </a>
+                    <a href="https://www.python.org/" target="_blank" rel="noopener" class="resources-tool-item">
+                        <i class="fab fa-python"></i>
+                        <span>Python.org</span>
+                    </a>
+                    <a href="https://git-scm.com/" target="_blank" rel="noopener" class="resources-tool-item">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. COMMUNITY SUPPORT CARD -->
+        <section class="resources-community-section">
+            <div class="resources-container">
+                <div class="resources-community-card">
+                    <div class="resources-community-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h2 class="resources-community-title">Need help? Join our community!</h2>
+                    <p class="resources-community-description">
+                        Connect with mentors, ask questions, and grow with fellow Ghanaian developers.
+                    </p>
+                    <a href="community.html" class="resources-btn resources-btn-community">
+                        Join our Community <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER – EXACT COPY (0539929190 + Facebook) ========== -->
+    <footer class="business-footer">
+        <div class="footer-container">
+            <!-- Column 1: About & Contact -->
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>SAMZY<span>DIGITAL</span></span>
+                </div>
+                <p class="footer-description">
+                    Professional digital solutions for Ghanaian businesses. 
+                    Based in Accra, serving clients nationwide.
+                </p>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+233539929190">0539929190</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:samuelahaiaba3@gmail.com">samuelahaiaba3@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Accra, Ghana</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links (includes Resources) -->
+            <div class="footer-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="business.html">Business</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Community (includes Resources) -->
+            <div class="footer-column">
+                <h3 class="footer-title">Community</h3>
+                <ul class="footer-links">
+                    <li><a href="#mentors">Mentors</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#join">Join</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Social & Legal – 5 ICONS (Facebook added) -->
+            <div class="footer-column">
+                <h3 class="footer-title">Connect</h3>
+                <div class="footer-social">
+                    <a href="https://wa.me/233539929190" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="footer-legal">
+                    <p>© 2026 Samzy-Digital. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== GLOBAL JS – DO NOT MODIFY ========== -->
+    <script src="header-footer.js"></script>
+
+    <!-- ===== SAMZY CHATBOT v7.1 – FULL SNIPPET ===== -->
+    <div id="samzy-chatbot-root">
+        <div id="samzy-bubble" class="samzy-chat-bubble">
+            <svg viewBox="0 0 24 24" width="36" height="36">
+                <circle cx="12" cy="12" r="10" fill="white" />
+                <circle cx="8" cy="9" r="1.5" fill="black" />
+                <circle cx="16" cy="9" r="1.5" fill="black" />
+                <path d="M8 14 Q12 18, 16 14" stroke="black" stroke-width="1.8" fill="none" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div id="samzy-window" class="samzy-chat-window">
+            <div class="samzy-chat-header">
+                <h3><span></span> Samzy Assistant</h3>
+                <button id="samzy-close" class="samzy-close-btn">×</button>
+            </div>
+            <div id="samzy-messages" class="samzy-messages"></div>
+            <div class="samzy-input-area">
+                <input type="text" id="samzy-user-input" placeholder="Ask me anything..." autocomplete="off">
+                <button id="samzy-send" class="samzy-send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="samzy-chatbot.js"></script>
+
+    <!-- YOUR PAGE SPECIFIC JS -->
+    <script src="resources.js"></script>
+</body>
+</html>

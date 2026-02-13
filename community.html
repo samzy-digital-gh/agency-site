@@ -2,95 +2,494 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community | Samzy-Digital</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Samzy‑Digital · Community</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- GLOBAL – PROVIDED BY LEAD ARCHITECT (DO NOT MODIFY) -->
+    <link rel="stylesheet" href="header-footer.css">
+    <link rel="stylesheet" href="samzy-chatbot.css">
+    <!-- PAGE‑SPECIFIC CSS (COMMUNITY ONLY) -->
+    <link rel="stylesheet" href="community.css">
 </head>
 <body>
-
+    <!-- ========== HEADER – EXACT COPY ========== -->
     <nav class="navbar">
-        <div class="logo">SAMZY<span>DIGITAL</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="business.html">Business</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html" class="btn-contact">Contact Us</a></li>
-        </ul>
+        <div class="nav-container glass-panel">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                SAMZY<span>DIGITAL</span>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-menu glass-panel" id="mobileMenu">
+                <button class="mobile-close" id="mobileClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul class="mobile-nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
+                    <li><a href="community.html" class="active"><i class="fas fa-users"></i> Community</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
+                <li><a href="community.html" class="active"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <section class="section-padding grey-bg">
-        <h1 class="center-title blue-text">TECH COMMUNITY</h1>
-        <p class="sub-text">Empowering the next generation of digital giants in Accra through mentorship and real-world projects.</p>
-    </section>
+    <!-- ===== COMMUNITY PAGE – ALL SECTIONS ===== -->
+    <main class="community-main">
 
-    <section class="section-padding">
-        <h1 class="center-title blue-text">WHY JOIN US?</h1>
-        <div class="vertical-stack">
-            <div class="v-detail-card blue-end">
-                <h3>01. Skill Development</h3>
-                <p>Master high-demand skills in Web Development, Business Automation (Zoho), and Digital Branding.</p>
+        <!-- 1. HERO – FULL WIDTH, WELCOMING TEXT, NO BUTTONS, NOW STRETCHED -->
+        <section class="community-hero">
+            <div class="community-hero-content">
+                <span class="community-hero-eyebrow">Samzy‑Digital</span>
+                <h1 class="community-hero-title">
+                    Community
+                </h1>
+                <p class="community-hero-sub">
+                    A professional network for Ghanaian developers.<br>
+                    Learn. Mentor. Build. Grow.
+                </p>
             </div>
-            <div class="v-detail-card orange-end">
-                <h3>02. Expert Networking</h3>
-                <p>Connect with other tech professionals and entrepreneurs within the heart of Ghana's tech scene.</p>
-            </div>
-            <div class="v-detail-card blue-end">
-                <h3>03. Career Growth</h3>
-                <p>Gain access to exclusive job opportunities and internship placements with our business partners.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="stats-blue-bar">
-        <div class="stat-item"><h3>300+</h3><p>Active Members</p></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><h3>15+</h3><p>Mentors</p></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><h3>20+</h3><p>Workshops</p></div>
-    </section>
-
-    <section class="section-padding">
-        <h1 class="center-title blue-text">HIRE OUR TALENT</h1>
-        <div class="vision-card">
-            <p>Our community members are vetted, trained, and ready to deliver. If you are a business looking for fresh, skilled talent to join your team, we connect you with the best.</p>
-            <a href="contact.html" class="btn-blue-inline" style="text-decoration:none; margin-top:20px; display:inline-block; color:var(--blue); font-weight:bold;">HIRE A PRO →</a>
-        </div>
-    </section>
-
-    <section class="cta-blue-bar">
-        <h2>Ready to Join the Movement?</h2>
-        <p>Become part of the most vibrant tech community in Accra.</p>
-        <a href="#" class="btn-white-outline">Join Community</a>
-    </section>
-
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <p>Samzy-Digital is dedicated to transforming local businesses in Accra through innovative web solutions.</p>
+        <!-- 2. STATS – CLEAN METRICS ROW -->
+        <section class="community-stats-row">
+            <div class="community-stat-block">
+                <span class="community-stat-number">300+</span>
+                <span class="community-stat-label">Active Members</span>
             </div>
-            <div class="footer-col">
-                <h4>Our Services</h4>
-                <a href="business.html">Web Development</a>
-                <a href="business.html">Branding</a>
-                <a href="business.html">Automation</a>
+            <div class="community-stat-block">
+                <span class="community-stat-number">50+</span>
+                <span class="community-stat-label">Workshops</span>
             </div>
-            <div class="footer-col">
-                <h4>Contact Info</h4>
-                <p>📞 0553018973</p>
-                <p>📧 samuelahaiaba3@gmail.com</p>
-                <div class="social-box">
-                    <a href="#" class="coin">W</a>
-                    <a href="#" class="coin">T</a>
-                    <a href="#" class="coin">I</a>
-                    <a href="#" class="coin">X</a>
-                    <a href="#" class="coin">F</a>
+            <div class="community-stat-block">
+                <span class="community-stat-number">20+</span>
+                <span class="community-stat-label">Mentors</span>
+            </div>
+        </section>
+
+        <!-- 3. WHY JOIN – TWO‑COLUMN LAYOUT, NO CARDS -->
+        <section class="community-features">
+            <div class="community-features-grid">
+                <div class="community-feature-item">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <h3>Network with peers</h3>
+                        <p>Connect with 300+ developers across Ghana – find collaborators, share ideas.</p>
+                    </div>
+                </div>
+                <div class="community-feature-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <div>
+                        <h3>Expert mentorship</h3>
+                        <p>1:1 guidance from 20+ industry mentors, from Accra to the diaspora.</p>
+                    </div>
+                </div>
+                <div class="community-feature-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <h3>Weekly workshops</h3>
+                        <p>Hands‑on sessions on React, Flutter, Python, UI/UX, and cloud.</p>
+                    </div>
+                </div>
+                <div class="community-feature-item">
+                    <i class="fas fa-code-branch"></i>
+                    <div>
+                        <h3>Collaborate on projects</h3>
+                        <p>Build open‑source and portfolio projects in teams.</p>
+                    </div>
+                </div>
+                <div class="community-feature-item">
+                    <i class="fas fa-briefcase"></i>
+                    <div>
+                        <h3>Exclusive job board</h3>
+                        <p>First access to internships, junior roles, and freelance gigs.</p>
+                    </div>
+                </div>
+                <div class="community-feature-item">
+                    <i class="fas fa-rocket"></i>
+                    <div>
+                        <h3>Startup launchpad</h3>
+                        <p>From idea to prototype – feedback, beta testers, early users.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MENTOR SPOTLIGHT CAROUSEL -->
+        <section class="community-mentors">
+            <h2 class="community-section-title">Meet your mentors</h2>
+            <div class="community-carousel-container">
+                <div class="community-carousel" id="mentorCarousel"></div>
+                <div class="community-carousel-controls">
+                    <button class="community-carousel-arrow" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="community-carousel-dots" id="carouselDots"></div>
+                    <button class="community-carousel-arrow" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. DISCUSSION PREVIEW -->
+        <section class="community-discussion">
+            <h2 class="community-section-title">Happening now</h2>
+            <div class="community-topic-list">
+                <div class="community-topic-item">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>“Just landed my first dev job – thank you mentors!”</span>
+                </div>
+                <div class="community-topic-item">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>“Looking for a Flutter dev to build an MVP”</span>
+                </div>
+                <div class="community-topic-item">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>“Free Figma templates for beginners – link inside”</span>
+                </div>
+            </div>
+            <a href="#" class="community-link">Join the conversation →</a>
+        </section>
+
+        <!-- 6. LEARNING PATHS – HORIZONTAL PROGRESS CARDS -->
+        <section class="community-paths">
+            <h2 class="community-section-title">Popular learning tracks</h2>
+            <div class="community-paths-horizontal">
+                <div class="community-path-item">
+                    <h3>Web Development</h3>
+                    <p>HTML, CSS, JavaScript, React</p>
+                    <div class="community-progress-bar">
+                        <div class="community-progress-fill" data-width="80" style="width:0%;"></div>
+                    </div>
+                    <span class="community-progress-label">80% of members started here</span>
+                    <a href="resources.html" class="community-link">📘 Starter pack →</a>
+                </div>
+                <div class="community-path-item">
+                    <h3>Mobile Apps</h3>
+                    <p>Flutter & Kotlin basics</p>
+                    <div class="community-progress-bar">
+                        <div class="community-progress-fill" data-width="60" style="width:0%;"></div>
+                    </div>
+                    <span class="community-progress-label">60% building first app</span>
+                    <a href="resources.html" class="community-link">📘 Mobile pack →</a>
+                </div>
+                <div class="community-path-item">
+                    <h3>Data Science</h3>
+                    <p>Python, SQL, Power BI</p>
+                    <div class="community-progress-bar">
+                        <div class="community-progress-fill" data-width="40" style="width:0%;"></div>
+                    </div>
+                    <span class="community-progress-label">40% exploring data</span>
+                    <a href="resources.html" class="community-link">📘 Data toolkit →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. EVENTS CALENDAR – ID="events" -->
+        <section id="events" class="community-events">
+            <h2 class="community-section-title">Upcoming events</h2>
+            <div class="community-events-grid">
+                <div class="community-event-item">
+                    <span class="community-event-date">APR 15</span>
+                    <div class="community-event-details">
+                        <h3>Web Dev Workshop: Portfolio edition</h3>
+                        <p>10am – 2pm · Online</p>
+                        <a href="#" class="community-link">RSVP →</a>
+                    </div>
+                </div>
+                <div class="community-event-item">
+                    <span class="community-event-date">APR 22</span>
+                    <div class="community-event-details">
+                        <h3>Tech Career Panel with Ghanaian leads</h3>
+                        <p>3pm – 5pm · Accra</p>
+                        <a href="#" class="community-link">RSVP →</a>
+                    </div>
+                </div>
+                <div class="community-event-item">
+                    <span class="community-event-date">MAY 5</span>
+                    <div class="community-event-details">
+                        <h3>Hackathon: FinTech for Good</h3>
+                        <p>9am – 9pm · iSpace</p>
+                        <a href="#" class="community-link">RSVP →</a>
+                    </div>
+                </div>
+                <div class="community-event-item">
+                    <span class="community-event-date">MAY 12</span>
+                    <div class="community-event-details">
+                        <h3>Founder’s Talk: Building startups in Accra</h3>
+                        <p>4pm – 6pm · Online</p>
+                        <a href="#" class="community-link">RSVP →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. TALENT PORTAL PREVIEW -->
+        <section class="community-talent">
+            <h2 class="community-section-title">Open positions</h2>
+            <div class="community-jobs-list">
+                <div class="community-job-item">
+                    <div>
+                        <h3>Junior Frontend Developer</h3>
+                        <p>Accra · Full‑time</p>
+                    </div>
+                    <a href="#" class="community-link">Apply →</a>
+                </div>
+                <div class="community-job-item">
+                    <div>
+                        <h3>UI/UX Intern</h3>
+                        <p>Remote · 3 months</p>
+                    </div>
+                    <a href="#" class="community-link">Apply →</a>
+                </div>
+                <div class="community-job-item">
+                    <div>
+                        <h3>Tech Support Specialist</h3>
+                        <p>Part‑time · Hybrid</p>
+                    </div>
+                    <a href="#" class="community-link">Apply →</a>
+                </div>
+            </div>
+            <a href="#" class="community-link">Browse all jobs →</a>
+        </section>
+
+        <!-- 9. FAQ ACCORDION -->
+        <section class="community-faq">
+            <h2 class="community-section-title">Frequently asked questions</h2>
+            <div class="community-accordion">
+                <div class="community-accordion-item">
+                    <button class="community-accordion-header">
+                        <span>How do I join?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="community-accordion-content">
+                        <p>Fill out the registration form below – it’s free and takes 2 minutes.</p>
+                    </div>
+                </div>
+                <div class="community-accordion-item">
+                    <button class="community-accordion-header">
+                        <span>Is it really free?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="community-accordion-content">
+                        <p>Yes, 100% free. We’re run by volunteers and supported by partners.</p>
+                    </div>
+                </div>
+                <div class="community-accordion-item">
+                    <button class="community-accordion-header">
+                        <span>What events do you host?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="community-accordion-content">
+                        <p>Workshops, panel talks, hackathons, and social mixers.</p>
+                    </div>
+                </div>
+                <div class="community-accordion-item">
+                    <button class="community-accordion-header">
+                        <span>Can I become a mentor?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="community-accordion-content">
+                        <p>Absolutely! Email us at mentors@samzydigital.com.</p>
+                    </div>
+                </div>
+                <div class="community-accordion-item">
+                    <button class="community-accordion-header">
+                        <span>Do you help with jobs?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="community-accordion-content">
+                        <p>Yes – exclusive roles, CV reviews, and referrals.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. REGISTRATION FORM – ID="registration", NOW WITH FORMSPREE -->
+        <section id="registration" class="community-registration">
+            <h2 class="community-section-title">Become a member</h2>
+            <!-- 🔁 REPLACE action URL WITH YOUR FORMSPREE ID -->
+            <form id="communityForm" action="https://formspree.io/f/your-form-id" method="POST">
+                <!-- Formspree requires this field for replies -->
+                <input type="hidden" name="_replyto" value="%email%">
+                <!-- You can also add _gotcha honeypot if desired -->
+                
+                <div class="community-form-row">
+                    <div class="community-form-group">
+                        <label for="fullName">Full name *</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Ama Mensah">
+                        <span class="community-error" id="errorFullName"></span>
+                    </div>
+                    <div class="community-form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="ama@example.com">
+                        <span class="community-error" id="errorEmail"></span>
+                    </div>
+                </div>
+                <div class="community-form-row">
+                    <div class="community-form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="053 000 0000">
+                        <span class="community-error" id="errorPhone"></span>
+                    </div>
+                    <div class="community-form-group">
+                        <label for="experience">Experience *</label>
+                        <select id="experience" name="experience">
+                            <option value="">Select level</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                        <span class="community-error" id="errorExperience"></span>
+                    </div>
+                </div>
+                <div class="community-form-group">
+                    <label>Interests</label>
+                    <div class="community-checkbox-group">
+                        <label><input type="checkbox" name="interests" value="web"> Web Dev</label>
+                        <label><input type="checkbox" name="interests" value="mobile"> Mobile</label>
+                        <label><input type="checkbox" name="interests" value="data"> Data</label>
+                        <label><input type="checkbox" name="interests" value="design"> UI/UX</label>
+                    </div>
+                </div>
+                <div class="community-form-group">
+                    <label for="message">What do you hope to gain?</label>
+                    <textarea id="message" name="message" rows="2" placeholder="e.g. mentorship, project collaboration..."></textarea>
+                </div>
+                <button type="submit" class="community-btn-submit">Join now</button>
+                <div id="formSuccess" class="community-success-message" style="display: none;"></div>
+            </form>
+        </section>
+
+        <!-- 11. STATS DASHBOARD -->
+        <section class="community-dashboard">
+            <div class="community-dashboard-grid">
+                <div class="community-dashboard-item">
+                    <span class="community-dashboard-number">327</span>
+                    <span class="community-dashboard-label">Active members</span>
+                </div>
+                <div class="community-dashboard-item">
+                    <span class="community-dashboard-number">78%</span>
+                    <span class="community-dashboard-label">Monthly active</span>
+                </div>
+                <div class="community-dashboard-item">
+                    <span class="community-dashboard-number">12</span>
+                    <span class="community-dashboard-label">Open jobs</span>
+                </div>
+                <div class="community-dashboard-item">
+                    <span class="community-dashboard-number">5</span>
+                    <span class="community-dashboard-label">Startups launched</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. RESOURCES CALLOUT – LINK TO RESOURCES.HTML -->
+        <section class="community-resources">
+            <div class="community-resources-content">
+                <i class="fas fa-book-open"></i>
+                <h3>New to coding? Start here.</h3>
+                <p>Free guides, tutorials, and learning paths – made for Ghanaian beginners.</p>
+                <a href="resources.html" class="community-btn-resource">Get your free starter guide →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER – EXACT COPY ========== -->
+    <footer class="business-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>SAMZY<span>DIGITAL</span></span>
+                </div>
+                <p class="footer-description">
+                    Professional digital solutions for Ghanaian businesses. 
+                    Based in Accra, serving clients nationwide.
+                </p>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+233539929190">0539929190</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:samuelahaiaba3@gmail.com">samuelahaiaba3@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Accra, Ghana</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="business.html">Business</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Community</h3>
+                <ul class="footer-links">
+                    <li><a href="#mentors">Mentors</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#join">Join</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Connect</h3>
+                <div class="footer-social">
+                    <a href="https://wa.me/233539929190" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="footer-legal">
+                    <p>© 2026 Samzy-Digital. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- ========== GLOBAL JS + CHATBOT (EXACT ORDER) ========== -->
+    <script src="header-footer.js"></script>
+    <div id="samzy-chatbot-root">
+        <div id="samzy-bubble" class="samzy-chat-bubble">
+            <svg viewBox="0 0 24 24" width="36" height="36">
+                <circle cx="12" cy="12" r="10" fill="white" />
+                <circle cx="8" cy="9" r="1.5" fill="black" />
+                <circle cx="16" cy="9" r="1.5" fill="black" />
+                <path d="M8 14 Q12 18, 16 14" stroke="black" stroke-width="1.8" fill="none" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div id="samzy-window" class="samzy-chat-window">
+            <div class="samzy-chat-header">
+                <h3><span></span> Samzy Assistant</h3>
+                <button id="samzy-close" class="samzy-close-btn">×</button>
+            </div>
+            <div id="samzy-messages" class="samzy-messages"></div>
+            <div class="samzy-input-area">
+                <input type="text" id="samzy-user-input" placeholder="Ask me anything..." autocomplete="off">
+                <button id="samzy-send" class="samzy-send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="samzy-chatbot.js"></script>
+    <script src="community.js"></script>
 </body>
 </html>

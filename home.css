@@ -1,0 +1,724 @@
+/* ========== HOME.CSS – BRIGHT, VIBRANT, WELCOMING ========== */
+/* Strictly follows master sitemap rules:
+   - All custom classes prefixed with "home-"
+   - Uses only global CSS variables (scoped overrides inside main)
+   - NO styles for .navbar, .footer, .glass-panel – header/footer keep their own CSS
+   - NO overflow hidden – page scrolls normally
+   - Fully responsive (375px, 768px, 1200px)
+*/
+
+/* ---------- PAGE‑SPECIFIC VARIABLES – BRIGHT PALETTE ---------- */
+main {
+    --home-blue: #2563eb;
+    --home-orange: #f97316;
+    --home-gold: #fbbf24;
+    --home-light-blue: #dbeafe;
+    --home-light-orange: #ffedd5;
+    --home-light-gold: #fef3c7;
+    --home-gradient-blue: linear-gradient(145deg, #ffffff, #dbeafe);
+    --home-gradient-orange: linear-gradient(145deg, #ffffff, #ffedd5);
+    --home-gradient-gold: linear-gradient(145deg, #ffffff, #fef3c7);
+    --home-gradient: linear-gradient(135deg, var(--home-blue), var(--home-orange));
+    --home-shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
+    --home-card-hover: 0 30px 55px -10px rgba(37,99,235,0.2), 0 10px 20px -5px rgba(0,0,0,0.02);
+    --text-dark: #1e293b;
+    --text-light: #475569;
+    position: relative;        /* for absolute background */
+    z-index: 1;
+}
+
+/* ---------- BRIGHT ANIMATED BACKGROUND – CONTAINED INSIDE MAIN ---------- */
+.home-bg-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(37,99,235,0.08) 0%, transparent 35%),
+        radial-gradient(circle at 90% 70%, rgba(249,115,22,0.08) 0%, transparent 40%),
+        radial-gradient(circle at 40% 90%, rgba(251,191,36,0.06) 0%, transparent 45%),
+        linear-gradient(145deg, #f9fafb 0%, #ffffff 100%);
+    z-index: -2;
+    animation: homeSoftShift 25s infinite alternate ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes homeSoftShift {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.02); filter: hue-rotate(2deg); }
+}
+
+/* ---------- FLOATING ORBS – SUBTLE, BRIGHT ---------- */
+.home-blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    mix-blend-mode: soft-light;
+    opacity: 0.4;
+}
+.home-blob-1 {
+    top: -150px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(37,99,235,0.2), rgba(37,99,235,0.01));
+    animation: homeFloatLight 30s infinite alternate;
+}
+.home-blob-2 {
+    bottom: -150px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(249,115,22,0.2), rgba(249,115,22,0.01));
+    animation: homeFloatLight 35s infinite alternate;
+}
+@keyframes homeFloatLight {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(80px, 40px) scale(1.2); }
+}
+
+/* ---------- GLOBAL SECTION TITLES ---------- */
+.home-section-title {
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 2.8rem;
+    color: var(--text-dark);
+    position: relative;
+    font-weight: 700;
+}
+.home-section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: var(--home-gradient);
+    margin: 0.8rem auto 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.2);
+}
+
+/* ---------- HERO – PULLED UP, SCROLLS NORMALLY ---------- */
+.home-hero {
+    min-height: 70vh;          /* ⬅️ comfortable height, not fixed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+.home-hero-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+.home-hero-title {
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    line-height: 1.2;
+}
+.home-gradient-text {
+    background: var(--home-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.home-hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+}
+.home-hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ---------- BUTTONS – VIBRANT ---------- */
+.home-btn {
+    padding: 1rem 2.5rem;
+    border-radius: 60px;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid transparent;
+    letter-spacing: 0.5px;
+}
+.home-btn-primary {
+    background: var(--home-blue);
+    color: white;
+    box-shadow: 0 15px 30px rgba(37,99,235,0.25);
+}
+.home-btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 25px 40px rgba(37,99,235,0.3);
+}
+.home-btn-secondary {
+    background: var(--home-orange);
+    color: white;
+    box-shadow: 0 15px 30px rgba(249,115,22,0.25);
+}
+.home-btn-secondary:hover {
+    background: #ea580c;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 25px 40px rgba(249,115,22,0.3);
+}
+.home-btn-outline {
+    background: transparent;
+    border: 2px solid var(--home-blue);
+    color: var(--home-blue);
+}
+.home-btn-outline:hover {
+    background: var(--home-blue);
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(37,99,235,0.2);
+}
+.pulse {
+    animation: homePulse 2s infinite;
+}
+@keyframes homePulse {
+    0% { box-shadow: 0 0 0 0 rgba(37,99,235,0.3); }
+    70% { box-shadow: 0 0 0 14px rgba(37,99,235,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+}
+
+/* ---------- GENTLE 3D BEND CARD ---------- */
+.home-bend-card {
+    transition: transform 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28),
+                box-shadow 0.3s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+.home-bend-card:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(6deg) scale(1.02);
+    box-shadow: var(--home-card-hover);
+    border-color: var(--home-blue);
+}
+.home-bend-card:active {
+    transform: perspective(800px) rotateX(1deg) rotateY(3deg) scale(0.98);
+    background: rgba(37, 99, 235, 0.05);
+    border-color: var(--home-orange);
+}
+
+/* ---------- CARD STYLES – BRIGHT, COLOURFUL ---------- */
+/* NOTE: .glass-panel is NOT styled here – header/footer keep their own styles */
+.home-vision-card,
+.home-mission-card,
+.home-service-card,
+.home-stat-card,
+.home-featured-card,
+.home-testimonial-container,
+.home-process-step,
+.home-cta-container {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.8);
+    border-image: linear-gradient(145deg, rgba(255,255,255,1), rgba(255,255,255,0.6)) 1;
+    box-shadow: var(--home-shadow), inset 0 1px 4px rgba(255,255,255,0.9);
+    color: var(--text-dark);
+}
+
+/* Card colour variations */
+.home-service-card:nth-child(1) {
+    background: var(--home-gradient-blue) !important;
+}
+.home-service-card:nth-child(2) {
+    background: var(--home-gradient-orange) !important;
+}
+.home-service-card:nth-child(3) {
+    background: var(--home-gradient-gold) !important;
+}
+.home-service-card:nth-child(4) {
+    background: linear-gradient(145deg, #ffffff, #e0f2fe) !important;
+}
+
+.home-stat-card:nth-child(1),
+.home-stat-card:nth-child(3) {
+    background: linear-gradient(145deg, #ffffff, #dbeafe) !important;
+}
+.home-stat-card:nth-child(2),
+.home-stat-card:nth-child(4) {
+    background: linear-gradient(145deg, #ffffff, #ffedd5) !important;
+}
+
+.home-process-step:nth-child(1),
+.home-process-step:nth-child(3) {
+    background: linear-gradient(145deg, #ffffff, #dbeafe) !important;
+}
+.home-process-step:nth-child(2),
+.home-process-step:nth-child(4) {
+    background: linear-gradient(145deg, #ffffff, #ffedd5) !important;
+}
+
+/* ---------- VISION & MISSION CARDS ---------- */
+.home-vision-mission {
+    padding: 2rem 2rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.home-vision-card,
+.home-mission-card {
+    padding: 2.8rem 2.5rem;
+    text-align: center;
+    border-radius: 32px;
+    margin-bottom: 2rem;
+    background: linear-gradient(145deg, #ffffff, #fef9e7) !important;
+}
+.home-vision-card i,
+.home-mission-card i {
+    font-size: 3.5rem;
+    color: var(--home-gold);
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(251,191,36,0.3);
+}
+.home-vision-card p,
+.home-mission-card p {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+.home-vision-card strong,
+.home-mission-card strong {
+    color: var(--home-orange);
+}
+
+/* ---------- WHY CHOOSE US ---------- */
+.home-why {
+    padding: 5rem 2rem;
+}
+.home-why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+.home-why-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.8rem;
+    color: var(--text-dark);
+}
+.home-why-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2.2rem;
+}
+.home-why-list li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+}
+.home-why-list i {
+    color: var(--home-blue);
+    margin-right: 0.85rem;
+    font-size: 1.3rem;
+}
+.home-why-visual i {
+    font-size: 8rem;
+    color: var(--home-orange);
+    filter: drop-shadow(0 8px 16px rgba(249,115,22,0.2));
+}
+
+/* ---------- FEATURED WORK – DIAGONAL CLIP ---------- */
+.home-featured {
+    padding: 4rem 2rem;
+}
+.home-featured-card {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 32px;
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%);
+    transition: clip-path 0.3s ease;
+    background: linear-gradient(145deg, #ffffff, #f0f9ff) !important;
+}
+.home-featured-card:hover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 100%);
+}
+.home-featured-content h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+.home-featured-results {
+    font-size: 1.2rem;
+    color: var(--home-blue) !important;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+.home-featured-icon i {
+    font-size: 6rem;
+    color: var(--home-orange);
+    filter: drop-shadow(0 8px 16px rgba(249,115,22,0.15));
+}
+
+/* ---------- STATS – 2 PER ROW, ZIGZAG ---------- */
+.home-stats {
+    padding: 5rem 2rem;
+}
+.home-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    max-width: 850px;
+    margin: 0 auto;
+}
+.home-stat-card {
+    padding: 2.5rem 1.8rem;
+    text-align: center;
+    border-radius: 28px;
+    position: relative;
+}
+.home-stat-offset-1 {
+    transform: translateY(25px);
+}
+.home-stat-offset-2 {
+    transform: translateY(-25px);
+}
+.home-stat-card i {
+    font-size: 3.2rem;
+    color: var(--home-blue);
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 8px rgba(37,99,235,0.15));
+}
+.home-stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--home-orange);
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(249,115,22,0.2);
+}
+.home-stat-label {
+    font-size: 1.2rem;
+    margin-top: 0.6rem;
+    color: var(--text-dark);
+}
+
+/* ---------- TESTIMONIALS – ruby.jpg & kofi.jpg ---------- */
+.home-testimonials {
+    padding: 5rem 2rem;
+}
+.home-testimonial-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2.8rem 2.5rem;
+    border-radius: 32px;
+    background: linear-gradient(145deg, #ffffff, #fefce8) !important;
+}
+.home-testimonial-slider {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.home-testimonial-slide {
+    display: none;
+    text-align: center;
+    animation: homeFadeSlide 0.5s ease;
+}
+.home-testimonial-slide.active {
+    display: block;
+}
+@keyframes homeFadeSlide {
+    from { opacity: 0.3; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.home-testimonial-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 1.2rem;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.home-testimonial-stars {
+    color: #fbbf24;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 6px rgba(251,191,36,0.3);
+}
+.home-testimonial-content p {
+    font-size: 1.25rem;
+    font-style: italic;
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+.author-info h4 {
+    font-weight: 700;
+    color: var(--home-blue);
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+}
+.author-info p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+.home-testimonial-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+    margin-top: 2.2rem;
+}
+.home-testimonial-btn {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.05);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--home-blue);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+}
+.home-testimonial-btn:hover {
+    background: var(--home-blue);
+    color: white;
+    transform: scale(1.1);
+}
+.home-testimonial-dots {
+    display: flex;
+    gap: 0.8rem;
+}
+.home-testimonial-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--text-light);
+    opacity: 0.2;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.home-testimonial-dot.active {
+    opacity: 1;
+    background: var(--home-blue);
+    transform: scale(1.4);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+/* ---------- SERVICES CARDS – 4 COLUMN ---------- */
+.home-services {
+    padding: 5rem 2rem;
+}
+.home-services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.home-service-card {
+    padding: 2.2rem 1.5rem;
+    text-align: center;
+    border-radius: 28px;
+}
+.home-service-card i {
+    font-size: 2.8rem;
+    color: var(--home-blue);
+    margin-bottom: 1rem;
+    transition: transform 0.2s;
+    filter: drop-shadow(0 4px 8px rgba(37,99,235,0.1));
+}
+.home-service-card:hover i {
+    transform: scale(1.1);
+    color: var(--home-orange);
+}
+.home-service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+.home-service-card p {
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+}
+.home-card-link {
+    color: var(--home-orange);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+}
+.home-card-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--home-orange);
+    transition: width 0.2s;
+}
+.home-card-link:hover::after {
+    width: 100%;
+}
+
+/* ---------- OUR PROCESS – DIAGONAL ZIGZAG ---------- */
+.home-process {
+    padding: 5rem 2rem;
+}
+.home-process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    max-width: 950px;
+    margin: 0 auto;
+}
+.home-process-step {
+    text-align: center;
+    padding: 2.5rem 1.8rem;
+    border-radius: 28px;
+}
+.home-step-offset-1 {
+    transform: translateX(-25px) translateY(15px);
+}
+.home-step-offset-2 {
+    transform: translateX(25px) translateY(-15px);
+}
+.home-step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--home-blue);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+    box-shadow: 0 8px 16px rgba(37,99,235,0.2);
+}
+.home-process-step i {
+    font-size: 3rem;
+    color: var(--home-orange);
+    margin-bottom: 1.2rem;
+    filter: drop-shadow(0 4px 8px rgba(249,115,22,0.15));
+}
+.home-process-step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+    color: var(--text-dark);
+}
+.home-process-step p {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+/* ---------- CALL TO ACTION ---------- */
+.home-cta {
+    padding: 5rem 2rem;
+}
+.home-cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3.5rem 2.5rem;
+    text-align: center;
+    background: linear-gradient(145deg, #ffffff, #fefce8) !important;
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 48px;
+    box-shadow: var(--home-shadow);
+}
+.home-cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-dark);
+}
+.home-cta p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 2.2rem;
+}
+.home-cta-buttons {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ---------- RESPONSIVE – SCROLLING INTACT ---------- */
+@media (max-width: 1200px) {
+    .home-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+    }
+}
+@media (max-width: 768px) {
+    .home-services-grid,
+    .home-process-grid,
+    .home-stats-grid {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+    }
+    .home-why-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    .home-featured-card {
+        flex-direction: column;
+        text-align: center;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .home-featured-card:hover {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .home-why-list li {
+        justify-content: center;
+    }
+    .home-featured-buttons {
+        justify-content: center;
+    }
+    .home-featured-icon {
+        margin-top: 2rem;
+    }
+    .home-hero-title {
+        font-size: 2.5rem;
+    }
+    .home-hero-subtitle {
+        font-size: 1.2rem;
+    }
+    .home-stat-offset-1,
+    .home-stat-offset-2,
+    .home-step-offset-1,
+    .home-step-offset-2 {
+        transform: none;
+    }
+}
+@media (max-width: 375px) {
+    .home-hero-buttons,
+    .home-cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    .home-btn {
+        width: 100%;
+        text-align: center;
+    }
+    .home-hero-title {
+        font-size: 2rem;
+    }
+}

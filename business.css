@@ -1,0 +1,610 @@
+/* ========== business.css – FINAL, NO FOOTER STYLES, ICONS FIXED ========== */
+/* ONLY .business-* selectors – NO footer, NO global selectors */
+/* ALL text black, system fonts – icons keep their own font family */
+
+.business-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem clamp(1rem, 5vw, 4rem) 0; /* bottom padding zero */
+    background: transparent;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+/* ----- FORCE ALL PAGE TEXT TO BLACK (but leave font families alone) ----- */
+.business-main * {
+    color: #000000 !important;
+    /* NO font-family override – icons will keep their own Font Awesome fonts */
+}
+
+/* ----- ICONS FROM FONT AWESOME – KEEP ORIGINAL COLORS UNLESS SPECIFIED ----- */
+.business-main i,
+.business-main .fas,
+.business-main .fab {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", Arial, sans-serif;
+    color: inherit;
+}
+
+/* ----- BUTTONS – ORANGE (#F97316) or BLUE (#3B82F6) ----- */
+.business-cta-primary,
+.business-calc-button,
+.business-pdf-button,
+.business-cta-giant,
+.business-card-cta:hover,
+.business-deep-cta:hover,
+.business-case-cta:hover {
+    background: #F97316 !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 40px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+    box-shadow: 0 4px 12px rgba(249,115,22,0.2);
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+.business-cta-primary:hover,
+.business-calc-button:hover,
+.business-pdf-button:hover,
+.business-cta-giant:hover {
+    background: #EA580C !important;
+    transform: scale(1.02);
+}
+
+.business-cta-secondary {
+    background: transparent !important;
+    border: 2px solid #3B82F6 !important;
+    color: #000000 !important;
+    padding: 0.75rem 2rem;
+    border-radius: 40px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.business-cta-secondary:hover {
+    background: #3B82F6 !important;
+    color: #ffffff !important;
+}
+
+.business-card-cta,
+.business-deep-cta,
+.business-case-cta {
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    color: #000000 !important;
+    padding: 0.6rem 1.5rem;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+.business-card-cta:hover,
+.business-deep-cta:hover,
+.business-case-cta:hover {
+    background: #F97316 !important;
+    border-color: #F97316;
+    color: #ffffff !important;
+}
+
+/* ----- CARDS – WHITE BACKGROUND, BORDER SHADOW ----- */
+.business-pricing-card,
+.business-pdf-card,
+.business-roi-calculator,
+.business-deepdive-card,
+.business-case-card,
+.business-cta-card,
+.business-timeline-step,
+.business-result-card,
+.business-accordion-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    color: #000000;
+}
+
+/* ----- FEATURED CARD – ORANGE BORDER ----- */
+.business-featured-card {
+    border: 2px solid #F97316;
+    position: relative;
+}
+.business-most-popular {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: #F97316;
+    color: #ffffff !important;
+    font-weight: 700;
+    padding: 0.2rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* ----- SECTION TITLES – BLACK ----- */
+.business-section-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: #000000 !important;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+}
+
+/* ----- HERO – LIGHT BACKGROUND ----- */
+.business-hero {
+    padding: 4rem 0 2rem;
+    background: #ffffff;
+    border-radius: 32px;
+    margin-bottom: 2rem;
+}
+.business-hero-backdrop {
+    display: none;
+}
+.business-hero-title {
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    font-weight: 700;
+    color: #000000 !important;
+    text-shadow: none;
+    margin-bottom: 2rem;
+}
+.business-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.business-badge-chip {
+    background: #f1f5f9;
+    padding: 0.6rem 1.5rem;
+    border-radius: 100px;
+    border: 1px solid #e2e8f0;
+    color: #000000 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.business-hero-ctas {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ----- TIMELINE – STACKS ON MOBILE ----- */
+.business-timeline {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+}
+@media screen and (max-width: 992px) {
+    .business-timeline {
+        flex-direction: column;
+    }
+}
+.business-timeline-step {
+    flex: 1;
+    padding: 2rem 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+.business-timeline-step.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+.business-step-icon {
+    width: 60px;
+    height: 60px;
+    background: #fff7ed;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #F97316 !important;
+    margin-bottom: 1.2rem;
+}
+.business-step-duration {
+    display: inline-block;
+    background: #f1f5f9;
+    padding: 0.2rem 1rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    margin: 0.8rem 0;
+    color: #334155 !important;
+}
+.business-step-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+}
+.business-step-tags span {
+    background: #fff7ed;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: #c2410c !important;
+}
+
+/* ----- PRICING GRID ----- */
+.business-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+@media screen and (max-width: 992px) {
+    .business-pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 768px) {
+    .business-pricing-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.business-pricing-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.business-price {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    color: #000000 !important;
+}
+.business-price span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #475569 !important;
+    margin-left: 4px;
+}
+.business-feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    flex-grow: 1;
+}
+.business-feature-list li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #000000 !important;
+}
+.business-feature-list .fa-check {
+    color: #10b981 !important;
+}
+.business-feature-list .fa-times {
+    color: #ef4444 !important;
+}
+
+/* ----- PDF CARD ----- */
+.business-pdf-card {
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.business-pdf-icon {
+    font-size: 3.5rem;
+    color: #F97316 !important;
+    margin-bottom: 1rem;
+}
+
+/* ----- ROI CALCULATOR ----- */
+.business-roi-calculator {
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+}
+@media screen and (max-width: 768px) {
+    .business-roi-calculator {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+}
+.business-roi-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+.business-slider-group,
+.business-select-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.business-slider-group label {
+    display: flex;
+    justify-content: space-between;
+    color: #000000 !important;
+    font-weight: 500;
+}
+.business-slider-group input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+.business-slider-group input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    background: #F97316;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+.business-select-group select {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 30px;
+    padding: 0.8rem 1.5rem;
+    color: #000000 !important;
+    font-size: 1rem;
+}
+.business-roi-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+@media screen and (max-width: 768px) {
+    .business-roi-results {
+        grid-template-columns: 1fr;
+    }
+}
+.business-result-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+.business-result-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #475569 !important;
+    margin-bottom: 0.5rem;
+}
+.business-result-number {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0f172a !important;
+}
+
+/* ----- DEEP DIVE CARDS ----- */
+.business-deepdive-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+@media screen and (max-width: 992px) {
+    .business-deepdive-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 768px) {
+    .business-deepdive-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.business-deepdive-card {
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+.business-deep-icon {
+    font-size: 3rem;
+    color: #F97316 !important;
+    margin-bottom: 1.5rem;
+}
+.business-deep-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+.business-deep-features li {
+    padding: 0.4rem 0;
+    display: flex;
+    gap: 10px;
+    color: #000000 !important;
+}
+.business-deep-features i {
+    color: #3B82F6 !important;
+}
+
+/* ----- CASE STUDY ----- */
+.business-case-card {
+    padding: 2.5rem;
+}
+.business-case-tag {
+    background: #F97316;
+    color: #ffffff !important;
+    padding: 0.2rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+.business-case-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin: 2rem 0;
+}
+@media screen and (max-width: 768px) {
+    .business-case-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+.business-stat strong {
+    display: block;
+    font-size: 2rem;
+    color: #F97316 !important;
+}
+.business-client {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+.business-client-avatar i {
+    font-size: 2.5rem;
+    color: #3B82F6 !important;
+}
+.business-case-tags {
+    display: flex;
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+.business-case-tags span {
+    background: #fff7ed;
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    color: #c2410c !important;
+}
+
+/* ----- TRUST BADGES ----- */
+.business-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+}
+@media screen and (max-width: 992px) {
+    .business-trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 768px) {
+    .business-trust-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.business-badge-large {
+    background: #f8fafc;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    color: #000000 !important;
+}
+.business-badge-large i {
+    display: block;
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    color: #F97316 !important;
+}
+
+/* ----- FAQ ACCORDION ----- */
+.business-accordion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.business-accordion-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+.business-accordion-btn {
+    width: 100%;
+    background: #ffffff;
+    border: none;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000000 !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+}
+.business-accordion-btn i {
+    transition: transform 0.3s;
+    color: #F97316 !important;
+}
+.business-accordion-item.active .business-accordion-btn i {
+    transform: rotate(45deg);
+}
+.business-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 1.5rem;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    color: #334155 !important;
+}
+.business-accordion-item.active .business-accordion-content {
+    max-height: 300px;
+    padding: 1.5rem;
+}
+
+/* ----- CONSULTATION CTA – NO BOTTOM MARGIN, BACKGROUND STOPS BEFORE FOOTER ----- */
+.business-cta-section {
+    margin-bottom: 0 !important;
+}
+.business-cta-card {
+    background: linear-gradient(145deg, #fff7ed, #ffffff);
+    border: 1px solid #F97316;
+    border-radius: 40px;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin: 3rem 0 0;
+}
+.business-cta-giant {
+    font-size: 1.4rem;
+    padding: 1.2rem 3.5rem;
+    background: #F97316;
+    color: #ffffff !important;
+    border-radius: 60px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1.5rem;
+}
+
+/* ----- BACK TO TOP – FIXED, NO FOOTER INTERFERENCE ----- */
+.business-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    background: #F97316;
+    border: none;
+    color: #ffffff !important;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.business-back-to-top.show {
+    display: flex;
+}
+.business-back-to-top:hover {
+    background: #EA580C;
+}

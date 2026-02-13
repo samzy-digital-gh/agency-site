@@ -1,0 +1,346 @@
+/* ===== RESOURCES PAGE – CUSTOM STYLES ===== */
+/* ONLY page‑specific, prefixed with "resources-" */
+/* DO NOT TOUCH HEADER, FOOTER OR CHATBOT */
+
+:root {
+  --brand-blue: #0066FF;
+  --brand-orange: #FF6B35;
+  --brand-white: #FFFFFF;
+  --bg-light: #F9FAFC;
+  --text-dark: #111111;
+  --shadow-sm: 0 8px 20px rgba(0,0,0,0.02);
+  --shadow-hover: 0 16px 32px rgba(0,102,255,0.08);
+  --border-radius-card: 20px;
+  --border-radius-btn: 40px;
+}
+
+/* MAIN PAGE BACKGROUND – applied only to content area */
+.resources-main {
+  background-color: var(--bg-light);
+  padding: 3rem 0;
+}
+
+/* Shared container */
+.resources-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ===== SECTION TITLES ===== */
+.resources-section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* ===== 1. HERO SECTION ===== */
+.resources-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.resources-hero-icon {
+  font-size: 4rem;
+  color: var(--brand-blue);
+  margin-bottom: 1.25rem;
+  opacity: 0.9;
+}
+.resources-hero-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+.resources-hero-subtitle {
+  font-size: 1.25rem;
+  color: #4a4a4a;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== 2. PDF DOWNLOAD CARD ===== */
+.resources-pdf-section {
+  margin-bottom: 4rem;
+}
+.resources-pdf-card {
+  background: var(--brand-white);
+  border-radius: var(--border-radius-card);
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.resources-pdf-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.resources-pdf-icon {
+  font-size: 3.5rem;
+  color: var(--brand-blue);
+  margin-bottom: 1.5rem;
+}
+.resources-pdf-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+.resources-pdf-description {
+  font-size: 1.1rem;
+  color: #4a4a4a;
+  max-width: 550px;
+  margin: 0 auto 2rem;
+  line-height: 1.5;
+}
+
+/* ===== 3. LEARNING PATHS ===== */
+.resources-paths-section {
+  margin-bottom: 4rem;
+}
+.resources-paths-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.resources-path-card {
+  background: var(--brand-white);
+  border-radius: var(--border-radius-card);
+  padding: 2rem 1.8rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.resources-path-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.resources-path-icon {
+  font-size: 2.5rem;
+  color: var(--brand-blue);
+  margin-bottom: 1.25rem;
+}
+.resources-path-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+.resources-path-desc {
+  font-size: 1rem;
+  color: #4a4a4a;
+  line-height: 1.5;
+  margin-bottom: 1.8rem;
+  flex-grow: 1;
+}
+
+/* ===== 4. TOOLS GRID ===== */
+.resources-tools-section {
+  margin-bottom: 4rem;
+}
+.resources-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+}
+.resources-tool-item {
+  background: var(--brand-white);
+  border-radius: 16px;
+  padding: 1.5rem 0.5rem;
+  text-align: center;
+  color: var(--text-dark);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.02);
+}
+.resources-tool-item i {
+  font-size: 2rem;
+  color: #5f5f5f;
+  transition: color 0.2s ease;
+}
+.resources-tool-item span {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.resources-tool-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0,102,255,0.1);
+  border-color: var(--brand-blue);
+}
+.resources-tool-item:hover i {
+  color: var(--brand-blue);
+}
+
+/* ===== 5. COMMUNITY CARD ===== */
+.resources-community-section {
+  margin-bottom: 2rem;
+}
+.resources-community-card {
+  background: var(--brand-white);
+  border-radius: var(--border-radius-card);
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.resources-community-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.resources-community-icon {
+  font-size: 3.5rem;
+  color: var(--brand-blue);
+  margin-bottom: 1.25rem;
+}
+.resources-community-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+.resources-community-description {
+  font-size: 1.15rem;
+  color: #4a4a4a;
+  max-width: 550px;
+  margin: 0 auto 2rem;
+  line-height: 1.5;
+}
+
+/* ===== GLOBAL BUTTON STYLES (ALL ORANGE, ROUNDED, SOLID) ===== */
+.resources-btn {
+  display: inline-block;
+  background-color: var(--brand-orange);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: var(--border-radius-btn);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255,107,53,0.2);
+  letter-spacing: 0.3px;
+}
+.resources-btn i {
+  margin-right: 0.5rem;
+}
+.resources-btn:hover {
+  background-color: #e55a2b; /* darkened by ~10% */
+  box-shadow: 0 8px 18px rgba(255,107,53,0.3);
+  transform: scale(1.02);
+}
+.resources-btn:active {
+  transform: scale(0.98);
+}
+
+/* Slight size variation for download button (more prominent) */
+.resources-btn-download {
+  font-size: 1.2rem;
+  padding: 1rem 2.8rem;
+}
+.resources-btn-community i {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+/* Tablet (768px) */
+@media (max-width: 768px) {
+  .resources-main {
+    padding: 2rem 0;
+  }
+  .resources-hero-title {
+    font-size: 2rem;
+  }
+  .resources-hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .resources-pdf-title {
+    font-size: 1.6rem;
+  }
+  .resources-paths-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .resources-section-title {
+    font-size: 1.8rem;
+  }
+  .resources-community-title {
+    font-size: 1.8rem;
+  }
+  .resources-tools-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile (375px) */
+@media (max-width: 480px) {
+  .resources-container {
+    padding: 0 1.2rem;
+  }
+  .resources-hero-title {
+    font-size: 1.8rem;
+  }
+  .resources-hero-icon {
+    font-size: 3.2rem;
+  }
+  .resources-pdf-card {
+    padding: 2rem 1.2rem;
+  }
+  .resources-pdf-title {
+    font-size: 1.4rem;
+  }
+  .resources-pdf-description {
+    font-size: 1rem;
+  }
+  .resources-btn-download {
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
+  }
+  .resources-paths-grid {
+    grid-template-columns: 1fr;
+  }
+  .resources-tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .resources-tool-item {
+    padding: 1.2rem 0.3rem;
+  }
+  .resources-community-card {
+    padding: 2rem 1.2rem;
+  }
+  .resources-community-title {
+    font-size: 1.6rem;
+  }
+  .resources-community-description {
+    font-size: 1rem;
+  }
+  .resources-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
+  }
+}
+
+/* Small mobile safety */
+@media (max-width: 360px) {
+  .resources-tools-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -2,127 +2,314 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samzy-Digital | Home</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>SamzyDigital – Home</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- GLOBAL STYLES – DO NOT EDIT -->
+    <link rel="stylesheet" href="header-footer.css">
+    <link rel="stylesheet" href="samzy-chatbot.css">
+    <!-- PAGE-SPECIFIC STYLES -->
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
 
+    <!-- ========== HEADER – iOS 26 Ultra Glass (EXACT COPY) ========== -->
     <nav class="navbar">
-        <div class="logo">SAMZY<span>DIGITAL</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="business.html">Business</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html" class="btn-contact">Contact Us</a></li>
-        </ul>
+        <div class="nav-container glass-panel">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                SAMZY<span>DIGITAL</span>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-menu glass-panel" id="mobileMenu">
+                <button class="mobile-close" id="mobileClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul class="mobile-nav-links">
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
+                    <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
+                <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <section class="hero" id="hero-slider">
-        <div class="hero-gold-overlay">
-            <div class="hero-content">
-                <h4>TECH COMMUNITY • BUSINESS SOLUTIONS</h4>
-                <h1>Growing people and businesses through <span>technology</span></h1>
-                <div class="hero-btns">
-                    <a href="business.html" class="btn-blue">SERVICES</a>
-                    <a href="community.html" class="btn-orange">COMMUNITY</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ========== MAIN – all page-specific content ========== -->
+    <main>
 
-    <section class="section-padding">
-        <h1 class="center-title">VISION</h1>
-        <div class="vision-card">
-            <p>Our vision is to empower and build small businesses within <strong>Accra</strong> by providing high-quality digital tools and automation that bridge the gap between local trade and global standards.</p>
-        </div>
-    </section>
+        <!-- Animated gradient background (entire main) -->
+        <div class="home-bg-gradient"></div>
 
-    <section class="stats-blue-bar">
-        <div class="stat-item"><h3>300+</h3><p>Tech Community</p></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><h3>50+</h3><p>Businesses Served</p></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><h3>100+</h3><p>Digital Solutions</p></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><h3>5+</h3><p>Countries reached</p></div>
-    </section>
+        <!-- 1. HERO (full viewport) -->
+        <section class="home-hero">
+            <div class="home-hero-container">
+                <h1 class="home-hero-title">
+                    Professional Digital Solutions <span class="home-gradient-text">for Ghanaian Businesses</span>
+                </h1>
+                <p class="home-hero-subtitle">
+                    Web Development • Business Automation • Digital Marketing • Community
+                </p>
+                <div class="home-hero-buttons">
+                    <a href="contact.html" class="home-btn home-btn-primary pulse">Get Free Consultation</a>
+                    <a href="business.html" class="home-btn home-btn-secondary">Explore Services</a>
+                </div>
+            </div>
+            <div class="home-blob home-blob-1"></div>
+            <div class="home-blob home-blob-2"></div>
+        </section>
 
-    <section class="section-padding">
-        <h1 class="center-title">SERVICES</h1>
-        <div class="vertical-service-container">
-            <div class="v-card" style="background-image: url('image-4.jpg');">
-                <div class="gold-overlay">
-                    <h3>Basic Web</h3>
-                    <p>Professional landing pages for new businesses.</p>
-                </div>
+        <!-- 2. VISION – glass card with 3D bend -->
+        <section class="home-vision-mission">
+            <h2 class="home-section-title">Our Vision</h2>
+            <div class="home-vision-card home-bend-card">
+                <i class="fas fa-eye"></i>
+                <p>Our vision is to empower and build small businesses within <strong>Accra</strong> by providing high‑quality digital tools and automation that bridge the gap between local trade and global standards.</p>
             </div>
-            <div class="v-card" style="background-image: url('image-5.jpg');">
-                <div class="gold-overlay">
-                    <h3>Standard Web</h3>
-                    <p>Multi-page sites with SEO and blog features.</p>
-                </div>
-            </div>
-            <div class="v-card" style="background-image: url('image-6.jpg');">
-                <div class="gold-overlay">
-                    <h3>E-Commerce</h3>
-                    <p>Full online stores with payment integration.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section-padding grey-bg">
-        <h1 class="center-title">REVIEWS</h1>
-        <div class="review-row">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"Samzy-Digital made our transition to digital so smooth. Highly recommended!"</p>
-                <div class="reviewer">
-                    <img src="image-7.jpg" alt="Profile">
-                    <span><strong>Kofi Mensah</strong><br>Accra Markets</span>
-                </div>
+        <!-- 3. MISSION – glass card with 3D bend -->
+        <section class="home-vision-mission">
+            <h2 class="home-section-title">Our Mission</h2>
+            <div class="home-mission-card home-bend-card">
+                <i class="fas fa-bullseye"></i>
+                <p>To equip Ghanaian entrepreneurs with affordable, innovative web solutions and a thriving tech community – ensuring no local business is left behind in the digital age.</p>
             </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"The e-commerce solution they built for us doubled our sales in three months."</p>
-                <div class="reviewer">
-                    <img src="image-8.jpg" alt="Profile">
-                    <span><strong>Ama Serwaa</strong><br>Ama's Boutique</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <p>Samzy-Digital is dedicated to transforming local businesses in Accra through innovative web solutions.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Our Services</h4>
-                <a href="business.html">Web Development</a>
-                <a href="business.html">Branding</a>
-                <a href="business.html">Automation</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Info</h4>
-                <p>📞 0553018973</p>
-                <p>📧 samuelahaiaba3@gmail.com</p>
-                <div class="social-box">
-                    <a href="https://wa.me/233553018973" class="coin">W</a>
-                    <a href="#" class="coin">T</a>
-                    <a href="#" class="coin">I</a>
-                    <a href="#" class="coin">X</a>
-                    <a href="#" class="coin">F</a>
+        <!-- 4. WHY CHOOSE US (trust builders) -->
+        <section class="home-why">
+            <div class="home-why-grid">
+                <div class="home-why-content">
+                    <h2>Why Ghana’s businesses choose us</h2>
+                    <ul class="home-why-list">
+                        <li><i class="fas fa-check-circle"></i> Tailored solutions, not templates</li>
+                        <li><i class="fas fa-check-circle"></i> Local support – we're based in Accra</li>
+                        <li><i class="fas fa-check-circle"></i> Proven results with 50+ happy clients</li>
+                        <li><i class="fas fa-check-circle"></i> End‑to‑end training & aftercare</li>
+                    </ul>
+                    <a href="about.html" class="home-btn home-btn-outline">Our Story</a>
                 </div>
+                <div class="home-why-visual">
+                    <i class="fas fa-handshake"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. FEATURED WORK (Ram's Beauty Salon) -->
+        <section class="home-featured">
+            <div class="home-featured-card glass-panel home-bend-card">
+                <div class="home-featured-content">
+                    <h3>Ram's Beauty Salon</h3>
+                    <p class="home-featured-results">+200% online bookings · 150+ monthly customers</p>
+                    <div class="home-featured-buttons">
+                        <a href="https://samzy-digital-gh.github.io/rams_beauty_salon/" class="home-btn home-btn-secondary">Visit Website</a>
+                        <a href="business.html#case-studies" class="home-btn home-btn-primary">Read Case Study</a>
+                    </div>
+                </div>
+                <div class="home-featured-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. STATS – 2 per row, zigzag, count-up -->
+        <section class="home-stats">
+            <h2 class="home-section-title">Our Impact in Numbers</h2>
+            <div class="home-stats-grid">
+                <div class="home-stat-card glass-panel home-bend-card home-stat-offset-1">
+                    <i class="fas fa-briefcase"></i>
+                    <div class="home-stat-number" data-target="50">0</div>
+                    <div class="home-stat-label">Projects Completed</div>
+                </div>
+                <div class="home-stat-card glass-panel home-bend-card home-stat-offset-2">
+                    <i class="fas fa-users"></i>
+                    <div class="home-stat-number" data-target="300">0</div>
+                    <div class="home-stat-label">Community Members</div>
+                </div>
+                <div class="home-stat-card glass-panel home-bend-card home-stat-offset-1">
+                    <i class="fas fa-smile"></i>
+                    <div class="home-stat-number" data-target="100">0</div>
+                    <div class="home-stat-label">Client Satisfaction</div>
+                </div>
+                <div class="home-stat-card glass-panel home-bend-card home-stat-offset-2">
+                    <i class="fas fa-headset"></i>
+                    <div class="home-stat-number" data-target="247">0</div>
+                    <div class="home-stat-label">24/7 Support</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. TESTIMONIALS – with ruby.jpg & kofi.jpg, 3D cards -->
+        <section class="home-testimonials">
+            <h2 class="home-section-title">What Our Clients Say</h2>
+            <div class="home-testimonial-container glass-panel">
+                <div class="home-testimonial-slider" id="homeTestimonialSlider">
+                    <!-- JS injects slides -->
+                </div>
+                <div class="home-testimonial-nav">
+                    <button class="home-testimonial-btn" id="homePrevTestimonial"><i class="fas fa-chevron-left"></i></button>
+                    <div class="home-testimonial-dots" id="homeTestimonialDots"></div>
+                    <button class="home-testimonial-btn" id="homeNextTestimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. SERVICES PREVIEW (4 glass cards) -->
+        <section class="home-services">
+            <h2 class="home-section-title">What We Do</h2>
+            <div class="home-services-grid">
+                <div class="home-service-card glass-panel home-bend-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Web Development</h3>
+                    <p>Responsive, modern websites that convert visitors into customers.</p>
+                    <a href="business.html#services" class="home-card-link">Learn More →</a>
+                </div>
+                <div class="home-service-card glass-panel home-bend-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Business Automation</h3>
+                    <p>Streamline operations with custom tools and smart workflows.</p>
+                    <a href="business.html#services" class="home-card-link">Learn More →</a>
+                </div>
+                <div class="home-service-card glass-panel home-bend-card">
+                    <i class="fas fa-chart-simple"></i>
+                    <h3>Digital Marketing</h3>
+                    <p>SEO, social media, and campaigns that drive real growth.</p>
+                    <a href="business.html#services" class="home-card-link">Learn More →</a>
+                </div>
+                <div class="home-service-card glass-panel home-bend-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>E‑commerce</h3>
+                    <p>Sell online with powerful stores and local payment integration.</p>
+                    <a href="business.html#services" class="home-card-link">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. OUR PROCESS (diagonal zigzag) -->
+        <section class="home-process">
+            <h2 class="home-section-title">How We Work</h2>
+            <div class="home-process-grid">
+                <div class="home-process-step home-bend-card home-step-offset-1">
+                    <div class="home-step-number">1</div>
+                    <i class="fas fa-comments"></i>
+                    <h3>Listen</h3>
+                    <p>We start by understanding your business goals.</p>
+                </div>
+                <div class="home-process-step home-bend-card home-step-offset-2">
+                    <div class="home-step-number">2</div>
+                    <i class="fas fa-pencil-ruler"></i>
+                    <h3>Plan</h3>
+                    <p>We craft a tailored strategy and roadmap.</p>
+                </div>
+                <div class="home-process-step home-bend-card home-step-offset-1">
+                    <div class="home-step-number">3</div>
+                    <i class="fas fa-code"></i>
+                    <h3>Build</h3>
+                    <p>We develop, test, and refine until perfect.</p>
+                </div>
+                <div class="home-process-step home-bend-card home-step-offset-2">
+                    <div class="home-step-number">4</div>
+                    <i class="fas fa-rocket"></i>
+                    <h3>Launch & Grow</h3>
+                    <p>We deploy and support you every step.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. CALL TO ACTION -->
+        <section class="home-cta">
+            <div class="home-cta-container glass-panel">
+                <h2>Ready to grow your business?</h2>
+                <p>Join 300+ members in Ghana’s fastest‑growing tech community.</p>
+                <div class="home-cta-buttons">
+                    <a href="community.html" class="home-btn home-btn-primary pulse">Join Community</a>
+                    <a href="contact.html" class="home-btn home-btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER – UPDATED (EXACT COPY) ========== -->
+    <footer class="business-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo"><i class="fas fa-code"></i> SAMZY<span>DIGITAL</span></div>
+                <p class="footer-description">Professional digital solutions for Ghanaian businesses. Based in Accra, serving clients nationwide.</p>
+                <div class="footer-contact">
+                    <div class="contact-item"><i class="fas fa-phone"></i> <a href="tel:+233539929190">0539929190</a></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:samuelahaiaba3@gmail.com">samuelahaiaba3@gmail.com</a></div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>Accra, Ghana</span></div>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="business.html">Business</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Community</h3>
+                <ul class="footer-links">
+                    <li><a href="#mentors">Mentors</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#join">Join</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Connect</h3>
+                <div class="footer-social">
+                    <a href="https://wa.me/233539929190" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="footer-legal"><p>© 2026 Samzy-Digital. All rights reserved.</p></div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- ========== GLOBAL SCRIPTS + CHATBOT SNIPPET (EXACT) ========== -->
+    <script src="header-footer.js"></script>
+    <div id="samzy-chatbot-root">
+        <div id="samzy-bubble" class="samzy-chat-bubble">
+            <svg viewBox="0 0 24 24" width="36" height="36">
+                <circle cx="12" cy="12" r="10" fill="white" />
+                <circle cx="8" cy="9" r="1.5" fill="black" />
+                <circle cx="16" cy="9" r="1.5" fill="black" />
+                <path d="M8 14 Q12 18, 16 14" stroke="black" stroke-width="1.8" fill="none" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div id="samzy-window" class="samzy-chat-window">
+            <div class="samzy-chat-header"><h3><span></span> Samzy Assistant</h3><button id="samzy-close" class="samzy-close-btn">×</button></div>
+            <div id="samzy-messages" class="samzy-messages"></div>
+            <div class="samzy-input-area">
+                <input type="text" id="samzy-user-input" placeholder="Ask me anything..." autocomplete="off">
+                <button id="samzy-send" class="samzy-send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="samzy-chatbot.js"></script>
+    <script src="home.js"></script>
 </body>
 </html>

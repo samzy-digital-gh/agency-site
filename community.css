@@ -1,0 +1,737 @@
+/* ===== COMMUNITY PAGE – LIGHT BLUE/GREEN BACKGROUND, BRAND ACCENTS ===== */
+/* NO body styles – header/footer keep their global glass look. */
+/* Background only on .community-main – does not affect navbar/footer. */
+/* All styles prefixed with community- */
+
+:root {
+    /* Light background palette – applied to .community-main */
+    --community-bg-light: linear-gradient(145deg, #e0f2f1 0%, #d4edf5 100%);
+    --community-card-bg: rgba(255, 255, 255, 0.85);
+    --community-card-bg-solid: #ffffff;
+    --community-text-dark: #1a2e3b;
+    --community-text-soft: #2c3e4e;
+    --community-border-light: rgba(0, 102, 255, 0.1);
+    --community-shadow-light: 0 8px 24px rgba(0, 80, 100, 0.08);
+    
+    /* Brand accent colors */
+    --community-blue: #0066FF;
+    --community-orange: #FF9933;
+    --community-yellow: #FFCC00;
+    --community-black: #0A0A0A;
+    --community-white: #FFFFFF;
+    
+    /* Glows */
+    --community-blue-glow: rgba(0, 102, 255, 0.12);
+    --community-orange-glow: rgba(255, 153, 51, 0.12);
+}
+
+/* ---------- PAGE BACKGROUND – ONLY INSIDE MAIN, HEADER/FOOTER UNAFFECTED ---------- */
+.community-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+    background: var(--community-bg-light);  /* Light blue-green gradient only on page content */
+}
+
+.community-section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.02em;
+    border-bottom: 3px solid var(--community-orange);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    color: var(--community-text-dark);
+}
+
+/* ---------- 1. HERO – FULL WIDTH, STRETCHED, NO BUTTONS ---------- */
+.community-hero {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: linear-gradient(135deg, #c8e9e7 0%, #b8e2e8 100%);
+    padding: 6rem 2rem;          /* ⬆️ Increased height */
+    text-align: center;
+    border-bottom: 1px solid rgba(0,102,255,0.15);
+    min-height: 380px;           /* ⬆️ Ensures enough vertical space */
+    display: flex;
+    align-items: center;
+}
+
+.community-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.community-hero-eyebrow {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--community-blue);
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.community-hero-title {
+    font-size: 4.2rem;           /* ⬆️ Slightly larger */
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--community-text-dark);
+}
+
+.community-hero-sub {
+    font-size: 1.6rem;           /* ⬆️ Larger */
+    font-weight: 300;
+    color: var(--community-text-soft);
+}
+
+/* ---------- 2. STATS ROW – CLEAN METRICS ---------- */
+.community-stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin: 3rem 0 4rem;
+    flex-wrap: wrap;
+}
+
+.community-stat-block {
+    text-align: center;
+}
+
+.community-stat-block .community-stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--community-orange);
+    display: block;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(255,153,51,0.15);
+}
+
+.community-stat-block .community-stat-label {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--community-text-soft);
+    font-weight: 500;
+}
+
+/* ---------- 3. FEATURES – TWO‑COLUMN, NO CARDS ---------- */
+.community-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 3rem;
+    margin-bottom: 4rem;
+}
+
+.community-feature-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+}
+
+.community-feature-item i {
+    font-size: 1.8rem;
+    color: var(--community-blue);
+    margin-top: 0.2rem;
+    background: rgba(0,102,255,0.08);
+    padding: 0.6rem;
+    border-radius: 12px;
+}
+
+.community-feature-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--community-text-dark);
+}
+
+.community-feature-item p {
+    color: var(--community-text-soft);
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* ---------- 4. MENTOR CAROUSEL – WHITE CARDS, SOFT SHADOW ---------- */
+.community-mentors {
+    margin-bottom: 4rem;
+}
+
+.community-carousel-container {
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 32px;
+    padding: 2rem;
+    box-shadow: var(--community-shadow-light);
+}
+
+.community-carousel {
+    min-height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.community-mentor-card {
+    background: var(--community-card-bg-solid);
+    border-radius: 24px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(0,102,255,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    transition: all 0.2s ease;
+}
+
+.community-mentor-card:hover {
+    border-color: var(--community-orange);
+    box-shadow: 0 12px 24px var(--community-orange-glow);
+    transform: translateY(-4px);
+}
+
+.community-avatar {
+    font-size: 3.5rem;
+    color: var(--community-blue);
+    margin-bottom: 1rem;
+}
+
+.community-carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.community-carousel-arrow {
+    background: white;
+    border: 1px solid var(--community-border-light);
+    color: var(--community-blue);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+}
+
+.community-carousel-arrow:hover {
+    background: var(--community-orange);
+    border-color: var(--community-orange);
+    color: white;
+}
+
+.community-carousel-dots {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.community-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0,102,255,0.2);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.community-dot.active {
+    background: var(--community-orange);
+    transform: scale(1.3);
+}
+
+/* ---------- 5. DISCUSSION ---------- */
+.community-discussion {
+    margin-bottom: 4rem;
+}
+
+.community-topic-list {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--community-shadow-light);
+    border: 1px solid rgba(0,102,255,0.05);
+}
+
+.community-topic-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(0,102,255,0.05);
+    color: var(--community-text-dark);
+}
+
+.community-topic-item i {
+    color: var(--community-orange);
+}
+
+.community-link {
+    color: var(--community-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.community-link:hover {
+    color: var(--community-orange);
+}
+
+/* ---------- 6. LEARNING PATHS – HORIZONTAL CARDS ---------- */
+.community-paths-horizontal {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.community-path-item {
+    flex: 1 1 250px;
+    background: white;
+    border-radius: 24px;
+    padding: 1.8rem;
+    border: 1px solid rgba(0,102,255,0.08);
+    box-shadow: var(--community-shadow-light);
+    transition: all 0.2s ease;
+}
+
+.community-path-item:hover {
+    border-color: var(--community-blue);
+    box-shadow: 0 12px 24px var(--community-blue-glow);
+}
+
+.community-path-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--community-text-dark);
+}
+
+.community-path-item p {
+    color: var(--community-text-soft);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.community-progress-bar {
+    background: rgba(0,102,255,0.08);
+    height: 6px;
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.community-progress-fill {
+    height: 100%;
+    background: var(--community-blue);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.8s ease;
+}
+
+.community-progress-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--community-text-soft);
+    margin-bottom: 1.2rem;
+}
+
+/* ---------- 7. EVENTS – CLEAN, LEFT‑ACCENT CARDS ---------- */
+.community-events {
+    margin-bottom: 4rem;
+}
+
+.community-events-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.community-event-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.2rem 1.5rem;
+    background: white;
+    border-radius: 16px;
+    border-left: 6px solid var(--community-orange);
+    box-shadow: var(--community-shadow-light);
+}
+
+.community-event-date {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--community-orange);
+    min-width: 80px;
+}
+
+.community-event-details h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    color: var(--community-text-dark);
+}
+
+.community-event-details p {
+    color: var(--community-text-soft);
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ---------- 8. TALENT PORTAL ---------- */
+.community-talent {
+    margin-bottom: 4rem;
+}
+
+.community-jobs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.community-job-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--community-shadow-light);
+    border: 1px solid rgba(0,102,255,0.05);
+}
+
+.community-job-item h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    color: var(--community-text-dark);
+}
+
+.community-job-item p {
+    color: var(--community-text-soft);
+    font-size: 0.9rem;
+}
+
+/* ---------- 9. FAQ ACCORDION – WHITE CARDS ---------- */
+.community-faq {
+    margin-bottom: 4rem;
+}
+
+.community-accordion-item {
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+    box-shadow: var(--community-shadow-light);
+    border: 1px solid rgba(0,102,255,0.05);
+}
+
+.community-accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--community-text-dark);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.community-accordion-header:hover {
+    background: rgba(255,153,51,0.04);
+}
+
+.community-accordion-content {
+    max-height: 0;
+    padding: 0 1.5rem;
+    background: rgba(0,102,255,0.02);
+    color: var(--community-text-soft);
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    overflow: hidden;
+}
+
+.community-accordion-item.active .community-accordion-content {
+    max-height: 150px;
+    padding: 0 1.5rem 1.5rem;
+}
+
+.community-accordion-item.active .fa-plus {
+    transform: rotate(45deg);
+    color: var(--community-orange);
+}
+
+/* ---------- 10. REGISTRATION FORM – CLEAN, LIGHT ---------- */
+.community-registration {
+    margin-bottom: 4rem;
+}
+
+.community-form {
+    background: white;
+    border-radius: 32px;
+    padding: 2.5rem;
+    box-shadow: var(--community-shadow-light);
+    border: 1px solid rgba(0,102,255,0.08);
+}
+
+.community-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.community-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.community-form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: var(--community-text-soft);
+    font-weight: 500;
+}
+
+.community-form-group input,
+.community-form-group select,
+.community-form-group textarea {
+    background: rgba(0,102,255,0.02);
+    border: 1px solid rgba(0,102,255,0.15);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    color: var(--community-text-dark);
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+.community-form-group input:focus,
+.community-form-group select:focus,
+.community-form-group textarea:focus {
+    border-color: var(--community-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--community-blue-glow);
+    background: white;
+}
+
+.community-checkbox-group {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    background: rgba(0,102,255,0.02);
+    padding: 1rem 1.2rem;
+    border-radius: 16px;
+}
+
+.community-checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--community-text-dark);
+}
+
+.community-btn-submit {
+    background: var(--community-blue);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 1rem;
+    box-shadow: 0 8px 16px var(--community-blue-glow);
+}
+
+.community-btn-submit:hover {
+    background: #0052cc;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px var(--community-blue-glow);
+}
+
+.community-error {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    min-height: 1.2rem;
+}
+
+.community-success-message {
+    margin-top: 2rem;
+    padding: 1.2rem;
+    background: rgba(0,200,150,0.1);
+    border: 1px solid #00b894;
+    border-radius: 16px;
+    color: var(--community-text-dark);
+}
+
+.whatsapp-link {
+    color: var(--community-orange);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ---------- 11. DASHBOARD STATS ---------- */
+.community-dashboard {
+    margin-bottom: 4rem;
+}
+
+.community-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.community-dashboard-item {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: var(--community-shadow-light);
+    border: 1px solid rgba(0,102,255,0.05);
+}
+
+.community-dashboard-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--community-orange);
+    display: block;
+    line-height: 1.2;
+}
+
+.community-dashboard-label {
+    font-size: 0.9rem;
+    color: var(--community-text-soft);
+    font-weight: 500;
+}
+
+/* ---------- 12. RESOURCES CALLOUT – BOLD, CENTERED ---------- */
+.community-resources {
+    text-align: center;
+    padding: 3rem;
+    background: linear-gradient(145deg, #c8e9e7, #b0e0e6);
+    border-radius: 48px;
+    border: 1px solid rgba(0,102,255,0.2);
+    box-shadow: var(--community-shadow-light);
+}
+
+.community-resources-content i {
+    font-size: 3rem;
+    color: var(--community-orange);
+    margin-bottom: 1rem;
+}
+
+.community-resources-content h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--community-text-dark);
+}
+
+.community-resources-content p {
+    color: var(--community-text-soft);
+    max-width: 500px;
+    margin: 0 auto 1.8rem;
+    font-size: 1.1rem;
+}
+
+.community-btn-resource {
+    display: inline-block;
+    background: var(--community-orange);
+    color: white;
+    font-weight: 700;
+    padding: 0.9rem 2.2rem;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: 0.2s;
+    border: none;
+    box-shadow: 0 8px 16px var(--community-orange-glow);
+}
+
+.community-btn-resource:hover {
+    background: #ff851b;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 24px var(--community-orange-glow);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 992px) {
+    .community-features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .community-dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .community-form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .community-main {
+        padding: 1.5rem 1.5rem 3rem;
+    }
+    .community-hero {
+        padding: 4rem 1.5rem;
+        min-height: 320px;
+    }
+    .community-hero-title {
+        font-size: 2.8rem;
+    }
+    .community-hero-sub {
+        font-size: 1.2rem;
+    }
+    .community-stats-row {
+        gap: 2rem;
+    }
+    .community-paths-horizontal {
+        flex-direction: column;
+    }
+    .community-event-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    .community-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .community-hero {
+        padding: 3rem 1rem;
+        min-height: 280px;
+    }
+    .community-hero-title {
+        font-size: 2rem;
+    }
+    .community-section-title {
+        font-size: 1.6rem;
+    }
+    .community-form {
+        padding: 1.5rem;
+    }
+    .community-checkbox-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

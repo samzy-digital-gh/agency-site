@@ -3,126 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Samzy-Digital</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        /* Ensuring the button color is fixed directly in the file */
-        .btn-submit-solid {
-            background-color: #007bb5 !important;
-            color: #ffffff !important;
-            width: 100%;
-            padding: 22px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 123, 181, 0.3);
-            transition: all 0.3s ease;
-        }
-        .btn-submit-solid:hover {
-            background-color: #005f8d !important;
-            transform: translateY(-2px);
-        }
-    </style>
+    <title>Contact | SamzyDigital – Response within 24h</title>
+    <!-- Font Awesome 6 (Free) – assume global, but included for safety -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- GLOBAL STYLES – DO NOT EDIT -->
+    <link rel="stylesheet" href="header-footer.css">
+    <link rel="stylesheet" href="samzy-chatbot.css">
+    <!-- PAGE‑SPECIFIC CSS – YOURS ONLY -->
+    <link rel="stylesheet" href="contact.css">
 </head>
 <body>
-
+    <!-- ========== HEADER – iOS 26 Ultra Glass (EXACT COPY) ========== -->
     <nav class="navbar">
-        <div class="logo">SAMZY<span>DIGITAL</span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="business.html">Business</a></li>
-            <li><a href="community.html">Community</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html" class="btn-contact">Contact Us</a></li>
-        </ul>
+        <div class="nav-container glass-panel">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                SAMZY<span>DIGITAL</span>
+            </div>
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Mobile Menu (full glass, compact) -->
+            <div class="mobile-menu glass-panel" id="mobileMenu">
+                <button class="mobile-close" id="mobileClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul class="mobile-nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
+                    <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
+                <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <section class="section-padding grey-bg">
-        <h1 class="center-title blue-text">GET IN TOUCH</h1>
-        <p class="sub-text">Accra / Ghana — Let's talk about how we can scale your business.</p>
-    </section>
+    <!-- ========== MAIN – YOUR PAGE CONTENT ========== -->
+    <main class="contact-main">
+        <!-- 1️⃣ CONTACT HERO (no button) -->
+        <section class="contact-hero">
+            <div class="contact-hero-container">
+                <h1 class="contact-hero-title">Get in touch – response within 24 hours.</h1>
+                <p class="contact-hero-subtitle">We're here to help with your digital projects.</p>
+            </div>
+        </section>
 
-    <section class="section-padding" style="padding-bottom: 20px;">
-        <div class="vision-card" style="border-top: 6px solid var(--orange); text-align: left;">
-            <h2 style="color: var(--dark); margin-bottom: 15px;">LATEST PROJECT</h2>
-            <p style="margin-bottom: 25px;">I recently designed and built a full digital presence for <strong>Ram's Beauty Salon</strong>. This project features a clean aesthetic with a focus on service display and client booking.</p>
-            <a href="https://samzy-digital-gh.github.io/rams_beauty_salon/" target="_blank" class="btn-orange-inline" style="text-decoration:none; font-weight:bold; color:var(--orange); display: inline-block; padding: 10px 20px; border: 2px solid var(--orange); border-radius: 5px;">TAP TO VIEW PROJECT →</a>
-        </div>
-    </section>
+        <!-- 2️⃣ PORTFOLIO SHOWCASE GRID – 4 CLIENT LOGOS (grayscale → full colour) -->
+        <section class="contact-portfolio">
+            <div class="contact-portfolio-grid">
+                <div class="contact-logo-card">
+                    <i class="fas fa-store-alt"></i>
+                    <span>Accra Markets</span>
+                </div>
+                <div class="contact-logo-card">
+                    <i class="fas fa-utensils"></i>
+                    <span>Habiba's Kitchen</span>
+                </div>
+                <div class="contact-logo-card">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Ama's Boutique</span>
+                </div>
+                <div class="contact-logo-card">
+                    <i class="fas fa-cut"></i>
+                    <span>Ram's Beauty Salon</span>
+                </div>
+            </div>
+        </section>
 
-    <section class="section-padding">
-        <div class="contact-container" style="max-width: 800px; margin: 0 auto;">
-            <div class="contact-form-box" style="background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;">
-                <h2 style="margin-bottom: 20px; color: var(--blue);">Send an Email</h2>
-                
-                <form action="https://formspree.io/f/maqqdela" method="POST" class="samzy-form">
-                    <input type="text" name="name" placeholder="Your Full Name" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #eee; border-radius: 8px;">
-                    <input type="email" name="email" placeholder="Your Email Address" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #eee; border-radius: 8px;">
-                    <textarea name="message" rows="5" placeholder="Describe your project details here..." required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #eee; border-radius: 8px; font-family: inherit;"></textarea>
-                    
-                    <button type="submit" class="btn-submit-solid">SUBMIT INFORMATION</button>
+        <!-- 3️⃣ MAIN GLASS CONTACT FORM – FORMSpREE (maqqdela) -->
+        <section class="contact-form-section">
+            <div class="contact-form-container">
+                <h2 class="contact-section-title">Send us a message</h2>
+                <form id="contactForm" class="contact-form" action="https://formspree.io/f/maqqdela" method="POST">
+                    <div class="contact-form-group">
+                        <label for="name">Full name <span class="contact-required">*</span></label>
+                        <input type="text" id="name" name="name" class="contact-input" required>
+                        <div class="contact-error" id="error-name"></div>
+                    </div>
+                    <div class="contact-form-group">
+                        <label for="email">Email address <span class="contact-required">*</span></label>
+                        <input type="email" id="email" name="email" class="contact-input" required>
+                        <div class="contact-error" id="error-email"></div>
+                    </div>
+                    <div class="contact-form-group">
+                        <label for="phone">Phone number (optional)</label>
+                        <input type="tel" id="phone" name="phone" class="contact-input">
+                    </div>
+                    <div class="contact-form-group">
+                        <label for="service">Service interest</label>
+                        <select id="service" name="service" class="contact-select">
+                            <option value="Web Development">Web Development</option>
+                            <option value="E‑commerce">E‑commerce</option>
+                            <option value="Automation">Automation</option>
+                            <option value="Branding">Branding</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="contact-form-group">
+                        <label for="message">Message <span class="contact-required">*</span></label>
+                        <textarea id="message" name="message" class="contact-textarea" rows="5" required></textarea>
+                        <div class="contact-error" id="error-message"></div>
+                    </div>
+                    <button type="submit" class="contact-button contact-button-orange">Send Message</button>
+                    <div id="formSuccessMessage" class="contact-success-message" style="display: none;"></div>
                 </form>
             </div>
+        </section>
 
-            <div class="vertical-stack" style="margin-top: 40px; display: flex; flex-direction: column; gap: 20px;">
-                <a href="https://wa.me/233553018973" style="text-decoration:none;">
-                    <div class="v-detail-card blue-end" style="background: #fff; padding: 30px; border-radius: 15px; border-bottom: 6px solid var(--blue); box-shadow: 0 5px 20px rgba(0,0,0,0.05); text-align: left;">
-                        <h3 style="color: #111;">WhatsApp Us</h3>
-                        <p style="color: #666;">Chat with Samuel directly for a quick quote.</p>
+        <!-- 4️⃣ CALLBACK REQUEST DRAWER -->
+        <section class="contact-callback">
+            <button id="callbackToggleBtn" class="contact-button contact-button-orange contact-callback-toggle">
+                <i class="fas fa-phone-alt"></i> Request a Callback
+            </button>
+            <div id="callbackDrawer" class="contact-drawer">
+                <div class="contact-drawer-content glass-panel"> <!-- glass-panel allowed? Only container, not style override -->
+                    <button id="callbackCloseBtn" class="contact-drawer-close"><i class="fas fa-times"></i></button>
+                    <h3 class="contact-drawer-title">We'll call you back</h3>
+                    <form id="callbackForm">
+                        <div class="contact-form-group">
+                            <label for="callback-name">Your name</label>
+                            <input type="text" id="callback-name" name="callback-name" class="contact-input" required>
+                        </div>
+                        <div class="contact-form-group">
+                            <label for="callback-phone">Phone number</label>
+                            <input type="tel" id="callback-phone" name="callback-phone" class="contact-input" required>
+                        </div>
+                        <div class="contact-form-group">
+                            <label for="callback-time">Preferred time</label>
+                            <select id="callback-time" name="callback-time" class="contact-select">
+                                <option value="Morning">Morning</option>
+                                <option value="Afternoon">Afternoon</option>
+                                <option value="Evening">Evening</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="contact-button contact-button-orange contact-callback-submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5️⃣ LIVE CHAT BUBBLE (MOCKUP) – fixed button, toggles widget -->
+        <div class="contact-chat-mockup">
+            <button id="chatMockupBtn" class="contact-chat-mockup-btn">
+                <i class="fas fa-comment-dots"></i> Chat
+            </button>
+            <div id="chatMockupWidget" class="contact-chat-widget glass-panel">
+                <div class="contact-chat-header">
+                    <h4>Samzy Support</h4>
+                    <button id="chatMockupClose" class="contact-chat-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="contact-chat-messages">
+                    <div class="contact-chat-message received">Hi! How can we help you today?</div>
+                    <div class="contact-chat-message sent">I need help with a project.</div>
+                    <div class="contact-chat-message received">Sure! Please leave your details and we'll get back to you.</div>
+                </div>
+                <div class="contact-chat-input">
+                    <input type="text" placeholder="Typing is disabled in demo" disabled>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6️⃣ LOCATION MAP SECTION – Kanda, Accra -->
+        <section class="contact-map-section">
+            <div class="contact-map-container glass-panel">
+                <h2 class="contact-section-title">Visit our office</h2>
+                <div class="contact-map-embed">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.512345!2d-0.186964!3d5.603717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9b7d2fa6a3c5%3A0xb1f6e8e5d4c3b2a1!2sKanda%2C%20Accra%2C%20Ghana!5e0!3m2!1sen!2sus!4v1615123456789" 
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <p class="contact-map-address"><i class="fas fa-map-pin"></i> Kanda, Accra, Ghana</p>
+            </div>
+        </section>
+
+        <!-- 7️⃣ DIRECT CONTACT + SOCIAL LINKS (4 cards + social row) -->
+        <section class="contact-direct">
+            <h2 class="contact-section-title">Connect directly</h2>
+            <div class="contact-direct-grid">
+                <div class="contact-direct-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h4>Call us</h4>
+                    <a href="tel:+233539929190">0539929190</a>
+                </div>
+                <div class="contact-direct-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>WhatsApp</h4>
+                    <a href="https://wa.me/233539929190">0539929190</a>
+                </div>
+                <div class="contact-direct-card">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email</h4>
+                    <a href="mailto:samuelahaiaba3@gmail.com">samuelahaiaba3@gmail.com</a>
+                </div>
+                <div class="contact-direct-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Address</h4>
+                    <span>Accra, Ghana</span>
+                </div>
+            </div>
+            <div class="contact-social-row">
+                <a href="https://wa.me/233539929190" class="contact-social-icon"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="contact-social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="contact-social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="contact-social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="contact-social-icon"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </section>
+
+        <!-- 8️⃣ BUSINESS HOURS -->
+        <section class="contact-hours">
+            <div class="contact-hours-card glass-panel">
+                <h2 class="contact-section-title">Business hours</h2>
+                <ul class="contact-hours-list">
+                    <li><span>Mon – Fri:</span> 9am – 6pm</li>
+                    <li><span>Saturday:</span> 10am – 2pm</li>
+                    <li><span>Sunday:</span> Closed</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER – EXACT COPY (0539929190 + Facebook icon) ========== -->
+    <footer class="business-footer">
+        <div class="footer-container">
+            <!-- Column 1: About & Contact -->
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>SAMZY<span>DIGITAL</span></span>
+                </div>
+                <p class="footer-description">
+                    Professional digital solutions for Ghanaian businesses. 
+                    Based in Accra, serving clients nationwide.
+                </p>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+233539929190">0539929190</a>   <!-- ☑️ UPDATED -->
                     </div>
-                </a>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:samuelahaiaba3@gmail.com">samuelahaiaba3@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Accra, Ghana</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <section class="map-section" style="padding: 80px 8%;">
-        <h1 class="center-title blue-text">OUR LOCATION</h1>
-        <p style="margin-bottom: 20px; font-weight: bold; text-align: center; font-size: 1.2rem;">
-            Kanda, Accra / Ghana — Samzy-Digital
-        </p>
-        <div class="map-container" style="max-width: 1000px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            <iframe 
-                width="100%" 
-                height="450" 
-                style="border:0;" 
-                loading="lazy" 
-                allowfullscreen 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.931213038311!2d-0.191630!3d5.580000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9a7000000000%3A0x0!2sKanda%2C%20Accra!5e0!3m2!1sen!2sgh!4v1700000000000">
-            </iframe>
-        </div>
-    </section>
+            <!-- Column 2: Quick Links (includes Resources) -->
+            <div class="footer-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="business.html">Business</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
+            </div>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <p>Samzy-Digital is dedicated to transforming local businesses in Accra through innovative web solutions.</p>
+            <!-- Column 3: Community (includes Resources) -->
+            <div class="footer-column">
+                <h3 class="footer-title">Community</h3>
+                <ul class="footer-links">
+                    <li><a href="#mentors">Mentors</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#join">Join</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                </ul>
             </div>
-            <div class="footer-col">
-                <h4>Our Services</h4>
-                <a href="business.html">Web Development</a>
-                <a href="business.html">Branding</a>
-                <a href="business.html">Automation</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Info</h4>
-                <p>📞 0553018973</p>
-                <p>📧 samuelahaiaba3@gmail.com</p>
-                <div class="social-box">
-                    <a href="https://wa.me/233553018973" class="coin">W</a>
-                    <a href="#" class="coin">T</a>
-                    <a href="#" class="coin">I</a>
-                    <a href="#" class="coin">X</a>
-                    <a href="#" class="coin">F</a>
+
+            <!-- Column 4: Social & Legal – 5 ICONS (Facebook added) -->
+            <div class="footer-column">
+                <h3 class="footer-title">Connect</h3>
+                <div class="footer-social">
+                    <a href="https://wa.me/233539929190" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>   <!-- ☑️ NEW -->
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="footer-legal">
+                    <p>© 2026 Samzy-Digital. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- ========== GLOBAL SCRIPTS (do not edit) ========== -->
+    <script src="header-footer.js"></script>
+
+    <!-- ===== SAMZY CHATBOT v7.1 – FULL SNIPPET (EXACT) ===== -->
+    <div id="samzy-chatbot-root">
+        <div id="samzy-bubble" class="samzy-chat-bubble">
+            <svg viewBox="0 0 24 24" width="36" height="36">
+                <circle cx="12" cy="12" r="10" fill="white" />
+                <circle cx="8" cy="9" r="1.5" fill="black" />
+                <circle cx="16" cy="9" r="1.5" fill="black" />
+                <path d="M8 14 Q12 18, 16 14" stroke="black" stroke-width="1.8" fill="none" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div id="samzy-window" class="samzy-chat-window">
+            <div class="samzy-chat-header">
+                <h3><span></span> Samzy Assistant</h3>
+                <button id="samzy-close" class="samzy-close-btn">×</button>
+            </div>
+            <div id="samzy-messages" class="samzy-messages"></div>
+            <div class="samzy-input-area">
+                <input type="text" id="samzy-user-input" placeholder="Ask me anything..." autocomplete="off">
+                <button id="samzy-send" class="samzy-send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="samzy-chatbot.js"></script>
+
+    <!-- YOUR PAGE-SPECIFIC JS -->
+    <script src="contact.js"></script>
 </body>
 </html>
