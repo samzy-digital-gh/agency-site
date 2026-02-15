@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard · Samzy Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+        body { background:#f8fafc; color:#1e293b; }
+        a { text-decoration:none; color:inherit; }
+        .blog-header {
+            background:white; position:sticky; top:0; z-index:50;
+            box-shadow:0 2px 10px rgba(0,0,0,0.03);
+            border-bottom:1px solid rgba(0,102,255,0.1);
+        }
+        .header-container {
+            max-width:1300px; margin:0 auto; padding:1rem 2rem;
+            display:flex; align-items:center; justify-content:space-between;
+        }
+        .logo { font-size:1.5rem; font-weight:600; }
+        .logo i { color:#0066FF; margin-right:6px; }
+        .logo span { color:#FF6B35; }
+        .nav-links { display:flex; gap:2rem; }
+        .nav-links a { font-weight:500; padding:0.5rem 0; border-bottom:2px solid transparent; transition:0.2s; }
+        .nav-links a:hover, .nav-links a.active { color:#0066FF; border-bottom-color:#0066FF; }
+        .user-menu { position:relative; }
+        .user-avatar {
+            width:40px; height:40px; border-radius:50%; background:#e6f0ff; color:#0066FF;
+            display:flex; align-items:center; justify-content:center; font-weight:600; cursor:pointer;
+        }
+        .user-avatar img { width:100%; height:100%; border-radius:50%; object-fit:cover; }
+        .dropdown {
+            position:absolute; right:0; top:50px; background:white; border-radius:16px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.1); width:180px; display:none; z-index:100;
+            border:1px solid #eef2f6;
+        }
+        .dropdown.show { display:block; }
+        .dropdown a { display:flex; align-items:center; gap:10px; padding:0.9rem 1.2rem; transition:background 0.2s; }
+        .dropdown a:hover { background:#f1f5f9; }
+        .dropdown i { width:20px; color:#0066FF; }
+        .main-container {
+            max-width:1200px; margin:2rem auto; padding:0 2rem;
+        }
+        h1 { margin-bottom:1rem; }
+        .top-player-card {
+            background:linear-gradient(135deg, #0066FF20, #FF6B3520);
+            border:2px solid #FF6B35;
+            border-radius:32px;
+            padding:2rem;
+            margin-bottom:2rem;
+            display:flex;
+            align-items:center;
+            gap:2rem;
+            flex-wrap:wrap;
+        }
+        .top-player-avatar {
+            width:100px; height:100px; border-radius:50%;
+            background:#e6f0ff;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:3rem;
+            font-weight:600;
+            color:#0066FF;
+        }
+        .top-player-info h2 { font-size:2rem; }
+        .top-player-info p { color:#64748b; }
+        .top-player-points {
+            font-size:2rem;
+            font-weight:600;
+            color:#0066FF;
+            margin-left:auto;
+        }
+        .cards-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+            gap:2rem;
+            margin-top:1rem;
+        }
+        .category-card {
+            background:white;
+            border-radius:24px;
+            padding:1.5rem;
+            box-shadow:0 4px 12px rgba(0,0,0,0.03);
+            border:1px solid rgba(0,102,255,0.1);
+        }
+        .category-card h3 {
+            margin-bottom:1.5rem;
+            display:flex;
+            align-items:center;
+            gap:0.5rem;
+        }
+        .category-card h3 i { color:#FF6B35; }
+        .leaderboard-item {
+            display:flex;
+            align-items:center;
+            gap:1rem;
+            padding:0.8rem 0;
+            border-bottom:1px solid #eef2f6;
+        }
+        .leaderboard-item:last-child { border-bottom:none; }
+        .rank-badge {
+            width:30px; height:30px;
+            border-radius:50%;
+            background:#f1f5f9;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:600;
+            color:#0066FF;
+        }
+        .avatar-small {
+            width:40px; height:40px;
+            border-radius:50%;
+            background:#e6f0ff;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:600;
+            color:#0066FF;
+        }
+        .item-info { flex:1; }
+        .item-name { font-weight:600; }
+        .item-points { font-weight:600; color:#0066FF; }
+        .current-user-highlight {
+            background:#f1f5f9;
+            border-radius:40px;
+            padding:0 0.5rem;
+            margin-left:0.5rem;
+            font-size:0.8rem;
+            color:#0066FF;
+        }
+        .empty-message { color:#94a3b8; text-align:center; padding:2rem; }
+        .blog-footer {
+            background:#000; color:#ccc; padding:3rem 2rem 1.5rem; margin-top:3rem;
+        }
+        .footer-container {
+            max-width:1300px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr);
+            gap:2rem; text-align:left;
+        }
+        .footer-col h4 { color:white; margin-bottom:1.2rem; font-size:1.1rem; }
+        .footer-col ul { list-style:none; }
+        .footer-col li { margin-bottom:0.6rem; }
+        .footer-col a { color:#ccc; transition:color 0.2s; }
+        .footer-col a:hover { color:#FF6B35; }
+        .social-icons { display:flex; gap:1rem; font-size:1.3rem; }
+        .social-icons a { color:#ccc; }
+        .social-icons a:hover { color:#FF6B35; }
+        .copyright {
+            text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid #333;
+            color:#777; font-size:0.9rem;
+        }
+        @media (max-width:700px) { .footer-container { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="blog-feed.html" class="logo"><i class="fas fa-code"></i> SAMZY<span>blog</span></a>
+            <nav class="nav-links">
+                <a href="blog-feed.html">Home</a>
+                <a href="blog-profile.html">Profile</a>
+                <a href="blog-leaderboard.html" class="active">Leaderboard</a>
+                <a href="blog-games.html">Games</a>
+            </nav>
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar"><span id="avatarText"></span></div>
+                <div class="dropdown" id="dropdown">
+                    <a href="blog-profile.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h1><i class="fas fa-trophy" style="color:#FF6B35;"></i> Leaderboard</h1>
+
+        <!-- Top Overall Player Card (will be filled by JS) -->
+        <div id="topPlayerCard" class="top-player-card" style="display:none;">
+            <!-- content injected -->
+        </div>
+
+        <!-- Category Cards Grid -->
+        <div class="cards-grid" id="categoryCards">
+            <div class="category-card" id="quizCard">
+                <h3><i class="fas fa-code"></i> Quiz Masters</h3>
+                <div id="quizList" class="empty-message">Loading...</div>
+            </div>
+            <div class="category-card" id="memoryCard">
+                <h3><i class="fas fa-brain"></i> Memory Champs</h3>
+                <div id="memoryList" class="empty-message">Loading...</div>
+            </div>
+            <div class="category-card" id="typingCard">
+                <h3><i class="fas fa-keyboard"></i> Typing Legends</h3>
+                <div id="typingList" class="empty-message">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="blog-footer">
+        <div class="footer-container">
+            <div class="footer-col"><h4>Navigation</h4><ul><li><a href="blog-feed.html">Home</a></li><li><a href="blog-profile.html">Profile</a></li><li><a href="blog-leaderboard.html">Leaderboard</a></li><li><a href="blog-games.html">Games</a></li></ul></div>
+            <div class="footer-col"><h4>Legal</h4><ul><li><a href="terms.html">Terms of Service</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="cookies.html">Cookie Policy</a></li></ul></div>
+            <div class="footer-col"><h4>Connect</h4><div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a></div></div>
+        </div>
+        <div class="copyright">© 2026 Samzy Digital Community. All rights reserved.</div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
+            authDomain: "samzy-community-blog.firebaseapp.com",
+            projectId: "samzy-community-blog",
+            storageBucket: "samzy-community-blog.firebasestorage.app",
+            messagingSenderId: "573240466296",
+            appId: "1:573240466296:web:5faa312a1136162961468d"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        let currentUser = null;
+
+        auth.onAuthStateChanged(async user => {
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            currentUser = user;
+            loadUserAvatar(user);
+            await loadLeaderboard();
+        });
+
+        function stringToColor(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            return `hsl(${hash % 360}, 70%, 80%)`;
+        }
+
+        function loadUserAvatar(user) {
+            const avatarDiv = document.querySelector('.user-avatar');
+            db.collection('users').doc(user.uid).get().then(doc => {
+                const displayName = doc.exists && doc.data().displayName ? doc.data().displayName : user.email;
+                const initials = displayName.charAt(0).toUpperCase();
+                avatarDiv.style.background = stringToColor(displayName);
+                avatarDiv.innerHTML = `<span>${initials}</span>`;
+            }).catch(() => {
+                avatarDiv.style.background = stringToColor(user.email);
+                avatarDiv.innerHTML = `<span>${user.email.charAt(0).toUpperCase()}</span>`;
+            });
+        }
+
+        document.getElementById('userAvatar').addEventListener('click', e => {
+            e.stopPropagation();
+            document.getElementById('dropdown').classList.toggle('show');
+        });
+        document.addEventListener('click', () => document.getElementById('dropdown').classList.remove('show'));
+        document.getElementById('logoutBtn').addEventListener('click', e => {
+            e.preventDefault();
+            auth.signOut().then(() => window.location.href = 'community.html');
+        });
+
+        async function loadLeaderboard() {
+            // Fetch top overall player (limit 1)
+            const overallSnap = await db.collection('users').orderBy('points', 'desc').limit(1).get();
+            if (!overallSnap.empty) {
+                const doc = overallSnap.docs[0];
+                const data = doc.data();
+                const name = data.displayName || 'Anonymous';
+                const points = data.points || 0;
+                const avatarColor = stringToColor(name);
+                const initial = name.charAt(0).toUpperCase();
+
+                document.getElementById('topPlayerCard').style.display = 'flex';
+                document.getElementById('topPlayerCard').innerHTML = `
+                    <div class="top-player-avatar" style="background:${avatarColor}"><span>${initial}</span></div>
+                    <div class="top-player-info">
+                        <h2>${name}</h2>
+                        <p>Overall Best Player</p>
+                    </div>
+                    <div class="top-player-points">${points} pts</div>
+                `;
+            } else {
+                document.getElementById('topPlayerCard').style.display = 'none';
+            }
+
+            // Load top 3 for each category
+            loadCategory('quizPoints', 'quizList');
+            loadCategory('memoryPoints', 'memoryList');
+            loadCategory('typingPoints', 'typingList');
+        }
+
+        async function loadCategory(field, elementId) {
+            const listDiv = document.getElementById(elementId);
+            try {
+                const snapshot = await db.collection('users').orderBy(field, 'desc').limit(3).get();
+                if (snapshot.empty) {
+                    listDiv.innerHTML = '<div class="empty-message">No players yet.</div>';
+                    return;
+                }
+
+                let html = '';
+                let rank = 1;
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const name = data.displayName || 'Anonymous';
+                    const points = data[field] || 0;
+                    const isCurrent = doc.id === currentUser.uid;
+                    const avatarColor = stringToColor(name);
+                    const initial = name.charAt(0).toUpperCase();
+
+                    html += `
+                        <div class="leaderboard-item">
+                            <div class="rank-badge">${rank}</div>
+                            <div class="avatar-small" style="background:${avatarColor}"><span>${initial}</span></div>
+                            <div class="item-info">
+                                <span class="item-name">${name}</span>
+                                ${isCurrent ? '<span class="current-user-highlight">you</span>' : ''}
+                            </div>
+                            <div class="item-points">${points}</div>
+                        </div>
+                    `;
+                    rank++;
+                });
+                listDiv.innerHTML = html;
+            } catch (e) {
+                console.error(`Error loading ${field}:`, e);
+                listDiv.innerHTML = '<div class="empty-message">Error loading data.</div>';
+            }
+        }
+    </script>
+</body>
+</html>

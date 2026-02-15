@@ -1,10 +1,12 @@
 /**
- * COMMUNITY PAGE – INTERACTIVITY
- * Carousel, accordion, progress bars, form validation (allows Formspree submit)
+ * COMMUNITY PAGE – INTERACTIVITY (with Firebase)
+ * Carousel, accordion, progress bars, form validation + Firebase Auth & Firestore
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     'use strict';
+
+    // ========== EXISTING FUNCTIONALITY (KEPT INTACT) ==========
 
     // ---------- MENTOR CAROUSEL ----------
     const mentors = [
@@ -106,13 +108,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const experience = document.getElementById('experience');
         const successDiv = document.getElementById('formSuccess');
 
-        // Helper to show/hide error messages
         function showError(fieldId, msg) {
             const err = document.getElementById(`error${fieldId}`);
             if (err) err.textContent = msg || '';
         }
 
-        // Individual field validators
         function validateFullName() {
             const val = fullName.value.trim();
             showError('FullName', val === '' ? 'Full name is required' : '');
@@ -143,13 +143,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return val !== '';
         }
 
-        // Attach live validation on blur
         fullName.addEventListener('blur', validateFullName);
         email.addEventListener('blur', validateEmail);
         phone.addEventListener('blur', validatePhone);
         experience.addEventListener('blur', validateExperience);
 
-        // Intercept submit – run validation, then either block or allow Formspree
         form.addEventListener('submit', function(e) {
             const isValidName = validateFullName();
             const isValidEmail = validateEmail();
@@ -157,19 +155,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const isValidExp = validateExperience();
 
             if (!isValidName || !isValidEmail || !isValidPhone || !isValidExp) {
-                e.preventDefault(); // Stop Formspree submission
+                e.preventDefault();
                 successDiv.style.display = 'none';
             } else {
-                // Optional: show a sending message while Formspree processes
                 successDiv.style.display = 'block';
                 successDiv.innerHTML = '✅ Sending your information...';
-                // Form will submit normally to Formspree
             }
         });
-
-        // Optional: if you want to show a custom success message after Formspree redirect,
-        // you can add a redirect parameter in the form action URL.
-        // For now, Formspree will show its own thank-you page.
     }
 
     // ---------- SMOOTH SCROLL FOR ANCHOR LINKS ----------
@@ -181,4 +173,221 @@ document.addEventListener('DOMContentLoaded', function() {
             if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
     });
+
+    // ========== NEW FIREBASE FUNCTIONALITY ==========
+    // Make sure Firebase SDK is loaded and initialized in your HTML
+
+    // ---------- DOM elements for new features ----------
+    const userInfoDiv = document.getElementById('userInfo');
+    const userNameSpan = document.getElementById('userName');
+    const loginPrompt = document.getElementById('loginPrompt');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const postFormContainer = document.getElementById('postFormContainer');
+    const postsList = document.getElementById('postsList');
+    const clickBtn = document.getElementById('clickBtn');
+    const scoreSpan = document.getElementById('score');
+    const gameMessage = document.getElementById('gameMessage');
+
+    // Modal elements
+    const loginModal = document.getElementById('loginModal');
+    const registerModal = document.getElementById('registerModal');
+    const showLogin = document.getElementById('showLogin');
+    const showRegister = document.getElementById('showRegister');
+    const closeModals = document.querySelectorAll('.close-modal');
+
+    // Only proceed if Firebase is available
+    if (typeof firebase === 'undefined') {
+        console.warn('Firebase not loaded – new features disabled');
+    } else {
+        // Firestore reference
+        const db = firebase.firestore();
+
+        // ---------- Auth State Observer ----------
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                // User is signed in
+                userInfoDiv.style.display = 'block';
+                userNameSpan.textContent = user.displayName || user.email;
+                loginPrompt.style.display = 'none';
+                if (postFormContainer) postFormContainer.style.display = 'block';
+                loadPosts(); // load posts when logged in (though we load anyway)
+            } else {
+                // No user
+                userInfoDiv.style.display = 'none';
+                loginPrompt.style.display = 'block';
+                if (postFormContainer) postFormContainer.style.display = 'none';
+                // Still load posts for visitors
+                loadPosts();
+            }
+        });
+
+        // ---------- Login / Register Modal Handlers ----------
+        if (showLogin) {
+            showLogin.addEventListener('click', e => {
+                e.preventDefault();
+                loginModal.style.display = 'flex';
+            });
+        }
+        if (showRegister) {
+            showRegister.addEventListener('click', e => {
+                e.preventDefault();
+                registerModal.style.display = 'flex';
+            });
+        }
+        closeModals.forEach(btn => {
+            btn.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+                registerModal.style.display = 'none';
+            });
+        });
+
+        // Login form
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                firebase.auth().signInWithEmailAndPassword(email, password)
+                    .then(() => {
+                        loginModal.style.display = 'none';
+                        loginForm.reset();
+                        document.getElementById('loginError').textContent = '';
+                    })
+                    .catch(error => {
+                        document.getElementById('loginError').textContent = error.message;
+                    });
+            });
+        }
+
+        // Register form
+        const registerForm = document.getElementById('registerForm');
+        if (registerForm) {
+            registerForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const name = document.getElementById('regName').value;
+                const email = document.getElementById('regEmail').value;
+                const password = document.getElementById('regPassword').value;
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(userCredential => {
+                        // Update profile with display name
+                        return userCredential.user.updateProfile({ displayName: name });
+                    })
+                    .then(() => {
+                        document.getElementById('registerSuccess').style.display = 'block';
+                        document.getElementById('registerSuccess').textContent = 'Registration successful!';
+                        setTimeout(() => {
+                            registerModal.style.display = 'none';
+                            document.getElementById('registerSuccess').style.display = 'none';
+                        }, 2000);
+                        registerForm.reset();
+                        document.getElementById('registerError').textContent = '';
+                    })
+                    .catch(error => {
+                        document.getElementById('registerError').textContent = error.message;
+                    });
+            });
+        }
+
+        // Logout
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                firebase.auth().signOut();
+            });
+        }
+
+        // ---------- Load Posts (real‑time) ----------
+        function loadPosts() {
+            if (!postsList) return;
+            db.collection('posts')
+                .orderBy('createdAt', 'desc')
+                .limit(20)
+                .onSnapshot(snapshot => {
+                    postsList.innerHTML = '';
+                    snapshot.forEach(doc => {
+                        const post = doc.data();
+                        const div = document.createElement('div');
+                        div.className = 'community-post';
+                        div.innerHTML = `
+                            <h3>${escapeHTML(post.title)}</h3>
+                            <div class="meta">By ${escapeHTML(post.authorName)} · ${new Date(post.createdAt?.toDate()).toLocaleString()}</div>
+                            <p>${escapeHTML(post.content).replace(/\n/g, '<br>')}</p>
+                        `;
+                        postsList.appendChild(div);
+                    });
+                }, error => {
+                    console.error('Error loading posts:', error);
+                });
+        }
+
+        // Escape HTML helper (same as before)
+        function escapeHTML(str) {
+            return String(str).replace(/[&<>"]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                if (m === '"') return '&quot;';
+                return m;
+            });
+        }
+
+        // ---------- Create Post ----------
+        const newPostForm = document.getElementById('newPostForm');
+        if (newPostForm) {
+            newPostForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const user = firebase.auth().currentUser;
+                if (!user) {
+                    alert('You must be logged in to post.');
+                    return;
+                }
+                const title = document.getElementById('postTitle').value.trim();
+                const content = document.getElementById('postContent').value.trim();
+                if (!title || !content) return;
+
+                db.collection('posts').add({
+                    title: title,
+                    content: content,
+                    authorId: user.uid,
+                    authorName: user.displayName || user.email,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                .then(() => {
+                    newPostForm.reset();
+                })
+                .catch(error => {
+                    alert('Error creating post: ' + error.message);
+                });
+            });
+        }
+
+        // ---------- Game ----------
+        if (clickBtn) {
+            let clickCount = 0;
+            clickBtn.addEventListener('click', () => {
+                const user = firebase.auth().currentUser;
+                if (!user) {
+                    gameMessage.textContent = 'Please log in to play!';
+                    return;
+                }
+                clickCount++;
+                scoreSpan.textContent = clickCount;
+                if (clickCount >= 10) {
+                    // Award points – store in Firestore (e.g., user profile or a separate collection)
+                    db.collection('users').doc(user.uid).set({
+                        points: firebase.firestore.FieldValue.increment(10)
+                    }, { merge: true })
+                    .then(() => {
+                        gameMessage.textContent = '🎉 You earned 10 points!';
+                    })
+                    .catch(err => {
+                        gameMessage.textContent = 'Error saving points.';
+                        console.error(err);
+                    });
+                    clickCount = 0;
+                    scoreSpan.textContent = '0';
+                }
+            });
+        }
+    }
 });

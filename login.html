@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login · Samzy Community</title>
+    <link rel="stylesheet" href="header-footer.css">
+    <!-- Font Awesome for icons and logo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+        .login-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid rgba(0,102,255,0.1);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .logo i {
+            color: #0066FF;
+            margin-right: 8px;
+        }
+        .logo span {
+            color: #FF6B35;
+        }
+        h2 {
+            margin-bottom: 1.8rem;
+            color: #1e293b;
+            font-weight: 600;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 40px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            border-color: #0066FF;
+        }
+        button {
+            width: 100%;
+            padding: 0.9rem;
+            background: #FF6B35;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #e05530;
+        }
+        .error {
+            color: #d32f2f;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .signup-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #4b5565;
+        }
+        .signup-link a {
+            color: #0066FF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #a0aec0;
+            font-size: 0.8rem;
+            margin: 1.5rem 0 1rem;
+        }
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .divider span {
+            padding: 0 0.8rem;
+        }
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .social-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #e2e8f0;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #4a5a72;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .social-btn:hover {
+            border-color: #0066FF;
+            color: #0066FF;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <!-- Logo in your exact format -->
+        <div class="logo">
+            <i class="fas fa-code"></i> SAMZY<span>DIGITAL</span>
+        </div>
+        <h2>Log in to the Community</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email" required autofocus>
+            <input type="password" id="password" placeholder="Password" required>
+            <div class="error" id="loginError"></div>
+            <button type="submit">Log In</button>
+        </form>
+
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+        <div class="social-login">
+            <a href="#" class="social-btn" id="googleLogin"><i class="fab fa-google"></i></a>
+            <a href="#" class="social-btn" id="githubLogin"><i class="fab fa-github"></i></a>
+        </div>
+
+        <div class="signup-link">
+            Don't have an account? <a href="community.html#registration">Join here</a>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
+            authDomain: "samzy-community-blog.firebaseapp.com",
+            projectId: "samzy-community-blog",
+            storageBucket: "samzy-community-blog.firebasestorage.app",
+            messagingSenderId: "573240466296",
+            appId: "1:573240466296:web:5faa312a1136162961468d"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Helper to handle social login – create user doc if new, then redirect
+        function handleSocialLogin(result) {
+            const user = result.user;
+            const userRef = db.collection('users').doc(user.uid);
+            userRef.get().then(doc => {
+                if (!doc.exists) {
+                    userRef.set({
+                        displayName: user.displayName || '',
+                        email: user.email,
+                        points: 0,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                }
+            }).finally(() => {
+                // Redirect after ensuring user doc exists
+                window.location.href = 'blog-feed.html';
+            });
+        }
+
+        // Email/Password login
+        document.getElementById('loginForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('loginError');
+            errorDiv.textContent = '';
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    window.location.href = 'blog-feed.html';
+                })
+                .catch(err => {
+                    errorDiv.textContent = err.message;
+                });
+        });
+
+        // Google Sign-In
+        document.getElementById('googleLogin').addEventListener('click', e => {
+            e.preventDefault();
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .then(handleSocialLogin)
+                .catch(err => {
+                    document.getElementById('loginError').textContent = err.message;
+                });
+        });
+
+        // GitHub Sign-In
+        document.getElementById('githubLogin').addEventListener('click', e => {
+            e.preventDefault();
+            const provider = new firebase.auth.GithubAuthProvider();
+            auth.signInWithPopup(provider)
+                .then(handleSocialLogin)
+                .catch(err => {
+                    document.getElementById('loginError').textContent = err.message;
+                });
+        });
+
+        // No automatic redirect on page load – user must explicitly log in.
+    </script>
+</body>
+</html>
