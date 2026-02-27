@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Reels · Samzy Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: #000;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+            padding-bottom: 70px;
+        }
+        /* Header */
+        .reels-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+            backdrop-filter: blur(5px);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0052CC, #FF6B35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo i {
+            -webkit-text-fill-color: #0052CC;
+            margin-right: 8px;
+        }
+        /* Player */
+        #player-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+        #player {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        /* Overlay */
+        .video-overlay {
+            position: fixed;
+            bottom: 90px;
+            left: 0;
+            right: 0;
+            padding: 32px 24px;
+            background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+            color: white;
+            z-index: 90;
+        }
+        .video-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .video-channel {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 16px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 24px;
+        }
+        .action-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            opacity: 0.9;
+            transition: 0.2s;
+        }
+        .action-btn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .action-btn span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        /* Swipe hint */
+        .swipe-hint {
+            position: fixed;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 2px;
+            z-index: 95;
+        }
+        /* Bottom navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding: 8px 0;
+            z-index: 200;
+        }
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .nav-items a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #64748B;
+            font-size: 0.75rem;
+            text-decoration: none;
+            gap: 4px;
+        }
+        .nav-items a i { font-size: 1.3rem; }
+        .nav-items a.active { color: #0052CC; }
+        /* Simple spinner (shows briefly while loading) */
+        .spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: #FF6B35;
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+            z-index: 200;
+            display: none;
+        }
+        .spinner.show { display: block; }
+        @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <header class="reels-header">
+        <div class="logo"><i class="fas fa-code"></i> SAMZY<span style="-webkit-text-fill-color:#FF6B35;">blog</span></div>
+        <div style="display: flex; gap: 16px;">
+            <i class="fas fa-bell" style="font-size:1.3rem;"></i>
+            <div class="user-avatar" style="width:36px; height:36px; background:#FF6B35; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:600;">
+                <span id="avatarInitial">S</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Player -->
+    <div id="player-container">
+        <div id="player"></div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="video-overlay">
+        <div class="video-title" id="videoTitle">Loading...</div>
+        <div class="video-channel" id="videoChannel">Samzy Comedy</div>
+        <div class="action-buttons">
+            <button class="action-btn" id="likeBtn"><i class="fas fa-heart"></i><span id="likeCount">24</span></button>
+            <button class="action-btn" id="commentBtn"><i class="fas fa-comment"></i><span>12</span></button>
+            <button class="action-btn" id="shareBtn"><i class="fas fa-share"></i><span>Share</span></button>
+        </div>
+    </div>
+
+    <!-- Swipe Hint -->
+    <div class="swipe-hint"><i class="fas fa-chevron-up"></i> SWIPE <i class="fas fa-chevron-down"></i></div>
+
+    <!-- Spinner (disappears when player is ready) -->
+    <div class="spinner show" id="spinner"></div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-items">
+            <a href="blog-feed.html"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="reels.html" class="active"><i class="fas fa-film"></i><span>Reels</span></a>
+            <a href="blog-games.html"><i class="fas fa-gamepad"></i><span>Games</span></a>
+            <a href="messages.html"><i class="fas fa-comment"></i><span>Messages</span></a>
+            <a href="blog-profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+        </div>
+    </div>
+
+    <!-- YouTube API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        // ===== YOUR COMEDY PLAYLIST =====
+        const PLAYLIST_ID = 'PL8gV9gN6aAQMwL0K4uvZCFaERnEhDIVl8'; // Samzy comedy
+
+        let player;
+        let touchStartY = 0, touchEndY = 0;
+
+        // Initialize YouTube Player (sound ON)
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                playerVars: {
+                    'playsinline': 1,
+                    'controls': 0,
+                    'disablekb': 1,
+                    'fs': 0,
+                    'rel': 0,
+                    'modestbranding': 1,
+                    'iv_load_policy': 3,
+                    'listType': 'playlist',
+                    'list': PLAYLIST_ID,
+                    'autoplay': 1,
+                    'mute': 0            // Sound ON
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            document.getElementById('spinner').classList.remove('show'); // Hide spinner
+            event.target.playVideo();
+            updateVideoInfo();
+        }
+
+        function onPlayerStateChange(event) {
+            updateVideoInfo();
+            if (event.data === YT.PlayerState.ENDED) {
+                player.nextVideo(); // auto-play next video
+            }
+        }
+
+        function updateVideoInfo() {
+            if (player && player.getVideoData) {
+                const data = player.getVideoData();
+                document.getElementById('videoTitle').textContent = data.title || 'Untitled';
+                document.getElementById('videoChannel').textContent = data.author || 'Samzy Comedy';
+            }
+        }
+
+        // ===== SWIPE NAVIGATION =====
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        document.addEventListener('touchmove', (e) => {
+            touchEndY = e.touches[0].clientY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', () => {
+            if (!touchStartY || !touchEndY) return;
+            const diff = touchStartY - touchEndY;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    player.nextVideo();      // swipe up
+                } else {
+                    player.previousVideo();  // swipe down
+                }
+            }
+            touchStartY = touchEndY = 0;
+        });
+
+        // Keyboard navigation (for desktop)
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                player.previousVideo();
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                player.nextVideo();
+            }
+        });
+
+        // ===== INTERACTION BUTTONS =====
+        let likeCount = 24;
+        document.getElementById('likeBtn').addEventListener('click', () => {
+            likeCount++;
+            document.querySelector('#likeBtn span').textContent = likeCount;
+            // Optional heart animation
+            document.getElementById('likeBtn').style.color = '#FF6B35';
+            setTimeout(() => document.getElementById('likeBtn').style.color = 'white', 200);
+        });
+
+        document.getElementById('shareBtn').addEventListener('click', () => {
+            if (player && player.getVideoUrl) {
+                navigator.clipboard.writeText(player.getVideoUrl()).then(() => {
+                    alert('✨ Link copied!');
+                });
+            }
+        });
+
+        document.getElementById('commentBtn').addEventListener('click', () => {
+            alert('Comments coming soon!');
+        });
+
+        // Avatar initial
+        document.getElementById('avatarInitial').textContent = 'S';
+    </script>
+</body>
+</html>

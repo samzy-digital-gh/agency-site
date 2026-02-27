@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Notifications · Samzy Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* === DESIGN SYSTEM (same as other pages) === */
+        :root {
+            --primary: #0052CC;
+            --accent: #FF6B35;
+            --neutral-50: #F8FAFC;
+            --neutral-200: #E2E8F0;
+            --neutral-400: #94A3B8;
+            --neutral-600: #64748B;
+            --neutral-900: #1E293B;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-md: 0 6px 18px rgba(0,0,0,0.05);
+            --radius-card: 16px;
+            --radius-button: 40px;
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: var(--neutral-50);
+            color: var(--neutral-900);
+            line-height: 1.5;
+            padding-bottom: 70px;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Header */
+        .blog-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--neutral-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.8rem 0;
+        }
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 var(--space-2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .logo i { color: var(--primary); margin-right: 6px; }
+        .logo span { color: var(--accent); }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--neutral-600);
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        .icon-btn:hover {
+            background: var(--neutral-200);
+            color: var(--primary);
+        }
+        .badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 10px;
+            min-width: 18px;
+            text-align: center;
+        }
+        .user-menu {
+            position: relative;
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .dropdown {
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: var(--white);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-md);
+            width: 200px;
+            display: none;
+            z-index: 200;
+            border: 1px solid var(--neutral-200);
+        }
+        .dropdown.show { display: block; }
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.9rem 1.2rem;
+            transition: background 0.2s;
+            color: var(--neutral-900);
+        }
+        .dropdown a:hover { background: var(--neutral-200); }
+        .dropdown i { width: 20px; color: var(--primary); }
+
+        /* Notifications dropdown (only for header – we'll keep it but not use much here) */
+        .notifications-dropdown { display: none; } /* hidden on this page */
+
+        /* Main container */
+        .main-container {
+            max-width: 800px;
+            margin: var(--space-4) auto;
+            padding: 0 var(--space-2);
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-4);
+        }
+        .page-header h1 {
+            font-size: 2rem;
+        }
+        .mark-read-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: var(--radius-button);
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .mark-read-btn:hover {
+            background: #003d99;
+        }
+        .mark-read-btn:disabled {
+            background: var(--neutral-400);
+            cursor: not-allowed;
+        }
+
+        /* Notifications list */
+        .notifications-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+        .notification-item {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            border: 1px solid var(--neutral-200);
+            padding: var(--space-3);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .notification-item:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+        .notification-item.unread {
+            background: #e6f0ff;
+            border-left: 4px solid var(--primary);
+        }
+        .notification-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .notification-content {
+            flex: 1;
+        }
+        .notification-content p {
+            margin-bottom: 0.2rem;
+        }
+        .notification-content strong {
+            color: var(--primary);
+        }
+        .notification-time {
+            font-size: 0.8rem;
+            color: var(--neutral-400);
+        }
+        .empty-state {
+            text-align: center;
+            padding: var(--space-5);
+            color: var(--neutral-400);
+        }
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: var(--space-2);
+            opacity: 0.5;
+        }
+        .loading {
+            text-align: center;
+            padding: var(--space-5);
+            color: var(--neutral-400);
+        }
+
+        /* Bottom navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-top: 1px solid var(--neutral-200);
+            padding: 0.5rem 0;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+        }
+        .bottom-nav .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--neutral-600);
+            font-size: 0.8rem;
+            transition: color 0.2s;
+        }
+        .bottom-nav a i { font-size: 1.2rem; margin-bottom: 0.2rem; }
+        .bottom-nav a.active { color: var(--primary); }
+        .bottom-nav a:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="blog-feed.html" class="logo"><i class="fas fa-code"></i> SAMZY<span>blog</span></a>
+            <div class="header-actions">
+                <div class="user-menu">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div class="dropdown" id="userDropdown">
+                        <a href="blog-profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="page-header">
+            <h1><i class="fas fa-bell"></i> Notifications</h1>
+            <button class="mark-read-btn" id="markAllReadBtn">Mark all as read</button>
+        </div>
+
+        <div class="notifications-list" id="notificationsList">
+            <div class="loading">Loading notifications...</div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-items">
+            <a href="blog-feed.html"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="reels.html"><i class="fas fa-film"></i><span>Reels</span></a>
+            <a href="blog-games.html"><i class="fas fa-gamepad"></i><span>Games</span></a>
+            <a href="messages.html"><i class="fas fa-comment"></i><span>Messages</span></a>
+            <a href="blog-profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
+            authDomain: "samzy-community-blog.firebaseapp.com",
+            projectId: "samzy-community-blog",
+            storageBucket: "samzy-community-blog.firebasestorage.app",
+            messagingSenderId: "573240466296",
+            appId: "1:573240466296:web:5faa312a1136162961468d"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        let currentUser = null;
+
+        // Helper functions
+        function stringToColor(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            return `hsl(${hash % 360}, 70%, 80%)`;
+        }
+
+        function formatTimeAgo(date) {
+            const s = Math.floor((new Date() - date)/1000);
+            if (s < 60) return 'just now';
+            if (s < 3600) return Math.floor(s/60)+'m ago';
+            if (s < 86400) return Math.floor(s/3600)+'h ago';
+            return Math.floor(s/86400)+'d ago';
+        }
+
+        function loadUserAvatar(user) {
+            const avatarDiv = document.getElementById('userAvatar');
+            db.collection('users').doc(user.uid).get().then(doc => {
+                if (doc.exists && doc.data().avatarURL) {
+                    avatarDiv.innerHTML = `<img src="${doc.data().avatarURL}" alt="avatar">`;
+                } else {
+                    const displayName = doc.exists && doc.data().displayName ? doc.data().displayName : user.email;
+                    const initials = displayName.charAt(0).toUpperCase();
+                    avatarDiv.style.background = stringToColor(displayName);
+                    avatarDiv.innerHTML = `<span>${initials}</span>`;
+                }
+            }).catch(() => {
+                avatarDiv.style.background = stringToColor(user.email);
+                avatarDiv.innerHTML = `<span>${user.email.charAt(0).toUpperCase()}</span>`;
+            });
+        }
+
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            currentUser = user;
+            loadUserAvatar(user);
+            loadNotifications();
+        });
+
+        document.getElementById('userAvatar').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('userDropdown').classList.toggle('show');
+        });
+        document.addEventListener('click', () => {
+            document.getElementById('userDropdown').classList.remove('show');
+        });
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            auth.signOut().then(() => window.location.href = 'community.html');
+        });
+
+        async function loadNotifications() {
+            const list = document.getElementById('notificationsList');
+            if (!currentUser) return;
+
+            try {
+                const snapshot = await db.collection('notifications')
+                    .where('recipientId', '==', currentUser.uid)
+                    .orderBy('createdAt', 'desc')
+                    .get();
+
+                if (snapshot.empty) {
+                    list.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-bell-slash"></i>
+                            <p>No notifications yet.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = '';
+                let hasUnread = false;
+                snapshot.forEach(doc => {
+                    const n = doc.data();
+                    const id = doc.id;
+                    const date = n.createdAt ? n.createdAt.toDate() : new Date();
+                    const timeAgo = formatTimeAgo(date);
+                    const unreadClass = n.read ? '' : 'unread';
+                    if (!n.read) hasUnread = true;
+
+                    let icon = '🔔';
+                    let message = '';
+                    if (n.type === 'like') {
+                        icon = '❤️';
+                        message = `<strong>${n.fromUserName || 'Someone'}</strong> liked your post.`;
+                    } else if (n.type === 'comment') {
+                        icon = '💬';
+                        message = `<strong>${n.fromUserName || 'Someone'}</strong> commented on your post.`;
+                    } else if (n.type === 'follow') {
+                        icon = '👤';
+                        message = `<strong>${n.fromUserName || 'Someone'}</strong> started following you.`;
+                    }
+
+                    html += `
+                        <div class="notification-item ${unreadClass}" data-id="${id}" data-post="${n.postId || ''}" data-from="${n.fromUserId || ''}">
+                            <div class="notification-icon">${icon}</div>
+                            <div class="notification-content">
+                                <p>${message}</p>
+                                <div class="notification-time">${timeAgo}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                list.innerHTML = html;
+
+                // Add click listeners to each notification
+                document.querySelectorAll('.notification-item').forEach(item => {
+                    item.addEventListener('click', async () => {
+                        const id = item.dataset.id;
+                        // Mark as read
+                        await db.collection('notifications').doc(id).update({ read: true });
+                        // Navigate
+                        if (item.dataset.post) {
+                            window.location.href = `blog-feed.html?post=${item.dataset.post}`;
+                        } else if (item.dataset.from) {
+                            window.location.href = `blog-profile.html?uid=${item.dataset.from}`;
+                        }
+                    });
+                });
+
+                // Enable/disable mark all button
+                const markBtn = document.getElementById('markAllReadBtn');
+                markBtn.disabled = !hasUnread;
+
+            } catch (error) {
+                console.error('Error loading notifications:', error);
+                list.innerHTML = '<div class="empty-state">Error loading notifications.</div>';
+            }
+        }
+
+        // Mark all as read
+        document.getElementById('markAllReadBtn').addEventListener('click', async () => {
+            if (!currentUser) return;
+            try {
+                const snapshot = await db.collection('notifications')
+                    .where('recipientId', '==', currentUser.uid)
+                    .where('read', '==', false)
+                    .get();
+
+                const batch = db.batch();
+                snapshot.docs.forEach(doc => {
+                    batch.update(doc.ref, { read: true });
+                });
+                await batch.commit();
+
+                // Reload notifications (will update UI)
+                loadNotifications();
+            } catch (error) {
+                console.error('Error marking all as read:', error);
+                alert('Failed to mark all as read.');
+            }
+        });
+    </script>
+</body>
+</html>

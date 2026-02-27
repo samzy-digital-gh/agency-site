@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Leaderboard · Samzy Community</title>
+    <title>Achievements · Samzy Community</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* === DESIGN SYSTEM (same as other pages) === */
@@ -40,7 +40,7 @@
         }
         a { text-decoration: none; color: inherit; }
 
-        /* Header (no search button) */
+        /* Header */
         .blog-header {
             background: var(--white);
             border-bottom: 1px solid var(--neutral-200);
@@ -206,139 +206,107 @@
             color: var(--accent);
         }
 
-        /* Top player card */
-        .top-player-card {
+        /* Stats summary */
+        .summary-card {
             background: linear-gradient(135deg, var(--primary), #003d99);
             color: white;
             border-radius: var(--radius-card);
             padding: var(--space-4);
             margin-bottom: var(--space-4);
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: var(--space-4);
             flex-wrap: wrap;
+            gap: var(--space-3);
         }
-        .top-player-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
+        .summary-stats {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            font-weight: 600;
-            color: white;
-            overflow: hidden;
+            gap: var(--space-4);
         }
-        .top-player-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .summary-item {
+            text-align: center;
         }
-        .top-player-info {
-            flex: 1;
-        }
-        .top-player-info h2 {
+        .summary-value {
             font-size: 2rem;
-            margin-bottom: 0.2rem;
+            font-weight: 700;
         }
-        .top-player-info p {
+        .summary-label {
+            font-size: 0.9rem;
             opacity: 0.9;
         }
-        .top-player-points {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1.5rem;
-            border-radius: var(--radius-button);
-        }
 
-        /* Category cards grid (5 cards – will wrap responsively) */
-        .category-grid {
+        /* Achievements grid */
+        .achievements-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: var(--space-4);
-            margin-top: var(--space-4);
         }
-        .category-card {
+        .achievement-card {
             background: var(--white);
             border-radius: var(--radius-card);
             border: 1px solid var(--neutral-200);
             padding: var(--space-4);
-            box-shadow: var(--shadow-sm);
-        }
-        .category-card h3 {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: var(--space-2);
-            margin-bottom: var(--space-3);
-            font-size: 1.3rem;
-            color: var(--primary);
-        }
-        .category-card h3 i {
-            color: var(--accent);
-        }
-        .leaderboard-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            padding: var(--space-2) 0;
-            border-bottom: 1px solid var(--neutral-200);
-        }
-        .leaderboard-item:last-child {
-            border-bottom: none;
-        }
-        .rank-badge {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--neutral-200);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: var(--primary);
-        }
-        .player-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--neutral-200);
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            overflow: hidden;
-        }
-        .player-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .player-info {
-            flex: 1;
-        }
-        .player-name {
-            font-weight: 600;
-        }
-        .player-points {
-            font-weight: 600;
-            color: var(--primary);
-        }
-        .current-user-badge {
-            background: var(--accent);
-            color: white;
-            font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 10px;
-            margin-left: 0.5rem;
-        }
-        .empty-message {
-            color: var(--neutral-400);
             text-align: center;
-            padding: var(--space-3);
+            transition: 0.2s;
+        }
+        .achievement-card.unlocked {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0,82,204,0.2);
+        }
+        .achievement-card.locked {
+            opacity: 0.6;
+            filter: grayscale(0.5);
+        }
+        .achievement-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-3);
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        .achievement-card.unlocked .achievement-icon {
+            background: var(--primary);
+            color: white;
+        }
+        .achievement-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .achievement-description {
+            color: var(--neutral-600);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-2);
+        }
+        .achievement-progress {
+            width: 100%;
+            height: 6px;
+            background: var(--neutral-200);
+            border-radius: 3px;
+            margin: var(--space-2) 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            width: 0%;
+        }
+        .achievement-status {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: var(--space-1);
+        }
+        .achievement-card.locked .achievement-status {
+            color: var(--neutral-400);
         }
 
         /* Bottom navigation */
@@ -374,7 +342,7 @@
     </style>
 </head>
 <body>
-    <!-- Header (no search button) -->
+    <!-- Header -->
     <header class="blog-header">
         <div class="header-container">
             <a href="blog-feed.html" class="logo"><i class="fas fa-code"></i> SAMZY<span>blog</span></a>
@@ -407,39 +375,30 @@
     <!-- Main Content -->
     <div class="main-container">
         <div class="page-title">
-            <i class="fas fa-trophy"></i> Leaderboard
+            <i class="fas fa-trophy"></i> Achievements
         </div>
 
-        <!-- Top Overall Player (will be filled by JS) -->
-        <div id="topPlayerContainer"></div>
+        <!-- Summary Card -->
+        <div class="summary-card" id="summaryCard">
+            <div class="summary-stats">
+                <div class="summary-item">
+                    <div class="summary-value" id="unlockedCount">0</div>
+                    <div class="summary-label">Unlocked</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value" id="totalCount">20</div>
+                    <div class="summary-label">Total</div>
+                </div>
+            </div>
+            <div class="summary-progress">
+                <span id="progressPercent">0%</span> complete
+            </div>
+        </div>
 
-        <!-- Category Cards Grid (5 cards) -->
-        <div class="category-grid" id="categoryGrid">
-            <!-- Quiz -->
-            <div class="category-card">
-                <h3><i class="fas fa-code"></i> Quiz Masters</h3>
-                <div id="quizList" class="empty-message">Loading...</div>
-            </div>
-            <!-- Memory -->
-            <div class="category-card">
-                <h3><i class="fas fa-brain"></i> Memory Champs</h3>
-                <div id="memoryList" class="empty-message">Loading...</div>
-            </div>
-            <!-- Typing -->
-            <div class="category-card">
-                <h3><i class="fas fa-keyboard"></i> Typing Legends</h3>
-                <div id="typingList" class="empty-message">Loading...</div>
-            </div>
-            <!-- Word Scramble -->
-            <div class="category-card">
-                <h3><i class="fas fa-puzzle-piece"></i> Scramble Stars</h3>
-                <div id="scrambleList" class="empty-message">Loading...</div>
-            </div>
-            <!-- Speed Racer -->
-            <div class="category-card">
-                <h3><i class="fas fa-car"></i> Racing Aces</h3>
-                <div id="racingList" class="empty-message">Loading...</div>
-            </div>
+        <!-- Achievements Grid -->
+        <div class="achievements-grid" id="achievementsGrid">
+            <!-- Loader -->
+            <div style="grid-column:1/-1; text-align:center; padding:2rem;">Loading achievements...</div>
         </div>
     </div>
 
@@ -474,7 +433,7 @@
 
         let currentUser = null;
 
-        // Helper functions (copied from home page)
+        // Helper functions
         function stringToColor(str) {
             let hash = 0;
             for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
@@ -489,42 +448,66 @@
             return Math.floor(s/86400)+'d ago';
         }
 
-        async function loadUserAvatar(user) {
+        // Load user avatar and admin status
+        async function loadUserAvatarAndAdmin(user) {
             const avatarDiv = document.getElementById('userAvatar');
             try {
                 const userDoc = await db.collection('users').doc(user.uid).get();
-                if (userDoc.exists && userDoc.data().avatarURL) {
-                    avatarDiv.innerHTML = `<img src="${userDoc.data().avatarURL}" alt="avatar">`;
+                if (userDoc.exists) {
+                    const data = userDoc.data();
+                    if (data.avatarURL) {
+                        avatarDiv.innerHTML = `<img src="${data.avatarURL}" alt="avatar">`;
+                    } else {
+                        const displayName = data.displayName || user.email;
+                        const initials = displayName.charAt(0).toUpperCase();
+                        avatarDiv.style.background = stringToColor(displayName);
+                        avatarDiv.innerHTML = `<span>${initials}</span>`;
+                    }
+                    // Admin check
+                    const isAdmin = data.isAdmin === true;
+                    document.getElementById('adminLink').style.display = isAdmin ? 'flex' : 'none';
                 } else {
-                    const displayName = userDoc.exists && userDoc.data().displayName ? userDoc.data().displayName : user.email;
-                    const initials = displayName.charAt(0).toUpperCase();
-                    avatarDiv.style.background = stringToColor(displayName);
-                    avatarDiv.innerHTML = `<span>${initials}</span>`;
+                    avatarDiv.style.background = stringToColor(user.email);
+                    avatarDiv.innerHTML = `<span>${user.email.charAt(0).toUpperCase()}</span>`;
                 }
             } catch (error) {
+                console.error('Error loading user data:', error);
                 avatarDiv.style.background = stringToColor(user.email);
                 avatarDiv.innerHTML = `<span>${user.email.charAt(0).toUpperCase()}</span>`;
             }
         }
 
-        function setupDropdown() {
-            const avatar = document.getElementById('userAvatar');
-            const dropdown = document.getElementById('userDropdown');
-            const logoutBtn = document.getElementById('logoutBtn');
-            if (avatar && dropdown) {
-                avatar.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    dropdown.classList.toggle('show');
-                });
-                document.addEventListener('click', () => dropdown.classList.remove('show'));
+        // Auth state
+        auth.onAuthStateChanged(async user => {
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
             }
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    auth.signOut().then(() => window.location.href = 'community.html');
-                });
-            }
-        }
+            currentUser = user;
+            await loadUserAvatarAndAdmin(user);
+            loadNotifications();
+            loadAchievements();
+        });
+
+        // Dropdowns
+        document.getElementById('userAvatar').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('userDropdown').classList.toggle('show');
+        });
+        document.addEventListener('click', () => {
+            document.getElementById('userDropdown').classList.remove('show');
+            document.getElementById('notificationsDropdown').classList.remove('show');
+        });
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            auth.signOut().then(() => window.location.href = 'community.html');
+        });
+
+        // Notifications
+        document.getElementById('notificationsBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('notificationsDropdown').classList.toggle('show');
+        });
 
         async function loadNotifications() {
             if (!currentUser) return;
@@ -584,98 +567,106 @@
             }
         }
 
-        // Auth state
-        auth.onAuthStateChanged(async user => {
-            if (!user) {
-                window.location.href = 'login.html';
-                return;
-            }
-            currentUser = user;
-            await loadUserAvatar(user);
-            setupDropdown();
-            loadNotifications();
-            loadLeaderboard();
-        });
+        // ===== ACHIEVEMENTS =====
+        // Define all possible achievements
+        const ACHIEVEMENTS = [
+            { id: 'first-post', name: 'First Post', description: 'Create your first post', icon: 'fa-pen', maxProgress: 1 },
+            { id: '10-likes', name: 'Getting Popular', description: 'Receive 10 likes on your posts', icon: 'fa-heart', maxProgress: 10 },
+            { id: '50-likes', name: 'Rising Star', description: 'Receive 50 likes total', icon: 'fa-star', maxProgress: 50 },
+            { id: 'first-comment', name: 'Commenter', description: 'Post your first comment', icon: 'fa-comment', maxProgress: 1 },
+            { id: 'quiz-beginner', name: 'Quiz Novice', description: 'Score 100 points in Quiz', icon: 'fa-code', maxProgress: 100 },
+            { id: 'quiz-master', name: 'Quiz Master', description: 'Score 500 points in Quiz', icon: 'fa-trophy', maxProgress: 500 },
+            { id: 'memory-beginner', name: 'Memory Learner', description: 'Complete 10 levels in Memory', icon: 'fa-brain', maxProgress: 10 },
+            { id: 'memory-master', name: 'Memory Champion', description: 'Complete 50 levels in Memory', icon: 'fa-crown', maxProgress: 50 },
+            { id: 'typing-50', name: 'Typing Racer', description: 'Type 50 WPM', icon: 'fa-keyboard', maxProgress: 50 },
+            { id: 'social-butterfly', name: 'Social Butterfly', description: 'Get 5 followers', icon: 'fa-users', maxProgress: 5 },
+            { id: 'streak-7', name: 'Weekly Warrior', description: 'Log in 7 days in a row', icon: 'fa-calendar-check', maxProgress: 7 },
+            { id: 'early-adopter', name: 'Early Adopter', description: 'Joined in the first month', icon: 'fa-rocket', maxProgress: 1, special: true },
+        ];
 
-        async function loadLeaderboard() {
-            // Top overall player (by total points)
-            const overallSnap = await db.collection('users').orderBy('points', 'desc').limit(1).get();
-            const topContainer = document.getElementById('topPlayerContainer');
-            if (!overallSnap.empty) {
-                const doc = overallSnap.docs[0];
-                const data = doc.data();
-                const name = data.displayName || 'Anonymous';
-                const points = data.points || 0;
-                const avatarURL = data.avatarURL || null;
-                const isCurrent = doc.id === currentUser.uid;
+        // Map to store user progress for each achievement
+        let userProgress = {};
 
-                let avatarHtml = avatarURL
-                    ? `<img src="${avatarURL}" alt="avatar">`
-                    : `<span>${name.charAt(0).toUpperCase()}</span>`;
+        async function loadAchievements() {
+            const grid = document.getElementById('achievementsGrid');
+            const unlockedSpan = document.getElementById('unlockedCount');
+            const progressPercent = document.getElementById('progressPercent');
 
-                topContainer.innerHTML = `
-                    <div class="top-player-card">
-                        <div class="top-player-avatar" style="background:${stringToColor(name)};">
-                            ${avatarHtml}
-                        </div>
-                        <div class="top-player-info">
-                            <h2>${name}</h2>
-                            <p>${isCurrent ? 'You are the' : 'Overall'} Best Player</p>
-                        </div>
-                        <div class="top-player-points">${points} pts</div>
-                    </div>
-                `;
-            } else {
-                topContainer.innerHTML = '';
-            }
-
-            // Load per‑game leaderboards for all five games
-            await loadCategory('quizPoints', 'quizList');
-            await loadCategory('memoryPoints', 'memoryList');
-            await loadCategory('typingPoints', 'typingList');
-            await loadCategory('scramblePoints', 'scrambleList');
-            await loadCategory('racingPoints', 'racingList');
-        }
-
-        async function loadCategory(field, elementId) {
-            const listDiv = document.getElementById(elementId);
             try {
-                const snapshot = await db.collection('users').orderBy(field, 'desc').limit(3).get();
-                if (snapshot.empty) {
-                    listDiv.innerHTML = '<div class="empty-message">No players yet.</div>';
-                    return;
-                }
+                // Fetch user data to get achievements and stats
+                const userDoc = await db.collection('users').doc(currentUser.uid).get();
+                const userData = userDoc.data() || {};
+
+                // Get achievements array from user (store as array of strings or map)
+                const userAchievements = userData.achievements || [];
+
+                // Get user stats for progress calculations
+                const postsSnap = await db.collection('posts').where('authorId', '==', currentUser.uid).get();
+                const postCount = postsSnap.size;
+                let totalLikes = 0;
+                postsSnap.forEach(doc => totalLikes += doc.data().likeCount || 0);
+
+                const commentsSnap = await db.collection('posts').get(); // Rough count of user comments? Not efficient. We'll skip for now.
+                // We'll use a simpler approach: achievements based on total likes and post count.
+
+                // Game points
+                const quizPoints = userData.quizPoints || 0;
+                const memoryPoints = userData.memoryPoints || 0;
+                const typingPoints = userData.typingPoints || 0;
+                const memoryLevel = userData.memoryLevel || 0; // Assume we store memory level
+
+                // Build progress for each achievement
+                userProgress = {
+                    'first-post': postCount >= 1 ? 1 : 0,
+                    '10-likes': Math.min(totalLikes, 10),
+                    '50-likes': Math.min(totalLikes, 50),
+                    'first-comment': 0, // We'd need to fetch comment count – placeholder
+                    'quiz-beginner': Math.min(quizPoints, 100),
+                    'quiz-master': Math.min(quizPoints, 500),
+                    'memory-beginner': Math.min(memoryLevel || 0, 10),
+                    'memory-master': Math.min(memoryLevel || 0, 50),
+                    'typing-50': Math.min(typingPoints, 50),
+                    'social-butterfly': 0, // followers count not implemented
+                    'streak-7': 0, // login streak not implemented
+                    'early-adopter': userData.createdAt && userData.createdAt.toDate() < new Date('2026-03-01') ? 1 : 0,
+                };
+
+                // Determine unlocked achievements (progress >= maxProgress)
+                let unlockedCount = 0;
+                const totalAchievements = ACHIEVEMENTS.length;
 
                 let html = '';
-                let rank = 1;
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    const name = data.displayName || 'Anonymous';
-                    const points = data[field] || 0;
-                    const isCurrent = doc.id === currentUser.uid;
-                    const avatarURL = data.avatarURL || null;
+                ACHIEVEMENTS.forEach(ach => {
+                    const progress = userProgress[ach.id] || 0;
+                    const unlocked = progress >= ach.maxProgress;
+                    if (unlocked) unlockedCount++;
 
-                    let avatarHtml = avatarURL
-                        ? `<img src="${avatarURL}" alt="avatar">`
-                        : `<span>${name.charAt(0).toUpperCase()}</span>`;
+                    const progressPercent = (progress / ach.maxProgress) * 100;
+                    const status = unlocked ? 'Unlocked' : `${progress}/${ach.maxProgress}`;
 
                     html += `
-                        <div class="leaderboard-item">
-                            <div class="rank-badge">${rank}</div>
-                            <div class="player-avatar" style="background:${stringToColor(name)};">${avatarHtml}</div>
-                            <div class="player-info">
-                                <span class="player-name">${name}</span>
-                                ${isCurrent ? '<span class="current-user-badge">you</span>' : ''}
+                        <div class="achievement-card ${unlocked ? 'unlocked' : 'locked'}">
+                            <div class="achievement-icon">
+                                <i class="fas ${ach.icon}"></i>
                             </div>
-                            <div class="player-points">${points}</div>
+                            <div class="achievement-name">${ach.name}</div>
+                            <div class="achievement-description">${ach.description}</div>
+                            <div class="achievement-progress">
+                                <div class="progress-fill" style="width: ${progressPercent}%;"></div>
+                            </div>
+                            <div class="achievement-status">${status}</div>
                         </div>
                     `;
-                    rank++;
                 });
-                listDiv.innerHTML = html;
-            } catch (e) {
-                console.error(`Error loading ${field}:`, e);
-                listDiv.innerHTML = '<div class="empty-message">Error loading data.</div>';
+
+                grid.innerHTML = html;
+                unlockedSpan.textContent = unlockedCount;
+                const percent = Math.round((unlockedCount / totalAchievements) * 100);
+                progressPercent.textContent = percent + '%';
+
+            } catch (error) {
+                console.error('Error loading achievements:', error);
+                grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:2rem; color:red;">Failed to load achievements.</div>';
             }
         }
     </script>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Word Scramble · Samzy Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: #0f172a;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .game-container {
+            width: 100%;
+            max-width: 400px;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 40px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            backdrop-filter: blur(5px);
+        }
+        .game-card {
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 24px 20px;
+        }
+        h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 24px;
+            color: #FF6B35;
+        }
+        .stats-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .stat-box {
+            background: #334155;
+            padding: 12px 0;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 500;
+            flex: 1;
+            text-align: center;
+        }
+        .stat-box span {
+            color: #FF6B35;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+        .word-display {
+            background: #0f172a;
+            border-radius: 60px;
+            padding: 24px 12px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .scrambled {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            color: #0052CC;
+            text-transform: uppercase;
+            font-family: 'Courier New', monospace;
+            word-break: break-word;
+        }
+        .input-field {
+            width: 100%;
+            background: #334155;
+            border: 2px solid transparent;
+            color: white;
+            padding: 16px 20px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            outline: none;
+            text-transform: uppercase;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 16px;
+        }
+        .input-field:focus {
+            border-color: #0052CC;
+        }
+        .button-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .submit-btn {
+            flex: 1;
+            background: #0052CC;
+            color: white;
+            border: none;
+            padding: 16px 0;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .submit-btn:active {
+            background: #003d99;
+        }
+        .hint-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #334155;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .hint-btn.active {
+            background: #10B981;
+            box-shadow: 0 0 20px #10B981;
+        }
+        .message {
+            text-align: center;
+            font-size: 1rem;
+            min-height: 40px;
+            color: #94a3b8;
+        }
+        @media (max-width: 360px) {
+            .scrambled { font-size: 2rem; letter-spacing: 4px; }
+            .button-row { gap: 8px; }
+            .hint-btn { width: 60px; height: 60px; font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <a href="blog-games.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+        <div class="game-card">
+            <h1><i class="fas fa-puzzle-piece"></i> Word Scramble</h1>
+            
+            <div class="stats-row">
+                <div class="stat-box">Score <span id="score">0</span></div>
+                <div class="stat-box">Streak <span id="streak">0</span></div>
+            </div>
+
+            <div class="word-display">
+                <div class="scrambled" id="scrambled">LOADING</div>
+            </div>
+
+            <input type="text" id="userInput" class="input-field" placeholder="Type answer..." autocomplete="off">
+
+            <div class="button-row">
+                <button id="submitBtn" class="submit-btn">Submit</button>
+                <button id="hintBtn" class="hint-btn"><i class="fas fa-lightbulb"></i></button>
+            </div>
+
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
+            authDomain: "samzy-community-blog.firebaseapp.com",
+            projectId: "samzy-community-blog",
+            storageBucket: "samzy-community-blog.firebasestorage.app",
+            messagingSenderId: "573240466296",
+            appId: "1:573240466296:web:5faa312a1136162961468d"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        const wordList = [
+            'html','css','js','dom','api','url','php','xml','json','ajax',
+            'div','span','a','p','br','hr','img','svg','form','input',
+            'button','label','table','ul','ol','li','head','body','meta','link',
+            'script','style','class','id','name','type','src','href','alt','title',
+            'data','role','aria','value','method','action','get','post','put','delete',
+            'function','const','let','var','if','else','for','while','switch','case',
+            'break','continue','return','try','catch','finally','throw','new','this',
+            'super','class','extends','constructor','prototype','static','async','await',
+            'promise','then','catch','array','object','string','number','boolean','null','undefined',
+            'map','set','weakmap','weakset','date','regexp','error','eval','parseInt','parseFloat',
+            'react','vue','angular','svelte','next','nuxt','node','express','django','flask',
+            'laravel','spring','rails','python','java','kotlin','swift','rust','go','cpp',
+            'javascript','typescript','ecmascript','webassembly','webgl','webrtc','websocket',
+            'webworker','serviceworker','indexeddb','localstorage','sessionstorage','flexbox','grid',
+            'bootstrap','tailwind','jquery','lodash','axios','fetch','graphql','rest','oauth','jwt',
+            'bcrypt','argon2','sha256','md5','base64','unicode','arraybuffer','formdata','firebase',
+            'supabase','auth0','webpack','vite','rollup','babel','eslint','jest','docker','kubernetes',
+            'git','github','gitlab','vscode','intellij','androidstudio','visualstudio','terminal','bash',
+            'linux','windows','macos','ubuntu','debian','centos','nginx','apache','mysql','postgresql',
+            'mongodb','redis','elasticsearch','cassandra','dynamodb','sqlite','mariadb','oracle','db2','mssql'
+        ];
+
+        let currentUser = null;
+        let currentWord = '';
+        let score = 0;
+        let streak = 0;
+        let hintAvailable = false;
+        let hintUsed = false;
+
+        const scrambledEl = document.getElementById('scrambled');
+        const scoreEl = document.getElementById('score');
+        const streakEl = document.getElementById('streak');
+        const userInput = document.getElementById('userInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const hintBtn = document.getElementById('hintBtn');
+        const messageEl = document.getElementById('message');
+
+        function shuffleString(str) {
+            const arr = str.split('');
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr.join('');
+        }
+
+        function getRandomWord() {
+            return wordList[Math.floor(Math.random() * wordList.length)];
+        }
+
+        function newWord() {
+            currentWord = getRandomWord();
+            scrambledEl.textContent = shuffleString(currentWord);
+            userInput.value = '';
+            hintUsed = false;
+            updateHintButton();
+            messageEl.textContent = '';
+        }
+
+        function updateHintButton() {
+            hintAvailable = (streak >= 20 && !hintUsed);
+            hintBtn.classList.toggle('active', hintAvailable);
+        }
+
+        function updateScore() {
+            scoreEl.textContent = score;
+            streakEl.textContent = streak;
+        }
+
+        function checkAnswer() {
+            const guess = userInput.value.trim().toLowerCase();
+            if (!guess) {
+                messageEl.textContent = 'Type your answer!';
+                return;
+            }
+            if (guess === currentWord) {
+                score += 5;
+                streak++;
+                messageEl.textContent = '✅ Correct! +5 points';
+                messageEl.style.color = '#10B981';
+                updateScore();
+                if (currentUser) {
+                    db.collection('users').doc(currentUser.uid).update({
+                        scramblePoints: firebase.firestore.FieldValue.increment(5),
+                        points: firebase.firestore.FieldValue.increment(5)
+                    }).catch(console.error);
+                }
+                setTimeout(() => {
+                    newWord();
+                    updateHintButton();
+                }, 700);
+            } else {
+                streak = 0;
+                messageEl.textContent = '❌ Wrong. Try again!';
+                messageEl.style.color = '#EF4444';
+                userInput.value = '';
+                updateScore();
+                updateHintButton();
+            }
+        }
+
+        function useHint() {
+            if (!hintAvailable) return;
+            userInput.value = currentWord.substring(0, 3);
+            hintUsed = true;
+            hintAvailable = false;
+            hintBtn.classList.remove('active');
+            userInput.focus();
+        }
+
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = 'login.html?returnTo=' + encodeURIComponent(window.location.href);
+                return;
+            }
+            currentUser = user;
+            newWord();
+        });
+
+        submitBtn.addEventListener('click', checkAnswer);
+        userInput.addEventListener('keypress', e => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                checkAnswer();
+            }
+        });
+        hintBtn.addEventListener('click', useHint);
+    </script>
+</body>
+</html>

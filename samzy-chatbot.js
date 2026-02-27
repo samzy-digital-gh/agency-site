@@ -1,10 +1,9 @@
-// ===== SAMZY DIGITAL CHATBOT v10.1 – FINAL =====
+// ===== SAMZY DIGITAL CHATBOT v11.0 – NO FORMSPREE =====
 // ✅ 200+ QUESTIONS – ALL YOUR FAQs + EXISTING Q&As
 // ✅ FRIENDLY PAGE NAMES (Business page, Community page, etc.)
 // ✅ EXACT MATCH + 2‑WORD OVERLAP – GUARANTEED ANSWERS
-// ✅ DIRECTIONS POINT TO PAGES IN PLAIN ENGLISH
-// ✅ FORMSPREE FALLBACK – EMAILS YOU UNANSWERED QUESTIONS
-// =================================================
+// ✅ NO EMAIL SENDING – SIMPLE FALLBACK MESSAGE
+// =====================================================
 (function() {
     "use strict";
 
@@ -18,20 +17,6 @@
     let isOpen = false;
 
     const GREETING = "Hey there! 👋 I'm Samzy's assistant. Ask me about websites, pricing, learning to code, hosting, or the community.";
-
-    // ----- FORMSPREE (YOUR EMAIL + ENDPOINT) -----
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maqqdela';
-    function sendToFormspree(question) {
-        fetch(FORMSPREE_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({
-                question: question,
-                _replyto: 'samuelahiaba3@gmail.com',
-                _subject: '🤖 Chatbot question - needs your answer'
-            })
-        }).catch(console.error);
-    }
 
     // ----- NORMALISE TEXT (lowercase, remove punctuation, collapse spaces) -----
     function normaliseText(text) {
@@ -262,8 +247,8 @@
         // ---------- 📚 11. RESOURCES (FROM PREVIOUS WORK) ----------
         { keywords: ["resources", "starter guide", "beginner pdf", "download guide", "coding guide"], answer: "Head to the **Resources page** – you'll find a **Download 'How to Get Started in Coding'** button. Tap it to get the free PDF guide instantly. It's perfect for absolute beginners 📥" },
 
-        // ---------- 🛑 12. FALLBACK (LAST) ----------
-        { keywords: [], answer: "Hmm, I'm still learning! 🤓 I've sent your question to Samzy and he'll get back to you soon. Want to try asking something else?" }
+        // ---------- 🛑 12. FALLBACK (LAST – NO EMAIL) ----------
+        { keywords: [], answer: "Sorry, I don't have an answer for that. Could you rephrase your question? 😊" }
     ];
 
     // ------------------------------------------------------------
@@ -318,8 +303,7 @@
             if (bestMatch) return bestMatch.answer;
         }
 
-        // 3. NO MATCH – send to Formspree, return fallback
-        sendToFormspree(userInput);
+        // 3. NO MATCH – return fallback (no email)
         return knowledge[knowledge.length-1].answer;
     }
 

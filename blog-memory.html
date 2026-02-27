@@ -2,141 +2,181 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Memory Match · Samzy Community</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body { background:#f8fafc; color:#1e293b; }
-        a { text-decoration:none; color:inherit; }
-        .blog-header {
-            background:white; position:sticky; top:0; z-index:50;
-            box-shadow:0 2px 10px rgba(0,0,0,0.03);
-            border-bottom:1px solid rgba(0,102,255,0.1);
+        /* === DESIGN SYSTEM (same as other pages) === */
+        :root {
+            --primary: #0052CC;
+            --accent: #FF6B35;
+            --neutral-50: #F8FAFC;
+            --neutral-200: #E2E8F0;
+            --neutral-400: #94A3B8;
+            --neutral-600: #64748B;
+            --neutral-900: #1E293B;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-md: 0 6px 18px rgba(0,0,0,0.05);
+            --radius-card: 16px;
+            --radius-button: 40px;
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
         }
-        .header-container {
-            max-width:1300px; margin:0 auto; padding:1rem 2rem;
-            display:flex; align-items:center; justify-content:space-between;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
-        .logo { font-size:1.5rem; font-weight:600; }
-        .logo i { color:#0066FF; margin-right:6px; }
-        .logo span { color:#FF6B35; }
-        .nav-links { display:flex; gap:2rem; }
-        .nav-links a { font-weight:500; padding:0.5rem 0; border-bottom:2px solid transparent; transition:0.2s; }
-        .nav-links a:hover, .nav-links a.active { color:#0066FF; border-bottom-color:#0066FF; }
-        .user-menu { position:relative; }
-        .user-avatar {
-            width:40px; height:40px; border-radius:50%; background:#e6f0ff; color:#0066FF;
-            display:flex; align-items:center; justify-content:center; font-weight:600; cursor:pointer;
+        body {
+            background: #0f172a;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
-        .user-avatar img { width:100%; height:100%; border-radius:50%; object-fit:cover; }
-        .dropdown {
-            position:absolute; right:0; top:50px; background:white; border-radius:16px;
-            box-shadow:0 10px 30px rgba(0,0,0,0.1); width:180px; display:none; z-index:100;
-            border:1px solid #eef2f6;
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            border-radius: 40px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            z-index: 10;
+            text-decoration: none;
         }
-        .dropdown.show { display:block; }
-        .dropdown a { display:flex; align-items:center; gap:10px; padding:0.9rem 1.2rem; transition:background 0.2s; }
-        .dropdown a:hover { background:#f1f5f9; }
-        .dropdown i { width:20px; color:#0066FF; }
-        .main-container {
-            max-width:800px; margin:2rem auto; padding:0 2rem;
+        .back-btn i {
+            margin-right: 5px;
         }
         .game-card {
-            background:white; border-radius:24px; padding:2rem;
-            box-shadow:0 4px 12px rgba(0,0,0,0.03); border:1px solid rgba(0,102,255,0.1);
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
-        .memory-stats { display:flex; justify-content:space-between; margin-bottom:1rem; }
-        .memory-level { font-weight:600; color:#0066FF; }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .level-box {
+            background: var(--primary);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+        .pairs-box {
+            background: var(--accent);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
         .memory-grid {
-            display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:1rem 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
         }
         .memory-card {
-            aspect-ratio:1; background:#e6f0ff; border-radius:12px; display:flex;
-            align-items:center; justify-content:center; font-size:1.5rem; cursor:pointer;
-            transition:0.2s; border:2px solid transparent; color:#0066FF;
+            aspect-ratio: 1;
+            background: var(--primary);
+            border-radius: var(--radius-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 2px solid transparent;
         }
-        .memory-card.flipped { background:white; border-color:#0066FF; }
-        .memory-card.matched { background:#c8e6c9; border-color:#2e7d32; color:#2e7d32; cursor:default; }
-        .memory-card:active { transform:scale(0.95); }
-        .memory-message { margin-top:1rem; color:#64748b; }
-        .reset-btn {
-            background:#0066FF; color:white; border:none; padding:0.5rem 1rem; border-radius:40px;
-            cursor:pointer; margin-right:0.5rem;
+        .memory-card.flipped {
+            background: white;
+            color: var(--primary);
+            border-color: var(--primary);
         }
-        .back-link { display:inline-block; margin-top:1rem; color:#0066FF; }
-        .blog-footer {
-            background:#000; color:#ccc; padding:3rem 2rem 1.5rem; margin-top:3rem;
+        .memory-card.matched {
+            background: #10B981;
+            color: white;
+            cursor: default;
         }
-        .footer-container {
-            max-width:1300px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr);
-            gap:2rem; text-align:left;
+        .message {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            min-height: 2rem;
         }
-        .footer-col h4 { color:white; margin-bottom:1.2rem; font-size:1.1rem; }
-        .footer-col ul { list-style:none; }
-        .footer-col li { margin-bottom:0.6rem; }
-        .footer-col a { color:#ccc; transition:color 0.2s; }
-        .footer-col a:hover { color:#FF6B35; }
-        .social-icons { display:flex; gap:1rem; font-size:1.3rem; }
-        .social-icons a { color:#ccc; }
-        .social-icons a:hover { color:#FF6B35; }
-        .copyright {
-            text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid #333;
-            color:#777; font-size:0.9rem;
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
         }
-        @media (max-width:700px) { .footer-container { grid-template-columns:1fr; } }
+        .control-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+        }
+        .control-btn:hover {
+            background: #e05530;
+        }
+        .control-btn.reset-game {
+            background: #475569;
+        }
+        .control-btn.reset-game:hover {
+            background: #334155;
+        }
+        @media (max-width:600px) {
+            .game-card { padding: 20px; }
+        }
     </style>
 </head>
 <body>
-    <header class="blog-header">
-        <div class="header-container">
-            <a href="blog-feed.html" class="logo"><i class="fas fa-code"></i> SAMZY<span>blog</span></a>
-            <nav class="nav-links">
-                <a href="blog-feed.html">Home</a>
-                <a href="blog-profile.html">Profile</a>
-                <a href="blog-leaderboard.html">Leaderboard</a>
-                <a href="blog-games.html">Games</a>
-            </nav>
-            <div class="user-menu">
-                <div class="user-avatar" id="userAvatar"><span id="avatarText"></span></div>
-                <div class="dropdown" id="dropdown">
-                    <a href="blog-profile.html"><i class="fas fa-user"></i> Profile</a>
-                    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                </div>
-            </div>
+    <a href="blog-games.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+    <div class="game-card">
+        <h1><i class="fas fa-brain"></i> Memory Match</h1>
+        <div class="game-header">
+            <div class="level-box">Level <span id="level">1</span></div>
+            <div class="pairs-box">Pairs <span id="pairs">0/2</span></div>
         </div>
-    </header>
-
-    <div class="main-container">
-        <div class="game-card">
-            <h2><i class="fas fa-brain" style="color:#FF6B35;"></i> Memory Match · 150 Levels</h2>
-            <div class="memory-stats">
-                <span class="memory-level" id="memoryLevel">Level 1</span>
-                <span id="memoryPairs">Pairs: 0/2</span>
-            </div>
-            <div class="memory-grid" id="memoryGrid"></div>
-            <div class="memory-message" id="memoryMessage"></div>
-            <div>
-                <button class="reset-btn" id="resetMemory">Restart Level</button>
-                <button class="reset-btn" id="resetAllMemory">Start Over</button>
-            </div>
-            <a href="blog-games.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Games</a>
+        <div class="memory-grid" id="memoryGrid"></div>
+        <div class="message" id="message"></div>
+        <div class="controls">
+            <button class="control-btn" id="restartLevelBtn">Restart Level</button>
+            <button class="control-btn reset-game" id="resetGameBtn">Reset Game</button>
         </div>
     </div>
-
-    <footer class="blog-footer">
-        <div class="footer-container">
-            <div class="footer-col"><h4>Navigation</h4><ul><li><a href="blog-feed.html">Home</a></li><li><a href="blog-profile.html">Profile</a></li><li><a href="blog-leaderboard.html">Leaderboard</a></li><li><a href="blog-games.html">Games</a></li></ul></div>
-            <div class="footer-col"><h4>Legal</h4><ul><li><a href="terms.html">Terms of Service</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="cookies.html">Cookie Policy</a></li></ul></div>
-            <div class="footer-col"><h4>Connect</h4><div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a></div></div>
-        </div>
-        <div class="copyright">© 2026 Samzy Digital Community. All rights reserved.</div>
-    </footer>
 
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
     <script>
+        // Firebase config
         const firebaseConfig = {
             apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
             authDomain: "samzy-community-blog.firebaseapp.com",
@@ -150,157 +190,191 @@
         const db = firebase.firestore();
 
         let currentUser = null;
-        auth.onAuthStateChanged(user => {
-            if (!user) { window.location.href = 'login.html'; return; }
-            currentUser = user;
-            loadUserAvatar(user);
-            initMemoryGame();
-        });
+        let currentLevel = 1;
+        let totalPairs = 0;
+        let cards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let canFlip = true;
+        let loaded = false;
 
-        function stringToColor(str) {
-            let hash = 0;
-            for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
-            return `hsl(${hash % 360}, 70%, 80%)`;
-        }
-        function loadUserAvatar(user) {
-            const avatarDiv = document.querySelector('.user-avatar');
-            db.collection('users').doc(user.uid).get().then(doc => {
-                const displayName = doc.exists && doc.data().displayName ? doc.data().displayName : user.email;
-                const initials = displayName.charAt(0).toUpperCase();
-                avatarDiv.style.background = stringToColor(displayName);
-                avatarDiv.innerHTML = `<span>${initials}</span>`;
-            }).catch(() => {
-                avatarDiv.style.background = stringToColor(user.email);
-                avatarDiv.innerHTML = `<span>${user.email.charAt(0).toUpperCase()}</span>`;
-            });
-        }
-        document.getElementById('userAvatar').addEventListener('click', e => {
-            e.stopPropagation();
-            document.getElementById('dropdown').classList.toggle('show');
-        });
-        document.addEventListener('click', () => document.getElementById('dropdown').classList.remove('show'));
-        document.getElementById('logoutBtn').addEventListener('click', e => {
-            e.preventDefault();
-            auth.signOut().then(() => window.location.href = 'community.html');
-        });
+        // Emoji list for cards (expand as needed)
+        const emojis = ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐨','🐸','🐙','🐵','🐔','🐧','🐦','🐤','🐣','🐥','🐺','🐗','🐴','🦄','🐝','🐛','🦋','🐌','🐞','🐜','🦟','🦗','🕷️','🦂','🐢','🐍','🦎','🐙','🦑','🦐','🦞','🐠','🐟','🐡','🐬','🐳','🐋','🦈','🐊','🐅','🐆','🦓','🦍','🦧','🐘','🦛','🦏','🐪','🐫','🦒','🐃','🐂','🐄','🐎','🐖','🐏','🐑','🐐','🦌','🐕','🐩','🐈','🐓','🦃','🦚','🦜','🦢','🦩','🐦','🐧','🐤','🐣','🐥'];
 
-        // ---------- MEMORY GAME (150 levels) ----------
-        let memoryLevel = 1;
-        const MAX_PAIRS = 40; // 80 cards maximum
-        let memoryCards = [];
-        let memoryFlipped = [];
-        let memoryMatchedPairs = 0;
-        let memoryCanFlip = true;
-        const memoryGrid = document.getElementById('memoryGrid');
-        const memoryLevelSpan = document.getElementById('memoryLevel');
-        const memoryPairsSpan = document.getElementById('memoryPairs');
-        const memoryMessage = document.getElementById('memoryMessage');
-
-        function shuffleArray(arr) {
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
+        // ---------- Firebase Helpers ----------
+        async function loadUserProgress() {
+            if (!currentUser) return;
+            try {
+                const doc = await db.collection('users').doc(currentUser.uid).get();
+                if (doc.exists) {
+                    const data = doc.data();
+                    // memoryLevel might not exist yet
+                    currentLevel = data.memoryLevel || 1;
+                    // memoryPoints can be displayed optionally
+                } else {
+                    currentLevel = 1;
+                }
+            } catch (e) {
+                console.error('Error loading progress:', e);
+                currentLevel = 1;
             }
-            return arr;
         }
 
-        function loadMemoryLevel(level) {
-            const numPairs = Math.min(level + 1, MAX_PAIRS); // level 1 → 2 pairs, level 39 → 40 pairs, then stays 40
-            memoryLevelSpan.textContent = `Level ${level} (${numPairs} pairs)`;
+        async function saveProgress(newLevel, pointsEarned) {
+            if (!currentUser) return;
+            try {
+                const userRef = db.collection('users').doc(currentUser.uid);
+                await db.runTransaction(async (transaction) => {
+                    const userDoc = await transaction.get(userRef);
+                    const currentPoints = userDoc.data().memoryPoints || 0;
+                    const currentSavedLevel = userDoc.data().memoryLevel || 1;
+                    // Only update if newLevel is greater than saved level (or always update to newLevel)
+                    // We'll always update memoryLevel to newLevel, and increment memoryPoints by pointsEarned
+                    transaction.update(userRef, {
+                        memoryLevel: newLevel,
+                        memoryPoints: firebase.firestore.FieldValue.increment(pointsEarned),
+                        points: firebase.firestore.FieldValue.increment(pointsEarned)
+                    });
+                });
+                console.log(`Progress saved: level ${newLevel}, +${pointsEarned} points`);
+            } catch (e) {
+                console.error('Error saving progress:', e);
+            }
+        }
 
-            const emojis = ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐨','🐸','🐙','🦷','🐞','🐝','🦋','🐌','🐢','🐍','🦎','🐟','🐠','🐡','🐬','🐳','🐋','🦈','🐊','🐅','🐆','🦓','🦍','🦧','🦣','🐘','🦏','🐪','🐫','🦒','🐃','🐂','🐄','🐎','🐖','🐏','🐑','🐐','🦌','🐕','🐩','🐈','🐓','🦃','🦚','🦜','🦢','🦩','🐦','🐧','🐤','🐣','🐥'];
+        // ---------- Game Logic ----------
+        function getPairsForLevel(level) {
+            // Level 1: 2 pairs, Level 2: 3 pairs, ... up to 40 pairs max
+            return Math.min(level + 1, 40);
+        }
+
+        function createCardsForLevel(level) {
+            const numPairs = getPairsForLevel(level);
             const selectedEmojis = emojis.slice(0, numPairs);
-            const cards = shuffleArray([...selectedEmojis, ...selectedEmojis]); // duplicate for pairs
-
-            memoryCards = cards;
-            memoryFlipped = [];
-            memoryMatchedPairs = 0;
-            memoryCanFlip = true;
-            renderMemoryGrid();
-            updateMemoryPairs();
-            memoryMessage.textContent = '';
+            // Duplicate and shuffle
+            let deck = [...selectedEmojis, ...selectedEmojis];
+            // Shuffle
+            for (let i = deck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [deck[i], deck[j]] = [deck[j], deck[i]];
+            }
+            return deck;
         }
 
-        function renderMemoryGrid() {
-            memoryGrid.innerHTML = '';
-            memoryCards.forEach((emoji, index) => {
+        function renderGrid() {
+            const grid = document.getElementById('memoryGrid');
+            grid.innerHTML = '';
+            cards.forEach((emoji, index) => {
                 const card = document.createElement('div');
                 card.className = 'memory-card';
                 card.dataset.index = index;
                 card.dataset.emoji = emoji;
                 card.textContent = '?';
-                card.addEventListener('click', () => memoryCardClick(card, index, emoji));
-                memoryGrid.appendChild(card);
+                card.addEventListener('click', () => onCardClick(card, index, emoji));
+                grid.appendChild(card);
             });
         }
 
-        function memoryCardClick(card, index, emoji) {
-            if (!memoryCanFlip) return;
+        function updateStats() {
+            document.getElementById('level').textContent = currentLevel;
+            const totalPairs = cards.length / 2;
+            document.getElementById('pairs').textContent = `${matchedPairs}/${totalPairs}`;
+        }
+
+        function onCardClick(card, index, emoji) {
+            if (!canFlip) return;
             if (card.classList.contains('flipped') || card.classList.contains('matched')) return;
-            if (memoryFlipped.length === 2) return;
+            if (flippedCards.length === 2) return;
 
             card.classList.add('flipped');
             card.textContent = emoji;
-            memoryFlipped.push({ card, index, emoji });
+            flippedCards.push({ card, index, emoji });
 
-            if (memoryFlipped.length === 2) {
-                memoryCanFlip = false;
-                const [first, second] = memoryFlipped;
+            if (flippedCards.length === 2) {
+                canFlip = false;
+                const [first, second] = flippedCards;
                 if (first.emoji === second.emoji) {
-                    // match
+                    // Match
                     first.card.classList.add('matched');
                     second.card.classList.add('matched');
-                    memoryMatchedPairs++;
-                    memoryFlipped = [];
-                    memoryCanFlip = true;
-                    updateMemoryPairs();
+                    matchedPairs++;
+                    flippedCards = [];
+                    canFlip = true;
+                    updateStats();
 
-                    if (memoryMatchedPairs === memoryCards.length / 2) {
-                        // level complete
-                        memoryMessage.textContent = `🎉 Level ${memoryLevel} complete! +20 points.`;
-                        updateUserPoints(20);
-                        memoryLevel++;
-                        loadMemoryLevel(memoryLevel);
+                    if (matchedPairs === cards.length / 2) {
+                        // Level complete
+                        const message = document.getElementById('message');
+                        message.textContent = `🎉 Level ${currentLevel} complete! +20 points.`;
+                        // Award points and increase level
+                        const earned = 20;
+                        currentLevel++;
+                        saveProgress(currentLevel, earned);
+                        // Load next level after a short delay
+                        setTimeout(() => {
+                            loadLevel(currentLevel);
+                        }, 1000);
                     }
                 } else {
-                    // no match, flip back after delay
+                    // No match, flip back after delay
                     setTimeout(() => {
                         first.card.classList.remove('flipped');
                         first.card.textContent = '?';
                         second.card.classList.remove('flipped');
                         second.card.textContent = '?';
-                        memoryFlipped = [];
-                        memoryCanFlip = true;
+                        flippedCards = [];
+                        canFlip = true;
                     }, 800);
                 }
             }
         }
 
-        function updateMemoryPairs() {
-            const totalPairs = memoryCards.length / 2;
-            memoryPairsSpan.textContent = `Pairs: ${memoryMatchedPairs}/${totalPairs}`;
+        function loadLevel(level) {
+            currentLevel = level;
+            cards = createCardsForLevel(level);
+            matchedPairs = 0;
+            flippedCards = [];
+            canFlip = true;
+            renderGrid();
+            updateStats();
+            document.getElementById('message').textContent = '';
         }
 
-        async function updateUserPoints(amount) {
-            if (!currentUser) return;
-            try {
-                await db.collection('users').doc(currentUser.uid).update({
-                    memoryPoints: firebase.firestore.FieldValue.increment(amount),
-                    points: firebase.firestore.FieldValue.increment(amount)
-                });
-            } catch (e) {
-                console.error('Points update error:', e);
+        // ---------- Authentication ----------
+        auth.onAuthStateChanged(async user => {
+            if (!user) {
+                const returnTo = encodeURIComponent(window.location.href);
+                window.location.href = `login.html?returnTo=${returnTo}`;
+                return;
             }
-        }
+            currentUser = user;
+            await loadUserProgress();
+            loadLevel(currentLevel);
+        });
 
-        function initMemoryGame() {
-            loadMemoryLevel(memoryLevel);
-            document.getElementById('resetMemory').addEventListener('click', () => loadMemoryLevel(memoryLevel));
-            document.getElementById('resetAllMemory').addEventListener('click', () => {
-                memoryLevel = 1;
-                loadMemoryLevel(1);
-            });
-        }
+        // ---------- Event Listeners ----------
+        document.getElementById('restartLevelBtn').addEventListener('click', () => {
+            loadLevel(currentLevel);
+        });
+
+        document.getElementById('resetGameBtn').addEventListener('click', async () => {
+            if (confirm('Reset game to level 1? All progress will be lost.')) {
+                currentLevel = 1;
+                // Optionally reset in Firestore
+                if (currentUser) {
+                    try {
+                        await db.collection('users').doc(currentUser.uid).update({
+                            memoryLevel: 1,
+                            memoryPoints: 0
+                            // Note: global points are not reset because they are cumulative from all games.
+                        });
+                    } catch (e) {
+                        console.error('Error resetting progress:', e);
+                    }
+                }
+                loadLevel(1);
+            }
+        });
     </script>
 </body>
 </html>

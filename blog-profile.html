@@ -2,187 +2,598 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Profile · Samzy Community</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ========== GLOBAL STYLES (same as feed) ========== */
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body { background:#f8fafc; color:#1e293b; }
-        a { text-decoration:none; color:inherit; }
+        /* === DESIGN SYSTEM (same as home page) === */
+        :root {
+            --primary: #0052CC;
+            --accent: #FF6B35;
+            --neutral-50: #F8FAFC;
+            --neutral-200: #E2E8F0;
+            --neutral-400: #94A3B8;
+            --neutral-600: #64748B;
+            --neutral-900: #1E293B;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-md: 0 6px 18px rgba(0,0,0,0.05);
+            --radius-card: 16px;
+            --radius-button: 40px;
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: var(--neutral-50);
+            color: var(--neutral-900);
+            line-height: 1.5;
+            padding-bottom: 70px;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Header (same as home, but without search button) */
         .blog-header {
-            background:white; position:sticky; top:0; z-index:50;
-            box-shadow:0 2px 10px rgba(0,0,0,0.03);
-            border-bottom:1px solid rgba(0,102,255,0.1);
+            background: var(--white);
+            border-bottom: 1px solid var(--neutral-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.8rem 0;
         }
         .header-container {
-            max-width:1300px; margin:0 auto; padding:1rem 2rem;
-            display:flex; align-items:center; justify-content:space-between;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 var(--space-2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .logo { font-size:1.5rem; font-weight:600; }
-        .logo i { color:#0066FF; margin-right:6px; }
-        .logo span { color:#FF6B35; }
-        .nav-links { display:flex; gap:2rem; }
-        .nav-links a { font-weight:500; padding:0.5rem 0; border-bottom:2px solid transparent; transition:0.2s; }
-        .nav-links a:hover, .nav-links a.active { color:#0066FF; border-bottom-color:#0066FF; }
-        .user-menu { position:relative; }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .logo i { color: var(--primary); margin-right: 6px; }
+        .logo span { color: var(--accent); }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--neutral-600);
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        .icon-btn:hover {
+            background: var(--neutral-200);
+            color: var(--primary);
+        }
+        .badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 10px;
+            min-width: 18px;
+            text-align: center;
+        }
+        .user-menu {
+            position: relative;
+        }
         .user-avatar {
-            width:40px; height:40px; border-radius:50%; background:#e6f0ff; color:#0066FF;
-            display:flex; align-items:center; justify-content:center; font-weight:600; cursor:pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
         }
-        .user-avatar img { width:100%; height:100%; border-radius:50%; object-fit:cover; }
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         .dropdown {
-            position:absolute; right:0; top:50px; background:white; border-radius:16px;
-            box-shadow:0 10px 30px rgba(0,0,0,0.1); width:180px; display:none; z-index:100;
-            border:1px solid #eef2f6;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: var(--white);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-md);
+            width: 200px;
+            display: none;
+            z-index: 200;
+            border: 1px solid var(--neutral-200);
         }
-        .dropdown.show { display:block; }
-        .dropdown a { display:flex; align-items:center; gap:10px; padding:0.9rem 1.2rem; transition:background 0.2s; }
-        .dropdown a:hover { background:#f1f5f9; }
-        .dropdown i { width:20px; color:#0066FF; }
+        .dropdown.show { display: block; }
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.9rem 1.2rem;
+            transition: background 0.2s;
+            color: var(--neutral-900);
+        }
+        .dropdown a:hover { background: var(--neutral-200); }
+        .dropdown i { width: 20px; color: var(--primary); }
+
+        /* Notifications dropdown (same as home) */
+        .notifications-dropdown {
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: var(--white);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-md);
+            width: 320px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 200;
+            border: 1px solid var(--neutral-200);
+        }
+        .notifications-dropdown.show { display: block; }
+        .notification-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2);
+            border-bottom: 1px solid var(--neutral-200);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .notification-item:hover { background: var(--neutral-200); }
+        .notification-item.unread { background: #e6f0ff; }
+        .notification-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        .notification-content { flex: 1; }
+        .notification-content p { margin: 0; font-size: 0.9rem; }
+        .notification-time { font-size: 0.7rem; color: var(--neutral-400); }
+        .notification-link {
+            display: block;
+            text-align: center;
+            padding: var(--space-2);
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Main container */
         .main-container {
-            max-width:1000px; margin:2rem auto; padding:0 2rem;
+            max-width: 1000px;
+            margin: var(--space-4) auto;
+            padding: 0 var(--space-2);
         }
+
+        /* Profile card */
         .profile-card {
-            background:white; border-radius:24px; padding:2rem;
-            box-shadow:0 4px 12px rgba(0,0,0,0.03); border:1px solid rgba(0,102,255,0.1);
-            display:flex; gap:2rem; flex-wrap:wrap; align-items:center; margin-bottom:2rem;
+            background: var(--white);
+            border-radius: var(--radius-card);
+            border: 1px solid var(--neutral-200);
+            padding: var(--space-4);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            align-items: center;
+            margin-bottom: var(--space-4);
         }
         .profile-avatar {
-            width:100px; height:100px; border-radius:50%; background:#e6f0ff;
-            display:flex; align-items:center; justify-content:center;
-            font-size:2.5rem; font-weight:600; color:#0066FF;
-            position:relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            overflow: hidden;
+            flex-shrink: 0;
         }
-        .profile-avatar img { width:100%; height:100%; border-radius:50%; object-fit:cover; }
-        .profile-info { flex:1; }
-        .profile-info h2 { font-size:2rem; margin-bottom:0.2rem; }
-        .profile-info .email { color:#64748b; margin-bottom:0.5rem; }
-        .profile-info .badge {
-            background:#f1f5f9; padding:0.3rem 1rem; border-radius:40px; font-size:0.9rem;
-            display:inline-block; margin-right:0.5rem; margin-bottom:0.5rem;
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-info {
+            flex: 1;
+            min-width: 250px;
+        }
+        .profile-info h2 {
+            font-size: 2rem;
+            margin-bottom: 0.2rem;
+        }
+        .profile-info .email {
+            color: var(--neutral-600);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .profile-info .bio {
+            margin-top: 0.5rem;
+            color: var(--neutral-600);
+            font-style: italic;
+        }
+        .profile-badges {
+            margin-top: 0.5rem;
+        }
+        .badge {
+            background: var(--neutral-200);
+            padding: 0.3rem 1rem;
+            border-radius: var(--radius-button);
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
         }
         .profile-stats {
-            display:flex; gap:2rem; margin-top:1rem; flex-wrap:wrap;
+            display: flex;
+            gap: var(--space-4);
+            margin-top: var(--space-2);
+            flex-wrap: wrap;
         }
-        .stat-item { text-align:center; }
-        .stat-value { font-size:1.5rem; font-weight:600; color:#0066FF; }
-        .stat-label { font-size:0.9rem; color:#64748b; }
-        .edit-btn {
-            background:#FF6B35; color:white; border:none; padding:0.5rem 1.5rem;
-            border-radius:40px; cursor:pointer; font-weight:500; margin-left:auto;
+        .stat-item {
+            text-align: center;
         }
-        .edit-modal {
-            display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-            background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:1000;
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
         }
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--neutral-600);
+        }
+        .profile-actions {
+            margin-left: auto;
+            display: flex;
+            gap: var(--space-2);
+        }
+        .edit-btn, .follow-btn, .message-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: var(--radius-button);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .edit-btn:hover, .follow-btn:hover, .message-btn:hover {
+            background: #e05530;
+        }
+        .message-btn {
+            background: var(--primary);
+        }
+        .message-btn:hover {
+            background: #003d99;
+        }
+        .follow-btn.following {
+            background: var(--neutral-400);
+        }
+
+        /* Tabs */
+        .profile-tabs {
+            display: flex;
+            gap: var(--space-2);
+            border-bottom: 1px solid var(--neutral-200);
+            margin-bottom: var(--space-4);
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--neutral-600);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Posts grid */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-2);
+        }
+        .post-thumb {
+            aspect-ratio: 1;
+            background: var(--neutral-200);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+        .post-thumb img, .post-thumb video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .post-thumb-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .post-thumb:hover .post-thumb-overlay {
+            opacity: 1;
+        }
+
+        /* Achievements placeholder */
+        .achievements-placeholder {
+            text-align: center;
+            padding: var(--space-5);
+            color: var(--neutral-400);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.active { display: flex; }
         .modal-content {
-            background:white; border-radius:24px; padding:2rem; max-width:400px; width:90%;
+            background: var(--white);
+            border-radius: var(--radius-card);
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: var(--space-4);
         }
-        .modal-content h3 { margin-bottom:1rem; }
-        .modal-content input[type="file"] { margin:1rem 0; }
-        .modal-content input[type="text"] {
-            width:100%; padding:0.8rem; border:1px solid #e2e8f0; border-radius:40px;
-            margin:0.5rem 0; font-size:1rem;
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-3);
         }
-        .modal-actions { display:flex; gap:1rem; margin-top:1.5rem; }
+        .modal-header h3 { font-size: 1.3rem; }
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--neutral-600);
+        }
+        .form-group {
+            margin-bottom: var(--space-3);
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-1);
+            font-weight: 500;
+            color: var(--neutral-600);
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-button);
+            font-size: 1rem;
+            outline: none;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,82,204,0.1);
+        }
+        .form-group input:disabled {
+            background: var(--neutral-200);
+            cursor: not-allowed;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-weight: normal;
+        }
+        .modal-actions {
+            display: flex;
+            gap: var(--space-2);
+            margin-top: var(--space-4);
+        }
+        .save-btn, .cancel-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: var(--radius-button);
+            font-weight: 600;
+            cursor: pointer;
+        }
         .save-btn {
-            background:#0066FF; color:white; border:none; padding:0.8rem; border-radius:40px;
-            flex:1; font-weight:600; cursor:pointer;
+            background: var(--primary);
+            color: white;
         }
+        .save-btn:hover { background: #003d99; }
         .cancel-btn {
-            background:#f1f5f9; color:#1e293b; border:none; padding:0.8rem; border-radius:40px;
-            flex:1; font-weight:600; cursor:pointer;
+            background: var(--neutral-200);
+            color: var(--neutral-900);
         }
-        .disabled-field { background:#f1f5f9; color:#64748b; cursor:not-allowed; }
-        .section-title { font-size:1.3rem; margin:2rem 0 1rem; }
-        .notification-list, .recent-posts-list { list-style:none; }
-        .notification-item, .recent-post-item {
-            background:white; border-radius:16px; padding:1rem; margin-bottom:0.8rem;
-            border:1px solid rgba(0,102,255,0.1); display:flex; align-items:center; gap:1rem;
+        .cancel-btn:hover { background: var(--neutral-400); color: white; }
+
+        /* Bottom navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-top: 1px solid var(--neutral-200);
+            padding: 0.5rem 0;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
         }
-        .notification-icon {
-            width:40px; height:40px; border-radius:50%; background:#f1f5f9;
-            display:flex; align-items:center; justify-content:center; color:#0066FF;
+        .bottom-nav .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .notification-content { flex:1; }
-        .notification-time { font-size:0.8rem; color:#94a3b8; }
-        .recent-post-link { color:#0066FF; font-weight:500; margin-left:auto; }
-        .empty-message { color:#94a3b8; text-align:center; padding:2rem; }
-        .error-message { color:#d32f2f; background:#ffebee; padding:1rem; border-radius:16px; text-align:center; margin:2rem 0; }
-        .info-message { color:#0066FF; background:#e6f0ff; padding:1rem; border-radius:16px; text-align:center; margin:2rem 0; }
-        .blog-footer {
-            background:#000; color:#ccc; padding:3rem 2rem 1.5rem; margin-top:3rem;
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--neutral-600);
+            font-size: 0.8rem;
+            transition: color 0.2s;
         }
-        .footer-container {
-            max-width:1300px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr);
-            gap:2rem; text-align:left;
-        }
-        .footer-col h4 { color:white; margin-bottom:1.2rem; font-size:1.1rem; }
-        .footer-col ul { list-style:none; }
-        .footer-col li { margin-bottom:0.6rem; }
-        .footer-col a { color:#ccc; transition:color 0.2s; }
-        .footer-col a:hover { color:#FF6B35; }
-        .social-icons { display:flex; gap:1rem; font-size:1.3rem; }
-        .social-icons a { color:#ccc; }
-        .social-icons a:hover { color:#FF6B35; }
-        .copyright {
-            text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid #333;
-            color:#777; font-size:0.9rem;
-        }
-        @media (max-width:700px) { .footer-container { grid-template-columns:1fr; } }
+        .bottom-nav a i { font-size: 1.2rem; margin-bottom: 0.2rem; }
+        .bottom-nav a.active { color: var(--primary); }
+        .bottom-nav a:hover { color: var(--primary); }
     </style>
 </head>
 <body>
+    <!-- Header (no search button) -->
     <header class="blog-header">
         <div class="header-container">
             <a href="blog-feed.html" class="logo"><i class="fas fa-code"></i> SAMZY<span>blog</span></a>
-            <nav class="nav-links">
-                <a href="blog-feed.html">Home</a>
-                <a href="blog-profile.html" class="active">Profile</a>
-                <a href="blog-leaderboard.html">Leaderboard</a>
-                <a href="blog-games.html">Games</a>
-            </nav>
-            <div class="user-menu">
-                <div class="user-avatar" id="userAvatar"><span id="avatarText"></span></div>
-                <div class="dropdown" id="dropdown">
-                    <a href="blog-profile.html"><i class="fas fa-user"></i> Profile</a>
-                    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <div class="header-actions">
+                <!-- Notifications -->
+                <div class="user-menu" style="position: relative;">
+                    <button class="icon-btn" id="notificationsBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                    <div class="notifications-dropdown" id="notificationsDropdown">
+                        <div id="notificationsList"></div>
+                        <a href="notifications.html" class="notification-link">See all</a>
+                    </div>
+                </div>
+                <!-- User menu -->
+                <div class="user-menu">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div class="dropdown" id="userDropdown">
+                        <a href="blog-profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="admin.html" id="adminLink" style="display: none;"><i class="fas fa-shield-alt"></i> Admin</a>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <div class="main-container" id="profileContainer">
-        <div class="empty-message">Loading profile...</div>
+        <div class="empty-state" style="text-align:center; padding:2rem;">Loading profile...</div>
     </div>
 
     <!-- Edit Profile Modal -->
-    <div id="editModal" class="edit-modal">
+    <div class="modal-overlay" id="editModal">
         <div class="modal-content">
-            <h3>Edit Profile</h3>
-            <label for="avatarUpload">Profile Picture</label>
-            <input type="file" id="avatarUpload" accept="image/*">
-            <div style="margin:0.5rem 0; font-size:0.9rem; color:#64748b;">Max 2MB</div>
-            
-            <label for="displayNameInput">Display Name (can only be set once)</label>
-            <input type="text" id="displayNameInput" placeholder="Your name">
-            
-            <div class="modal-actions">
-                <button class="save-btn" id="saveProfileBtn">Save</button>
-                <button class="cancel-btn" id="cancelEditBtn">Cancel</button>
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="close-modal" id="closeEditModal">&times;</button>
             </div>
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="avatarUpload">Profile Picture</label>
+                    <input type="file" id="avatarUpload" accept="image/*">
+                    <div style="font-size:0.8rem; color:var(--neutral-400); margin-top:0.2rem;">Max 2MB</div>
+                </div>
+                <div class="form-group">
+                    <label for="displayNameInput">Display Name (can only be set once)</label>
+                    <input type="text" id="displayNameInput" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="bioInput">Bio</label>
+                    <textarea id="bioInput" rows="3" placeholder="Tell us about yourself..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="experienceSelect">Experience Level</label>
+                    <select id="experienceSelect">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Interests</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="interests" value="web"> Web Dev</label>
+                        <label><input type="checkbox" name="interests" value="mobile"> Mobile</label>
+                        <label><input type="checkbox" name="interests" value="data"> Data</label>
+                        <label><input type="checkbox" name="interests" value="design"> UI/UX</label>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="save-btn" id="saveProfileBtn">Save</button>
+                    <button type="button" class="cancel-btn" id="cancelEditBtn">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <footer class="blog-footer">
-        <div class="footer-container">
-            <div class="footer-col"><h4>Navigation</h4><ul><li><a href="blog-feed.html">Home</a></li><li><a href="blog-profile.html">Profile</a></li><li><a href="blog-leaderboard.html">Leaderboard</a></li><li><a href="blog-games.html">Games</a></li></ul></div>
-            <div class="footer-col"><h4>Legal</h4><ul><li><a href="terms.html">Terms of Service</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="cookies.html">Cookie Policy</a></li></ul></div>
-            <div class="footer-col"><h4>Connect</h4><div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a></div></div>
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-items">
+            <a href="blog-feed.html"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="reels.html"><i class="fas fa-film"></i><span>Reels</span></a>
+            <a href="blog-games.html"><i class="fas fa-gamepad"></i><span>Games</span></a>
+            <a href="messages.html"><i class="fas fa-comment"></i><span>Messages</span></a>
+            <a href="blog-profile.html" class="active"><i class="fas fa-user"></i><span>Profile</span></a>
         </div>
-        <div class="copyright">© 2026 Samzy Digital Community. All rights reserved.</div>
-    </footer>
+    </div>
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -190,6 +601,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <script>
+        // Firebase config
         const firebaseConfig = {
             apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
             authDomain: "samzy-community-blog.firebaseapp.com",
@@ -203,179 +615,345 @@
         const db = firebase.firestore();
 
         let currentUser = null;
-        let userData = null;
+        let profileUserId = null;
+        let profileData = null;
         let nameChangeAllowed = true;
 
-        auth.onAuthStateChanged(async user => {
-            if (!user) { window.location.href = 'login.html'; return; }
-            currentUser = user;
-            loadUserAvatar(user);
-            try {
-                await loadProfile(user);
-                await loadNotifications(user);
-                await loadAllPosts(user);
-            } catch (error) {
-                console.error('Fatal error loading profile:', error);
-                document.getElementById('profileContainer').innerHTML = `<div class="error-message">Failed to load profile: ${error.message}. Check console.</div>`;
-            }
-        });
-
+        // Helper functions
         function stringToColor(str) {
             let hash = 0;
             for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
             return `hsl(${hash % 360}, 70%, 80%)`;
         }
 
-        function loadUserAvatar(user) {
-            const avatarDiv = document.querySelector('.user-avatar');
-            db.collection('users').doc(user.uid).get().then(doc => {
-                if (doc.exists && doc.data().avatarURL) {
-                    avatarDiv.innerHTML = `<img src="${doc.data().avatarURL}" alt="avatar">`;
+        function formatTimeAgo(date) {
+            const s = Math.floor((new Date() - date)/1000);
+            if (s < 60) return 'just now';
+            if (s < 3600) return Math.floor(s/60)+'m ago';
+            if (s < 86400) return Math.floor(s/3600)+'h ago';
+            return Math.floor(s/86400)+'d ago';
+        }
+
+        // Load user avatar in header (same as home)
+        async function loadUserAvatar(user) {
+            const avatarDiv = document.getElementById('userAvatar');
+            try {
+                const userDoc = await db.collection('users').doc(user.uid).get();
+                if (userDoc.exists && userDoc.data().avatarURL) {
+                    avatarDiv.innerHTML = `<img src="${userDoc.data().avatarURL}" alt="avatar">`;
                 } else {
-                    const displayName = doc.exists && doc.data().displayName ? doc.data().displayName : user.email;
+                    const displayName = userDoc.exists && userDoc.data().displayName ? userDoc.data().displayName : user.email;
                     const initials = displayName.charAt(0).toUpperCase();
                     avatarDiv.style.background = stringToColor(displayName);
                     avatarDiv.innerHTML = `<span>${initials}</span>`;
                 }
-            }).catch(() => {
+            } catch (e) {
                 avatarDiv.style.background = stringToColor(user.email);
                 avatarDiv.innerHTML = `<span>${user.email.charAt(0).toUpperCase()}</span>`;
-            });
+            }
         }
 
-        document.getElementById('userAvatar').addEventListener('click', e => {
-            e.stopPropagation();
-            document.getElementById('dropdown').classList.toggle('show');
-        });
-        document.addEventListener('click', () => document.getElementById('dropdown').classList.remove('show'));
-
-        document.getElementById('logoutBtn').addEventListener('click', e => {
-            e.preventDefault();
-            auth.signOut().then(() => window.location.href = 'community.html');
-        });
-
-        async function loadProfile(user) {
-            const container = document.getElementById('profileContainer');
-            const userDoc = await db.collection('users').doc(user.uid).get();
-            if (!userDoc.exists) {
-                console.warn('User document missing, creating default...');
-                await db.collection('users').doc(user.uid).set({
-                    email: user.email,
-                    displayName: user.email,
-                    points: 0,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    experience: 'beginner',
-                    interests: []
+        // Setup dropdown and logout
+        function setupDropdown() {
+            const avatar = document.getElementById('userAvatar');
+            const dropdown = document.getElementById('userDropdown');
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (avatar && dropdown) {
+                avatar.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
                 });
-                userData = (await db.collection('users').doc(user.uid).get()).data();
-            } else {
-                userData = userDoc.data();
+                document.addEventListener('click', () => dropdown.classList.remove('show'));
             }
-            let displayName = userData.displayName || user.email;
-            let experience = userData.experience || 'beginner';
-            let interests = Array.isArray(userData.interests) ? userData.interests : [];
-            let points = userData.points || 0;
-            let createdAt = userData.createdAt ? userData.createdAt.toDate() : new Date();
-            let avatarURL = userData.avatarURL || null;
-            nameChangeAllowed = !userData.nameChanged;
-
-            // Get posts for stats (simple query without orderBy, to avoid index issues for count)
-            const postsSnap = await db.collection('posts').where('authorId', '==', user.uid).get();
-            const postCount = postsSnap.size;
-
-            let likesReceived = 0;
-            postsSnap.forEach(doc => { likesReceived += (doc.data().likeCount || 0); });
-
-            let commentsReceived = 0;
-            for (const doc of postsSnap.docs) {
-                const commentSnap = await db.collection('posts').doc(doc.id).collection('comments').get();
-                commentsReceived += commentSnap.size;
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    auth.signOut().then(() => window.location.href = 'community.html');
+                });
             }
+        }
 
-            const joinDate = createdAt.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
-
-            let avatarHTML = avatarURL
-                ? `<img src="${avatarURL}" alt="avatar">`
-                : `<span>${displayName.charAt(0).toUpperCase()}</span>`;
-
-            container.innerHTML = `
-                <div class="profile-card">
-                    <div class="profile-avatar" style="background:${stringToColor(displayName)};">
-                        ${avatarHTML}
-                    </div>
-                    <div class="profile-info">
-                        <h2>${displayName}</h2>
-                        <div class="email">${user.email}</div>
-                        <div><span class="badge">${experience}</span>${interests.map(i => `<span class="badge">${i}</span>`).join('')}</div>
-                        <div class="profile-stats">
-                            <div class="stat-item"><div class="stat-value">${postCount}</div><div class="stat-label">Posts</div></div>
-                            <div class="stat-item"><div class="stat-value">${likesReceived}</div><div class="stat-label">Likes</div></div>
-                            <div class="stat-item"><div class="stat-value">${commentsReceived}</div><div class="stat-label">Comments</div></div>
-                            <div class="stat-item"><div class="stat-value">${points}</div><div class="stat-label">Points</div></div>
+        // Load notifications dropdown (same as home)
+        async function loadNotifications() {
+            if (!currentUser) return;
+            try {
+                const snapshot = await db.collection('notifications')
+                    .where('recipientId', '==', currentUser.uid)
+                    .orderBy('createdAt', 'desc')
+                    .limit(10)
+                    .get();
+                const list = document.getElementById('notificationsList');
+                const badge = document.getElementById('notificationBadge');
+                let unreadCount = 0;
+                if (snapshot.empty) {
+                    list.innerHTML = '<div style="padding:1rem; text-align:center;">No notifications</div>';
+                    badge.style.display = 'none';
+                    return;
+                }
+                let html = '';
+                snapshot.forEach(doc => {
+                    const n = doc.data();
+                    const date = n.createdAt ? n.createdAt.toDate() : new Date();
+                    const timeAgo = formatTimeAgo(date);
+                    const unreadClass = n.read ? '' : 'unread';
+                    if (!n.read) unreadCount++;
+                    const icon = n.type === 'like' ? '❤️' : n.type === 'comment' ? '💬' : '👤';
+                    html += `
+                        <div class="notification-item ${unreadClass}" data-id="${doc.id}" data-post="${n.postId || ''}" data-from="${n.fromUserId || ''}">
+                            <div class="notification-icon">${icon}</div>
+                            <div class="notification-content">
+                                <p><strong>${n.fromUserName || 'Someone'}</strong> ${n.type === 'like' ? 'liked your post' : n.type === 'comment' ? 'commented on your post' : 'started following you'}</p>
+                                <div class="notification-time">${timeAgo}</div>
+                            </div>
                         </div>
-                        <div style="margin-top:0.8rem; color:#64748b;"><i class="fas fa-calendar-alt"></i> Joined ${joinDate}</div>
-                    </div>
-                    <button class="edit-btn" id="openEditModal"><i class="fas fa-edit"></i> Edit Profile</button>
-                </div>
-                <h3 class="section-title"><i class="fas fa-bell"></i> Recent Notifications</h3>
-                <div class="notification-list" id="notificationList"><div class="empty-message">Loading...</div></div>
-                <h3 class="section-title"><i class="fas fa-file-alt"></i> All Your Posts</h3>
-                <div class="recent-posts-list" id="postsList"><div class="empty-message">Loading...</div></div>
-            `;
-
-            document.getElementById('openEditModal').addEventListener('click', () => openEditModal(displayName, nameChangeAllowed));
+                    `;
+                });
+                list.innerHTML = html;
+                if (unreadCount > 0) {
+                    badge.textContent = unreadCount;
+                    badge.style.display = 'inline';
+                } else {
+                    badge.style.display = 'none';
+                }
+                document.querySelectorAll('.notification-item').forEach(item => {
+                    item.addEventListener('click', async () => {
+                        const id = item.dataset.id;
+                        await db.collection('notifications').doc(id).update({ read: true });
+                        if (item.dataset.post) {
+                            window.location.href = `blog-feed.html?post=${item.dataset.post}`;
+                        } else if (item.dataset.from) {
+                            window.location.href = `blog-profile.html?uid=${item.dataset.from}`;
+                        }
+                    });
+                });
+            } catch (e) {
+                console.error('Notifications error:', e);
+                document.getElementById('notificationsList').innerHTML = '<div style="padding:1rem; text-align:center;">Error loading notifications</div>';
+            }
         }
 
-        // Modal elements
-        const modal = document.getElementById('editModal');
-        const nameInput = document.getElementById('displayNameInput');
-        const avatarInput = document.getElementById('avatarUpload');
+        // Auth state
+        auth.onAuthStateChanged(async user => {
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            currentUser = user;
+            await loadUserAvatar(user);
+            setupDropdown();
+            loadNotifications();
 
-        function openEditModal(currentName, nameAllowed) {
-            nameInput.value = currentName;
-            nameInput.disabled = !nameAllowed;
-            nameInput.classList.toggle('disabled-field', !nameAllowed);
-            modal.style.display = 'flex';
-        }
-
-        document.getElementById('cancelEditBtn').addEventListener('click', () => {
-            modal.style.display = 'none';
+            const urlParams = new URLSearchParams(window.location.search);
+            profileUserId = urlParams.get('uid') || currentUser.uid;
+            await loadProfile(profileUserId);
         });
 
-        // Cloudinary upload function (same as feed)
+        // ===== PROFILE =====
+        async function loadProfile(uid) {
+            const container = document.getElementById('profileContainer');
+            try {
+                const userDoc = await db.collection('users').doc(uid).get();
+                if (!userDoc.exists) {
+                    container.innerHTML = '<div class="empty-state">User not found.</div>';
+                    return;
+                }
+                profileData = userDoc.data();
+
+                const postsSnap = await db.collection('posts').where('authorId', '==', uid).get();
+                const postCount = postsSnap.size;
+                let likesReceived = 0;
+                postsSnap.forEach(doc => { likesReceived += (doc.data().likeCount || 0); });
+
+                const followersCount = 0; // placeholder
+                const followingCount = 0;
+
+                const displayName = profileData.displayName || 'Anonymous';
+                const email = profileData.email || '';
+                const bio = profileData.bio || '';
+                const experience = profileData.experience || 'beginner';
+                const interests = profileData.interests || [];
+                const points = profileData.points || 0;
+                const avatarURL = profileData.avatarURL || null;
+                const joinDate = profileData.createdAt ? profileData.createdAt.toDate().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) : 'Unknown';
+
+                nameChangeAllowed = !profileData.nameChanged;
+
+                let avatarHtml = avatarURL
+                    ? `<img src="${avatarURL}" alt="avatar">`
+                    : `<span>${displayName.charAt(0).toUpperCase()}</span>`;
+
+                const isOwnProfile = (uid === currentUser.uid);
+
+                let actionButtons = '';
+                if (isOwnProfile) {
+                    actionButtons = `<button class="edit-btn" id="openEditModalBtn"><i class="fas fa-edit"></i> Edit Profile</button>`;
+                } else {
+                    actionButtons = `
+                        <button class="follow-btn" id="followBtn"><i class="fas fa-user-plus"></i> Follow</button>
+                        <button class="message-btn" id="messageBtn"><i class="fas fa-comment"></i> Message</button>
+                    `;
+                }
+
+                container.innerHTML = `
+                    <div class="profile-card">
+                        <div class="profile-avatar" style="background:${stringToColor(displayName)};">
+                            ${avatarHtml}
+                        </div>
+                        <div class="profile-info">
+                            <h2>${displayName}</h2>
+                            <div class="email">${email}</div>
+                            ${bio ? `<div class="bio">"${bio}"</div>` : ''}
+                            <div class="profile-badges">
+                                <span class="badge">${experience}</span>
+                                ${interests.map(i => `<span class="badge">${i}</span>`).join('')}
+                            </div>
+                            <div class="profile-stats">
+                                <div class="stat-item"><div class="stat-value">${postCount}</div><div class="stat-label">Posts</div></div>
+                                <div class="stat-item"><div class="stat-value">${followersCount}</div><div class="stat-label">Followers</div></div>
+                                <div class="stat-item"><div class="stat-value">${followingCount}</div><div class="stat-label">Following</div></div>
+                                <div class="stat-item"><div class="stat-value">${points}</div><div class="stat-label">Points</div></div>
+                            </div>
+                            <div style="margin-top:0.8rem; color:var(--neutral-400);"><i class="fas fa-calendar-alt"></i> Joined ${joinDate}</div>
+                        </div>
+                        <div class="profile-actions">
+                            ${actionButtons}
+                        </div>
+                    </div>
+                    <div class="profile-tabs">
+                        <button class="tab-btn active" id="postsTab">Posts</button>
+                        <button class="tab-btn" id="achievementsTab">Achievements</button>
+                    </div>
+                    <div id="postsTabContent">
+                        <div class="posts-grid" id="postsGrid"></div>
+                    </div>
+                    <div id="achievementsTabContent" style="display:none;">
+                        <div class="achievements-placeholder">
+                            <i class="fas fa-trophy" style="font-size:3rem; color:var(--neutral-400);"></i>
+                            <p>Achievements coming soon!</p>
+                        </div>
+                    </div>
+                `;
+
+                loadUserPosts(uid);
+
+                document.getElementById('postsTab').addEventListener('click', () => {
+                    document.getElementById('postsTab').classList.add('active');
+                    document.getElementById('achievementsTab').classList.remove('active');
+                    document.getElementById('postsTabContent').style.display = 'block';
+                    document.getElementById('achievementsTabContent').style.display = 'none';
+                });
+                document.getElementById('achievementsTab').addEventListener('click', () => {
+                    document.getElementById('achievementsTab').classList.add('active');
+                    document.getElementById('postsTab').classList.remove('active');
+                    document.getElementById('postsTabContent').style.display = 'none';
+                    document.getElementById('achievementsTabContent').style.display = 'block';
+                });
+
+                if (isOwnProfile) {
+                    document.getElementById('openEditModalBtn').addEventListener('click', () => openEditModal());
+                } else {
+                    document.getElementById('followBtn').addEventListener('click', () => {
+                        alert('Follow feature coming soon!');
+                    });
+                    document.getElementById('messageBtn').addEventListener('click', () => {
+                        window.location.href = `messages.html?uid=${uid}`;
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                container.innerHTML = '<div class="empty-state">Failed to load profile.</div>';
+            }
+        }
+
+        async function loadUserPosts(uid) {
+            const grid = document.getElementById('postsGrid');
+            if (!grid) return;
+            try {
+                const snapshot = await db.collection('posts')
+                    .where('authorId', '==', uid)
+                    .orderBy('createdAt', 'desc')
+                    .limit(20)
+                    .get();
+                if (snapshot.empty) {
+                    grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:2rem;">No posts yet.</p>';
+                    return;
+                }
+                let html = '';
+                snapshot.forEach(doc => {
+                    const post = doc.data();
+                    const mediaURL = post.mediaURL || '';
+                    const mediaType = post.mediaType || '';
+                    const thumbnail = mediaURL && mediaType === 'image' ? mediaURL : '';
+                    html += `
+                        <div class="post-thumb" onclick="window.location.href='blog-feed.html?post=${doc.id}'">
+                            ${thumbnail ? `<img src="${thumbnail}" alt="post">` : '<div style="background:var(--neutral-200); width:100%; height:100%;"></div>'}
+                            <div class="post-thumb-overlay">
+                                <span>❤️ ${post.likeCount || 0}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                grid.innerHTML = html;
+            } catch (e) {
+                console.error('Error loading posts:', e);
+                grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:2rem;">Error loading posts.</p>';
+            }
+        }
+
+        // ===== EDIT MODAL =====
+        const editModal = document.getElementById('editModal');
+        const closeEditModal = document.getElementById('closeEditModal');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        const nameInput = document.getElementById('displayNameInput');
+        const bioInput = document.getElementById('bioInput');
+        const experienceSelect = document.getElementById('experienceSelect');
+        const interestsCheckboxes = document.querySelectorAll('input[name="interests"]');
+        const avatarInput = document.getElementById('avatarUpload');
+        const saveProfileBtn = document.getElementById('saveProfileBtn');
+
+        function openEditModal() {
+            nameInput.value = profileData.displayName || '';
+            nameInput.disabled = !nameChangeAllowed;
+            bioInput.value = profileData.bio || '';
+            experienceSelect.value = profileData.experience || 'beginner';
+            const interests = profileData.interests || [];
+            interestsCheckboxes.forEach(cb => {
+                cb.checked = interests.includes(cb.value);
+            });
+            editModal.classList.add('active');
+        }
+
+        closeEditModal.addEventListener('click', () => editModal.classList.remove('active'));
+        cancelEditBtn.addEventListener('click', () => editModal.classList.remove('active'));
+
         async function uploadToCloudinary(file) {
             const formData = new FormData();
             formData.append('file', file);
-            formData.append('upload_preset', 'samzy-community-blog'); // your unsigned preset
-
+            formData.append('upload_preset', 'samzy-community-blog');
             const response = await fetch('https://api.cloudinary.com/v1_1/djy2jtwmw/upload', {
                 method: 'POST',
                 body: formData
             });
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`Cloudinary upload failed: ${errorText}`);
-            }
+            if (!response.ok) throw new Error('Cloudinary upload failed');
             const data = await response.json();
             return data.secure_url;
         }
 
-        document.getElementById('saveProfileBtn').addEventListener('click', async () => {
+        document.getElementById('editProfileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
             const newName = nameInput.value.trim();
+            const newBio = bioInput.value.trim();
+            const newExperience = experienceSelect.value;
+            const newInterests = Array.from(interestsCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
             const file = avatarInput.files[0];
+
             if (file && file.size > 2 * 1024 * 1024) {
                 alert('Image must be less than 2MB.');
                 return;
             }
-            if (!newName && !file) {
-                modal.style.display = 'none';
-                return;
-            }
 
-            const saveBtn = document.getElementById('saveProfileBtn');
-            const originalText = saveBtn.textContent;
-            saveBtn.textContent = 'Saving...';
-            saveBtn.disabled = true;
+            saveProfileBtn.disabled = true;
+            saveProfileBtn.textContent = 'Saving...';
 
             try {
                 let avatarURL = null;
@@ -389,137 +967,27 @@
                     updateData.displayName = newName;
                     updateData.nameChanged = true;
                 }
+                if (newBio !== profileData.bio) updateData.bio = newBio;
+                if (newExperience !== profileData.experience) updateData.experience = newExperience;
+                if (JSON.stringify(newInterests) !== JSON.stringify(profileData.interests)) updateData.interests = newInterests;
 
                 if (Object.keys(updateData).length > 0) {
-                    const userRef = db.collection('users').doc(currentUser.uid);
-                    await userRef.update(updateData);
+                    await db.collection('users').doc(currentUser.uid).update(updateData);
                 }
 
-                // Refresh profile and header
-                await loadProfile(currentUser);
-                loadUserAvatar(currentUser);
-                modal.style.display = 'none';
-                alert('Profile updated successfully!');
+                editModal.classList.remove('active');
+                await loadProfile(currentUser.uid);
+                await loadUserAvatar(currentUser);
+                alert('Profile updated!');
             } catch (error) {
                 console.error('Profile update error:', error);
-                alert('Failed to update profile: ' + error.message);
+                alert('Failed to update: ' + error.message);
             } finally {
-                saveBtn.textContent = originalText;
-                saveBtn.disabled = false;
+                saveProfileBtn.disabled = false;
+                saveProfileBtn.textContent = 'Save';
                 avatarInput.value = '';
             }
         });
-
-        async function loadNotifications(user) {
-            const list = document.getElementById('notificationList');
-            if (!list) return;
-            try {
-                let snapshot;
-                try {
-                    snapshot = await db.collection('notifications')
-                        .where('recipientId', '==', user.uid)
-                        .orderBy('createdAt', 'desc')
-                        .limit(10)
-                        .get();
-                } catch (queryError) {
-                    if (queryError.code === 'failed-precondition' || queryError.message.includes('index')) {
-                        list.innerHTML = `<div class="info-message">
-                            <i class="fas fa-info-circle"></i> Notifications require a database index. 
-                            Please check the browser console for the link to create it.
-                        </div>`;
-                        return;
-                    } else throw queryError;
-                }
-                if (snapshot.empty) {
-                    list.innerHTML = '<div class="empty-message">No notifications yet.</div>';
-                    return;
-                }
-                let html = '';
-                snapshot.forEach(doc => {
-                    const n = doc.data();
-                    const date = n.createdAt ? n.createdAt.toDate() : new Date();
-                    const timeAgo = formatTimeAgo(date);
-                    const icon = n.type === 'like' ? '❤️' : '💬';
-                    html += `
-                        <div class="notification-item">
-                            <div class="notification-icon">${icon}</div>
-                            <div class="notification-content">
-                                <strong>${n.fromUserName || 'Someone'}</strong> ${n.type === 'like' ? 'liked your post.' : 'commented on your post.'}
-                                <div class="notification-time">${timeAgo}</div>
-                            </div>
-                            <a href="blog-feed.html?post=${n.postId}" class="recent-post-link">View</a>
-                        </div>
-                    `;
-                });
-                list.innerHTML = html;
-            } catch (e) {
-                console.error('Notifications error:', e);
-                list.innerHTML = '<div class="error-message">Could not load notifications.</div>';
-            }
-        }
-
-        async function loadAllPosts(user) {
-            const list = document.getElementById('postsList');
-            if (!list) return;
-            try {
-                // Try to fetch posts ordered by date (requires index)
-                let snapshot;
-                try {
-                    snapshot = await db.collection('posts')
-                        .where('authorId', '==', user.uid)
-                        .orderBy('createdAt', 'desc')
-                        .get();
-                } catch (queryError) {
-                    if (queryError.code === 'failed-precondition' || queryError.message.includes('index')) {
-                        list.innerHTML = `<div class="info-message">
-                            <i class="fas fa-info-circle"></i> To see your posts, you need to create a database index. 
-                            <a href="https://console.firebase.google.com/v1/r/project/samzy-community-blog/firestore/indexes" target="_blank" style="color:#0066FF; text-decoration:underline;">Click here</a> to go to the Firebase Console and create an index with:
-                            <br><strong>Collection:</strong> posts
-                            <br><strong>Fields:</strong> authorId (Ascending), createdAt (Descending)
-                            <br>After creating the index, please refresh this page.
-                        </div>`;
-                        return;
-                    } else {
-                        throw queryError;
-                    }
-                }
-
-                if (snapshot.empty) {
-                    list.innerHTML = '<div class="empty-message">You haven’t posted yet.</div>';
-                    return;
-                }
-
-                let html = '';
-                snapshot.forEach(doc => {
-                    const p = doc.data();
-                    const date = p.createdAt ? p.createdAt.toDate() : new Date();
-                    const timeAgo = formatTimeAgo(date);
-                    const preview = p.text ? p.text.substring(0,60)+(p.text.length>60?'…':'') : '(no text)';
-                    html += `
-                        <div class="recent-post-item">
-                            <div><i class="fas fa-file-alt" style="color:#0066FF;"></i></div>
-                            <div class="notification-content">
-                                <strong>${preview}</strong>
-                                <div class="notification-time">${timeAgo} · ❤️ ${p.likeCount||0} · 💬 ${p.commentCount||0}</div>
-                            </div>
-                            <a href="blog-feed.html?post=${doc.id}" class="recent-post-link">View</a>
-                        </div>
-                    `;
-                });
-                list.innerHTML = html;
-            } catch (e) {
-                console.error('Posts error:', e);
-                list.innerHTML = '<div class="error-message">Could not load posts. Check console for details.</div>';
-            }
-        }
-
-        function formatTimeAgo(date) {
-            const s = Math.floor((new Date() - date)/1000);
-            if (s < 60) return 'just now';
-            if (s < 3600) return Math.floor(s/60)+'m ago';
-            if (s < 86400) return Math.floor(s/3600)+'h ago';
-            return Math.floor(s/86400)+'d ago';
-        }
     </script>
 </body>
 </html>

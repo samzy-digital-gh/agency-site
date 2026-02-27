@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Leaderboard · Samzy Community</title>
+    <title>Settings · Samzy Community</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* === DESIGN SYSTEM (same as other pages) === */
+        /* === DESIGN SYSTEM === */
         :root {
             --primary: #0052CC;
             --accent: #FF6B35;
@@ -26,6 +26,16 @@
             --space-4: 32px;
             --space-5: 40px;
         }
+        /* Dark mode variables */
+        body.dark {
+            --neutral-50: #0F172A;
+            --neutral-200: #1E293B;
+            --neutral-400: #475569;
+            --neutral-600: #94A3B8;
+            --neutral-900: #F8FAFC;
+            --white: #1E293B;
+            background: #0F172A;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -37,10 +47,11 @@
             color: var(--neutral-900);
             line-height: 1.5;
             padding-bottom: 70px;
+            transition: background 0.2s, color 0.2s;
         }
         a { text-decoration: none; color: inherit; }
 
-        /* Header (no search button) */
+        /* Header */
         .blog-header {
             background: var(--white);
             border-bottom: 1px solid var(--neutral-200);
@@ -191,154 +202,163 @@
 
         /* Main container */
         .main-container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: var(--space-4) auto;
             padding: 0 var(--space-2);
         }
         .page-title {
             font-size: 2rem;
             margin-bottom: var(--space-4);
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-        .page-title i {
-            color: var(--accent);
         }
 
-        /* Top player card */
-        .top-player-card {
-            background: linear-gradient(135deg, var(--primary), #003d99);
-            color: white;
-            border-radius: var(--radius-card);
-            padding: var(--space-4);
-            margin-bottom: var(--space-4);
-            display: flex;
-            align-items: center;
-            gap: var(--space-4);
-            flex-wrap: wrap;
-        }
-        .top-player-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            font-weight: 600;
-            color: white;
-            overflow: hidden;
-        }
-        .top-player-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .top-player-info {
-            flex: 1;
-        }
-        .top-player-info h2 {
-            font-size: 2rem;
-            margin-bottom: 0.2rem;
-        }
-        .top-player-info p {
-            opacity: 0.9;
-        }
-        .top-player-points {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1.5rem;
-            border-radius: var(--radius-button);
-        }
-
-        /* Category cards grid (5 cards – will wrap responsively) */
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--space-4);
-            margin-top: var(--space-4);
-        }
-        .category-card {
+        /* Settings sections */
+        .settings-section {
             background: var(--white);
             border-radius: var(--radius-card);
             border: 1px solid var(--neutral-200);
             padding: var(--space-4);
-            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--space-4);
         }
-        .category-card h3 {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            margin-bottom: var(--space-3);
+        .settings-section h2 {
             font-size: 1.3rem;
+            margin-bottom: var(--space-3);
             color: var(--primary);
         }
-        .category-card h3 i {
-            color: var(--accent);
-        }
-        .leaderboard-item {
+        .settings-item {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: var(--space-2);
             padding: var(--space-2) 0;
             border-bottom: 1px solid var(--neutral-200);
         }
-        .leaderboard-item:last-child {
+        .settings-item:last-child {
             border-bottom: none;
         }
-        .rank-badge {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--neutral-200);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: var(--primary);
+        .settings-item-label {
+            font-weight: 500;
         }
-        .player-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--neutral-200);
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            overflow: hidden;
+        .settings-item-label i {
+            width: 24px;
+            color: var(--accent);
         }
-        .player-avatar img {
+        .settings-item-control {
+            display: flex;
+            gap: var(--space-2);
+        }
+        .btn {
+            background: var(--neutral-200);
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius-button);
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #003d99;
+        }
+        .btn-danger {
+            background: #EF4444;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 28px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--neutral-400);
+            transition: .2s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .2s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
         }
-        .player-info {
-            flex: 1;
+        .modal-overlay.active { display: flex; }
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            width: 90%;
+            max-width: 400px;
+            padding: var(--space-4);
         }
-        .player-name {
-            font-weight: 600;
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-3);
         }
-        .player-points {
-            font-weight: 600;
-            color: var(--primary);
+        .modal-header h3 { font-size: 1.3rem; }
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--neutral-600);
         }
-        .current-user-badge {
-            background: var(--accent);
-            color: white;
-            font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 10px;
-            margin-left: 0.5rem;
+        .form-group {
+            margin-bottom: var(--space-3);
         }
-        .empty-message {
-            color: var(--neutral-400);
-            text-align: center;
-            padding: var(--space-3);
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-1);
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-button);
+            font-size: 1rem;
+        }
+        .modal-actions {
+            display: flex;
+            gap: var(--space-2);
         }
 
         /* Bottom navigation */
@@ -374,12 +394,10 @@
     </style>
 </head>
 <body>
-    <!-- Header (no search button) -->
     <header class="blog-header">
         <div class="header-container">
             <a href="blog-feed.html" class="logo"><i class="fas fa-code"></i> SAMZY<span>blog</span></a>
             <div class="header-actions">
-                <!-- Notifications -->
                 <div class="user-menu" style="position: relative;">
                     <button class="icon-btn" id="notificationsBtn">
                         <i class="fas fa-bell"></i>
@@ -390,13 +408,11 @@
                         <a href="notifications.html" class="notification-link">See all</a>
                     </div>
                 </div>
-                <!-- User menu -->
                 <div class="user-menu">
                     <div class="user-avatar" id="userAvatar"></div>
                     <div class="dropdown" id="userDropdown">
                         <a href="blog-profile.html"><i class="fas fa-user"></i> Profile</a>
                         <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
-                        <a href="admin.html" id="adminLink" style="display: none;"><i class="fas fa-shield-alt"></i> Admin</a>
                         <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </div>
                 </div>
@@ -404,46 +420,108 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <div class="main-container">
-        <div class="page-title">
-            <i class="fas fa-trophy"></i> Leaderboard
+        <h1 class="page-title"><i class="fas fa-cog"></i> Settings</h1>
+
+        <!-- Account Section -->
+        <div class="settings-section">
+            <h2>Account</h2>
+            <div class="settings-item">
+                <span class="settings-item-label"><i class="fas fa-envelope"></i> Email</span>
+                <span id="userEmail">loading...</span>
+            </div>
+            <div class="settings-item">
+                <span class="settings-item-label"><i class="fas fa-key"></i> Password</span>
+                <button class="btn btn-primary" id="changePasswordBtn">Change</button>
+            </div>
+            <div class="settings-item">
+                <span class="settings-item-label"><i class="fas fa-trash-alt"></i> Delete Account</span>
+                <button class="btn btn-danger" id="deleteAccountBtn">Delete</button>
+            </div>
         </div>
 
-        <!-- Top Overall Player (will be filled by JS) -->
-        <div id="topPlayerContainer"></div>
+        <!-- Appearance Section -->
+        <div class="settings-section">
+            <h2>Appearance</h2>
+            <div class="settings-item">
+                <span class="settings-item-label"><i class="fas fa-moon"></i> Dark Mode</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
 
-        <!-- Category Cards Grid (5 cards) -->
-        <div class="category-grid" id="categoryGrid">
-            <!-- Quiz -->
-            <div class="category-card">
-                <h3><i class="fas fa-code"></i> Quiz Masters</h3>
-                <div id="quizList" class="empty-message">Loading...</div>
+        <!-- Notifications Section (placeholder) -->
+        <div class="settings-section">
+            <h2>Notifications</h2>
+            <div class="settings-item">
+                <span class="settings-item-label"><i class="fas fa-bell"></i> Email Notifications</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="emailNotificationsToggle" checked>
+                    <span class="slider"></span>
+                </label>
             </div>
-            <!-- Memory -->
-            <div class="category-card">
-                <h3><i class="fas fa-brain"></i> Memory Champs</h3>
-                <div id="memoryList" class="empty-message">Loading...</div>
+            <div class="settings-item">
+                <span class="settings-item-label"><i class="fas fa-bell"></i> Push Notifications</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="pushNotificationsToggle" checked>
+                    <span class="slider"></span>
+                </label>
             </div>
-            <!-- Typing -->
-            <div class="category-card">
-                <h3><i class="fas fa-keyboard"></i> Typing Legends</h3>
-                <div id="typingList" class="empty-message">Loading...</div>
+        </div>
+
+        <!-- Logout -->
+        <div class="settings-section">
+            <button class="btn btn-danger" id="logoutBtn2" style="width:100%;">Logout</button>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div class="modal-overlay" id="passwordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Password</h3>
+                <button class="close-modal" id="closePasswordModal">&times;</button>
             </div>
-            <!-- Word Scramble -->
-            <div class="category-card">
-                <h3><i class="fas fa-puzzle-piece"></i> Scramble Stars</h3>
-                <div id="scrambleList" class="empty-message">Loading...</div>
+            <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword" placeholder="••••••">
             </div>
-            <!-- Speed Racer -->
-            <div class="category-card">
-                <h3><i class="fas fa-car"></i> Racing Aces</h3>
-                <div id="racingList" class="empty-message">Loading...</div>
+            <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" placeholder="••••••">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm New Password</label>
+                <input type="password" id="confirmPassword" placeholder="••••••">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="savePasswordBtn">Update</button>
+                <button class="btn" id="cancelPasswordBtn">Cancel</button>
             </div>
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
+    <!-- Delete Account Modal -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delete Account</h3>
+                <button class="close-modal" id="closeDeleteModal">&times;</button>
+            </div>
+            <p style="margin-bottom:1rem;">This action is permanent. All your data will be lost.</p>
+            <div class="form-group">
+                <label for="deletePassword">Enter your password to confirm:</label>
+                <input type="password" id="deletePassword" placeholder="••••••">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-danger" id="confirmDeleteBtn">Delete Forever</button>
+                <button class="btn" id="cancelDeleteBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <div class="bottom-nav">
         <div class="nav-items">
             <a href="blog-feed.html"><i class="fas fa-home"></i><span>Home</span></a>
@@ -454,7 +532,6 @@
         </div>
     </div>
 
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
@@ -474,13 +551,12 @@
 
         let currentUser = null;
 
-        // Helper functions (copied from home page)
+        // Helper functions
         function stringToColor(str) {
             let hash = 0;
             for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
             return `hsl(${hash % 360}, 70%, 80%)`;
         }
-
         function formatTimeAgo(date) {
             const s = Math.floor((new Date() - date)/1000);
             if (s < 60) return 'just now';
@@ -489,43 +565,53 @@
             return Math.floor(s/86400)+'d ago';
         }
 
-        async function loadUserAvatar(user) {
+        function loadUserAvatar(user) {
             const avatarDiv = document.getElementById('userAvatar');
-            try {
-                const userDoc = await db.collection('users').doc(user.uid).get();
-                if (userDoc.exists && userDoc.data().avatarURL) {
-                    avatarDiv.innerHTML = `<img src="${userDoc.data().avatarURL}" alt="avatar">`;
+            db.collection('users').doc(user.uid).get().then(doc => {
+                if (doc.exists && doc.data().avatarURL) {
+                    avatarDiv.innerHTML = `<img src="${doc.data().avatarURL}" alt="avatar">`;
                 } else {
-                    const displayName = userDoc.exists && userDoc.data().displayName ? userDoc.data().displayName : user.email;
+                    const displayName = doc.exists && doc.data().displayName ? doc.data().displayName : user.email;
                     const initials = displayName.charAt(0).toUpperCase();
                     avatarDiv.style.background = stringToColor(displayName);
                     avatarDiv.innerHTML = `<span>${initials}</span>`;
                 }
-            } catch (error) {
+            }).catch(() => {
                 avatarDiv.style.background = stringToColor(user.email);
                 avatarDiv.innerHTML = `<span>${user.email.charAt(0).toUpperCase()}</span>`;
-            }
+            });
         }
 
-        function setupDropdown() {
-            const avatar = document.getElementById('userAvatar');
-            const dropdown = document.getElementById('userDropdown');
-            const logoutBtn = document.getElementById('logoutBtn');
-            if (avatar && dropdown) {
-                avatar.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    dropdown.classList.toggle('show');
-                });
-                document.addEventListener('click', () => dropdown.classList.remove('show'));
-            }
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    auth.signOut().then(() => window.location.href = 'community.html');
-                });
-            }
-        }
+        auth.onAuthStateChanged(user => {
+            if (!user) { window.location.href = 'login.html'; return; }
+            currentUser = user;
+            loadUserAvatar(user);
+            loadNotifications();
+            document.getElementById('userEmail').textContent = user.email;
+        });
 
+        // Dropdowns
+        document.getElementById('userAvatar').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('userDropdown').classList.toggle('show');
+        });
+        document.addEventListener('click', () => {
+            document.getElementById('userDropdown').classList.remove('show');
+            document.getElementById('notificationsDropdown').classList.remove('show');
+        });
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            auth.signOut().then(() => window.location.href = 'community.html');
+        });
+        document.getElementById('logoutBtn2').addEventListener('click', () => {
+            auth.signOut().then(() => window.location.href = 'community.html');
+        });
+
+        // Notifications (same as other pages)
+        document.getElementById('notificationsBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('notificationsDropdown').classList.toggle('show');
+        });
         async function loadNotifications() {
             if (!currentUser) return;
             try {
@@ -580,104 +666,107 @@
                 });
             } catch (e) {
                 console.error('Notifications error:', e);
-                document.getElementById('notificationsList').innerHTML = '<div style="padding:1rem; text-align:center;">Error loading notifications</div>';
             }
         }
 
-        // Auth state
-        auth.onAuthStateChanged(async user => {
-            if (!user) {
-                window.location.href = 'login.html';
-                return;
+        // Dark mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        // Check localStorage
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark');
+            darkModeToggle.checked = true;
+        }
+        darkModeToggle.addEventListener('change', () => {
+            if (darkModeToggle.checked) {
+                document.body.classList.add('dark');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem('darkMode', 'disabled');
             }
-            currentUser = user;
-            await loadUserAvatar(user);
-            setupDropdown();
-            loadNotifications();
-            loadLeaderboard();
         });
 
-        async function loadLeaderboard() {
-            // Top overall player (by total points)
-            const overallSnap = await db.collection('users').orderBy('points', 'desc').limit(1).get();
-            const topContainer = document.getElementById('topPlayerContainer');
-            if (!overallSnap.empty) {
-                const doc = overallSnap.docs[0];
-                const data = doc.data();
-                const name = data.displayName || 'Anonymous';
-                const points = data.points || 0;
-                const avatarURL = data.avatarURL || null;
-                const isCurrent = doc.id === currentUser.uid;
+        // Change Password Modal
+        const passwordModal = document.getElementById('passwordModal');
+        const changePasswordBtn = document.getElementById('changePasswordBtn');
+        const closePasswordModal = document.getElementById('closePasswordModal');
+        const cancelPasswordBtn = document.getElementById('cancelPasswordBtn');
+        const savePasswordBtn = document.getElementById('savePasswordBtn');
+        const currentPass = document.getElementById('currentPassword');
+        const newPass = document.getElementById('newPassword');
+        const confirmPass = document.getElementById('confirmPassword');
 
-                let avatarHtml = avatarURL
-                    ? `<img src="${avatarURL}" alt="avatar">`
-                    : `<span>${name.charAt(0).toUpperCase()}</span>`;
+        changePasswordBtn.addEventListener('click', () => {
+            passwordModal.classList.add('active');
+        });
+        closePasswordModal.addEventListener('click', () => passwordModal.classList.remove('active'));
+        cancelPasswordBtn.addEventListener('click', () => passwordModal.classList.remove('active'));
 
-                topContainer.innerHTML = `
-                    <div class="top-player-card">
-                        <div class="top-player-avatar" style="background:${stringToColor(name)};">
-                            ${avatarHtml}
-                        </div>
-                        <div class="top-player-info">
-                            <h2>${name}</h2>
-                            <p>${isCurrent ? 'You are the' : 'Overall'} Best Player</p>
-                        </div>
-                        <div class="top-player-points">${points} pts</div>
-                    </div>
-                `;
-            } else {
-                topContainer.innerHTML = '';
+        savePasswordBtn.addEventListener('click', async () => {
+            if (!currentUser) return;
+            const current = currentPass.value;
+            const newP = newPass.value;
+            const confirm = confirmPass.value;
+            if (!current || !newP || !confirm) {
+                alert('Please fill all fields');
+                return;
             }
-
-            // Load per‑game leaderboards for all five games
-            await loadCategory('quizPoints', 'quizList');
-            await loadCategory('memoryPoints', 'memoryList');
-            await loadCategory('typingPoints', 'typingList');
-            await loadCategory('scramblePoints', 'scrambleList');
-            await loadCategory('racingPoints', 'racingList');
-        }
-
-        async function loadCategory(field, elementId) {
-            const listDiv = document.getElementById(elementId);
+            if (newP !== confirm) {
+                alert('New passwords do not match');
+                return;
+            }
+            if (newP.length < 6) {
+                alert('Password must be at least 6 characters');
+                return;
+            }
             try {
-                const snapshot = await db.collection('users').orderBy(field, 'desc').limit(3).get();
-                if (snapshot.empty) {
-                    listDiv.innerHTML = '<div class="empty-message">No players yet.</div>';
-                    return;
-                }
-
-                let html = '';
-                let rank = 1;
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    const name = data.displayName || 'Anonymous';
-                    const points = data[field] || 0;
-                    const isCurrent = doc.id === currentUser.uid;
-                    const avatarURL = data.avatarURL || null;
-
-                    let avatarHtml = avatarURL
-                        ? `<img src="${avatarURL}" alt="avatar">`
-                        : `<span>${name.charAt(0).toUpperCase()}</span>`;
-
-                    html += `
-                        <div class="leaderboard-item">
-                            <div class="rank-badge">${rank}</div>
-                            <div class="player-avatar" style="background:${stringToColor(name)};">${avatarHtml}</div>
-                            <div class="player-info">
-                                <span class="player-name">${name}</span>
-                                ${isCurrent ? '<span class="current-user-badge">you</span>' : ''}
-                            </div>
-                            <div class="player-points">${points}</div>
-                        </div>
-                    `;
-                    rank++;
-                });
-                listDiv.innerHTML = html;
-            } catch (e) {
-                console.error(`Error loading ${field}:`, e);
-                listDiv.innerHTML = '<div class="empty-message">Error loading data.</div>';
+                const credential = firebase.auth.EmailAuthProvider.credential(currentUser.email, current);
+                await currentUser.reauthenticateWithCredential(credential);
+                await currentUser.updatePassword(newP);
+                alert('Password updated successfully');
+                passwordModal.classList.remove('active');
+                currentPass.value = newPass.value = confirmPass.value = '';
+            } catch (error) {
+                console.error('Password change error:', error);
+                alert(error.message);
             }
-        }
+        });
+
+        // Delete Account Modal
+        const deleteModal = document.getElementById('deleteModal');
+        const deleteAccountBtn = document.getElementById('deleteAccountBtn');
+        const closeDeleteModal = document.getElementById('closeDeleteModal');
+        const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+        const deletePassword = document.getElementById('deletePassword');
+
+        deleteAccountBtn.addEventListener('click', () => {
+            deleteModal.classList.add('active');
+        });
+        closeDeleteModal.addEventListener('click', () => deleteModal.classList.remove('active'));
+        cancelDeleteBtn.addEventListener('click', () => deleteModal.classList.remove('active'));
+
+        confirmDeleteBtn.addEventListener('click', async () => {
+            if (!currentUser) return;
+            const password = deletePassword.value;
+            if (!password) {
+                alert('Please enter your password');
+                return;
+            }
+            try {
+                const credential = firebase.auth.EmailAuthProvider.credential(currentUser.email, password);
+                await currentUser.reauthenticateWithCredential(credential);
+                // Delete user data from Firestore first
+                await db.collection('users').doc(currentUser.uid).delete();
+                // Delete auth user
+                await currentUser.delete();
+                alert('Account deleted. Sorry to see you go.');
+                window.location.href = 'community.html';
+            } catch (error) {
+                console.error('Delete account error:', error);
+                alert(error.message);
+            }
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Admin · Samzy Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* === DESIGN SYSTEM (same as other pages) === */
+        :root {
+            --primary: #0052CC;
+            --accent: #FF6B35;
+            --neutral-50: #F8FAFC;
+            --neutral-200: #E2E8F0;
+            --neutral-400: #94A3B8;
+            --neutral-600: #64748B;
+            --neutral-900: #1E293B;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-md: 0 6px 18px rgba(0,0,0,0.05);
+            --radius-card: 16px;
+            --radius-button: 40px;
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+            --danger: #EF4444;
+            --warning: #F59E0B;
+            --success: #10B981;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: var(--neutral-50);
+            color: var(--neutral-900);
+            line-height: 1.5;
+            padding-bottom: 70px;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Header */
+        .blog-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--neutral-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.8rem 0;
+        }
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 var(--space-2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .logo i { color: var(--primary); margin-right: 6px; }
+        .logo span { color: var(--accent); }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--neutral-600);
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        .icon-btn:hover {
+            background: var(--neutral-200);
+            color: var(--primary);
+        }
+        .badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 10px;
+            min-width: 18px;
+            text-align: center;
+        }
+        .user-menu {
+            position: relative;
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .dropdown {
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: var(--white);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-md);
+            width: 200px;
+            display: none;
+            z-index: 200;
+            border: 1px solid var(--neutral-200);
+        }
+        .dropdown.show { display: block; }
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.9rem 1.2rem;
+            transition: background 0.2s;
+            color: var(--neutral-900);
+        }
+        .dropdown a:hover { background: var(--neutral-200); }
+        .dropdown i { width: 20px; color: var(--primary); }
+
+        /* Main container */
+        .main-container {
+            max-width: 1200px;
+            margin: var(--space-4) auto;
+            padding: 0 var(--space-2);
+        }
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        .page-title i {
+            color: var(--accent);
+        }
+
+        /* Admin tabs */
+        .admin-tabs {
+            display: flex;
+            gap: var(--space-2);
+            border-bottom: 1px solid var(--neutral-200);
+            margin-bottom: var(--space-4);
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--neutral-600);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        /* Stats cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+        }
+        .stat-card {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            border: 1px solid var(--neutral-200);
+            padding: var(--space-3);
+            text-align: center;
+        }
+        .stat-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: var(--space-1);
+        }
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .stat-card .stat-label {
+            color: var(--neutral-600);
+        }
+
+        /* Reports list */
+        .reports-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        .report-item {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            border: 1px solid var(--neutral-200);
+            padding: var(--space-3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+        .report-content {
+            flex: 1;
+        }
+        .report-meta {
+            display: flex;
+            gap: var(--space-3);
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+            color: var(--neutral-400);
+        }
+        .report-actions {
+            display: flex;
+            gap: var(--space-2);
+        }
+        .btn {
+            background: var(--neutral-200);
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius-button);
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #003d99;
+        }
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+        .btn-warning {
+            background: var(--warning);
+            color: white;
+        }
+        .btn-warning:hover {
+            background: #d97706;
+        }
+        .empty-state {
+            text-align: center;
+            padding: var(--space-5);
+            color: var(--neutral-400);
+        }
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: var(--space-2);
+            opacity: 0.5;
+        }
+
+        /* User management */
+        .user-search {
+            margin-bottom: var(--space-3);
+        }
+        .user-search input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-button);
+            font-size: 1rem;
+        }
+        .users-table {
+            background: var(--white);
+            border-radius: var(--radius-card);
+            border: 1px solid var(--neutral-200);
+            overflow: hidden;
+        }
+        .user-row {
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr 1fr 1.5fr;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-3);
+            border-bottom: 1px solid var(--neutral-200);
+            align-items: center;
+        }
+        .user-row:last-child {
+            border-bottom: none;
+        }
+        .user-row.header {
+            background: var(--neutral-200);
+            font-weight: 600;
+        }
+        .user-actions {
+            display: flex;
+            gap: var(--space-1);
+        }
+        .badge-admin {
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+        }
+
+        /* Bottom navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-top: 1px solid var(--neutral-200);
+            padding: 0.5rem 0;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+        }
+        .bottom-nav .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--neutral-600);
+            font-size: 0.8rem;
+            transition: color 0.2s;
+        }
+        .bottom-nav a i { font-size: 1.2rem; margin-bottom: 0.2rem; }
+        .bottom-nav a.active { color: var(--primary); }
+        .bottom-nav a:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <header class="blog-header">
+        <div class="header-container">
+            <a href="blog-feed.html" class="logo"><i class="fas fa-code"></i> SAMZY<span>blog</span></a>
+            <div class="header-actions">
+                <div class="user-menu">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div class="dropdown" id="userDropdown">
+                        <a href="blog-profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="page-title">
+            <i class="fas fa-shield-alt"></i> Admin Dashboard
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <div class="stat-value" id="totalUsers">0</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-file-alt"></i>
+                <div class="stat-value" id="totalPosts">0</div>
+                <div class="stat-label">Total Posts</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-flag"></i>
+                <div class="stat-value" id="pendingReports">0</div>
+                <div class="stat-label">Pending Reports</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-ban"></i>
+                <div class="stat-value" id="suspendedUsers">0</div>
+                <div class="stat-label">Suspended Users</div>
+            </div>
+        </div>
+
+        <!-- Admin Tabs -->
+        <div class="admin-tabs">
+            <button class="tab-btn active" id="tabReports">Reports</button>
+            <button class="tab-btn" id="tabUsers">Users</button>
+        </div>
+
+        <!-- Reports Tab -->
+        <div id="reportsTab">
+            <div class="reports-list" id="reportsList">
+                <div class="empty-state">Loading reports...</div>
+            </div>
+        </div>
+
+        <!-- Users Tab (hidden by default) -->
+        <div id="usersTab" style="display: none;">
+            <div class="user-search">
+                <input type="text" id="userSearch" placeholder="Search by name or email...">
+            </div>
+            <div class="users-table">
+                <div class="user-row header">
+                    <div>Name</div>
+                    <div>Email</div>
+                    <div>Posts</div>
+                    <div>Status</div>
+                    <div>Actions</div>
+                </div>
+                <div id="usersList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-items">
+            <a href="blog-feed.html"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="reels.html"><i class="fas fa-film"></i><span>Reels</span></a>
+            <a href="blog-games.html"><i class="fas fa-gamepad"></i><span>Games</span></a>
+            <a href="messages.html"><i class="fas fa-comment"></i><span>Messages</span></a>
+            <a href="blog-profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
+            authDomain: "samzy-community-blog.firebaseapp.com",
+            projectId: "samzy-community-blog",
+            storageBucket: "samzy-community-blog.firebasestorage.app",
+            messagingSenderId: "573240466296",
+            appId: "1:573240466296:web:5faa312a1136162961468d"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        let currentUser = null;
+
+        function stringToColor(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            return `hsl(${hash % 360}, 70%, 80%)`;
+        }
+
+        function loadUserAvatar(user) {
+            const avatarDiv = document.getElementById('userAvatar');
+            db.collection('users').doc(user.uid).get().then(doc => {
+                if (doc.exists && doc.data().avatarURL) {
+                    avatarDiv.innerHTML = `<img src="${doc.data().avatarURL}" alt="avatar">`;
+                } else {
+                    const displayName = doc.exists && doc.data().displayName ? doc.data().displayName : user.email;
+                    const initials = displayName.charAt(0).toUpperCase();
+                    avatarDiv.style.background = stringToColor(displayName);
+                    avatarDiv.innerHTML = `<span>${initials}</span>`;
+                }
+            }).catch(() => {
+                avatarDiv.style.background = stringToColor(user.email);
+                avatarDiv.innerHTML = `<span>${user.email.charAt(0).toUpperCase()}</span>`;
+            });
+        }
+
+        auth.onAuthStateChanged(async user => {
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            currentUser = user;
+            loadUserAvatar(user);
+
+            // Check if user is admin
+            const userDoc = await db.collection('users').doc(user.uid).get();
+            const isAdmin = userDoc.data()?.isAdmin || false;
+            if (!isAdmin) {
+                alert('You do not have admin access.');
+                window.location.href = 'blog-feed.html';
+                return;
+            }
+
+            loadStats();
+            loadReports();
+        });
+
+        document.getElementById('userAvatar').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('userDropdown').classList.toggle('show');
+        });
+        document.addEventListener('click', () => {
+            document.getElementById('userDropdown').classList.remove('show');
+        });
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            auth.signOut().then(() => window.location.href = 'community.html');
+        });
+
+        // Tab switching
+        const tabReports = document.getElementById('tabReports');
+        const tabUsers = document.getElementById('tabUsers');
+        const reportsTab = document.getElementById('reportsTab');
+        const usersTab = document.getElementById('usersTab');
+
+        tabReports.addEventListener('click', () => {
+            tabReports.classList.add('active');
+            tabUsers.classList.remove('active');
+            reportsTab.style.display = 'block';
+            usersTab.style.display = 'none';
+        });
+
+        tabUsers.addEventListener('click', () => {
+            tabUsers.classList.add('active');
+            tabReports.classList.remove('active');
+            reportsTab.style.display = 'none';
+            usersTab.style.display = 'block';
+            loadUsers();
+        });
+
+        async function loadStats() {
+            try {
+                const usersSnap = await db.collection('users').count().get();
+                document.getElementById('totalUsers').textContent = usersSnap.data().count;
+
+                const postsSnap = await db.collection('posts').count().get();
+                document.getElementById('totalPosts').textContent = postsSnap.data().count;
+
+                // For reports, we'll use a simple count (requires a reports collection – not built yet)
+                // Placeholder
+                document.getElementById('pendingReports').textContent = '0';
+                document.getElementById('suspendedUsers').textContent = '0';
+            } catch (e) {
+                console.error('Stats error:', e);
+            }
+        }
+
+        async function loadReports() {
+            const list = document.getElementById('reportsList');
+            // Since we don't have a reports collection yet, show placeholder
+            list.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-flag"></i>
+                    <p>Reports feature coming soon.</p>
+                </div>
+            `;
+        }
+
+        async function loadUsers() {
+            const list = document.getElementById('usersList');
+            list.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:1rem;">Loading...</div>';
+
+            try {
+                const snapshot = await db.collection('users').orderBy('displayName').limit(50).get();
+                if (snapshot.empty) {
+                    list.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:1rem;">No users found.</div>';
+                    return;
+                }
+
+                let html = '';
+                snapshot.forEach(doc => {
+                    const user = doc.data();
+                    const name = user.displayName || 'Anonymous';
+                    const email = user.email || '';
+                    const postCount = 0; // Would need a separate query
+                    const isAdmin = user.isAdmin ? 'Admin' : 'User';
+                    const status = user.suspended ? 'Suspended' : 'Active';
+
+                    html += `
+                        <div class="user-row">
+                            <div>${name}</div>
+                            <div>${email}</div>
+                            <div>${postCount}</div>
+                            <div>${status}</div>
+                            <div class="user-actions">
+                                <button class="btn btn-warning" data-uid="${doc.id}">Suspend</button>
+                                <button class="btn btn-danger" data-uid="${doc.id}">Delete</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                list.innerHTML = html;
+            } catch (e) {
+                console.error('Load users error:', e);
+                list.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:1rem;">Error loading users.</div>';
+            }
+        }
+    </script>
+</body>
+</html>

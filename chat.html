@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Chat · Samzy Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== DESIGN SYSTEM (same as before) ===== */
+        :root {
+            --primary: #0052CC;
+            --accent: #FF6B35;
+            --neutral-50: #F8FAFC;
+            --neutral-200: #E2E8F0;
+            --neutral-400: #94A3B8;
+            --neutral-600: #64748B;
+            --neutral-900: #1E293B;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-md: 0 6px 18px rgba(0,0,0,0.05);
+            --radius-card: 16px;
+            --radius-button: 40px;
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background: var(--neutral-50);
+            color: var(--neutral-900);
+            line-height: 1.5;
+            padding-bottom: 70px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Header */
+        .chat-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--neutral-200);
+            padding: 0.8rem var(--space-2);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--neutral-600);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        .back-btn:hover {
+            background: var(--neutral-200);
+            color: var(--primary);
+        }
+        .chat-user-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            flex: 1;
+        }
+        .chat-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            overflow: hidden;
+        }
+        .chat-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .chat-user-name h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        .chat-user-name p {
+            font-size: 0.8rem;
+            color: var(--neutral-400);
+        }
+
+        /* Messages container */
+        .messages-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--space-3);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            background: var(--neutral-50);
+        }
+        .message {
+            display: flex;
+            margin-bottom: var(--space-2);
+        }
+        .message.sent {
+            justify-content: flex-end;
+        }
+        .message.received {
+            justify-content: flex-start;
+        }
+        .message-bubble {
+            max-width: 70%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 24px;
+            position: relative;
+            word-wrap: break-word;
+        }
+        .message.sent .message-bubble {
+            background: var(--primary);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        .message.received .message-bubble {
+            background: var(--white);
+            border: 1px solid var(--neutral-200);
+            border-bottom-left-radius: 4px;
+        }
+        .message-time {
+            font-size: 0.7rem;
+            margin-top: 0.2rem;
+            text-align: right;
+            color: var(--neutral-400);
+        }
+        .message.sent .message-time {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Typing indicator (optional) */
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 0.5rem 1rem;
+            background: var(--neutral-200);
+            border-radius: 24px;
+            width: fit-content;
+            margin-bottom: var(--space-2);
+        }
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: var(--neutral-600);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.6; }
+            30% { transform: translateY(-5px); opacity: 1; }
+        }
+
+        /* Input area */
+        .message-input-container {
+            background: var(--white);
+            border-top: 1px solid var(--neutral-200);
+            padding: var(--space-2);
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+        }
+        .message-input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-button);
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+        }
+        .message-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,82,204,0.1);
+        }
+        .send-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .send-btn:hover {
+            background: #003d99;
+            transform: scale(1.05);
+        }
+
+        /* Bottom navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-top: 1px solid var(--neutral-200);
+            padding: 0.5rem 0;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+        }
+        .bottom-nav .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--neutral-600);
+            font-size: 0.8rem;
+            transition: color 0.2s;
+        }
+        .bottom-nav a i { font-size: 1.2rem; margin-bottom: 0.2rem; }
+        .bottom-nav a.active { color: var(--primary); }
+        .bottom-nav a:hover { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <!-- Chat Header -->
+    <header class="chat-header">
+        <button class="back-btn" id="backBtn"><i class="fas fa-arrow-left"></i></button>
+        <div class="chat-user-info" id="chatUserInfo">
+            <div class="chat-avatar" id="chatAvatar"></div>
+            <div class="chat-user-name">
+                <h3 id="chatName">Loading...</h3>
+                <p id="chatStatus">Online</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Messages -->
+    <div class="messages-container" id="messagesContainer">
+        <div style="text-align:center; color:var(--neutral-400); padding:2rem;" id="loadingMessages">Loading messages...</div>
+    </div>
+
+    <!-- Message Input -->
+    <div class="message-input-container">
+        <input type="text" class="message-input" id="messageInput" placeholder="Type a message...">
+        <button class="send-btn" id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-items">
+            <a href="blog-feed.html"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="reels.html"><i class="fas fa-film"></i><span>Reels</span></a>
+            <a href="blog-games.html"><i class="fas fa-gamepad"></i><span>Games</span></a>
+            <a href="messages.html"><i class="fas fa-comment"></i><span>Messages</span></a>
+            <a href="blog-profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
+            authDomain: "samzy-community-blog.firebaseapp.com",
+            projectId: "samzy-community-blog",
+            storageBucket: "samzy-community-blog.firebasestorage.app",
+            messagingSenderId: "573240466296",
+            appId: "1:573240466296:web:5faa312a1136162961468d"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        let currentUser = null;
+        let otherUserId = null;
+        let chatId = null;
+        let messagesListener = null;
+
+        // Helper: string to color
+        function stringToColor(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            return `hsl(${hash % 360}, 70%, 80%)`;
+        }
+
+        // Format timestamp
+        function formatMessageTime(date) {
+            const now = new Date();
+            const diff = now - date;
+            if (diff < 60 * 1000) return 'just now';
+            if (diff < 60 * 60 * 1000) return Math.floor(diff / (60 * 1000)) + 'm';
+            if (diff < 24 * 60 * 60 * 1000) return Math.floor(diff / (60 * 60 * 1000)) + 'h';
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        // Get URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        otherUserId = urlParams.get('uid');
+
+        // Auth state
+        auth.onAuthStateChanged(async user => {
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            currentUser = user;
+            if (!otherUserId) {
+                alert('No user specified');
+                window.location.href = 'messages.html';
+                return;
+            }
+            chatId = [currentUser.uid, otherUserId].sort().join('_');
+            await loadOtherUserInfo();
+            loadMessages();
+            markMessagesAsRead();
+        });
+
+        // Load other user's info
+        async function loadOtherUserInfo() {
+            try {
+                const userDoc = await db.collection('users').doc(otherUserId).get();
+                if (!userDoc.exists) {
+                    document.getElementById('chatName').textContent = 'Unknown User';
+                    return;
+                }
+                const userData = userDoc.data();
+                const name = userData.displayName || 'Anonymous';
+                const avatarURL = userData.avatarURL || null;
+                document.getElementById('chatName').textContent = name;
+
+                const avatarDiv = document.getElementById('chatAvatar');
+                if (avatarURL) {
+                    avatarDiv.innerHTML = `<img src="${avatarURL}" alt="avatar">`;
+                } else {
+                    avatarDiv.style.background = stringToColor(name);
+                    avatarDiv.innerHTML = `<span>${name.charAt(0).toUpperCase()}</span>`;
+                }
+            } catch (e) {
+                console.error('Error loading user:', e);
+            }
+        }
+
+        // Load messages in real-time
+        function loadMessages() {
+            const messagesContainer = document.getElementById('messagesContainer');
+            messagesContainer.innerHTML = ''; // clear loading
+
+            messagesListener = db.collection('chats').doc(chatId)
+                .collection('messages')
+                .orderBy('timestamp', 'asc')
+                .onSnapshot(snapshot => {
+                    messagesContainer.innerHTML = '';
+                    if (snapshot.empty) {
+                        messagesContainer.innerHTML = '<div style="text-align:center; color:var(--neutral-400); padding:2rem;">No messages yet. Say hi! 👋</div>';
+                        return;
+                    }
+                    snapshot.forEach(doc => {
+                        const msg = doc.data();
+                        const messageDiv = createMessageElement(msg);
+                        messagesContainer.appendChild(messageDiv);
+                    });
+                    // Scroll to bottom
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, error => {
+                    console.error('Messages error:', error);
+                    messagesContainer.innerHTML = '<div style="text-align:center; color:red; padding:2rem;">Failed to load messages</div>';
+                });
+        }
+
+        // Create a single message element
+        function createMessageElement(msg) {
+            const div = document.createElement('div');
+            div.className = `message ${msg.senderId === currentUser.uid ? 'sent' : 'received'}`;
+
+            const time = msg.timestamp ? msg.timestamp.toDate() : new Date();
+            const timeStr = formatMessageTime(time);
+
+            div.innerHTML = `
+                <div class="message-bubble">
+                    ${msg.text}
+                    <div class="message-time">${timeStr}</div>
+                </div>
+            `;
+            return div;
+        }
+
+        // Mark messages as read
+        async function markMessagesAsRead() {
+            if (!currentUser || !otherUserId) return;
+            try {
+                // Find unread messages where sender is other user
+                const unreadSnapshot = await db.collection('chats').doc(chatId)
+                    .collection('messages')
+                    .where('senderId', '==', otherUserId)
+                    .where('read', '==', false)
+                    .get();
+
+                if (unreadSnapshot.empty) return;
+
+                // Use batched write to update messages and chat document atomically
+                const batch = db.batch();
+                unreadSnapshot.docs.forEach(doc => {
+                    batch.update(doc.ref, { read: true });
+                });
+
+                const chatRef = db.collection('chats').doc(chatId);
+                batch.update(chatRef, {
+                    [`unreadCount.${currentUser.uid}`]: 0
+                });
+
+                await batch.commit();
+            } catch (e) {
+                console.error('Error marking messages as read:', e);
+                // If chat document doesn't exist, ignore – it will be created on first message
+            }
+        }
+
+        // Send message (with chat document creation if needed)
+        async function sendMessage(text) {
+            if (!text.trim()) return;
+            const message = {
+                senderId: currentUser.uid,
+                text: text.trim(),
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                read: false
+            };
+
+            const chatRef = db.collection('chats').doc(chatId);
+            const messageRef = chatRef.collection('messages').doc();
+
+            try {
+                // Use batched write to ensure both message and chat update succeed together
+                const batch = db.batch();
+                batch.set(messageRef, message);
+
+                const chatDoc = await chatRef.get();
+                if (!chatDoc.exists) {
+                    // First message: create chat document
+                    batch.set(chatRef, {
+                        participants: [currentUser.uid, otherUserId],
+                        lastMessage: text.trim(),
+                        lastMessageTime: firebase.firestore.FieldValue.serverTimestamp(),
+                        unreadCount: {
+                            [currentUser.uid]: 0,
+                            [otherUserId]: 1
+                        }
+                    });
+                } else {
+                    // Existing chat: update last message and increment unread count for other user
+                    batch.update(chatRef, {
+                        lastMessage: text.trim(),
+                        lastMessageTime: firebase.firestore.FieldValue.serverTimestamp(),
+                        [`unreadCount.${otherUserId}`]: firebase.firestore.FieldValue.increment(1)
+                    });
+                }
+
+                await batch.commit();
+
+                document.getElementById('messageInput').value = '';
+            } catch (e) {
+                console.error('Send error:', e);
+                alert('Failed to send message');
+            }
+        }
+
+        // Event listeners
+        document.getElementById('sendBtn').addEventListener('click', () => {
+            const input = document.getElementById('messageInput');
+            sendMessage(input.value);
+        });
+
+        document.getElementById('messageInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage(e.target.value);
+            }
+        });
+
+        document.getElementById('backBtn').addEventListener('click', () => {
+            window.location.href = 'messages.html';
+        });
+
+        // Clean up listener on page unload
+        window.addEventListener('beforeunload', () => {
+            if (messagesListener) messagesListener();
+        });
+    </script>
+</body>
+</html>

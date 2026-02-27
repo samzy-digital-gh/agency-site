@@ -2,141 +2,517 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games Hub · Samzy Community</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Games Hub - Samzy Community</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Copy all :root, header, footer styles from home page (same as above) */
+        :root {
+            --primary: #0052CC;
+            --accent: #FF6B35;
+            --neutral-50: #F8FAFC;
+            --neutral-200: #E2E8F0;
+            --neutral-400: #94A3B8;
+            --neutral-600: #64748B;
+            --neutral-900: #1E293B;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+            --shadow-md: 0 6px 18px rgba(0,0,0,0.05);
+            --radius-card: 16px;
+            --radius-button: 40px;
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+        }
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body { background:#f8fafc; color:#1e293b; }
+        body {
+            background: var(--neutral-50);
+            color: var(--neutral-900);
+            line-height: 1.5;
+            padding-bottom: 70px;
+        }
         a { text-decoration:none; color:inherit; }
         .blog-header {
-            background:white; position:sticky; top:0; z-index:50;
-            box-shadow:0 2px 10px rgba(0,0,0,0.03);
-            border-bottom:1px solid rgba(0,102,255,0.1);
+            background: var(--white);
+            border-bottom: 1px solid var(--neutral-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.8rem 0;
         }
         .header-container {
-            max-width:1300px; margin:0 auto; padding:1rem 2rem;
-            display:flex; align-items:center; justify-content:space-between;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 var(--space-2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .logo { font-size:1.5rem; font-weight:600; }
-        .logo i { color:#0066FF; margin-right:6px; }
-        .logo span { color:#FF6B35; }
-        .nav-links { display:flex; gap:2rem; }
-        .nav-links a { font-weight:500; padding:0.5rem 0; border-bottom:2px solid transparent; transition:0.2s; }
-        .nav-links a:hover, .nav-links a.active { color:#0066FF; border-bottom-color:#0066FF; }
-        .user-menu { position:relative; }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .logo i { color: var(--primary); margin-right: 6px; }
+        .logo span { color: var(--accent); }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--neutral-600);
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        .icon-btn:hover {
+            background: var(--neutral-200);
+            color: var(--primary);
+        }
+        .badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 10px;
+            min-width: 18px;
+            text-align: center;
+        }
+        .user-menu {
+            position: relative;
+        }
         .user-avatar {
-            width:40px; height:40px; border-radius:50%; background:#e6f0ff; color:#0066FF;
-            display:flex; align-items:center; justify-content:center; font-weight:600; cursor:pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
         }
-        .user-avatar img { width:100%; height:100%; border-radius:50%; object-fit:cover; }
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         .dropdown {
-            position:absolute; right:0; top:50px; background:white; border-radius:16px;
-            box-shadow:0 10px 30px rgba(0,0,0,0.1); width:180px; display:none; z-index:100;
-            border:1px solid #eef2f6;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: var(--white);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-md);
+            width: 200px;
+            display: none;
+            z-index: 200;
+            border: 1px solid var(--neutral-200);
         }
-        .dropdown.show { display:block; }
-        .dropdown a { display:flex; align-items:center; gap:10px; padding:0.9rem 1.2rem; transition:background 0.2s; }
-        .dropdown a:hover { background:#f1f5f9; }
-        .dropdown i { width:20px; color:#0066FF; }
+        .dropdown.show { display: block; }
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.9rem 1.2rem;
+            transition: background 0.2s;
+            color: var(--neutral-900);
+        }
+        .dropdown a:hover { background: var(--neutral-200); }
+        .dropdown i { width: 20px; color: var(--primary); }
+        .notifications-dropdown {
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: var(--white);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-md);
+            width: 320px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 200;
+            border: 1px solid var(--neutral-200);
+        }
+        .notifications-dropdown.show { display: block; }
+        .notification-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2);
+            border-bottom: 1px solid var(--neutral-200);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .notification-item:hover { background: var(--neutral-200); }
+        .notification-item.unread { background: #e6f0ff; }
+        .notification-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        .notification-content { flex: 1; }
+        .notification-content p { margin:0; font-size:0.9rem; }
+        .notification-time { font-size:0.7rem; color: var(--neutral-400); }
+        .notification-link {
+            display: block;
+            text-align: center;
+            padding: var(--space-2);
+            color: var(--primary);
+            font-weight: 500;
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-top: 1px solid var(--neutral-200);
+            padding: 0.5rem 0;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+        }
+        .bottom-nav .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--neutral-600);
+            font-size: 0.8rem;
+            transition: color 0.2s;
+        }
+        .bottom-nav a i { font-size: 1.2rem; margin-bottom: 0.2rem; }
+        .bottom-nav a.active { color: var(--primary); }
+        .bottom-nav a:hover { color: var(--primary); }
+
+        /* Games hub specific styles */
         .main-container {
-            max-width:1200px; margin:2rem auto; padding:0 2rem;
+            max-width: 1300px;
+            margin: var(--space-4) auto;
+            padding: 0 var(--space-2);
         }
-        h1 { margin-bottom:1rem; }
+        .games-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-4);
+            flex-wrap: wrap;
+        }
+        .total-points {
+            background: var(--neutral-200);
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-button);
+            font-weight: 600;
+        }
+        .total-points span {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+        .stats-leaderboard-row {
+            display: flex;
+            gap: var(--space-4);
+            margin-bottom: var(--space-5);
+            flex-wrap: wrap;
+        }
+        .stats-card {
+            flex: 1;
+            min-width: 250px;
+            background: linear-gradient(135deg, var(--primary), #003d99);
+            color: white;
+            border-radius: var(--radius-card);
+            padding: var(--space-4);
+        }
+        .stats-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: var(--space-2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .stat-value {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+        }
+        .leaderboard-preview {
+            flex: 2;
+            background: var(--white);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-card);
+            padding: var(--space-4);
+        }
+        .leaderboard-preview h3 {
+            font-size: 1.3rem;
+            margin-bottom: var(--space-2);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .preview-list {
+            margin-bottom: var(--space-2);
+        }
+        .preview-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+        .preview-rank {
+            width: 30px;
+            height: 30px;
+            background: var(--neutral-200);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .preview-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--neutral-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .preview-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .preview-info {
+            flex: 1;
+        }
+        .preview-name {
+            font-weight: 600;
+        }
+        .preview-points {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        .view-all-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-button);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
         .games-grid {
-            display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; margin-top:2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-5);
         }
         .game-card {
-            background:white; border-radius:24px; padding:2rem; text-align:center;
-            box-shadow:0 4px 12px rgba(0,0,0,0.03); border:1px solid rgba(0,102,255,0.1);
-            transition:transform 0.2s;
+            background: var(--white);
+            border: 1px solid var(--neutral-200);
+            border-radius: var(--radius-card);
+            padding: var(--space-4);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .game-card:hover { transform:translateY(-5px); }
-        .game-card h2 { margin:1rem 0 0.5rem; }
-        .game-card p { color:#64748b; margin-bottom:1.5rem; }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .game-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--space-2);
+        }
+        .game-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        .game-card p {
+            color: var(--neutral-600);
+            margin-bottom: var(--space-2);
+        }
+        .game-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--neutral-400);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-2);
+        }
         .play-btn {
-            background:#FF6B35; color:white; border:none; padding:0.8rem 2rem; border-radius:40px;
-            font-weight:600; cursor:pointer; display:inline-block; text-decoration:none;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: var(--radius-button);
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            transition: background 0.2s;
         }
-        .blog-footer {
-            background:#000; color:#ccc; padding:3rem 2rem 1.5rem; margin-top:3rem;
+        .play-btn:hover { background: #003d99; }
+        @media (max-width:600px) {
+            .stats-leaderboard-row { flex-direction: column; }
         }
-        .footer-container {
-            max-width:1300px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr);
-            gap:2rem; text-align:left;
-        }
-        .footer-col h4 { color:white; margin-bottom:1.2rem; font-size:1.1rem; }
-        .footer-col ul { list-style:none; }
-        .footer-col li { margin-bottom:0.6rem; }
-        .footer-col a { color:#ccc; transition:color 0.2s; }
-        .footer-col a:hover { color:#FF6B35; }
-        .social-icons { display:flex; gap:1rem; font-size:1.3rem; }
-        .social-icons a { color:#ccc; }
-        .social-icons a:hover { color:#FF6B35; }
-        .copyright {
-            text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid #333;
-            color:#777; font-size:0.9rem;
-        }
-        @media (max-width:700px) { .footer-container { grid-template-columns:1fr; } }
     </style>
 </head>
 <body>
+    <!-- Header (no search button) -->
     <header class="blog-header">
         <div class="header-container">
             <a href="blog-feed.html" class="logo"><i class="fas fa-code"></i> SAMZY<span>blog</span></a>
-            <nav class="nav-links">
-                <a href="blog-feed.html">Home</a>
-                <a href="blog-profile.html">Profile</a>
-                <a href="blog-leaderboard.html">Leaderboard</a>
-                <a href="blog-games.html" class="active">Games</a>
-            </nav>
-            <div class="user-menu">
-                <div class="user-avatar" id="userAvatar"><span id="avatarText"></span></div>
-                <div class="dropdown" id="dropdown">
-                    <a href="blog-profile.html"><i class="fas fa-user"></i> Profile</a>
-                    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <div class="header-actions">
+                <div class="user-menu" style="position: relative;">
+                    <button class="icon-btn" id="notificationsBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                    <div class="notifications-dropdown" id="notificationsDropdown">
+                        <div id="notificationsList"></div>
+                        <a href="notifications.html" class="notification-link">See all</a>
+                    </div>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div class="dropdown" id="userDropdown">
+                        <a href="blog-profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="admin.html" id="adminLink" style="display: none;"><i class="fas fa-shield-alt"></i> Admin</a>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <div class="main-container">
-        <h1>🎮 Games Hub</h1>
-        <p>Play games, earn points, and climb the leaderboard!</p>
+        <div class="games-header">
+            <h1><i class="fas fa-gamepad" style="color:var(--accent);"></i> Games Hub</h1>
+            <div class="total-points">Total Points <span id="totalPoints">0</span></div>
+        </div>
+
+        <!-- Stats + Leaderboard Preview -->
+        <div class="stats-leaderboard-row">
+            <div class="stats-card">
+                <h3><i class="fas fa-chart-line"></i> Your Stats</h3>
+                <div class="stat-item"><span>Total Points</span><span class="stat-value" id="yourPoints">0</span></div>
+                <div class="stat-item"><span>Games Played</span><span class="stat-value" id="gamesPlayed">0</span></div>
+                <div class="stat-item"><span>Best Game</span><span class="stat-value" id="bestGame">-</span></div>
+                <a href="blog-leaderboard.html" class="view-all-btn">View Leaderboard →</a>
+            </div>
+            <div class="leaderboard-preview">
+                <h3><i class="fas fa-trophy"></i> Top Players</h3>
+                <div class="preview-list" id="previewList">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Games Grid -->
         <div class="games-grid">
+            <!-- Coding Quiz -->
             <div class="game-card">
-                <i class="fas fa-code" style="font-size:3rem; color:#0066FF;"></i>
-                <h2>Coding Quiz</h2>
-                <p>250+ questions on HTML, CSS, JS, React, PHP. Junior to senior levels.</p>
+                <div class="game-icon"><i class="fas fa-code"></i></div>
+                <h3>Coding Quiz</h3>
+                <p>1000+ questions across HTML, CSS, JavaScript, React, PHP. 10 pts per correct.</p>
+                <div class="game-meta"><span>🏆 High Score: <span id="quizHighScore">0</span></span><span>⭐ 10 pts</span></div>
                 <a href="blog-quiz.html" class="play-btn">Play</a>
             </div>
+            <!-- Memory Match -->
             <div class="game-card">
-                <i class="fas fa-brain" style="font-size:3rem; color:#FF6B35;"></i>
-                <h2>Memory Match</h2>
-                <p>150 levels. Match pairs and train your brain.</p>
+                <div class="game-icon"><i class="fas fa-brain"></i></div>
+                <h3>Memory Match</h3>
+                <p>500 levels of matching pairs. 20 pts per level. Progress saved.</p>
+                <div class="game-meta"><span>🏆 High Score: <span id="memoryHighScore">0</span></span><span>⭐ 20 pts</span></div>
                 <a href="blog-memory.html" class="play-btn">Play</a>
             </div>
+            <!-- Code Fall -->
             <div class="game-card">
-                <i class="fas fa-keyboard" style="font-size:3rem; color:#0066FF;"></i>
-                <h2>Typing Speed</h2>
-                <p>Test your coding typing speed. Improve your WPM and earn points.</p>
+                <div class="game-icon"><i class="fas fa-keyboard"></i></div>
+                <h3>Code Fall</h3>
+                <p>Falling words typing game. 200+ coding words, speed increases. Points based on accuracy.</p>
+                <div class="game-meta"><span>🏆 High Score: <span id="typingHighScore">0</span></span><span>⭐ 10–50 pts</span></div>
                 <a href="blog-typing.html" class="play-btn">Play</a>
+            </div>
+            <!-- Word Scramble -->
+            <div class="game-card">
+                <div class="game-icon"><i class="fas fa-puzzle-piece"></i></div>
+                <h3>Word Scramble</h3>
+                <p>Unscramble coding words. 200+ words, 5 pts per correct. Streak hint after 20.</p>
+                <div class="game-meta"><span>🏆 High Score: <span id="scrambleHighScore">0</span></span><span>⭐ 5 pts</span></div>
+                <a href="word-scramble.html" class="play-btn">Play</a>
+            </div>
+            <!-- Speed Racer -->
+            <div class="game-card">
+                <div class="game-icon"><i class="fas fa-car"></i></div>
+                <h3>Speed Racer</h3>
+                <p>3‑lane arcade racer. Avoid obstacles, collect boosts. 100+ tracks coming soon!</p>
+                <div class="game-meta"><span>🏆 High Score: <span id="racerHighScore">0</span></span><span>⭐ Coming</span></div>
+                <a href="racing.html" class="play-btn">Play</a>
             </div>
         </div>
     </div>
 
-    <footer class="blog-footer">
-        <div class="footer-container">
-            <div class="footer-col"><h4>Navigation</h4><ul><li><a href="blog-feed.html">Home</a></li><li><a href="blog-profile.html">Profile</a></li><li><a href="blog-leaderboard.html">Leaderboard</a></li><li><a href="blog-games.html">Games</a></li></ul></div>
-            <div class="footer-col"><h4>Legal</h4><ul><li><a href="terms.html">Terms of Service</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="cookies.html">Cookie Policy</a></li></ul></div>
+    <!-- Footer & Bottom Navigation (same as home) -->
+    <footer class="blog-footer" style="background:#000; color:#ccc; padding:3rem 2rem 1.5rem; margin-top:3rem;">
+        <div class="footer-container" style="max-width:1300px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:2rem;">
+            <div class="footer-col"><h4>Navigation</h4><ul><li><a href="blog-feed.html">Home</a></li><li><a href="blog-profile.html">Profile</a></li><li><a href="blog-games.html">Games</a></li></ul></div>
+            <div class="footer-col"><h4>Legal</h4><ul><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="cookies.html">Cookies</a></li></ul></div>
             <div class="footer-col"><h4>Connect</h4><div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a></div></div>
         </div>
-        <div class="copyright">© 2026 Samzy Digital Community. All rights reserved.</div>
+        <div class="copyright" style="text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid #333; color:#777;">© 2026 Samzy Digital Community. All rights reserved.</div>
     </footer>
+    <div class="bottom-nav">
+        <div class="nav-items">
+            <a href="blog-feed.html"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="reels.html"><i class="fas fa-film"></i><span>Reels</span></a>
+            <a href="blog-games.html" class="active"><i class="fas fa-gamepad"></i><span>Games</span></a>
+            <a href="messages.html"><i class="fas fa-comment"></i><span>Messages</span></a>
+            <a href="blog-profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+        </div>
+    </div>
 
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
@@ -150,37 +526,148 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        auth.onAuthStateChanged(user => {
-            if (!user) { window.location.href = 'login.html'; return; }
-            loadUserAvatar(user);
-        });
+        let currentUser = null;
 
+        // Helper functions (same as home)
         function stringToColor(str) {
             let hash = 0;
-            for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            for (let i=0; i<str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
             return `hsl(${hash % 360}, 70%, 80%)`;
         }
-        function loadUserAvatar(user) {
-            const avatarDiv = document.querySelector('.user-avatar');
-            db.collection('users').doc(user.uid).get().then(doc => {
-                const displayName = doc.exists && doc.data().displayName ? doc.data().displayName : user.email;
-                const initials = displayName.charAt(0).toUpperCase();
-                avatarDiv.style.background = stringToColor(displayName);
-                avatarDiv.innerHTML = `<span>${initials}</span>`;
-            }).catch(() => {
-                avatarDiv.style.background = stringToColor(user.email);
-                avatarDiv.innerHTML = `<span>${user.email.charAt(0).toUpperCase()}</span>`;
+        function formatTimeAgo(date) {
+            const s = Math.floor((new Date() - date)/1000);
+            if (s < 60) return 'just now';
+            if (s < 3600) return Math.floor(s/60)+'m ago';
+            if (s < 86400) return Math.floor(s/3600)+'h ago';
+            return Math.floor(s/86400)+'d ago';
+        }
+        async function loadUserAvatar(user) {
+            const avatar = document.getElementById('userAvatar');
+            const userDoc = await db.collection('users').doc(user.uid).get();
+            if (userDoc.exists && userDoc.data().avatarURL) {
+                avatar.innerHTML = `<img src="${userDoc.data().avatarURL}" style="width:100%;height:100%;object-fit:cover;">`;
+            } else {
+                const name = userDoc.exists && userDoc.data().displayName ? userDoc.data().displayName : user.email;
+                avatar.style.background = stringToColor(name);
+                avatar.innerHTML = `<span>${name.charAt(0).toUpperCase()}</span>`;
+            }
+        }
+        function setupDropdown() {
+            const avatar = document.getElementById('userAvatar');
+            const dropdown = document.getElementById('userDropdown');
+            const logout = document.getElementById('logoutBtn');
+            avatar.addEventListener('click', e => {
+                e.stopPropagation();
+                dropdown.classList.toggle('show');
+            });
+            document.addEventListener('click', () => dropdown.classList.remove('show'));
+            logout.addEventListener('click', e => {
+                e.preventDefault();
+                auth.signOut().then(() => window.location.href = 'community.html');
             });
         }
-        document.getElementById('userAvatar').addEventListener('click', e => {
-            e.stopPropagation();
-            document.getElementById('dropdown').classList.toggle('show');
-        });
-        document.addEventListener('click', () => document.getElementById('dropdown').classList.remove('show'));
-        document.getElementById('logoutBtn').addEventListener('click', e => {
-            e.preventDefault();
-            auth.signOut().then(() => window.location.href = 'community.html');
-        });
+        async function loadNotifications(user) {
+            if (!user) return;
+            try {
+                const snap = await db.collection('notifications')
+                    .where('recipientId','==',user.uid)
+                    .orderBy('createdAt','desc')
+                    .limit(10).get();
+                const list = document.getElementById('notificationsList');
+                const badge = document.getElementById('notificationBadge');
+                let unread = 0;
+                if (snap.empty) {
+                    list.innerHTML = '<div style="padding:1rem;text-align:center;">No notifications</div>';
+                    badge.style.display = 'none';
+                    return;
+                }
+                let html = '';
+                snap.forEach(doc => {
+                    const n = doc.data();
+                    const date = n.createdAt ? n.createdAt.toDate() : new Date();
+                    const timeAgo = formatTimeAgo(date);
+                    const unreadClass = n.read ? '' : 'unread';
+                    if (!n.read) unread++;
+                    const icon = n.type === 'like' ? '❤️' : n.type === 'comment' ? '💬' : '👤';
+                    html += `<div class="notification-item ${unreadClass}" data-id="${doc.id}" data-post="${n.postId||''}" data-from="${n.fromUserId||''}"><div class="notification-icon">${icon}</div><div class="notification-content"><p><strong>${n.fromUserName||'Someone'}</strong> ${n.type==='like'?'liked your post':n.type==='comment'?'commented on your post':'started following you'}</p><div class="notification-time">${timeAgo}</div></div></div>`;
+                });
+                list.innerHTML = html;
+                badge.style.display = unread ? 'inline' : 'none';
+                if (unread) badge.textContent = unread;
+                document.querySelectorAll('.notification-item').forEach(item => {
+                    item.addEventListener('click', async () => {
+                        const id = item.dataset.id;
+                        await db.collection('notifications').doc(id).update({read: true});
+                        if (item.dataset.post) window.location.href = `blog-feed.html?post=${item.dataset.post}`;
+                        else if (item.dataset.from) window.location.href = `blog-profile.html?uid=${item.dataset.from}`;
+                    });
+                });
+            } catch (e) { console.error(e); }
+        }
+
+        (async () => {
+            const user = await new Promise(resolve => {
+                const unsubscribe = auth.onAuthStateChanged(u => { unsubscribe(); resolve(u); });
+            });
+            if (!user) {
+                window.location.href = 'login.html?returnTo=' + encodeURIComponent(window.location.href);
+                return;
+            }
+            currentUser = user;
+            await loadUserAvatar(user);
+            setupDropdown();
+            loadNotifications(user);
+            loadGamesData(user);
+            loadLeaderboardPreview();
+        })();
+
+        async function loadGamesData(user) {
+            const doc = await db.collection('users').doc(user.uid).get();
+            const data = doc.data() || {};
+            document.getElementById('totalPoints').textContent = data.points || 0;
+            document.getElementById('yourPoints').textContent = data.points || 0;
+            const played = [data.quizPoints, data.memoryPoints, data.typingPoints, data.scramblePoints, data.racingPoints].filter(p => p > 0).length;
+            document.getElementById('gamesPlayed').textContent = played;
+            const games = {
+                Quiz: data.quizPoints || 0,
+                Memory: data.memoryPoints || 0,
+                Typing: data.typingPoints || 0,
+                Scramble: data.scramblePoints || 0,
+                Racer: data.racingPoints || 0
+            };
+            let best = 'None', bestVal = 0;
+            for (let [g, v] of Object.entries(games)) if (v > bestVal) { bestVal = v; best = g; }
+            document.getElementById('bestGame').textContent = best;
+            document.getElementById('quizHighScore').textContent = data.quizPoints || 0;
+            document.getElementById('memoryHighScore').textContent = data.memoryPoints || 0;
+            document.getElementById('typingHighScore').textContent = data.typingPoints || 0;
+            document.getElementById('scrambleHighScore').textContent = data.scramblePoints || 0;
+            document.getElementById('racerHighScore').textContent = data.racingPoints || 0;
+        }
+
+        async function loadLeaderboardPreview() {
+            try {
+                const snap = await db.collection('users').orderBy('points', 'desc').limit(3).get();
+                const list = document.getElementById('previewList');
+                list.innerHTML = '';
+                let rank = 1;
+                snap.forEach(doc => {
+                    const data = doc.data();
+                    const name = data.displayName || 'Anonymous';
+                    const pts = data.points || 0;
+                    const avatar = data.avatarURL ? `<img src="${data.avatarURL}">` : `<span>${name.charAt(0).toUpperCase()}</span>`;
+                    list.innerHTML += `
+                        <div class="preview-item">
+                            <div class="preview-rank">${rank}</div>
+                            <div class="preview-avatar" style="background:${stringToColor(name)};">${avatar}</div>
+                            <div class="preview-info"><span class="preview-name">${name}</span></div>
+                            <div class="preview-points">${pts} pts</div>
+                        </div>
+                    `;
+                    rank++;
+                });
+            } catch (e) { console.error(e); }
+        }
     </script>
 </body>
 </html>
