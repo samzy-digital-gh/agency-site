@@ -1,0 +1,15 @@
+# SamzyDigital – robots.txt
+# Site   : https://samzy-digital-gh.github.io/agency-site/
+# Owner  : Samuel AHIABA
+# Email  : samuelahiaba3@gmail.com
+# Phone  : +233539929190
+
+User-agent: *
+Allow: /
+
+# Block private/config files
+Disallow: /cdn-cgi/
+Disallow: *.json$
+
+# Sitemap – Google, Bing and all crawlers read this automatically
+Sitemap: https://samzy-digital-gh.github.io/agency-site/sitemap.xml

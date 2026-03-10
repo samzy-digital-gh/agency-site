@@ -1,470 +1,741 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>SamzyDigital · Business Solutions</title>
-    <!-- Font Awesome 6 CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- GLOBAL – DO NOT EDIT -->
-    <link rel="stylesheet" href="header-footer.css">
-    <link rel="stylesheet" href="samzy-chatbot.css">
-    <!-- PAGE‑SPECIFIC BUSINESS CSS -->
-    <link rel="stylesheet" href="business.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Web Development Services Ghana – Websites, E-Commerce & Automation | SamzyDigital</title>
+  <meta name="description" content="Professional web development services in Ghana. Custom websites from GHS 1,500. E-commerce stores, business automation, digital marketing and SEO. SamzyDigital by Samuel AHIABA – Accra, Ghana. Free consultation. Call 0539929190.">
+  <meta name="keywords" content="web development Ghana, website design Ghana, affordable website Ghana, e-commerce Ghana, business automation Ghana, digital marketing Ghana, SEO Ghana, website Accra, web developer Ghana price, Ghana website cost, build website Ghana, online store Ghana, Samuel AHIABA, SamzyDigital">
+  <meta name="author" content="Samuel AHIABA – SamzyDigital">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://samzy-digital-gh.github.io/agency-site/business.html">
+  <meta name="geo.region" content="GH-AA">
+  <meta name="geo.placename" content="Accra, Ghana">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://samzy-digital-gh.github.io/agency-site/business.html">
+  <meta property="og:title" content="Web Development Services Ghana – Websites, E-Commerce & Automation | SamzyDigital">
+  <meta property="og:description" content="Professional websites from GHS 1,500. E-commerce, automation and digital marketing for Ghanaian businesses. Free consultation with Samuel AHIABA – SamzyDigital Accra.">
+  <meta property="og:image" content="https://samzy-digital-gh.github.io/agency-site/samzy.jpg">
+  <meta property="og:site_name" content="SamzyDigital">
+  <meta property="og:locale" content="en_GH">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Web Development Services Ghana | SamzyDigital">
+  <meta name="twitter:description" content="Custom websites, e-commerce and automation for Ghanaian businesses. Starting GHS 1,500. Free consultation. SamzyDigital – Accra, Ghana.">
+  <meta name="twitter:image" content="https://samzy-digital-gh.github.io/agency-site/samzy.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "url": "https://samzy-digital-gh.github.io/agency-site/business.html",
+        "name": "Web Development Services Ghana – SamzyDigital",
+        "description": "Professional web development, e-commerce, automation and digital marketing services for Ghanaian businesses by Samuel AHIABA",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://samzy-digital-gh.github.io/agency-site/" },
+            { "@type": "ListItem", "position": 2, "name": "Business Services", "item": "https://samzy-digital-gh.github.io/agency-site/business.html" }
+          ]
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "Web Development Ghana",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "SamzyDigital",
+          "founder": { "@type": "Person", "name": "Samuel AHIABA" },
+          "telephone": "+233539929190",
+          "address": { "@type": "PostalAddress", "addressLocality": "Accra", "addressCountry": "GH" }
+        },
+        "areaServed": "Ghana",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Website Packages",
+          "itemListElement": [
+            { "@type": "Offer", "name": "Starter Website", "price": "1500", "priceCurrency": "GHS", "description": "3-5 page professional website" },
+            { "@type": "Offer", "name": "Business Website", "price": "3500", "priceCurrency": "GHS", "description": "Full business website with blog and SEO" },
+            { "@type": "Offer", "name": "Enterprise E-Commerce", "price": "6500", "priceCurrency": "GHS", "description": "Full online store with MoMo payment integration" }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+  <link rel="canonical" href="https://samzy-digital-gh.github.io/business.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- EXACT ORIGINAL ORDER -->
+  <link rel="stylesheet" href="header-footer.css">
+  <link rel="stylesheet" href="samzy-chatbot.css">
+  <link rel="stylesheet" href="business.css">
+
+  <style>
+  /* =====================================================
+     BUSINESS PAGE – palette override only
+     header-footer.css controls nav + footer
+  ===================================================== */
+  body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #f0f4f8; }
+  ::-webkit-scrollbar-thumb { background: #2872A1; border-radius: 3px; }
+
+  :root {
+    --blue: #2872A1; --blue-l: #4d9fff; --blue-d: #1a5280;
+    --sky: #CBDDE9;  --orange: #FD802E; --orange-d: #e06520;
+    --charcoal: #233D4C; --off: #f7fafc; --off2: #EEF5FA;
+    --muted: #5a7a8a; --border: #dbe8f0;
+  }
+
+  /* ---- UTILS ---- */
+  .sw  { max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; }
+  .sw.tight { padding: 3.5rem 2rem; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 40px; font-size: .76rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.25rem; }
+  .ey-b { background: rgba(40,114,161,.1); color: var(--blue); border: 1px solid rgba(40,114,161,.2); }
+  .ey-o { background: rgba(253,128,46,.1); color: var(--orange); border: 1px solid rgba(253,128,46,.2); }
+  .ey-w { background: rgba(255,255,255,.15); color: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.2); }
+  .stitle { font-family: 'Syne', sans-serif; font-size: clamp(1.9rem,4.5vw,3rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: var(--charcoal); margin-bottom: 1rem; }
+  .stitle .ab { color: var(--blue); } .stitle .ao { color: var(--orange); } .stitle.wh { color: #fff; }
+  .ssub { font-size: .98rem; line-height: 1.8; color: var(--muted); max-width: 560px; }
+  .sh { margin-bottom: 3.5rem; } .sh.c { text-align: center; } .sh.c .ssub { margin: 0 auto; }
+  .btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 28px; border-radius: 50px; font-weight: 700; font-size: .9rem; transition: all .25s; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; }
+  .bb  { background: var(--blue);   color: #fff; box-shadow: 0 8px 24px rgba(40,114,161,.28); }
+  .bb:hover  { background: var(--blue-d); transform: translateY(-2px); }
+  .bo  { background: var(--orange); color: #fff; box-shadow: 0 8px 24px rgba(253,128,46,.25); }
+  .bo:hover  { background: var(--orange-d); transform: translateY(-2px); }
+  .bub { background: transparent; border: 2px solid var(--blue); color: var(--blue); }
+  .bub:hover { background: var(--blue); color: #fff; }
+  .bwh { background: #fff; color: var(--blue); font-weight: 700; }
+  .bwh:hover { background: var(--off2); transform: translateY(-2px); }
+  .buw { background: transparent; border: 2px solid rgba(255,255,255,.5); color: #fff; }
+  .buw:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.on { opacity: 1; transform: translateY(0); }
+
+  /* ===== 1. HERO ===== */
+  .biz-hero {
+    background: linear-gradient(135deg, var(--charcoal) 0%, #1a3a4e 60%, #0e2535 100%);
+    position: relative; overflow: hidden; padding: 7rem 2rem 5rem;
+    text-align: center;
+  }
+  .biz-hero::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=30') center/cover; opacity: .06; }
+  .biz-hero-inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; }
+  .biz-hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.2rem,5vw,3.8rem); font-weight: 800; color: #fff; letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 1.5rem; }
+  .biz-hero h1 span { color: var(--orange); }
+  .biz-hero p { font-size: 1.05rem; color: rgba(255,255,255,.68); line-height: 1.78; max-width: 600px; margin: 0 auto 2.5rem; }
+  .biz-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 3rem; }
+  .biz-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 40px; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.85); font-weight: 600; font-size: .82rem; backdrop-filter: blur(8px); }
+  .biz-badge i { color: var(--orange); }
+  .biz-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+  /* ===== 2. PROCESS TIMELINE ===== */
+  .biz-timeline { background: #fff; }
+  .tl-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
+  .tl-grid::before { content: ''; position: absolute; top: 40px; left: 12.5%; right: 12.5%; height: 2px; background: linear-gradient(90deg, var(--blue), var(--orange)); opacity: .25; pointer-events: none; z-index: 0; }
+  .tl-step { text-align: center; padding: 0 1.5rem 2rem; position: relative; z-index: 1; }
+  .tl-icon { width: 80px; height: 80px; border-radius: 50%; background: var(--off2); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.6rem; color: var(--blue); transition: all .3s; }
+  .tl-step:hover .tl-icon { background: var(--blue); color: #fff; border-color: var(--blue); transform: scale(1.08); box-shadow: 0 12px 32px rgba(40,114,161,.22); }
+  .tl-dur { display: inline-block; background: rgba(253,128,46,.1); color: var(--orange); border: 1px solid rgba(253,128,46,.2); border-radius: 40px; font-size: .72rem; font-weight: 700; padding: 3px 12px; margin-bottom: .75rem; }
+  .tl-step h3 { font-family: 'Syne',sans-serif; font-size: 1rem; font-weight: 800; color: var(--charcoal); margin-bottom: .5rem; }
+  .tl-step p { font-size: .86rem; color: var(--muted); line-height: 1.65; margin-bottom: .75rem; }
+  .tl-tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+  .tl-tag { padding: 3px 10px; border-radius: 40px; background: var(--off2); font-size: .72rem; font-weight: 600; color: var(--muted); border: 1px solid var(--border); }
+
+  /* ===== 3. PRICING ===== */
+  #pricing { background: var(--sky); }
+  .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; align-items: start; }
+  .price-card { background: #fff; border-radius: 24px; border: 1px solid var(--border); overflow: hidden; transition: all .3s; position: relative; }
+  .price-card:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(40,114,161,.12); }
+  .price-card.featured { border: 2px solid var(--blue); transform: translateY(-8px); box-shadow: 0 24px 60px rgba(40,114,161,.18); }
+  .price-card.featured:hover { transform: translateY(-14px); }
+  .price-badge { background: var(--blue); color: #fff; text-align: center; padding: 7px; font-size: .76rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+  .price-head { padding: 2rem 2rem 1.25rem; border-bottom: 1px solid var(--border); }
+  .price-head h3 { font-family: 'Syne',sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--charcoal); margin-bottom: .5rem; }
+  .price-amount { font-family: 'Syne',sans-serif; font-size: 2.4rem; font-weight: 800; color: var(--blue); line-height: 1; }
+  .price-amount.featured-price { color: var(--orange); }
+  .price-amount span { font-size: 1rem; font-weight: 500; color: var(--muted); }
+  .price-body { padding: 1.5rem 2rem 2rem; }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem; }
+  .price-features li { display: flex; align-items: center; gap: 10px; font-size: .9rem; color: var(--charcoal); }
+  .price-features li i.fa-check { color: #16a34a; font-size: .8rem; }
+  .price-features li i.fa-times { color: #cbd5e1; font-size: .8rem; }
+  .price-features li.off { color: #b0bec5; }
+
+  /* ===== 4. PDF CALLOUT ===== */
+  .biz-pdf { background: var(--charcoal); }
+  .pdf-card { max-width: 700px; margin: 0 auto; text-align: center; padding: 4rem 2rem; }
+  .pdf-card i { font-size: 3.5rem; color: var(--orange); margin-bottom: 1.25rem; display: block; }
+  .pdf-card h3 { font-family: 'Syne',sans-serif; font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: .75rem; }
+  .pdf-card p { color: rgba(255,255,255,.6); line-height: 1.75; margin-bottom: 2rem; font-size: .97rem; }
+
+  /* ===== 5. ROI CALCULATOR ===== */
+  #roi-calculator { background: var(--off2); }
+  .roi-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .roi-controls { background: #fff; border-radius: 24px; padding: 2.5rem; border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(40,114,161,.07); }
+  .roi-controls h3 { font-family: 'Syne',sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--charcoal); margin-bottom: 1.75rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .roi-group { margin-bottom: 1.5rem; }
+  .roi-group label { display: flex; justify-content: space-between; align-items: center; font-size: .88rem; font-weight: 600; color: var(--charcoal); margin-bottom: .6rem; }
+  .roi-group label span { color: var(--orange); font-family: 'Syne',sans-serif; font-size: 1rem; font-weight: 800; }
+  input[type=range] { width: 100%; accent-color: var(--blue); height: 5px; cursor: pointer; }
+  .roi-select select { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 12px; font-family: 'DM Sans',sans-serif; font-size: .92rem; color: var(--charcoal); background: var(--off); cursor: pointer; appearance: none; }
+  .roi-select select:focus { outline: none; border-color: var(--blue); }
+  .roi-results { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .roi-result-card { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 1.75rem 1.5rem; text-align: center; transition: all .25s; }
+  .roi-result-card:hover { border-color: var(--blue); box-shadow: 0 8px 24px rgba(40,114,161,.09); }
+  .roi-result-label { display: block; font-size: .76rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: .5rem; }
+  .roi-result-num { display: block; font-family: 'Syne',sans-serif; font-size: 1.9rem; font-weight: 800; color: var(--blue); }
+  .roi-result-num.hot { color: var(--orange); }
+  .roi-note { margin-top: 1rem; font-size: .8rem; color: var(--muted); text-align: center; line-height: 1.6; }
+
+  /* ===== 6. DEEP DIVE ===== */
+  .biz-deepdive { background: var(--charcoal); }
+  .dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .dd-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 24px; padding: 2.5rem; transition: all .3s; }
+  .dd-card:hover { background: rgba(40,114,161,.15); border-color: rgba(40,114,161,.3); transform: translateY(-4px); }
+  .dd-icon { width: 64px; height: 64px; border-radius: 18px; background: rgba(253,128,46,.15); border: 1px solid rgba(253,128,46,.25); display: flex; align-items: center; justify-content: center; font-size: 1.7rem; color: var(--orange); margin-bottom: 1.5rem; }
+  .dd-card h3 { font-family: 'Syne',sans-serif; font-size: 1.35rem; font-weight: 800; color: #fff; margin-bottom: 1.25rem; }
+  .dd-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.75rem; }
+  .dd-features li { display: flex; align-items: center; gap: 10px; font-size: .9rem; color: rgba(255,255,255,.72); }
+  .dd-features li i { color: var(--orange); font-size: .85rem; }
+
+  /* ===== 7. CASE STUDY ===== */
+  #case-studies { background: #fff; }
+  .cs-card { max-width: 860px; margin: 0 auto; border-radius: 28px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 16px 48px rgba(40,114,161,.09); }
+  .cs-img { height: 320px; overflow: hidden; }
+  .cs-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .cs-card:hover .cs-img img { transform: scale(1.04); }
+  .cs-body { padding: 3rem; }
+  .cs-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(253,128,46,.1); color: var(--orange); border: 1px solid rgba(253,128,46,.2); border-radius: 40px; font-size: .74rem; font-weight: 700; padding: 5px 14px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 1.25rem; }
+  .cs-body h3 { font-family: 'Syne',sans-serif; font-size: 1.7rem; font-weight: 800; color: var(--charcoal); letter-spacing: -.5px; margin-bottom: 1.5rem; }
+  .cs-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 1.75rem; padding: 1.5rem; background: var(--off2); border-radius: 18px; }
+  .cs-stat strong { display: block; font-family: 'Syne',sans-serif; font-size: 2rem; font-weight: 800; color: var(--orange); }
+  .cs-stat span { font-size: .78rem; font-weight: 600; color: var(--muted); }
+  .cs-quote { border-left: 3px solid var(--orange); padding: 1rem 1.5rem; background: rgba(253,128,46,.04); border-radius: 0 14px 14px 0; font-style: italic; font-size: .97rem; color: var(--charcoal); line-height: 1.75; margin-bottom: 1.75rem; }
+  .cs-client { display: flex; align-items: center; gap: 14px; margin-bottom: 1.75rem; }
+  .cs-av { width: 52px; height: 52px; border-radius: 50%; background: var(--sky); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--blue); }
+  .cs-client strong { display: block; font-weight: 700; color: var(--charcoal); font-size: .92rem; }
+  .cs-client span { font-size: .78rem; color: var(--muted); }
+  .cs-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+  .cs-chip { padding: 5px 14px; border-radius: 40px; background: var(--off2); border: 1px solid var(--border); font-size: .78rem; font-weight: 600; color: var(--muted); }
+
+  /* ===== 8. TRUST BADGES ===== */
+  .biz-trust { background: var(--sky); }
+  .trust-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+  .trust-card { background: #fff; border: 1px solid rgba(40,114,161,.1); border-radius: 20px; padding: 2rem 1.5rem; text-align: center; transition: all .3s; }
+  .trust-card:hover { border-color: var(--blue); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(40,114,161,.1); }
+  .trust-card i { font-size: 2rem; margin-bottom: 1rem; display: block; color: var(--blue); }
+  .trust-card span { font-weight: 700; font-size: .9rem; color: var(--charcoal); }
+
+  /* ===== 9. FAQ ===== */
+  .biz-faq { background: #fff; }
+  .faq-wrap { max-width: 860px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); overflow: hidden; }
+  .faq-btn { width: 100%; background: none; border: none; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 0; cursor: pointer; color: var(--charcoal); text-align: left; gap: 1rem; transition: color .2s; font-family: 'DM Sans',sans-serif; }
+  .faq-btn:hover { color: var(--blue); }
+  .faq-btn span { font-weight: 600; font-size: .97rem; }
+  .faq-btn i { color: var(--orange); transition: transform .3s; flex-shrink: 0; }
+  .faq-item.open .faq-btn i { transform: rotate(45deg); color: var(--blue); }
+  .faq-ans { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; color: var(--muted); font-size: .93rem; line-height: 1.78; }
+  .faq-item.open .faq-ans { max-height: 300px; padding-bottom: 1.4rem; }
+
+  /* ===== 10. CTA ===== */
+  .biz-cta { background: linear-gradient(135deg, var(--blue-d) 0%, var(--blue) 60%, #2d9cdb 100%); position: relative; overflow: hidden; }
+  .biz-cta::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=40') center/cover; opacity: .07; }
+  .biz-cta-inner { position: relative; z-index: 2; text-align: center; max-width: 700px; margin: 0 auto; padding: 7rem 2rem; }
+  .biz-cta-inner h2 { font-family: 'Syne',sans-serif; font-size: clamp(2rem,4.5vw,3rem); font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 1rem; }
+  .biz-cta-inner p { color: rgba(255,255,255,.72); font-size: 1rem; line-height: 1.78; margin-bottom: 2.75rem; }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .tl-grid { grid-template-columns: repeat(2,1fr); }
+    .tl-grid::before { display: none; }
+    .price-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+    .price-card.featured { transform: none; }
+    .roi-wrap { grid-template-columns: 1fr; }
+    .dd-grid { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: repeat(2,1fr); }
+    .roi-results { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .sw { padding: 3.5rem 1.25rem; }
+    .tl-grid { grid-template-columns: 1fr; }
+    .cs-body { padding: 2rem; }
+    .cs-img { height: 220px; }
+    .cs-stats { gap: 1.5rem; }
+    .biz-hero { padding: 5rem 1.25rem 4rem; }
+    .dd-grid { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: repeat(2,1fr); }
+    .biz-hero-btns { flex-direction: column; align-items: center; }
+  }
+  @media (max-width: 480px) {
+    .roi-results { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: 1fr; }
+    .cs-stats { flex-direction: column; gap: 1rem; }
+    .cta-btns { flex-direction: column; align-items: center; }
+  }
+  </style>
 </head>
 <body>
 
-    <!-- ========== HEADER – EXACT COPY ========== -->
-    <nav class="navbar">
-        <div class="nav-container glass-panel">
-            <div class="logo">
-                <i class="fas fa-code"></i>
-                SAMZY<span>DIGITAL</span>
-            </div>
-            <button class="mobile-toggle" id="mobileToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="mobile-menu glass-panel" id="mobileMenu">
-                <button class="mobile-close" id="mobileClose">
-                    <i class="fas fa-times"></i>
-                </button>
-                <ul class="mobile-nav-links">
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="business.html" class="active"><i class="fas fa-briefcase"></i> Business</a></li>
-                    <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
-                    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-                </ul>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="business.html" class="active"><i class="fas fa-briefcase"></i> Business</a></li>
-                <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
-                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- MAIN BUSINESS CONTENT – 12 SECTIONS, ALL business-* PREFIXED -->
-    <main class="business-main">
-
-        <!-- 1. Authority Hero -->
-        <section class="business-hero">
-            <div class="business-hero-backdrop"></div>
-            <div class="business-hero-content">
-                <h1 class="business-hero-title">Professional Business Solutions That Drive Real Growth</h1>
-                <div class="business-trust-badges">
-                    <div class="business-badge-chip"><i class="fas fa-flag"></i> Ghana‑Based</div>
-                    <div class="business-badge-chip"><i class="fas fa-chart-line"></i> Proven Results</div>
-                    <div class="business-badge-chip"><i class="fas fa-headset"></i> 24/7 Support</div>
-                    <div class="business-badge-chip"><i class="fas fa-rocket"></i> Fast Delivery</div>
-                </div>
-                <div class="business-hero-ctas">
-                    <a href="#pricing" class="business-cta-primary">View Pricing Plans</a>
-                    <a href="#roi-calculator" class="business-cta-secondary">Calculate Your ROI</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. Process Timeline (4 steps) -->
-        <section class="business-timeline-section">
-            <h2 class="business-section-title">Our proven 4‑phase process</h2>
-            <div class="business-timeline">
-                <div class="business-timeline-step">
-                    <div class="business-step-icon"><i class="fas fa-search"></i></div>
-                    <h3>Discovery & Strategy</h3>
-                    <span class="business-step-duration">1-2 weeks</span>
-                    <p class="business-step-desc">Deep research, competitor analysis, goal mapping.</p>
-                    <div class="business-step-tags">
-                        <span>Market Research</span>
-                        <span>Tech Audit</span>
-                    </div>
-                </div>
-                <div class="business-timeline-step">
-                    <div class="business-step-icon"><i class="fas fa-pencil-ruler"></i></div>
-                    <h3>Design & Development</h3>
-                    <span class="business-step-duration">2-4 weeks</span>
-                    <p class="business-step-desc">UI/UX, agile sprints, responsive builds.</p>
-                    <div class="business-step-tags">
-                        <span>Wireframes</span>
-                        <span>Prototype</span>
-                    </div>
-                </div>
-                <div class="business-timeline-step">
-                    <div class="business-step-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Launch & Training</h3>
-                    <span class="business-step-duration">1 week</span>
-                    <p class="business-step-desc">Deployment, staff onboarding, documentation.</p>
-                    <div class="business-step-tags">
-                        <span>SEO Setup</span>
-                        <span>Analytics</span>
-                    </div>
-                </div>
-                <div class="business-timeline-step">
-                    <div class="business-step-icon"><i class="fas fa-chart-simple"></i></div>
-                    <h3>Growth & Optimization</h3>
-                    <span class="business-step-duration">ongoing</span>
-                    <p class="business-step-desc">Continuous improvement, A/B testing, scale.</p>
-                    <div class="business-step-tags">
-                        <span>CRO</span>
-                        <span>Retention</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. Pricing Cards – id="pricing" -->
-        <section id="pricing" class="business-pricing-section">
-            <h2 class="business-section-title">Flexible plans for every ambition</h2>
-            <div class="business-pricing-grid">
-                <!-- Starter -->
-                <div class="business-pricing-card">
-                    <div class="business-card-header">
-                        <h3>Starter</h3>
-                        <div class="business-price">GHS 1,500<span>/project</span></div>
-                    </div>
-                    <ul class="business-feature-list">
-                        <li><i class="fas fa-check"></i> Responsive website (5 pages)</li>
-                        <li><i class="fas fa-check"></i> Contact form & map</li>
-                        <li><i class="fas fa-check"></i> Basic SEO</li>
-                        <li><i class="fas fa-times"></i> E‑commerce</li>
-                        <li><i class="fas fa-times"></i> Automation tools</li>
-                    </ul>
-                    <a href="community.html" class="business-card-cta">Get Started</a>
-                </div>
-                <!-- Business – FEATURED -->
-                <div class="business-pricing-card business-featured-card">
-                    <div class="business-most-popular">Most Popular</div>
-                    <div class="business-card-header">
-                        <h3>Business</h3>
-                        <div class="business-price">GHS 3,500<span>/project</span></div>
-                    </div>
-                    <ul class="business-feature-list">
-                        <li><i class="fas fa-check"></i> Custom website (10 pages)</li>
-                        <li><i class="fas fa-check"></i> E‑commerce integration</li>
-                        <li><i class="fas fa-check"></i> Advanced SEO & analytics</li>
-                        <li><i class="fas fa-check"></i> CRM handover</li>
-                        <li><i class="fas fa-times"></i> Custom automation</li>
-                    </ul>
-                    <a href="community.html" class="business-card-cta">Get Started</a>
-                </div>
-                <!-- Enterprise -->
-                <div class="business-pricing-card">
-                    <div class="business-card-header">
-                        <h3>Enterprise</h3>
-                        <div class="business-price">GHS 6,500+<span>/project</span></div>
-                    </div>
-                    <ul class="business-feature-list">
-                        <li><i class="fas fa-check"></i> Unlimited pages / custom dev</li>
-                        <li><i class="fas fa-check"></i> ERP / POS integration</li>
-                        <li><i class="fas fa-check"></i> Dedicated account manager</li>
-                        <li><i class="fas fa-check"></i> Tailored automation</li>
-                        <li><i class="fas fa-check"></i> 24/7 priority support</li>
-                    </ul>
-                    <a href="community.html" class="business-card-cta">Get Started</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. PDF Download Card -->
-        <section class="business-pdf-section">
-            <div class="business-pdf-card">
-                <i class="fas fa-file-pdf business-pdf-icon"></i>
-                <h3>Need detailed service specifications?</h3>
-                <p>Download our complete pricing guide with technical scope, delivery timelines, and case studies.</p>
-                <a href="pricing-guide.pdf" download class="business-pdf-button">
-                    <i class="fas fa-download"></i> Get Pricing Guide (PDF)
-                </a>
-            </div>
-        </section>
-
-        <!-- 5. ROI CALCULATOR – SHOWPIECE (id="roi-calculator") -->
-        <section id="roi-calculator" class="business-roi-section">
-            <h2 class="business-section-title">ROI Calculator – See your potential growth</h2>
-            <div class="business-roi-calculator">
-                <div class="business-roi-controls">
-                    <div class="business-slider-group">
-                        <label>Monthly Sales (GHS) <span id="business-sales-val">100,000</span></label>
-                        <input type="range" id="business-sales" min="0" max="500000" value="100000" step="1000">
-                    </div>
-                    <div class="business-slider-group">
-                        <label>Customers per month <span id="business-customers-val">200</span></label>
-                        <input type="range" id="business-customers" min="0" max="1000" value="200" step="5">
-                    </div>
-                    <div class="business-select-group">
-                        <label>Service Type</label>
-                        <select id="business-service-type">
-                            <option value="web">Web Dev</option>
-                            <option value="ecom">E‑commerce</option>
-                            <option value="auto">Automation</option>
-                            <option value="brand">Branding</option>
-                        </select>
-                    </div>
-                    <div class="business-select-group">
-                        <label>Timeframe</label>
-                        <select id="business-timeframe">
-                            <option value="3">3 months</option>
-                            <option value="6">6 months</option>
-                            <option value="12" selected>1 year</option>
-                        </select>
-                    </div>
-                    <button id="business-calc-btn" class="business-calc-button">Calculate ROI →</button>
-                </div>
-                <div class="business-roi-results">
-                    <div class="business-result-card">
-                        <span class="business-result-label">Sales Increase</span>
-                        <span class="business-result-number" id="result-sales">GHS 0</span>
-                    </div>
-                    <div class="business-result-card">
-                        <span class="business-result-label">New Customers</span>
-                        <span class="business-result-number" id="result-customers">0</span>
-                    </div>
-                    <div class="business-result-card">
-                        <span class="business-result-label">Time Saved (hrs/mo)</span>
-                        <span class="business-result-number" id="result-hours">0</span>
-                    </div>
-                    <div class="business-result-card">
-                        <span class="business-result-label">ROI Estimate</span>
-                        <span class="business-result-number" id="result-roi">0%</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. Automation & Branding Deep Dive -->
-        <section class="business-deepdive-section">
-            <div class="business-deepdive-grid">
-                <div class="business-deepdive-card">
-                    <i class="fas fa-robot business-deep-icon"></i>
-                    <h3>Business Automation</h3>
-                    <ul class="business-deep-features">
-                        <li><i class="fas fa-check-circle"></i> Workflow automation (Zapier, n8n)</li>
-                        <li><i class="fas fa-check-circle"></i> CRM & ERP integration</li>
-                        <li><i class="fas fa-check-circle"></i> Inventory sync</li>
-                    </ul>
-                    <a href="community.html" class="business-deep-cta">Learn More →</a>
-                </div>
-                <div class="business-deepdive-card">
-                    <i class="fas fa-paint-brush business-deep-icon"></i>
-                    <h3>Branding & Identity</h3>
-                    <ul class="business-deep-features">
-                        <li><i class="fas fa-check-circle"></i> Visual identity / logo</li>
-                        <li><i class="fas fa-check-circle"></i> Brand strategy & voice</li>
-                        <li><i class="fas fa-check-circle"></i> Packaging design</li>
-                    </ul>
-                    <a href="community.html" class="business-deep-cta">Learn More →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. Case Study – id="case-studies" -->
-        <section id="case-studies" class="business-case-section">
-            <div class="business-case-card">
-                <span class="business-case-tag">Success story</span>
-                <h3>Accra Markets – Digital transformation</h3>
-                <div class="business-case-stats">
-                    <div class="business-stat"><strong>+200%</strong> sales</div>
-                    <div class="business-stat"><strong>+150</strong> customers/mo</div>
-                    <div class="business-stat"><strong>4 months</strong> ROI</div>
-                </div>
-                <p class="business-testimonial">“SamzyDigital turned our manual inventory into an automated e‑commerce engine. Our revenue doubled in less than half a year.”</p>
-                <div class="business-client">
-                    <div class="business-client-avatar"><i class="fas fa-user-circle"></i></div>
-                    <div class="business-client-info">
-                        <strong>Esi Mensah</strong>
-                        <span>Operations Lead, Accra Markets</span>
-                    </div>
-                </div>
-                <div class="business-case-tags">
-                    <span>E‑commerce</span>
-                    <span>Inventory</span>
-                    <span>Sales Growth</span>
-                </div>
-                <a href="community.html" class="business-case-cta">Read Full Case Study →</a>
-            </div>
-        </section>
-
-        <!-- 8. Trust Badges -->
-        <section class="business-trust-section">
-            <h2 class="business-section-title">Recognised excellence</h2>
-            <div class="business-trust-grid">
-                <div class="business-badge-large"><i class="fab fa-google"></i> Google Partner</div>
-                <div class="business-badge-large"><i class="fas fa-certificate"></i> ISO Certified</div>
-                <div class="business-badge-large"><i class="fas fa-award"></i> Ghana Digital Innovation Award</div>
-                <div class="business-badge-large"><i class="fas fa-users"></i> 100+ Clients</div>
-            </div>
-        </section>
-
-        <!-- 9. FAQ Accordion (6 questions) -->
-        <section class="business-faq-section">
-            <h2 class="business-section-title">Frequently Asked Questions</h2>
-            <div class="business-accordion">
-                <div class="business-accordion-item">
-                    <button class="business-accordion-btn">
-                        <span>What is your typical development process?</span>
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <div class="business-accordion-content">
-                        <p>We follow a 4‑phase agile approach: discovery, design & development, launch, and continuous optimization. You’ll receive weekly updates.</p>
-                    </div>
-                </div>
-                <div class="business-accordion-item">
-                    <button class="business-accordion-btn">
-                        <span>Do you offer ongoing support after launch?</span>
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <div class="business-accordion-content">
-                        <p>Yes, all plans include 3 months of bug fixes and support. Extended maintenance packages are available.</p>
-                    </div>
-                </div>
-                <div class="business-accordion-item">
-                    <button class="business-accordion-btn">
-                        <span>Can you integrate with my existing CRM/ERP?</span>
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <div class="business-accordion-content">
-                        <p>Absolutely. We have experience with Salesforce, HubSpot, Odoo, and custom APIs.</p>
-                    </div>
-                </div>
-                <div class="business-accordion-item">
-                    <button class="business-accordion-btn">
-                        <span>What payment methods do you accept?</span>
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <div class="business-accordion-content">
-                        <p>Bank transfer, mobile money (MTN, Vodafone), and card payments. 50% deposit, 50% on completion.</p>
-                    </div>
-                </div>
-                <div class="business-accordion-item">
-                    <button class="business-accordion-btn">
-                        <span>How long does a typical project take?</span>
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <div class="business-accordion-content">
-                        <p>Most websites go live in 4‑6 weeks. Complex e‑commerce or automation projects may take 8‑12 weeks.</p>
-                    </div>
-                </div>
-                <div class="business-accordion-item">
-                    <button class="business-accordion-btn">
-                        <span>Do you offer custom automation solutions?</span>
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <div class="business-accordion-content">
-                        <p>Yes, we build tailor‑made workflows using n8n, Power Automate, or custom scripts.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 10. Consultation Booking CTA -->
-        <section class="business-cta-section">
-            <div class="business-cta-card">
-                <h2>Ready to grow your business?</h2>
-                <p>Schedule a free consultation with our digital strategists – no obligation.</p>
-                <a href="contact.html" class="business-cta-giant">Schedule Consultation</a>
-            </div>
-        </section>
-
-        <!-- 12. Back to Top (optional, page-specific) -->
-        <button id="business-back-to-top" class="business-back-to-top" aria-label="Back to top">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-
-    </main> <!-- end of business-main -->
-
-    <!-- 11. FOOTER – EXACT COPY, NOW OUTSIDE MAIN (NO WHITE SPACE) -->
-    <footer class="business-footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <div class="footer-logo">
-                    <i class="fas fa-code"></i>
-                    <span>SAMZY<span>DIGITAL</span></span>
-                </div>
-                <p class="footer-description">
-                    Professional digital solutions for Ghanaian businesses. 
-                    Based in Accra, serving clients nationwide.
-                </p>
-                <div class="footer-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+233539929190">0539929190</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:samuelahaiaba3@gmail.com">samuelahaiaba3@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Accra, Ghana</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-title">Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="business.html">Business</a></li>
-                    <li><a href="community.html">Community</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-title">Community</h3>
-                <ul class="footer-links">
-                    <li><a href="#mentors">Mentors</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#join">Join</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-title">Connect</h3>
-                <div class="footer-social">
-                    <a href="https://wa.me/233539929190" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                </div>
-                <div class="footer-legal">
-                    <p>© 2026 Samzy-Digital. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ========== GLOBAL SCRIPTS – DO NOT TOUCH ========== -->
-    <script src="header-footer.js"></script>
-
-    <!-- ===== SAMZY CHATBOT v7.1 – EXACT SNIPPET ===== -->
-    <div id="samzy-chatbot-root">
-        <div id="samzy-bubble" class="samzy-chat-bubble">
-            <svg viewBox="0 0 24 24" width="36" height="36">
-                <circle cx="12" cy="12" r="10" fill="white" />
-                <circle cx="8" cy="9" r="1.5" fill="black" />
-                <circle cx="16" cy="9" r="1.5" fill="black" />
-                <path d="M8 14 Q12 18, 16 14" stroke="black" stroke-width="1.8" fill="none" stroke-linecap="round" />
-            </svg>
-        </div>
-        <div id="samzy-window" class="samzy-chat-window">
-            <div class="samzy-chat-header">
-                <h3><span></span> Samzy Assistant</h3>
-                <button id="samzy-close" class="samzy-close-btn">×</button>
-            </div>
-            <div id="samzy-messages" class="samzy-messages"></div>
-            <div class="samzy-input-area">
-                <input type="text" id="samzy-user-input" placeholder="Ask me anything..." autocomplete="off">
-                <button id="samzy-send" class="samzy-send-btn">Send</button>
-            </div>
-        </div>
+<!-- ===== HEADER – EXACT MATCH ===== -->
+<nav class="navbar">
+  <div class="nav-container glass-panel">
+    <div class="logo"><i class="fas fa-code"></i> SAMZY<span>DIGITAL</span></div>
+    <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+    <div class="mobile-menu glass-panel" id="mobileMenu">
+      <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="business.html" class="active"><i class="fas fa-briefcase"></i> Business</a></li>
+        <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
     </div>
-    <script src="samzy-chatbot.js"></script>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="business.html" class="active"><i class="fas fa-briefcase"></i> Business</a></li>
+      <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <!-- PAGE-SPECIFIC BUSINESS JS -->
-    <script src="business.js"></script>
-</body>
-</html>
+<main class="business-main">
+
+  <!-- 1. HERO -->
+  <section class="biz-hero">
+    <div class="biz-hero-inner">
+      <span class="eyebrow ey-w" style="margin-bottom:1.5rem"><i class="fas fa-briefcase"></i> Business Solutions</span>
+      <h1>Professional Solutions That Drive <span>Real Growth</span></h1>
+      <p>Web development, automation, digital marketing and e-commerce — built specifically for Ghanaian businesses. Transparent pricing, fast delivery, proven results.</p>
+      <div class="biz-badges">
+        <div class="biz-badge"><i class="fas fa-flag"></i> Ghana&#8209;Based</div>
+        <div class="biz-badge"><i class="fas fa-chart-line"></i> Proven Results</div>
+        <div class="biz-badge"><i class="fas fa-headset"></i> 24/7 Support</div>
+        <div class="biz-badge"><i class="fas fa-rocket"></i> Fast Delivery</div>
+        <div class="biz-badge"><i class="fas fa-lock"></i> No Hidden Fees</div>
+      </div>
+      <div class="biz-hero-btns">
+        <a href="#pricing" class="btn bwh"><i class="fas fa-tag"></i> View Pricing Plans</a>
+        <a href="#roi-calculator" class="btn bo"><i class="fas fa-calculator"></i> Calculate Your ROI</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PROCESS TIMELINE -->
+  <section class="biz-timeline">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-b">How We Work</span>
+        <h2 class="stitle">Our Proven <span class="ab">4&#8209;Phase Process</span></h2>
+        <p class="ssub">Every project follows a structured, transparent journey from first call to ongoing growth.</p>
+      </div>
+      <div class="tl-grid">
+        <div class="tl-step reveal">
+          <div class="tl-icon"><i class="fas fa-search"></i></div>
+          <div class="tl-dur">1&#8209;2 weeks</div>
+          <h3>Discovery &amp; Strategy</h3>
+          <p>Deep research, competitor analysis, and goal mapping tailored to your market.</p>
+          <div class="tl-tags"><span class="tl-tag">Market Research</span><span class="tl-tag">Tech Audit</span></div>
+        </div>
+        <div class="tl-step reveal">
+          <div class="tl-icon"><i class="fas fa-pencil-ruler"></i></div>
+          <div class="tl-dur">2&#8209;4 weeks</div>
+          <h3>Design &amp; Development</h3>
+          <p>UI/UX wireframes, agile sprints, and fully responsive builds reviewed with you weekly.</p>
+          <div class="tl-tags"><span class="tl-tag">Wireframes</span><span class="tl-tag">Prototype</span></div>
+        </div>
+        <div class="tl-step reveal">
+          <div class="tl-icon"><i class="fas fa-rocket"></i></div>
+          <div class="tl-dur">1 week</div>
+          <h3>Launch &amp; Training</h3>
+          <p>Deployment, staff onboarding, documentation, and full SEO setup included.</p>
+          <div class="tl-tags"><span class="tl-tag">SEO Setup</span><span class="tl-tag">Analytics</span></div>
+        </div>
+        <div class="tl-step reveal">
+          <div class="tl-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="tl-dur">ongoing</div>
+          <h3>Growth &amp; Optimisation</h3>
+          <p>Continuous improvement, A/B testing, and performance scaling as you grow.</p>
+          <div class="tl-tags"><span class="tl-tag">CRO</span><span class="tl-tag">Retention</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PRICING -->
+  <section id="pricing">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-b">Pricing</span>
+        <h2 class="stitle">Flexible Plans for <span class="ab">Every Ambition</span></h2>
+        <p class="ssub">Transparent, fixed&#8209;price packages — no surprises, no hidden extras.</p>
+      </div>
+      <div class="price-grid">
+        <!-- Starter -->
+        <div class="price-card reveal">
+          <div class="price-head">
+            <h3>Starter</h3>
+            <div class="price-amount">GHS 1,500<span>/project</span></div>
+          </div>
+          <div class="price-body">
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> Responsive website (5 pages)</li>
+              <li><i class="fas fa-check"></i> Contact form &amp; map</li>
+              <li><i class="fas fa-check"></i> Basic SEO setup</li>
+              <li><i class="fas fa-check"></i> 1 month support</li>
+              <li class="off"><i class="fas fa-times"></i> E&#8209;commerce</li>
+              <li class="off"><i class="fas fa-times"></i> Automation tools</li>
+            </ul>
+            <a href="contact.html" class="btn bub" style="width:100%;justify-content:center">Get Started <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- Business – FEATURED -->
+        <div class="price-card featured reveal">
+          <div class="price-badge">&#11088; Most Popular</div>
+          <div class="price-head">
+            <h3>Business</h3>
+            <div class="price-amount featured-price">GHS 3,500<span>/project</span></div>
+          </div>
+          <div class="price-body">
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> Custom website (10 pages)</li>
+              <li><i class="fas fa-check"></i> E&#8209;commerce integration</li>
+              <li><i class="fas fa-check"></i> Advanced SEO &amp; analytics</li>
+              <li><i class="fas fa-check"></i> CRM handover</li>
+              <li><i class="fas fa-check"></i> 3 months support</li>
+              <li class="off"><i class="fas fa-times"></i> Custom automation</li>
+            </ul>
+            <a href="contact.html" class="btn bb" style="width:100%;justify-content:center">Get Started <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- Enterprise -->
+        <div class="price-card reveal">
+          <div class="price-head">
+            <h3>Enterprise</h3>
+            <div class="price-amount">GHS 6,500+<span>/project</span></div>
+          </div>
+          <div class="price-body">
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> Unlimited pages / custom dev</li>
+              <li><i class="fas fa-check"></i> ERP / POS integration</li>
+              <li><i class="fas fa-check"></i> Dedicated account manager</li>
+              <li><i class="fas fa-check"></i> Tailored automation</li>
+              <li><i class="fas fa-check"></i> 24/7 priority support</li>
+              <li><i class="fas fa-check"></i> 6 months maintenance</li>
+            </ul>
+            <a href="contact.html" class="btn bo" style="width:100%;justify-content:center">Get Started <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PDF DOWNLOAD -->
+  <section class="biz-pdf">
+    <div class="pdf-card reveal">
+      <i class="fas fa-file-pdf"></i>
+      <h3>Need Detailed Service Specifications?</h3>
+      <p>Download our complete pricing guide with technical scope, delivery timelines, and real case studies from Ghanaian businesses we&#39;ve helped grow.</p>
+      <a href="pricing-guide.pdf" download class="btn bwh"><i class="fas fa-download"></i> Get Pricing Guide (PDF)</a>
+    </div>
+  </section>
+
+  <!-- 5. ROI CALCULATOR -->
+  <section id="roi-calculator">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-o">ROI Calculator</span>
+        <h2 class="stitle">See Your <span class="ao">Potential Growth</span></h2>
+        <p class="ssub">Adjust the sliders below to estimate what going digital could mean for your business.</p>
+      </div>
+      <div class="roi-wrap">
+        <div class="roi-controls reveal">
+          <h3><i class="fas fa-sliders-h" style="color:var(--blue);margin-right:8px"></i> Your Business Numbers</h3>
+          <div class="roi-group">
+            <label>Monthly Sales (GHS) <span id="business-sales-val">100,000</span></label>
+            <input type="range" id="business-sales" min="0" max="500000" value="100000" step="1000">
+          </div>
+          <div class="roi-group">
+            <label>Customers per Month <span id="business-customers-val">200</span></label>
+            <input type="range" id="business-customers" min="0" max="1000" value="200" step="5">
+          </div>
+          <div class="roi-group roi-select">
+            <label style="justify-content:flex-start;gap:8px">Service Type</label>
+            <select id="business-service-type">
+              <option value="web">Web Development</option>
+              <option value="ecom">E&#8209;commerce</option>
+              <option value="auto">Business Automation</option>
+              <option value="brand">Branding &amp; Design</option>
+            </select>
+          </div>
+          <div class="roi-group roi-select" style="margin-bottom:2rem">
+            <label style="justify-content:flex-start;gap:8px">Timeframe</label>
+            <select id="business-timeframe">
+              <option value="3">3 months</option>
+              <option value="6">6 months</option>
+              <option value="12" selected>1 year</option>
+            </select>
+          </div>
+          <button id="business-calc-btn" class="btn bb" style="width:100%;justify-content:center">
+            <i class="fas fa-calculator"></i> Calculate ROI
+          </button>
+        </div>
+        <div>
+          <div class="roi-results reveal">
+            <div class="roi-result-card">
+              <span class="roi-result-label">Sales Increase</span>
+              <span class="roi-result-num hot" id="result-sales">GHS 0</span>
+            </div>
+            <div class="roi-result-card">
+              <span class="roi-result-label">New Customers</span>
+              <span class="roi-result-num" id="result-customers">0</span>
+            </div>
+            <div class="roi-result-card">
+              <span class="roi-result-label">Time Saved (hrs/mo)</span>
+              <span class="roi-result-num" id="result-hours">0</span>
+            </div>
+            <div class="roi-result-card">
+              <span class="roi-result-label">ROI Estimate</span>
+              <span class="roi-result-num hot" id="result-roi">0%</span>
+            </div>
+          </div>
+          <p class="roi-note">&#9432; Estimates are illustrative based on industry averages for Ghanaian SMEs. Actual results vary.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. DEEP DIVE -->
+  <section class="biz-deepdive">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-w">Specialisations</span>
+        <h2 class="stitle wh">Go Deeper with <span class="ao">Our Core Strengths</span></h2>
+      </div>
+      <div class="dd-grid">
+        <div class="dd-card reveal">
+          <div class="dd-icon"><i class="fas fa-robot"></i></div>
+          <h3>Business Automation</h3>
+          <ul class="dd-features">
+            <li><i class="fas fa-check-circle"></i> Workflow automation (Zapier, n8n, Power Automate)</li>
+            <li><i class="fas fa-check-circle"></i> CRM &amp; ERP integration (Salesforce, HubSpot, Odoo)</li>
+            <li><i class="fas fa-check-circle"></i> Inventory sync and stock management</li>
+            <li><i class="fas fa-check-circle"></i> Automated invoicing and reporting</li>
+          </ul>
+          <a href="contact.html" class="btn bo">Discuss Automation <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="dd-card reveal">
+          <div class="dd-icon"><i class="fas fa-paint-brush"></i></div>
+          <h3>Branding &amp; Identity</h3>
+          <ul class="dd-features">
+            <li><i class="fas fa-check-circle"></i> Visual identity &amp; logo design</li>
+            <li><i class="fas fa-check-circle"></i> Brand strategy, voice and positioning</li>
+            <li><i class="fas fa-check-circle"></i> Packaging and print design</li>
+            <li><i class="fas fa-check-circle"></i> Social media brand kits</li>
+          </ul>
+          <a href="contact.html" class="btn bo">Start Branding <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CASE STUDY -->
+  <section id="case-studies">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-o">Success Story</span>
+        <h2 class="stitle">Real Results for <span class="ao">Real Businesses</span></h2>
+      </div>
+      <div class="cs-card reveal">
+        <div class="cs-img">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80" alt="Ram's Beauty Salon – SamzyDigital case study Accra Ghana" loading="lazy">
+        </div>
+        <div class="cs-body">
+          <div class="cs-tag"><i class="fas fa-store"></i> Success Story · Accra</div>
+          <h3>Ram&#39;s Beauty Salon – Digital Transformation</h3>
+          <div class="cs-stats">
+            <div class="cs-stat"><strong>+200%</strong><span>Online Bookings</span></div>
+            <div class="cs-stat"><strong>+150</strong><span>Customers/mo</span></div>
+            <div class="cs-stat"><strong>4 months</strong><span>ROI Achieved</span></div>
+          </div>
+          <blockquote class="cs-quote">&#34;SamzyDigital turned our manual booking system into a fully automated digital operation. Our revenue doubled in less than half a year.&#34;</blockquote>
+          <div class="cs-client">
+            <div class="cs-av"><i class="fas fa-user-circle"></i></div>
+            <div><strong>Esi Mensah</strong><span>Operations Lead, Ram&#39;s Beauty Salon</span></div>
+          </div>
+          <div class="cs-chips"><span class="cs-chip">E&#8209;commerce</span><span class="cs-chip">Bookings</span><span class="cs-chip">Sales Growth</span><span class="cs-chip">Local SEO</span></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="https://samzy-digital-gh.github.io/rams_beauty_salon/" target="_blank" class="btn bub"><i class="fas fa-external-link-alt"></i> Visit Live Site</a>
+            <a href="contact.html" class="btn bo"><i class="fas fa-calendar-check"></i> Start Your Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TRUST BADGES -->
+  <section class="biz-trust">
+    <div class="sw tight">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-b">Recognition</span>
+        <h2 class="stitle">Recognised <span class="ab">Excellence</span></h2>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card reveal"><i class="fab fa-google"></i><span>Google Partner</span></div>
+        <div class="trust-card reveal"><i class="fas fa-certificate"></i><span>ISO Certified Process</span></div>
+        <div class="trust-card reveal"><i class="fas fa-award"></i><span>Ghana Digital Innovation Award</span></div>
+        <div class="trust-card reveal"><i class="fas fa-users"></i><span>15+ Happy Clients</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FAQ -->
+  <section class="biz-faq">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-o">FAQ</span>
+        <h2 class="stitle">Common <span class="ao">Questions</span></h2>
+      </div>
+      <div class="faq-wrap">
+        <div class="faq-item reveal"><button class="faq-btn"><span>What is your typical development process?</span><i class="fas fa-plus"></i></button><div class="faq-ans">We follow a 4&#8209;phase agile approach: discovery, design &amp; development, launch, and continuous optimisation. You&#39;ll receive weekly updates and have a direct line to your project lead throughout.</div></div>
+        <div class="faq-item reveal"><button class="faq-btn"><span>Do you offer ongoing support after launch?</span><i class="fas fa-plus"></i></button><div class="faq-ans">Yes, all plans include a post&#8209;launch support period for bug fixes and minor tweaks. Extended maintenance packages are available for ongoing updates, SEO, and content management.</div></div>
+        <div class="faq-item reveal"><button class="faq-btn"><span>Can you integrate with my existing CRM or ERP?</span><i class="fas fa-plus"></i></button><div class="faq-ans">Absolutely. We have experience with Salesforce, HubSpot, Odoo, and custom APIs. We&#39;ll assess your current setup and recommend the best integration approach.</div></div>
+        <div class="faq-item reveal"><button class="faq-btn"><span>What payment methods do you accept?</span><i class="fas fa-plus"></i></button><div class="faq-ans">Bank transfer, MTN Mobile Money, Vodafone Cash, and card payments. Our standard structure is a 50% deposit at project kick&#8209;off and 50% on completion.</div></div>
+        <div class="faq-item reveal"><button class="faq-btn"><span>How long does a typical project take?</span><i class="fas fa-plus"></i></button><div class="faq-ans">Most websites go live in 4&#8209;6 weeks. Complex e&#8209;commerce or automation projects may take 8&#8209;12 weeks. We provide a clear project timeline before we start.</div></div>
+        <div class="faq-item reveal"><button class="faq-btn"><span>Do you offer custom automation solutions?</span><i class="fas fa-plus"></i></button><div class="faq-ans">Yes — we build tailored workflows using n8n, Power Automate, Zapier, or fully custom Python/Node.js scripts depending on what fits your business best.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CTA -->
+  <section class="biz-cta">
+    <div class="biz-cta-inner">
+      <span class="eyebrow ey-w" style="margin-bottom:1.5rem">Let&#39;s Build Together</span>
+      <h2>Ready to Grow Your Business?</h2>
+      <p>Schedule a free, no&#8209;obligation consultation with Samuel and the SamzyDigital team. We&#39;ll map out exactly what your business needs and how we can deliver it.</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn bwh"><i class="fas fa-calendar-check"></i> Schedule Consultation</a>
+        <a href="tel:+233539929190" class="btn bo"><i class="fas fa-phone"></i> Call 0539929190</a>
+        <a href="https://wa.me/233539929190" class="btn buw" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="business-footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <div class="footer-logo"><i class="fas fa-code"></i><span>SAMZY<span>DIGITAL</span></span></div>
+      <p class="footer-description">Professional digital solutions for Ghanaian businesses. Founded by Samuel AHIABA. Based in Accra, serving clients nationwide.</p>
+      <div class="footer-contact">
+        <div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+233539929190">0539929190</a></div>
+        <div class="contact-item"><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#4231232f37272e232a2b2320237102252f232b2e6c212d2f"><span class="__cf_email__" data-cfemail="384b59554d5d54595051595a590b785f55595154165b5755">[email&#160;protected]</span></a></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Accra, Ghana</span></div>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">Quick Links</h3>
+      <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="business.html">Business</a></li><li><a href="community.html">Community</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">Community</h3>
+      <ul class="footer-links"><li><a href="community.html#mentors">Mentors</a></li><li><a href="community.html#events">Events</a></li><li><a href="community.html#registration">Join</a></li><li><a href="community.html#faq">FAQ</a></li></ul>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">Connect</h3>
+      <div class="footer-social">
+        <a href="https://wa.me/233539929190" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="footer-legal"><p>&#169; 2026 Samzy-Digital. All rights reserved.</p></div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS – EXACT ORDER -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="header-footer.js"></script>
+
+<!-- CHATBOT -->
+<div id="samzy-chatbot-root">
+  <div id="samzy-bubble" class="samzy-chat-bubble">
+    <svg viewBox="0 0 24 24" width="36" height="36">
+      <circle cx="12" cy="12" r="10" fill="white"/>
+      <circle cx="8" cy="9" r="1.5" fill="black"/>
+      <circle cx="16" cy="9" r="1.5" fill="black"/>
+      <path d="M8 14 Q12 18, 16 14" stroke="black" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div id="samzy-window" class="samzy-chat-window">
+    <div class="samzy-chat-header">
+      <h3><span></span> Samzy Assistant</h3>
+      <button id="samzy-close" class="samzy-close-btn">&#215;</button>
+    </div>
+    <div id="samzy-messages" class="samzy-messages"></div>
+    <div class="samzy-input-area">
+      <input type="text" id="samzy-user-input" placeholder="Ask me anything..." autocomplete="off">
+      <button id="samzy-send" class="samzy-send-btn">Send</button>
+    </div>
+  </div>
+</div>
+<script src="samzy-chatbot.js"></script>
+
+<!-- PAGE SCRIPTS: ROI Calculator + Reveal + FAQ -->
+<script>
+// ---- ROI CALCULATOR ----
+const salesSlider = document.getElementById('business-sales');
+const custSlider  = document.getElementById('business-customers');
+const salesVal    = document.getElementById('business-sales-val');
+const custVal     = document.getElementById('business-customers-val');
+salesSlider.addEventListener('input', () => salesVal.textContent = (+salesSlider.value).toLocaleString());
+custSlider.addEventListener('input',  () => custVal.textContent  = custSlider.value);
+
+document.getElementById('business-calc-btn').addEventListener('click', function() {
+  const sales   = +salesSlider.value;
+  const custs   = +custSlider.value;
+  const service = document.getElementById('business-service-type').value;
+  const months  = +document.getElementById('business-timeframe').value;
+  const rates   = { web: .18, ecom: .28, auto: .22, brand: .14 };
+  const hourRates = { web: 8, ecom: 6, auto: 20, brand: 4 };
+  const r = rates[service];
+  const salesIncrease = Math.round(sales * r * months);
+  const newCusts      = Math.round(custs * r * months);
+  const hoursSaved    = Math.round(hourRates[service] * months);
+  const roiPct        = Math.round(r * months * 100);
+
+  // Animate result numbers
+  function animNum(el, target, prefix='', suffix='') {
+    const d=1200; let s=null;
+    const f=ts=>{ if(!s)s=ts; const p=Math.min((ts-s)/d,1); el.textContent=prefix+Math.floor(p*target).toLocaleString()+suffix; if(p<1)requestAnimationFrame(f); };
+    requestAnimationFrame(f);
+  }
+  animNum(document.getElementById('result-sales'), salesIncrease, 'GHS ');
+  animNum(document.getElementById('result-customers'), newCusts);
+  animNum(document.getElementById('result-hours'), hoursSaved);
+  animNum(document.getElementById('result-roi'), roiPct, '', '%');
+});
+
+// ---- SCROLL REVEAL ----
+document.querySelectorAll('.reveal').forEach(el => {
+  const io = new IntersectionObserver(([e]) => { if(e.isIntersecting){el.classList.add('on');io.disconnect();} }, {threshold:.07});
+  io.observe(el);
+});
+
+// ---- FAQ ACCORDION ----
+document.querySelectorAll('.faq-btn').forEach(b => b.addEventList

@@ -1,488 +1,790 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Samzy‑Digital · Community</title>
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="header-footer.css">
-    <link rel="stylesheet" href="samzy-chatbot.css">
-    <!-- PAGE‑SPECIFIC CSS -->
-    <link rel="stylesheet" href="community.css">
-    <!-- Extra styles for login link -->
-    <style>
-        .login-footer-link {
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Ghana Developer Community – Free Tech Network & Mentorship | SamzyDigital</title>
+  <meta name="description" content="Join SamzyDigital's free tech community for Ghanaian developers. Mentorship, coding workshops, job board and project collaboration. Founded by Samuel AHIABA in Accra, Ghana. Learn web development for free.">
+  <meta name="keywords" content="Ghana developer community, tech community Ghana, coding community Accra, learn web development Ghana, free coding Ghana, developer mentorship Ghana, tech workshops Accra, Samuel AHIABA community, SamzyDigital community, Ghana programmers, web dev Ghana, coding bootcamp Ghana free">
+  <meta name="author" content="Samuel AHIABA – SamzyDigital">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://samzy-digital-gh.github.io/agency-site/community.html">
+  <meta name="geo.region" content="GH-AA">
+  <meta name="geo.placename" content="Accra, Ghana">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://samzy-digital-gh.github.io/agency-site/community.html">
+  <meta property="og:title" content="Ghana Developer Community – Free Tech Network & Mentorship | SamzyDigital">
+  <meta property="og:description" content="Free tech community for Ghanaian developers. Mentorship, workshops, job board and project collaboration. Join SamzyDigital Community in Accra, Ghana.">
+  <meta property="og:image" content="https://samzy-digital-gh.github.io/agency-site/samzy.jpg">
+  <meta property="og:site_name" content="SamzyDigital">
+  <meta property="og:locale" content="en_GH">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ghana Developer Community | SamzyDigital">
+  <meta name="twitter:description" content="Free tech community for Ghanaian developers. Mentorship, workshops, job board. Join SamzyDigital Community – Accra, Ghana.">
+  <meta name="twitter:image" content="https://samzy-digital-gh.github.io/agency-site/samzy.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "url": "https://samzy-digital-gh.github.io/agency-site/community.html",
+        "name": "Ghana Developer Community – SamzyDigital",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://samzy-digital-gh.github.io/agency-site/" },
+            { "@type": "ListItem", "position": 2, "name": "Community", "item": "https://samzy-digital-gh.github.io/agency-site/community.html" }
+          ]
         }
-        .login-footer-link a {
-            color: #0066FF;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .login-footer-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+      },
+      {
+        "@type": "Organization",
+        "name": "SamzyDigital Tech Community",
+        "description": "A free tech community for Ghanaian developers founded by Samuel AHIABA. Offering mentorship, workshops, job board and project collaboration in Accra, Ghana.",
+        "url": "https://samzy-digital-gh.github.io/agency-site/community.html",
+        "founder": { "@type": "Person", "name": "Samuel AHIABA", "email": "samuelahiaba3@gmail.com" },
+        "location": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Accra", "addressCountry": "GH" } },
+        "memberOf": { "@type": "Organization", "name": "SamzyDigital" }
+      }
+    ]
+  }
+  </script>
+  <link rel="canonical" href="https://samzy-digital-gh.github.io/community.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- EXACT ORIGINAL ORDER -->
+  <link rel="stylesheet" href="header-footer.css">
+  <link rel="stylesheet" href="samzy-chatbot.css">
+  <link rel="stylesheet" href="community.css">
+
+  <style>
+  /* =====================================================
+     COMMUNITY PAGE – palette + layout only
+     header-footer.css controls nav + footer
+  ===================================================== */
+  body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #f0f4f8; }
+  ::-webkit-scrollbar-thumb { background: #2872A1; border-radius: 3px; }
+
+  :root {
+    --blue:#2872A1; --blue-l:#4d9fff; --blue-d:#1a5280;
+    --sky:#CBDDE9;  --orange:#FD802E; --orange-d:#e06520;
+    --charcoal:#233D4C; --off:#f7fafc; --off2:#EEF5FA;
+    --muted:#5a7a8a; --border:#dbe8f0;
+  }
+
+  /* ---- UTILS ---- */
+  .sw { max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; }
+  .sw.tight { padding: 3.5rem 2rem; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 40px; font-size: .76rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.25rem; }
+  .ey-b { background: rgba(40,114,161,.1); color: var(--blue); border: 1px solid rgba(40,114,161,.2); }
+  .ey-o { background: rgba(253,128,46,.1); color: var(--orange); border: 1px solid rgba(253,128,46,.2); }
+  .ey-w { background: rgba(255,255,255,.15); color: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.2); }
+  .stitle { font-family: 'Syne', sans-serif; font-size: clamp(1.9rem,4.5vw,3rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: var(--charcoal); margin-bottom: 1rem; }
+  .stitle .ab { color: var(--blue); } .stitle .ao { color: var(--orange); } .stitle.wh { color: #fff; }
+  .ssub { font-size: .98rem; line-height: 1.8; color: var(--muted); max-width: 560px; }
+  .sh { margin-bottom: 3.5rem; } .sh.c { text-align: center; } .sh.c .ssub { margin: 0 auto; }
+  .btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 28px; border-radius: 50px; font-weight: 700; font-size: .9rem; transition: all .25s; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; }
+  .bb  { background: var(--blue);   color: #fff; box-shadow: 0 8px 24px rgba(40,114,161,.28); }
+  .bb:hover  { background: var(--blue-d); transform: translateY(-2px); }
+  .bo  { background: var(--orange); color: #fff; box-shadow: 0 8px 24px rgba(253,128,46,.25); }
+  .bo:hover  { background: var(--orange-d); transform: translateY(-2px); }
+  .bub { background: transparent; border: 2px solid var(--blue); color: var(--blue); }
+  .bub:hover { background: var(--blue); color: #fff; }
+  .bwh { background: #fff; color: var(--blue); font-weight: 700; }
+  .bwh:hover { background: var(--off2); transform: translateY(-2px); }
+  .buw { background: transparent; border: 2px solid rgba(255,255,255,.5); color: #fff; }
+  .buw:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.on { opacity: 1; transform: translateY(0); }
+
+  /* ===== 1. HERO ===== */
+  .cm-hero {
+    background: linear-gradient(135deg, var(--blue-d) 0%, var(--blue) 55%, #1d8fca 100%);
+    position: relative; overflow: hidden;
+    padding: 7rem 2rem 5rem; text-align: center;
+  }
+  .cm-hero::before { content:''; position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=20') center/cover; opacity:.07; }
+  .cm-hero-inner { position:relative; z-index:2; max-width:760px; margin:0 auto; }
+  .cm-hero h1 { font-family:'Syne',sans-serif; font-size:clamp(2.8rem,6vw,4.8rem); font-weight:800; color:#fff; letter-spacing:-2px; line-height:1.04; margin-bottom:1.25rem; }
+  .cm-hero h1 span { color:var(--orange); }
+  .cm-hero p { font-size:1.08rem; color:rgba(255,255,255,.72); line-height:1.78; max-width:560px; margin:0 auto 2.75rem; }
+  .cm-hero-btns { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+
+  /* ===== 2. STATS ROW ===== */
+  .cm-stats { background: var(--charcoal); }
+  .cm-stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .cm-stat-card { text-align:center; padding:2.5rem 1.5rem; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); border-radius:22px; transition:all .25s; }
+  .cm-stat-card:hover { background:rgba(40,114,161,.18); border-color:rgba(40,114,161,.4); transform:translateY(-4px); }
+  .cm-stat-card i { font-size:2rem; color:var(--orange); display:block; margin-bottom:1rem; }
+  .cm-stat-num { font-family:'Syne',sans-serif; font-size:3.2rem; font-weight:800; color:#fff; line-height:1; margin-bottom:.4rem; display:block; }
+  .cm-stat-lbl { font-size:.86rem; color:rgba(255,255,255,.6); font-weight:600; }
+
+  /* ===== 3. WHY JOIN ===== */
+  .cm-features { background: var(--off2); }
+  .cm-feat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .cm-feat-card { background:#fff; border:1px solid var(--border); border-radius:22px; padding:2rem; transition:all .3s; }
+  .cm-feat-card:hover { border-color:var(--blue); transform:translateY(-5px); box-shadow:0 16px 40px rgba(40,114,161,.09); }
+  .cm-feat-icon { width:56px; height:56px; border-radius:16px; background:rgba(40,114,161,.1); border:1px solid rgba(40,114,161,.15); display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:var(--blue); margin-bottom:1.25rem; transition:all .3s; }
+  .cm-feat-card:hover .cm-feat-icon { background:var(--orange); border-color:var(--orange); color:#fff; }
+  .cm-feat-card h3 { font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:800; color:var(--charcoal); margin-bottom:.6rem; }
+  .cm-feat-card p { font-size:.88rem; color:var(--muted); line-height:1.68; }
+
+  /* ===== 4. MENTORS CAROUSEL ===== */
+  .cm-mentors { background: var(--sky); }
+  .cm-carousel-wrap { position:relative; overflow:hidden; }
+  .cm-carousel { display:flex; gap:1.5rem; transition:transform .4s ease; }
+  .cm-mentor-card { min-width:260px; background:#fff; border:1px solid var(--border); border-radius:22px; padding:2rem; text-align:center; box-shadow:0 4px 16px rgba(40,114,161,.07); flex-shrink:0; }
+  .cm-mentor-av { width:80px; height:80px; border-radius:50%; object-fit:cover; margin:0 auto 1rem; border:3px solid var(--sky); }
+  .cm-mentor-av.placeholder { background:var(--off2); display:flex; align-items:center; justify-content:center; font-size:2rem; color:var(--blue); }
+  .cm-mentor-name { font-family:'Syne',sans-serif; font-size:1rem; font-weight:800; color:var(--charcoal); margin-bottom:.25rem; }
+  .cm-mentor-role { font-size:.8rem; color:var(--blue); font-weight:600; margin-bottom:.75rem; }
+  .cm-mentor-tags { display:flex; flex-wrap:wrap; gap:5px; justify-content:center; }
+  .cm-mentor-tag { padding:3px 10px; border-radius:40px; background:var(--off2); font-size:.7rem; font-weight:600; color:var(--muted); border:1px solid var(--border); }
+  .cm-carousel-ctrl { display:flex; align-items:center; justify-content:center; gap:1rem; margin-top:2rem; }
+  .cm-arr { width:44px; height:44px; border-radius:50%; background:#fff; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--charcoal); font-size:.9rem; transition:all .2s; box-shadow:0 4px 12px rgba(40,114,161,.08); }
+  .cm-arr:hover { background:var(--blue); color:#fff; border-color:var(--blue); }
+  .cm-dots { display:flex; gap:8px; }
+  .cm-dot { width:8px; height:8px; border-radius:50%; background:var(--border); cursor:pointer; transition:all .2s; }
+  .cm-dot.active { background:var(--blue); width:24px; border-radius:4px; }
+
+  /* ===== 5. DISCUSSION ===== */
+  .cm-discussion { background: #fff; }
+  .cm-topics { display:flex; flex-direction:column; gap:10px; max-width:700px; margin:0 auto 2rem; }
+  .cm-topic { display:flex; align-items:center; gap:16px; padding:16px 20px; background:var(--off2); border:1px solid var(--border); border-radius:16px; font-size:.93rem; color:var(--charcoal); font-weight:500; transition:all .2s; }
+  .cm-topic:hover { border-color:var(--blue); background:#fff; transform:translateX(4px); box-shadow:0 4px 16px rgba(40,114,161,.07); }
+  .cm-topic i { color:var(--blue); font-size:1.1rem; flex-shrink:0; }
+  .cm-disc-cta { text-align:center; }
+  .cm-link { display:inline-flex; align-items:center; gap:6px; color:var(--blue); font-weight:700; font-size:.9rem; transition:all .2s; }
+  .cm-link:hover { color:var(--orange); gap:10px; }
+
+  /* ===== 6. LEARNING PATHS ===== */
+  .cm-paths { background: var(--charcoal); }
+  .cm-paths-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .cm-path-card { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); border-radius:22px; padding:2rem; transition:all .3s; }
+  .cm-path-card:hover { background:rgba(40,114,161,.15); border-color:rgba(40,114,161,.3); transform:translateY(-4px); }
+  .cm-path-card h3 { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800; color:#fff; margin-bottom:.4rem; }
+  .cm-path-card > p { font-size:.86rem; color:rgba(255,255,255,.55); margin-bottom:1.25rem; }
+  .cm-progress-bar { height:6px; background:rgba(255,255,255,.12); border-radius:3px; overflow:hidden; margin-bottom:.6rem; }
+  .cm-progress-fill { height:100%; background:linear-gradient(90deg,var(--blue),var(--orange)); border-radius:3px; width:0; transition:width 1.2s ease; }
+  .cm-progress-label { font-size:.76rem; color:rgba(255,255,255,.5); display:block; margin-bottom:1.25rem; }
+  .cm-path-link { display:inline-flex; align-items:center; gap:6px; color:var(--orange); font-weight:700; font-size:.85rem; transition:all .2s; }
+  .cm-path-link:hover { gap:10px; }
+
+  /* ===== 7. EVENTS ===== */
+  #events { background: var(--off2); }
+  .cm-events-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+  .cm-event-card { background:#fff; border:1px solid var(--border); border-radius:22px; padding:1.75rem; display:flex; gap:1.5rem; align-items:flex-start; transition:all .3s; }
+  .cm-event-card:hover { border-color:var(--blue); transform:translateY(-4px); box-shadow:0 12px 32px rgba(40,114,161,.09); }
+  .cm-event-date { background:var(--blue); color:#fff; border-radius:14px; padding:.75rem 1rem; text-align:center; font-family:'Syne',sans-serif; font-weight:800; font-size:.76rem; letter-spacing:.5px; text-transform:uppercase; min-width:64px; flex-shrink:0; line-height:1.4; }
+  .cm-event-date .day { font-size:1.5rem; display:block; line-height:1; }
+  .cm-event-body h3 { font-family:'Syne',sans-serif; font-size:1rem; font-weight:800; color:var(--charcoal); margin-bottom:.4rem; }
+  .cm-event-body p { font-size:.84rem; color:var(--muted); margin-bottom:.75rem; }
+
+  /* ===== 8. TALENT / JOBS ===== */
+  .cm-talent { background: var(--sky); }
+  .cm-jobs { display:flex; flex-direction:column; gap:10px; max-width:760px; margin:0 auto 2rem; }
+  .cm-job { background:#fff; border:1px solid var(--border); border-radius:16px; padding:1.25rem 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; transition:all .25s; }
+  .cm-job:hover { border-color:var(--blue); box-shadow:0 8px 24px rgba(40,114,161,.09); transform:translateX(4px); }
+  .cm-job h3 { font-family:'Syne',sans-serif; font-size:.97rem; font-weight:800; color:var(--charcoal); margin-bottom:.25rem; }
+  .cm-job p { font-size:.82rem; color:var(--muted); }
+  .cm-job-badge { padding:5px 14px; border-radius:40px; background:rgba(40,114,161,.1); border:1px solid rgba(40,114,161,.2); font-size:.76rem; font-weight:700; color:var(--blue); white-space:nowrap; }
+  .cm-jobs-footer { text-align:center; }
+
+  /* ===== 9. FAQ ===== */
+  .cm-faq { background: #fff; }
+  .cm-faq-wrap { max-width:760px; margin:0 auto; }
+  .cm-faq-item { border-bottom:1px solid var(--border); }
+  .cm-faq-btn { width:100%; background:none; border:none; display:flex; align-items:center; justify-content:space-between; padding:1.4rem 0; cursor:pointer; color:var(--charcoal); text-align:left; gap:1rem; transition:color .2s; font-family:'DM Sans',sans-serif; }
+  .cm-faq-btn:hover { color:var(--blue); }
+  .cm-faq-btn span { font-weight:600; font-size:.97rem; }
+  .cm-faq-btn i { color:var(--orange); transition:transform .3s; flex-shrink:0; }
+  .cm-faq-item.open .cm-faq-btn i { transform:rotate(45deg); color:var(--blue); }
+  .cm-faq-ans { max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; color:var(--muted); font-size:.93rem; line-height:1.78; }
+  .cm-faq-item.open .cm-faq-ans { max-height:300px; padding-bottom:1.4rem; }
+
+  /* ===== 10. REGISTRATION FORM ===== */
+  #registration { background: var(--off2); }
+  .cm-form-wrap { max-width:780px; margin:0 auto; background:#fff; border-radius:28px; padding:3rem; border:1px solid var(--border); box-shadow:0 16px 48px rgba(40,114,161,.09); }
+  .cm-form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem; }
+  .cm-form-group { display:flex; flex-direction:column; gap:6px; }
+  .cm-form-group label { font-size:.86rem; font-weight:600; color:var(--charcoal); }
+  .cm-form-group input,
+  .cm-form-group select,
+  .cm-form-group textarea { padding:12px 16px; border:1.5px solid var(--border); border-radius:12px; font-family:'DM Sans',sans-serif; font-size:.93rem; color:var(--charcoal); background:var(--off); transition:border-color .2s; }
+  .cm-form-group input:focus,
+  .cm-form-group select:focus,
+  .cm-form-group textarea:focus { outline:none; border-color:var(--blue); background:#fff; }
+  .cm-form-group textarea { resize:vertical; min-height:80px; }
+  .cm-checkbox-group { display:flex; flex-wrap:wrap; gap:10px; margin-top:4px; }
+  .cm-checkbox-group label { display:flex; align-items:center; gap:7px; font-size:.88rem; font-weight:500; color:var(--charcoal); cursor:pointer; }
+  .cm-checkbox-group input[type=checkbox] { accent-color:var(--blue); width:15px; height:15px; cursor:pointer; }
+  .cm-error { color:#ef4444; font-size:.78rem; min-height:18px; }
+  .cm-submit { width:100%; padding:14px; background:var(--blue); color:#fff; border:none; border-radius:50px; font-family:'Syne',sans-serif; font-weight:800; font-size:1rem; cursor:pointer; margin-top:1rem; transition:all .25s; box-shadow:0 8px 24px rgba(40,114,161,.28); display:flex; align-items:center; justify-content:center; gap:10px; }
+  .cm-submit:hover { background:var(--blue-d); transform:translateY(-2px); }
+  .cm-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+  .cm-success { margin-top:1.5rem; padding:1.25rem 1.5rem; background:rgba(34,197,94,.1); border:1px solid rgba(34,197,94,.25); border-radius:14px; color:#16a34a; font-weight:600; font-size:.93rem; text-align:center; display:none; }
+  .cm-login-link { text-align:center; margin-top:1.5rem; font-size:.93rem; color:var(--muted); }
+  .cm-login-link a { color:var(--blue); font-weight:600; }
+  .cm-login-link a:hover { text-decoration:underline; }
+
+  /* ===== 11. DASHBOARD ===== */
+  .cm-dashboard { background: var(--charcoal); }
+  .cm-dash-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; }
+  .cm-dash-card { text-align:center; padding:2.25rem 1.5rem; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); border-radius:20px; transition:all .25s; }
+  .cm-dash-card:hover { background:rgba(40,114,161,.18); border-color:rgba(40,114,161,.4); transform:translateY(-4px); }
+  .cm-dash-num { font-family:'Syne',sans-serif; font-size:2.8rem; font-weight:800; color:var(--orange); display:block; line-height:1; margin-bottom:.5rem; }
+  .cm-dash-lbl { font-size:.82rem; color:rgba(255,255,255,.55); font-weight:600; }
+
+  /* ===== 12. RESOURCES CALLOUT ===== */
+  .cm-resources { background: var(--blue); position:relative; overflow:hidden; }
+  .cm-resources::before { content:''; position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&q=30') center/cover; opacity:.07; }
+  .cm-res-inner { position:relative; z-index:2; text-align:center; max-width:640px; margin:0 auto; padding:6rem 2rem; }
+  .cm-res-inner i { font-size:3rem; color:var(--orange); display:block; margin-bottom:1.25rem; }
+  .cm-res-inner h3 { font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800; color:#fff; letter-spacing:-.5px; margin-bottom:.75rem; }
+  .cm-res-inner p { color:rgba(255,255,255,.7); line-height:1.75; margin-bottom:2rem; font-size:.97rem; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:1024px) {
+    .cm-feat-grid { grid-template-columns:repeat(2,1fr); }
+    .cm-paths-grid { grid-template-columns:1fr; }
+    .cm-events-grid { grid-template-columns:1fr; }
+    .cm-dash-grid { grid-template-columns:repeat(2,1fr); }
+    .cm-stats-grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; }
+  }
+  @media (max-width:768px) {
+    .sw { padding:3.5rem 1.25rem; }
+    .cm-hero { padding:5rem 1.25rem 4rem; }
+    .cm-feat-grid { grid-template-columns:1fr; }
+    .cm-form-row { grid-template-columns:1fr; }
+    .cm-form-wrap { padding:2rem 1.25rem; }
+    .cm-carousel { gap:1rem; }
+    .cm-mentor-card { min-width:220px; }
+    .cm-stats-grid { grid-template-columns:1fr; }
+    .cm-hero h1 { letter-spacing:-1px; }
+    .cm-hero-btns { flex-direction:column; align-items:center; }
+  }
+  @media (max-width:480px) {
+    .cm-dash-grid { grid-template-columns:1fr 1fr; }
+    .cm-event-card { flex-direction:column; gap:1rem; }
+  }
+  </style>
 </head>
 <body>
-    <!-- ========== HEADER (unchanged) ========== -->
-    <nav class="navbar">
-        <div class="nav-container glass-panel">
-            <div class="logo">
-                <i class="fas fa-code"></i>
-                SAMZY<span>DIGITAL</span>
-            </div>
-            <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
-            <div class="mobile-menu glass-panel" id="mobileMenu">
-                <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
-                <ul class="mobile-nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="business.html">Business</a></li>
-                    <li><a href="community.html" class="active">Community</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="business.html">Business</a></li>
-                <li><a href="community.html" class="active">Community</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- ===== MAIN CONTENT – ALL SECTIONS KEPT ===== -->
-    <main class="community-main">
-
-        <!-- 1. HERO -->
-        <section class="community-hero">
-            <div class="community-hero-content">
-                <span class="community-hero-eyebrow">Samzy‑Digital</span>
-                <h1 class="community-hero-title">Community</h1>
-                <p class="community-hero-sub">
-                    A professional network for Ghanaian developers.<br>
-                    Learn. Mentor. Build. Grow.
-                </p>
-            </div>
-        </section>
-
-        <!-- 2. STATS -->
-        <section class="community-stats-row">
-            <div class="community-stat-block">
-                <span class="community-stat-number">300+</span>
-                <span class="community-stat-label">Active Members</span>
-            </div>
-            <div class="community-stat-block">
-                <span class="community-stat-number">50+</span>
-                <span class="community-stat-label">Workshops</span>
-            </div>
-            <div class="community-stat-block">
-                <span class="community-stat-number">20+</span>
-                <span class="community-stat-label">Mentors</span>
-            </div>
-        </section>
-
-        <!-- 3. WHY JOIN -->
-        <section class="community-features">
-            <div class="community-features-grid">
-                <!-- ... (your existing feature items) ... -->
-                <div class="community-feature-item">
-                    <i class="fas fa-users"></i>
-                    <div>
-                        <h3>Network with peers</h3>
-                        <p>Connect with 300+ developers across Ghana – find collaborators, share ideas.</p>
-                    </div>
-                </div>
-                <div class="community-feature-item">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <div>
-                        <h3>Expert mentorship</h3>
-                        <p>1:1 guidance from 20+ industry mentors, from Accra to the diaspora.</p>
-                    </div>
-                </div>
-                <div class="community-feature-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <div>
-                        <h3>Weekly workshops</h3>
-                        <p>Hands‑on sessions on React, Flutter, Python, UI/UX, and cloud.</p>
-                    </div>
-                </div>
-                <div class="community-feature-item">
-                    <i class="fas fa-code-branch"></i>
-                    <div>
-                        <h3>Collaborate on projects</h3>
-                        <p>Build open‑source and portfolio projects in teams.</p>
-                    </div>
-                </div>
-                <div class="community-feature-item">
-                    <i class="fas fa-briefcase"></i>
-                    <div>
-                        <h3>Exclusive job board</h3>
-                        <p>First access to internships, junior roles, and freelance gigs.</p>
-                    </div>
-                </div>
-                <div class="community-feature-item">
-                    <i class="fas fa-rocket"></i>
-                    <div>
-                        <h3>Startup launchpad</h3>
-                        <p>From idea to prototype – feedback, beta testers, early users.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. MENTOR CAROUSEL -->
-        <section class="community-mentors">
-            <h2 class="community-section-title">Meet your mentors</h2>
-            <div class="community-carousel-container">
-                <div class="community-carousel" id="mentorCarousel"></div>
-                <div class="community-carousel-controls">
-                    <button class="community-carousel-arrow" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
-                    <div class="community-carousel-dots" id="carouselDots"></div>
-                    <button class="community-carousel-arrow" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. DISCUSSION PREVIEW -->
-        <section class="community-discussion">
-            <h2 class="community-section-title">Happening now</h2>
-            <div class="community-topic-list">
-                <div class="community-topic-item">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>“Just landed my first dev job – thank you mentors!”</span>
-                </div>
-                <div class="community-topic-item">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>“Looking for a Flutter dev to build an MVP”</span>
-                </div>
-                <div class="community-topic-item">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>“Free Figma templates for beginners – link inside”</span>
-                </div>
-            </div>
-            <a href="#" class="community-link">Join the conversation →</a>
-        </section>
-
-        <!-- 6. LEARNING PATHS -->
-        <section class="community-paths">
-            <h2 class="community-section-title">Popular learning tracks</h2>
-            <div class="community-paths-horizontal">
-                <div class="community-path-item">
-                    <h3>Web Development</h3>
-                    <p>HTML, CSS, JavaScript, React</p>
-                    <div class="community-progress-bar">
-                        <div class="community-progress-fill" data-width="80" style="width:0%;"></div>
-                    </div>
-                    <span class="community-progress-label">80% of members started here</span>
-                    <a href="resources.html" class="community-link">📘 Starter pack →</a>
-                </div>
-                <div class="community-path-item">
-                    <h3>Mobile Apps</h3>
-                    <p>Flutter & Kotlin basics</p>
-                    <div class="community-progress-bar">
-                        <div class="community-progress-fill" data-width="60" style="width:0%;"></div>
-                    </div>
-                    <span class="community-progress-label">60% building first app</span>
-                    <a href="resources.html" class="community-link">📘 Mobile pack →</a>
-                </div>
-                <div class="community-path-item">
-                    <h3>Data Science</h3>
-                    <p>Python, SQL, Power BI</p>
-                    <div class="community-progress-bar">
-                        <div class="community-progress-fill" data-width="40" style="width:0%;"></div>
-                    </div>
-                    <span class="community-progress-label">40% exploring data</span>
-                    <a href="resources.html" class="community-link">📘 Data toolkit →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. EVENTS -->
-        <section id="events" class="community-events">
-            <h2 class="community-section-title">Upcoming events</h2>
-            <div class="community-events-grid">
-                <div class="community-event-item">
-                    <span class="community-event-date">APR 15</span>
-                    <div class="community-event-details">
-                        <h3>Web Dev Workshop: Portfolio edition</h3>
-                        <p>10am – 2pm · Online</p>
-                        <a href="#" class="community-link">RSVP →</a>
-                    </div>
-                </div>
-                <div class="community-event-item">
-                    <span class="community-event-date">APR 22</span>
-                    <div class="community-event-details">
-                        <h3>Tech Career Panel with Ghanaian leads</h3>
-                        <p>3pm – 5pm · Accra</p>
-                        <a href="#" class="community-link">RSVP →</a>
-                    </div>
-                </div>
-                <div class="community-event-item">
-                    <span class="community-event-date">MAY 5</span>
-                    <div class="community-event-details">
-                        <h3>Hackathon: FinTech for Good</h3>
-                        <p>9am – 9pm · iSpace</p>
-                        <a href="#" class="community-link">RSVP →</a>
-                    </div>
-                </div>
-                <div class="community-event-item">
-                    <span class="community-event-date">MAY 12</span>
-                    <div class="community-event-details">
-                        <h3>Founder’s Talk: Building startups in Accra</h3>
-                        <p>4pm – 6pm · Online</p>
-                        <a href="#" class="community-link">RSVP →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 8. TALENT PORTAL -->
-        <section class="community-talent">
-            <h2 class="community-section-title">Open positions</h2>
-            <div class="community-jobs-list">
-                <div class="community-job-item">
-                    <div><h3>Junior Frontend Developer</h3><p>Accra · Full‑time</p></div>
-                    <a href="#" class="community-link">Apply →</a>
-                </div>
-                <div class="community-job-item">
-                    <div><h3>UI/UX Intern</h3><p>Remote · 3 months</p></div>
-                    <a href="#" class="community-link">Apply →</a>
-                </div>
-                <div class="community-job-item">
-                    <div><h3>Tech Support Specialist</h3><p>Part‑time · Hybrid</p></div>
-                    <a href="#" class="community-link">Apply →</a>
-                </div>
-            </div>
-            <a href="#" class="community-link">Browse all jobs →</a>
-        </section>
-
-        <!-- 9. FAQ -->
-        <section class="community-faq">
-            <h2 class="community-section-title">Frequently asked questions</h2>
-            <div class="community-accordion">
-                <div class="community-accordion-item">
-                    <button class="community-accordion-header"><span>How do I join?</span><i class="fas fa-plus"></i></button>
-                    <div class="community-accordion-content"><p>Fill out the registration form below – it’s free and takes 2 minutes.</p></div>
-                </div>
-                <!-- ... other FAQ items ... -->
-            </div>
-        </section>
-
-        <!-- 10. REGISTRATION FORM – MODIFIED FOR FIREBASE -->
-        <section id="registration" class="community-registration">
-            <h2 class="community-section-title">Become a member</h2>
-            <form id="communityForm">
-                <!-- Optional: keep hidden fields for Formspree if you want, but we'll handle via JS -->
-                <!-- <input type="hidden" name="_replyto" value="%email%"> -->
-                <div class="community-form-row">
-                    <div class="community-form-group">
-                        <label for="fullName">Full name *</label>
-                        <input type="text" id="fullName" name="fullName" placeholder="Ama Mensah" required>
-                        <span class="community-error" id="errorFullName"></span>
-                    </div>
-                    <div class="community-form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" placeholder="ama@example.com" required>
-                        <span class="community-error" id="errorEmail"></span>
-                    </div>
-                </div>
-                <div class="community-form-row">
-                    <div class="community-form-group">
-                        <label for="password">Password * (min 6 characters)</label>
-                        <input type="password" id="password" name="password" placeholder="••••••" required minlength="6">
-                        <span class="community-error" id="errorPassword"></span>
-                    </div>
-                    <div class="community-form-group">
-                        <label for="phone">Phone *</label>
-                        <input type="tel" id="phone" name="phone" placeholder="053 000 0000" required>
-                        <span class="community-error" id="errorPhone"></span>
-                    </div>
-                </div>
-                <div class="community-form-row">
-                    <div class="community-form-group">
-                        <label for="experience">Experience *</label>
-                        <select id="experience" name="experience" required>
-                            <option value="">Select level</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                        </select>
-                        <span class="community-error" id="errorExperience"></span>
-                    </div>
-                    <div class="community-form-group">
-                        <label>Interests</label>
-                        <div class="community-checkbox-group">
-                            <label><input type="checkbox" name="interests" value="web"> Web Dev</label>
-                            <label><input type="checkbox" name="interests" value="mobile"> Mobile</label>
-                            <label><input type="checkbox" name="interests" value="data"> Data</label>
-                            <label><input type="checkbox" name="interests" value="design"> UI/UX</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="community-form-group">
-                    <label for="message">What do you hope to gain?</label>
-                    <textarea id="message" name="message" rows="2" placeholder="e.g. mentorship, project collaboration..."></textarea>
-                </div>
-                <button type="submit" class="community-btn-submit" id="registerSubmit">Join now</button>
-                <div id="formSuccess" class="community-success-message" style="display: none;"></div>
-            </form>
-            <!-- Simple login link -->
-            <div class="login-footer-link">
-                Already a member? <a href="login.html">Log in here</a>
-            </div>
-        </section>
-
-        <!-- 11. STATS DASHBOARD -->
-        <section class="community-dashboard">
-            <div class="community-dashboard-grid">
-                <div class="community-dashboard-item">
-                    <span class="community-dashboard-number">327</span>
-                    <span class="community-dashboard-label">Active members</span>
-                </div>
-                <div class="community-dashboard-item">
-                    <span class="community-dashboard-number">78%</span>
-                    <span class="community-dashboard-label">Monthly active</span>
-                </div>
-                <div class="community-dashboard-item">
-                    <span class="community-dashboard-number">12</span>
-                    <span class="community-dashboard-label">Open jobs</span>
-                </div>
-                <div class="community-dashboard-item">
-                    <span class="community-dashboard-number">5</span>
-                    <span class="community-dashboard-label">Startups launched</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- 12. RESOURCES CALLOUT -->
-        <section class="community-resources">
-            <div class="community-resources-content">
-                <i class="fas fa-book-open"></i>
-                <h3>New to coding? Start here.</h3>
-                <p>Free guides, tutorials, and learning paths – made for Ghanaian beginners.</p>
-                <a href="resources.html" class="community-btn-resource">Get your free starter guide →</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- ========== FOOTER – EXACT COPY FROM BUSINESS PAGE ========== -->
-    <footer class="business-footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <div class="footer-logo">
-                    <i class="fas fa-code"></i>
-                    <span>SAMZY<span>DIGITAL</span></span>
-                </div>
-                <p class="footer-description">
-                    Professional digital solutions for Ghanaian businesses. 
-                    Based in Accra, serving clients nationwide.
-                </p>
-                <div class="footer-contact">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+233539929190">0539929190</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:samuelahaiaba3@gmail.com">samuelahaiaba3@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Accra, Ghana</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-title">Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="business.html">Business</a></li>
-                    <li><a href="community.html">Community</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-title">Community</h3>
-                <ul class="footer-links">
-                    <li><a href="#mentors">Mentors</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#join">Join</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3 class="footer-title">Connect</h3>
-                <div class="footer-social">
-                    <a href="https://wa.me/233539929190" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                </div>
-                <div class="footer-legal">
-                    <p>© 2026 Samzy-Digital. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ========== GLOBAL SCRIPTS – DO NOT TOUCH ========== -->
-    <script src="header-footer.js"></script>
-
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-    <script>
-        // Your Firebase config
-        const firebaseConfig = {
-            apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
-            authDomain: "samzy-community-blog.firebaseapp.com",
-            projectId: "samzy-community-blog",
-            storageBucket: "samzy-community-blog.firebasestorage.app",
-            messagingSenderId: "573240466296",
-            appId: "1:573240466296:web:5faa312a1136162961468d"
-        };
-        firebase.initializeApp(firebaseConfig);
-    </script>
-
-    <!-- New auth handling script (replace community-auth.js) -->
-    <script src="community-auth.js"></script>
-    <!-- Existing community.js (carousel, accordion, form validation) – we need to ensure it doesn't interfere -->
-    <script src="community.js"></script>
-
-    <!-- ===== SAMZY CHATBOT v7.1 – EXACT SNIPPET FROM BUSINESS PAGE ===== -->
-    <div id="samzy-chatbot-root">
-        <div id="samzy-bubble" class="samzy-chat-bubble">
-            <svg viewBox="0 0 24 24" width="36" height="36">
-                <circle cx="12" cy="12" r="10" fill="white" />
-                <circle cx="8" cy="9" r="1.5" fill="black" />
-                <circle cx="16" cy="9" r="1.5" fill="black" />
-                <path d="M8 14 Q12 18, 16 14" stroke="black" stroke-width="1.8" fill="none" stroke-linecap="round" />
-            </svg>
-        </div>
-        <div id="samzy-window" class="samzy-chat-window">
-            <div class="samzy-chat-header">
-                <h3><span></span> Samzy Assistant</h3>
-                <button id="samzy-close" class="samzy-close-btn">×</button>
-            </div>
-            <div id="samzy-messages" class="samzy-messages"></div>
-            <div class="samzy-input-area">
-                <input type="text" id="samzy-user-input" placeholder="Ask me anything..." autocomplete="off">
-                <button id="samzy-send" class="samzy-send-btn">Send</button>
-            </div>
-        </div>
+<!-- ===== HEADER – EXACT MATCH ===== -->
+<nav class="navbar">
+  <div class="nav-container glass-panel">
+    <div class="logo"><i class="fas fa-code"></i> SAMZY<span>DIGITAL</span></div>
+    <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+    <div class="mobile-menu glass-panel" id="mobileMenu">
+      <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
+        <li><a href="community.html" class="active"><i class="fas fa-users"></i> Community</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
     </div>
-    <script src="samzy-chatbot.js"></script>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
+      <li><a href="community.html" class="active"><i class="fas fa-users"></i> Community</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="community-main">
+
+  <!-- 1. HERO -->
+  <section class="cm-hero">
+    <div class="cm-hero-inner">
+      <span class="eyebrow ey-w" style="margin-bottom:1.5rem"><i class="fas fa-users"></i> SamzyDigital</span>
+      <h1>The <span>Community</span><br>for Ghana&#39;s Builders</h1>
+      <p>A professional network for Ghanaian developers and entrepreneurs.<br>Learn. Mentor. Build. Grow — together.</p>
+      <div class="cm-hero-btns">
+        <a href="#registration" class="btn bwh"><i class="fas fa-user-plus"></i> Join Free Today</a>
+        <a href="#events" class="btn buw"><i class="fas fa-calendar-alt"></i> See Upcoming Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. STATS ROW -->
+  <section class="cm-stats">
+    <div class="sw tight">
+      <div class="cm-stats-grid">
+        <div class="cm-stat-card reveal">
+          <i class="fas fa-users"></i>
+          <span class="cm-stat-num sc" data-t="100">0</span>+
+          <span class="cm-stat-lbl">Active Members</span>
+        </div>
+        <div class="cm-stat-card reveal">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span class="cm-stat-num sc" data-t="10">0</span>+
+          <span class="cm-stat-lbl">Workshops Held</span>
+        </div>
+        <div class="cm-stat-card reveal">
+          <i class="fas fa-user-tie"></i>
+          <span class="cm-stat-num sc" data-t="5">0</span>+
+          <span class="cm-stat-lbl">Expert Mentors</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHY JOIN -->
+  <section class="cm-features">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-b">Why Join</span>
+        <h2 class="stitle">Everything You Need to <span class="ab">Level Up</span></h2>
+        <p class="ssub">From your first line of code to landing your first job — we&#39;re here every step of the way.</p>
+      </div>
+      <div class="cm-feat-grid">
+        <div class="cm-feat-card reveal">
+          <div class="cm-feat-icon"><i class="fas fa-users"></i></div>
+          <h3>Network with Peers</h3>
+          <p>Connect with 100+ developers across Ghana — find collaborators, share ideas and build friendships that last.</p>
+        </div>
+        <div class="cm-feat-card reveal">
+          <div class="cm-feat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h3>Expert Mentorship</h3>
+          <p>1:1 guidance from 5+ industry mentors, from Accra to the diaspora — real experience, genuine care.</p>
+        </div>
+        <div class="cm-feat-card reveal">
+          <div class="cm-feat-icon"><i class="fas fa-calendar-alt"></i></div>
+          <h3>Weekly Workshops</h3>
+          <p>Hands-on sessions on React, Flutter, Python, UI/UX and cloud — practical skills you can use immediately.</p>
+        </div>
+        <div class="cm-feat-card reveal">
+          <div class="cm-feat-icon"><i class="fas fa-code-branch"></i></div>
+          <h3>Collaborate on Projects</h3>
+          <p>Build open-source and portfolio projects in teams — real experience that impresses employers.</p>
+        </div>
+        <div class="cm-feat-card reveal">
+          <div class="cm-feat-icon"><i class="fas fa-briefcase"></i></div>
+          <h3>Exclusive Job Board</h3>
+          <p>First access to internships, junior roles, and freelance gigs — opportunities before they hit the public.</p>
+        </div>
+        <div class="cm-feat-card reveal">
+          <div class="cm-feat-icon"><i class="fas fa-rocket"></i></div>
+          <h3>Startup Launchpad</h3>
+          <p>From idea to prototype — get feedback, beta testers, and early users from within our community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. MENTOR CAROUSEL -->
+  <section class="cm-mentors" id="mentors">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-b">Mentors</span>
+        <h2 class="stitle">Meet Your <span class="ab">Mentors</span></h2>
+        <p class="ssub">Experienced professionals who volunteer their time to help the next generation of Ghanaian developers.</p>
+      </div>
+      <div class="cm-carousel-wrap">
+        <div class="cm-carousel" id="mentorCarousel">
+          <!-- Populated by community.js -->
+        </div>
+        <div class="cm-carousel-ctrl">
+          <button class="cm-arr" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+          <div class="cm-dots" id="carouselDots"></div>
+          <button class="cm-arr" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DISCUSSION PREVIEW -->
+  <section class="cm-discussion">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-o">Community Feed</span>
+        <h2 class="stitle">Happening <span class="ao">Right Now</span></h2>
+      </div>
+      <div class="cm-topics">
+        <div class="cm-topic reveal"><i class="fas fa-comment-dots"></i><span>&#34;Just landed my first dev job — thank you mentors!&#34;</span></div>
+        <div class="cm-topic reveal"><i class="fas fa-comment-dots"></i><span>&#34;Looking for a Flutter dev to build an MVP together&#34;</span></div>
+        <div class="cm-topic reveal"><i class="fas fa-comment-dots"></i><span>&#34;Free Figma UI kits for beginners — link inside &#128279;&#34;</span></div>
+      </div>
+      <div class="cm-disc-cta"><a href="#registration" class="cm-link">Join the conversation <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+  </section>
+
+  <!-- 6. LEARNING PATHS -->
+  <section class="cm-paths">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-w">Learning Tracks</span>
+        <h2 class="stitle wh">Popular <span class="ao">Learning Paths</span></h2>
+        <p class="ssub" style="color:rgba(255,255,255,.6);margin:0 auto">Structured tracks used by our members to go from beginner to job-ready.</p>
+      </div>
+      <div class="cm-paths-grid">
+        <div class="cm-path-card reveal">
+          <h3>&#127760; Web Development</h3>
+          <p>HTML, CSS, JavaScript, React</p>
+          <div class="cm-progress-bar"><div class="cm-progress-fill" data-width="80" style="width:0%"></div></div>
+          <span class="cm-progress-label">80% of members started here</span>
+          <a href="resources.html" class="cm-path-link">&#128218; Starter pack <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="cm-path-card reveal">
+          <h3>&#128241; Mobile Apps</h3>
+          <p>Flutter &amp; Kotlin basics</p>
+          <div class="cm-progress-bar"><div class="cm-progress-fill" data-width="60" style="width:0%"></div></div>
+          <span class="cm-progress-label">60% building their first app</span>
+          <a href="resources.html" class="cm-path-link">&#128218; Mobile pack <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="cm-path-card reveal">
+          <h3>&#128202; Data Science</h3>
+          <p>Python, SQL, Power BI</p>
+          <div class="cm-progress-bar"><div class="cm-progress-fill" data-width="40" style="width:0%"></div></div>
+          <span class="cm-progress-label">40% exploring data careers</span>
+          <a href="resources.html" class="cm-path-link">&#128218; Data toolkit <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. EVENTS -->
+  <section id="events">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-b">Upcoming Events</span>
+        <h2 class="stitle">What&#39;s <span class="ab">Coming Up</span></h2>
+        <p class="ssub">Join us live or online — all events are free for community members.</p>
+      </div>
+      <div class="cm-events-grid">
+        <div class="cm-event-card reveal">
+          <div class="cm-event-date"><span class="day">15</span>APR</div>
+          <div class="cm-event-body">
+            <h3>Web Dev Workshop: Portfolio Edition</h3>
+            <p><i class="fas fa-clock" style="color:var(--blue);margin-right:5px"></i>10am – 2pm &middot; Online</p>
+            <a href="#registration" class="cm-link">RSVP <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="cm-event-card reveal">
+          <div class="cm-event-date"><span class="day">22</span>APR</div>
+          <div class="cm-event-body">
+            <h3>Tech Career Panel with Ghanaian Leads</h3>
+            <p><i class="fas fa-map-marker-alt" style="color:var(--blue);margin-right:5px"></i>3pm – 5pm &middot; Accra</p>
+            <a href="#registration" class="cm-link">RSVP <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="cm-event-card reveal">
+          <div class="cm-event-date"><span class="day">05</span>MAY</div>
+          <div class="cm-event-body">
+            <h3>Hackathon: FinTech for Good</h3>
+            <p><i class="fas fa-building" style="color:var(--blue);margin-right:5px"></i>9am – 9pm &middot; iSpace, Accra</p>
+            <a href="#registration" class="cm-link">RSVP <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="cm-event-card reveal">
+          <div class="cm-event-date"><span class="day">12</span>MAY</div>
+          <div class="cm-event-body">
+            <h3>Founder&#39;s Talk: Building Startups in Accra</h3>
+            <p><i class="fas fa-clock" style="color:var(--blue);margin-right:5px"></i>4pm – 6pm &middot; Online</p>
+            <a href="#registration" class="cm-link">RSVP <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TALENT / JOB BOARD -->
+  <section class="cm-talent">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-b">Job Board</span>
+        <h2 class="stitle">Open <span class="ab">Positions</span></h2>
+        <p class="ssub">Exclusive opportunities for community members — posted before they go public.</p>
+      </div>
+      <div class="cm-jobs">
+        <div class="cm-job reveal">
+          <div><h3>Junior Frontend Developer</h3><p><i class="fas fa-map-marker-alt" style="margin-right:5px;color:var(--blue)"></i>Accra &middot; Full&#8209;time</p></div>
+          <a href="#registration" class="cm-job-badge">Apply <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="cm-job reveal">
+          <div><h3>UI/UX Design Intern</h3><p><i class="fas fa-wifi" style="margin-right:5px;color:var(--blue)"></i>Remote &middot; 3 months</p></div>
+          <a href="#registration" class="cm-job-badge">Apply <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="cm-job reveal">
+          <div><h3>Tech Support Specialist</h3><p><i class="fas fa-building" style="margin-right:5px;color:var(--blue)"></i>Part&#8209;time &middot; Hybrid</p></div>
+          <a href="#registration" class="cm-job-badge">Apply <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="cm-jobs-footer"><a href="#registration" class="cm-link">Browse all jobs &amp; opportunities <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+  </section>
+
+  <!-- 9. FAQ -->
+  <section class="cm-faq" id="faq">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-o">FAQ</span>
+        <h2 class="stitle">Frequently Asked <span class="ao">Questions</span></h2>
+      </div>
+      <div class="cm-faq-wrap">
+        <div class="cm-faq-item reveal"><button class="cm-faq-btn"><span>How do I join the community?</span><i class="fas fa-plus"></i></button><div class="cm-faq-ans">Fill out the registration form below — it&#39;s completely free and takes about 2 minutes. You&#39;ll get instant access to the member network, events, and job board.</div></div>
+        <div class="cm-faq-item reveal"><button class="cm-faq-btn"><span>Is it really free to join?</span><i class="fas fa-plus"></i></button><div class="cm-faq-ans">Yes, 100% free! The SamzyDigital Community is free for all Ghanaian developers and aspiring tech professionals. Samuel built it to give back to the local tech ecosystem.</div></div>
+        <div class="cm-faq-item reveal"><button class="cm-faq-btn"><span>Do I need to be experienced to join?</span><i class="fas fa-plus"></i></button><div class="cm-faq-ans">Not at all. We welcome complete beginners through to experienced developers. Everyone starts somewhere, and our community is built to support every level.</div></div>
+        <div class="cm-faq-item reveal"><button class="cm-faq-btn"><span>How do workshops work?</span><i class="fas fa-plus"></i></button><div class="cm-faq-ans">Workshops are held online and in-person in Accra. They cover practical topics like React, Flutter, Python, UI/UX, and cloud. All members receive session recordings and materials.</div></div>
+        <div class="cm-faq-item reveal"><button class="cm-faq-btn"><span>Can I apply for mentorship?</span><i class="fas fa-plus"></i></button><div class="cm-faq-ans">Yes! After joining, you can request to be matched with a mentor based on your goals and interests. Mentors offer 1:1 sessions on a regular schedule.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. REGISTRATION FORM (Firebase) -->
+  <section id="registration">
+    <div class="sw">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-b">Join Free</span>
+        <h2 class="stitle">Become a <span class="ab">Member</span></h2>
+        <p class="ssub">Free to join. No credit card needed. Just your passion for tech and Ghana &#127468;&#127469;</p>
+      </div>
+      <div class="cm-form-wrap reveal">
+        <form id="communityForm">
+          <div class="cm-form-row">
+            <div class="cm-form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" name="fullName" placeholder="Ama Mensah" required>
+              <span class="cm-error" id="errorFullName"></span>
+            </div>
+            <div class="cm-form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="ama@example.com" required>
+              <span class="cm-error" id="errorEmail"></span>
+            </div>
+          </div>
+          <div class="cm-form-row">
+            <div class="cm-form-group">
+              <label for="password">Password * <span style="font-weight:400;color:var(--muted)">(min 6 characters)</span></label>
+              <input type="password" id="password" name="password" placeholder="••••••" required minlength="6">
+              <span class="cm-error" id="errorPassword"></span>
+            </div>
+            <div class="cm-form-group">
+              <label for="phone">Phone *</label>
+              <input type="tel" id="phone" name="phone" placeholder="053 000 0000" required>
+              <span class="cm-error" id="errorPhone"></span>
+            </div>
+          </div>
+          <div class="cm-form-row">
+            <div class="cm-form-group">
+              <label for="experience">Experience Level *</label>
+              <select id="experience" name="experience" required>
+                <option value="">Select level</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+              <span class="cm-error" id="errorExperience"></span>
+            </div>
+            <div class="cm-form-group">
+              <label>Interests</label>
+              <div class="cm-checkbox-group">
+                <label><input type="checkbox" name="interests" value="web"> Web Dev</label>
+                <label><input type="checkbox" name="interests" value="mobile"> Mobile</label>
+                <label><input type="checkbox" name="interests" value="data"> Data</label>
+                <label><input type="checkbox" name="interests" value="design"> UI/UX</label>
+              </div>
+            </div>
+          </div>
+          <div class="cm-form-group" style="margin-bottom:0">
+            <label for="message">What do you hope to gain?</label>
+            <textarea id="message" name="message" rows="2" placeholder="e.g. mentorship, project collaboration, jobs..."></textarea>
+          </div>
+          <button type="submit" class="cm-submit" id="registerSubmit">
+            <i class="fas fa-user-plus"></i> Join Now — It&#39;s Free
+          </button>
+          <div id="formSuccess" class="cm-success"></div>
+        </form>
+        <div class="cm-login-link">Already a member? <a href="login.html">Log in here</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. LIVE DASHBOARD -->
+  <section class="cm-dashboard">
+    <div class="sw tight">
+      <div class="sh c reveal">
+        <span class="eyebrow ey-w">Live Stats</span>
+        <h2 class="stitle wh">Community <span class="ao">at a Glance</span></h2>
+      </div>
+      <div class="cm-dash-grid">
+        <div class="cm-dash-card reveal"><span class="cm-dash-num">100+</span><span class="cm-dash-lbl">Active Members</span></div>
+        <div class="cm-dash-card reveal"><span class="cm-dash-num">78%</span><span class="cm-dash-lbl">Monthly Active</span></div>
+        <div class="cm-dash-card reveal"><span class="cm-dash-num">5+</span><span class="cm-dash-lbl">Open Jobs Listed</span></div>
+        <div class="cm-dash-card reveal"><span class="cm-dash-num">3</span><span class="cm-dash-lbl">Startups Launched</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. RESOURCES CALLOUT -->
+  <section class="cm-resources">
+    <div class="cm-res-inner">
+      <i class="fas fa-book-open"></i>
+      <h3>New to Coding? Start Here.</h3>
+      <p>Free guides, tutorials, and learning paths — made specifically for Ghanaian beginners who want to break into tech.</p>
+      <a href="resources.html" class="btn bwh"><i class="fas fa-download"></i> Get Your Free Starter Guide</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="business-footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <div class="footer-logo"><i class="fas fa-code"></i><span>SAMZY<span>DIGITAL</span></span></div>
+      <p class="footer-description">Professional digital solutions for Ghanaian businesses. Founded by Samuel AHIABA. Based in Accra, serving clients nationwide.</p>
+      <div class="footer-contact">
+        <div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+233539929190">0539929190</a></div>
+        <div class="contact-item"><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#aeddcfc3dbcbc2cfc6c7cfcccf9deec9c3cfc7c280cdc1c3"><span class="__cf_email__" data-cfemail="8af9ebe7ffefe6ebe2e3ebe8ebb9caede7ebe3e6a4e9e5e7">[email&#160;protected]</span></a></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Accra, Ghana</span></div>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">Quick Links</h3>
+      <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="business.html">Business</a></li><li><a href="community.html">Community</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">Community</h3>
+      <ul class="footer-links"><li><a href="#mentors">Mentors</a></li><li><a href="#events">Events</a></li><li><a href="#registration">Join</a></li><li><a href="#faq">FAQ</a></li><li><a href="resources.html">Resources</a></li></ul>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">Connect</h3>
+      <div class="footer-social">
+        <a href="https://wa.me/233539929190" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="footer-legal"><p>&#169; 2026 Samzy-Digital. All rights reserved.</p></div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS – EXACT ORIGINAL ORDER -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="header-footer.js"></script>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script>
+  if (typeof firebase !== 'undefined') {
+    const firebaseConfig = {
+      apiKey: "AIzaSyBkgwVFe1PMYMvmZxoFVFErZ27Q3XYQ-_g",
+      authDomain: "samzy-community-blog.firebaseapp.com",
+      projectId: "samzy-community-blog",
+      storageBucket: "samzy-community-blog.firebasestorage.app",
+      messagingSenderId: "573240466296",
+      appId: "1:573240466296:web:5faa312a1136162961468d"
+    };
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+  }
+</script>
+
+<!-- Auth + Community logic -->
+<script src="community-auth.js"></script>
+<script src="community.js"></script>
+
+<!-- CHATBOT -->
+<div id="samzy-chatbot-root">
+  <div id="samzy-bubble" class="samzy-chat-bubble">
+    <svg viewBox="0 0 24 24" width="36" height="36">
+      <circle cx="12" cy="12" r="10" fill="white"/>
+      <circle cx="8" cy="9" r="1.5" fill="black"/>
+      <circle cx="16" cy="9" r="1.5" fill="black"/>
+      <path d="M8 14 Q12 18, 16 14" stroke="black" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div id="samzy-window" class="samzy-chat-window">
+    <div class="samzy-chat-header">
+      <h3><span></span> Samzy Assistant</h3>
+      <button id="samzy-close" class="samzy-close-btn">&#215;</button>
+    </div>
+    <div id="samzy-messages" class="samzy-messages"></div>
+    <div class="samzy-input-area">
+      <input type="text" id="samzy-user-input" placeholder="Ask me anything..." autocomplete="off">
+      <button id="samzy-send" class="samzy-send-btn">Send</button>
+    </div>
+  </div>
+</div>
+<script src="samzy-chatbot.js"></script>
+
+<!-- PAGE SCRIPTS: Scroll reveal + count-up + progress bars + FAQ -->
+<script>
+  // Scroll reveal
+  document.querySelectorAll('.reveal').forEach(el => {
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { el.classList.add('on'); io.disconnect(); }
+    }, { threshold: .07 });
+    io.observe(el);
+  });
+
+  // Count-up for stat numbers
+  document.querySelectorAll('.sc').forEach(el => {
+    new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      const t = +el.dataset.t, d = 1600; let s = null;
+      const f = ts => { if (!s) s = ts; const p = Math.min((ts - s) / d, 1); el.textContent = Math.floor(p * t); if (p < 1) requestAnimationFrame(f); else el.textContent = t; };
+      requestAnimationFrame(f);
+    }, { threshold: .5 }).observe(el);
+  });
+
+  // Progress bars (learning paths)
+  document.querySelectorAll('.cm-progress-fill').forEach(bar => {
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { bar.style.width = bar.dataset.width + '%'; io.disconnect(); }
+    }, { threshold: .3 });
+    io.observe(bar);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.cm-faq-btn').forEach(b => b.addEventListener('click', () => {
+    const item = b.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.cm-faq-item.open').forEach(x => x.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }));
+
+  // Registration form
+  const regForm = document.getElementById('registrationForm');
+  if (regForm) {
+    regForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i> Application Sent!';
+        const success = document.getElementById('regSuccess');
+        if (success) success.style.display = 'block';
+        this.reset();
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Application';
+          if (success) success.style.display = 'none';
+        }, 5000);
+      }, 1500);
+    });
+  }
+</script>
 </body>
 </html>
