@@ -73,7 +73,6 @@
   <!-- EXACT ORIGINAL ORDER -->
   <link rel="stylesheet" href="header-footer.css">
   <link rel="stylesheet" href="samzy-chatbot.css">
-  <link rel="stylesheet" href="business.css">
 
   <style>
   /* =====================================================
@@ -281,6 +280,121 @@
     .cs-stats { flex-direction: column; gap: 1rem; }
     .cta-btns { flex-direction: column; align-items: center; }
   }
+
+  /* ===== ORDER MODAL ===== */
+  .order-overlay {
+    display: none; position: fixed; inset: 0; z-index: 10000;
+    background: rgba(15,30,45,.72); backdrop-filter: blur(8px);
+    align-items: center; justify-content: center; padding: 1.5rem;
+  }
+  .order-overlay.active { display: flex; }
+  .order-modal {
+    background: #fff; border-radius: 28px; width: 100%; max-width: 540px;
+    max-height: 90vh; overflow-y: auto; box-shadow: 0 40px 80px rgba(0,0,0,.25);
+    animation: modalIn .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes modalIn { from { opacity:0; transform:scale(.92) translateY(20px); } to { opacity:1; transform:scale(1) translateY(0); } }
+  .om-header {
+    padding: 1.75rem 2rem 1.25rem; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  .om-header h2 { font-family:'Syne',sans-serif; font-size: 1.3rem; font-weight:800; color:var(--charcoal); }
+  .om-close {
+    width:36px; height:36px; border-radius:50%; background:var(--off2); border:none;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; color:var(--muted); flex-shrink:0; transition:all .2s;
+  }
+  .om-close:hover { background:var(--charcoal); color:#fff; }
+  .om-body { padding: 1.75rem 2rem; }
+
+  /* Step indicators */
+  .om-steps { display:flex; align-items:center; gap:0; margin-bottom:2rem; }
+  .om-step-dot {
+    width:32px; height:32px; border-radius:50%; background:var(--off2);
+    border:2px solid var(--border); display:flex; align-items:center; justify-content:center;
+    font-size:.75rem; font-weight:800; color:var(--muted); flex-shrink:0; transition:all .3s;
+  }
+  .om-step-dot.done { background:var(--blue); border-color:var(--blue); color:#fff; }
+  .om-step-dot.active { background:var(--orange); border-color:var(--orange); color:#fff; box-shadow:0 4px 12px rgba(253,128,46,.3); }
+  .om-step-line { flex:1; height:2px; background:var(--border); transition:background .3s; }
+  .om-step-line.done { background:var(--blue); }
+
+  /* Selected plan banner */
+  .om-plan-banner {
+    background:linear-gradient(135deg,var(--blue),var(--blue-l));
+    border-radius:16px; padding:1.1rem 1.5rem; margin-bottom:1.5rem;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .om-plan-banner .plan-name { font-family:'Syne',sans-serif; font-weight:800; color:#fff; font-size:1rem; }
+  .om-plan-banner .plan-price { font-family:'Syne',sans-serif; font-weight:800; color:var(--orange); font-size:1.2rem; }
+
+  /* Form fields */
+  .om-field { margin-bottom:1.25rem; }
+  .om-field label { display:block; font-size:.83rem; font-weight:700; color:var(--charcoal); margin-bottom:.5rem; }
+  .om-field label span { color:#e53e3e; }
+  .om-field input, .om-field textarea, .om-field select {
+    width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:12px;
+    font-family:'DM Sans',sans-serif; font-size:.93rem; color:var(--charcoal);
+    background:var(--off); transition:border-color .2s; box-sizing:border-box;
+  }
+  .om-field input:focus, .om-field textarea:focus, .om-field select:focus {
+    outline:none; border-color:var(--blue); background:#fff;
+  }
+  .om-field textarea { resize:vertical; min-height:90px; }
+  .om-field-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+
+  /* Payment step */
+  .om-pay-method { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-bottom:1.5rem; }
+  .om-pay-opt {
+    border:2px solid var(--border); border-radius:14px; padding:1rem;
+    text-align:center; cursor:pointer; transition:all .2s; background:#fff;
+  }
+  .om-pay-opt:hover { border-color:var(--blue); }
+  .om-pay-opt.selected { border-color:var(--orange); background:rgba(253,128,46,.05); }
+  .om-pay-opt i { font-size:1.6rem; display:block; margin-bottom:.5rem; }
+  .om-pay-opt .pn { font-weight:700; font-size:.88rem; color:var(--charcoal); }
+  .om-pay-opt .ps { font-size:.76rem; color:var(--muted); margin-top:3px; }
+
+  .om-momo-box {
+    background: linear-gradient(135deg, #ffcf00 0%, #ffd700 100%);
+    border-radius:18px; padding:1.5rem; text-align:center; margin-bottom:1.25rem;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .om-momo-box .momo-logo { font-size:2rem; margin-bottom:.5rem; }
+  .om-momo-box .momo-label { font-size:.78rem; font-weight:700; color:rgba(0,0,0,.55); text-transform:uppercase; letter-spacing:.5px; }
+  .om-momo-box .momo-number { font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800; color:#1a1a1a; letter-spacing:2px; margin:.25rem 0; }
+  .om-momo-box .momo-name { font-size:.85rem; font-weight:600; color:rgba(0,0,0,.65); }
+  .om-momo-box .momo-amount { margin-top:.75rem; padding:.6rem 1.25rem; background:rgba(0,0,0,.12); border-radius:40px; display:inline-block; font-weight:800; font-size:1rem; color:#1a1a1a; }
+
+  .om-cash-box {
+    background:var(--off2); border:2px solid var(--border); border-radius:18px;
+    padding:1.5rem; text-align:center; margin-bottom:1.25rem;
+  }
+  .om-cash-box i { font-size:2.5rem; color:var(--blue); margin-bottom:.75rem; display:block; }
+  .om-cash-box p { font-size:.9rem; color:var(--muted); line-height:1.65; }
+  .om-cash-box strong { color:var(--charcoal); }
+
+  .om-steps-note { background:rgba(40,114,161,.06); border:1px solid rgba(40,114,161,.15); border-radius:12px; padding:1rem 1.25rem; font-size:.84rem; color:var(--muted); line-height:1.65; margin-bottom:1.25rem; }
+  .om-steps-note strong { color:var(--charcoal); }
+  .om-steps-note ol { padding-left:1.2rem; margin-top:.5rem; }
+  .om-steps-note ol li { margin-bottom:.25rem; }
+
+  /* Confirm / success step */
+  .om-success { text-align:center; padding:1rem 0; }
+  .om-success i { font-size:3.5rem; color:#16a34a; margin-bottom:1rem; display:block; }
+  .om-success h3 { font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; color:var(--charcoal); margin-bottom:.75rem; }
+  .om-success p { color:var(--muted); font-size:.93rem; line-height:1.7; margin-bottom:1.5rem; }
+
+  .om-footer { padding:0 2rem 1.75rem; display:flex; gap:.75rem; flex-wrap:wrap; }
+  .om-footer .btn { flex:1; justify-content:center; min-width:120px; }
+
+  @media (max-width:540px) {
+    .order-modal { border-radius:20px 20px 0 0; max-height:95vh; margin-top:auto; }
+    .order-overlay { align-items:flex-end; padding:0; }
+    .om-body { padding:1.25rem 1.25rem; }
+    .om-field-row { grid-template-columns:1fr; }
+    .om-pay-method { grid-template-columns:1fr 1fr; }
+  }
   </style>
 </head>
 <body>
@@ -397,7 +511,7 @@
               <li class="off"><i class="fas fa-times"></i> E&#8209;commerce</li>
               <li class="off"><i class="fas fa-times"></i> Automation tools</li>
             </ul>
-            <a href="contact.html" class="btn bub" style="width:100%;justify-content:center">Get Started <i class="fas fa-arrow-right"></i></a>
+            <button onclick="openOrder('Starter', 1500)" class="btn bub" style="width:100%;justify-content:center">Order Now <i class="fas fa-shopping-cart"></i></button>
           </div>
         </div>
         <!-- Business – FEATURED -->
@@ -416,7 +530,7 @@
               <li><i class="fas fa-check"></i> 3 months support</li>
               <li class="off"><i class="fas fa-times"></i> Custom automation</li>
             </ul>
-            <a href="contact.html" class="btn bb" style="width:100%;justify-content:center">Get Started <i class="fas fa-arrow-right"></i></a>
+            <button onclick="openOrder('Business', 3500)" class="btn bb" style="width:100%;justify-content:center">Order Now <i class="fas fa-shopping-cart"></i></button>
           </div>
         </div>
         <!-- Enterprise -->
@@ -434,7 +548,7 @@
               <li><i class="fas fa-check"></i> 24/7 priority support</li>
               <li><i class="fas fa-check"></i> 6 months maintenance</li>
             </ul>
-            <a href="contact.html" class="btn bo" style="width:100%;justify-content:center">Get Started <i class="fas fa-arrow-right"></i></a>
+            <button onclick="openOrder('Enterprise', 6500)" class="btn bo" style="width:100%;justify-content:center">Order Now <i class="fas fa-shopping-cart"></i></button>
           </div>
         </div>
       </div>
@@ -669,7 +783,7 @@
 </footer>
 
 <!-- SCRIPTS – EXACT ORDER -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="header-footer.js"></script>
 
 <!-- CHATBOT -->
@@ -738,4 +852,269 @@ document.querySelectorAll('.reveal').forEach(el => {
 });
 
 // ---- FAQ ACCORDION ----
-document.querySelectorAll('.faq-btn').forEach(b => b.addEventList
+document.querySelectorAll('.faq-btn').forEach(b => b.addEventListener('click', function() {
+  const item = this.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}));
+</script>
+<!-- ===== ORDER MODAL ===== -->
+<div class="order-overlay" id="orderOverlay">
+  <div class="order-modal" id="orderModal">
+
+    <!-- Header -->
+    <div class="om-header">
+      <h2 id="om-title">Place Your Order</h2>
+      <button class="om-close" onclick="closeOrder()" aria-label="Close">&times;</button>
+    </div>
+
+    <!-- Body -->
+    <div class="om-body">
+
+      <!-- Step indicators -->
+      <div class="om-steps">
+        <div class="om-step-dot active" id="sdot1">1</div>
+        <div class="om-step-line" id="sline1"></div>
+        <div class="om-step-dot" id="sdot2">2</div>
+        <div class="om-step-line" id="sline2"></div>
+        <div class="om-step-dot" id="sdot3">&#10003;</div>
+      </div>
+
+      <!-- STEP 1 – Details -->
+      <div id="om-step1">
+        <div class="om-plan-banner">
+          <span class="plan-name" id="om-plan-name">Starter Plan</span>
+          <span class="plan-price" id="om-plan-price">GHS 1,500</span>
+        </div>
+        <div class="om-field-row">
+          <div class="om-field">
+            <label>Full Name <span>*</span></label>
+            <input type="text" id="om-name" placeholder="e.g. Kofi Mensah">
+          </div>
+          <div class="om-field">
+            <label>Phone Number <span>*</span></label>
+            <input type="tel" id="om-phone" placeholder="e.g. 0551234567">
+          </div>
+        </div>
+        <div class="om-field">
+          <label>Email Address</label>
+          <input type="email" id="om-email" placeholder="yourname@email.com">
+        </div>
+        <div class="om-field">
+          <label>Business Name <span>*</span></label>
+          <input type="text" id="om-business" placeholder="e.g. Kofi's Store">
+        </div>
+        <div class="om-field">
+          <label>What do you need? (brief description)</label>
+          <textarea id="om-notes" placeholder="e.g. I need a 5-page website for my restaurant in Accra with an online menu..."></textarea>
+        </div>
+      </div>
+
+      <!-- STEP 2 – Payment -->
+      <div id="om-step2" style="display:none">
+        <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.65;">
+          Choose how you'd like to pay the <strong style="color:var(--charcoal)">50% deposit</strong> to kick off your project.
+        </p>
+        <div class="om-pay-method">
+          <div class="om-pay-opt selected" id="opt-momo" onclick="selectPay('momo')">
+            <i style="color:#ffcf00" class="fas fa-mobile-alt"></i>
+            <div class="pn">MTN MoMo</div>
+            <div class="ps">Pay via Mobile Money</div>
+          </div>
+          <div class="om-pay-opt" id="opt-cash" onclick="selectPay('cash')">
+            <i style="color:var(--blue)" class="fas fa-hand-holding-usd"></i>
+            <div class="pn">Cash</div>
+            <div class="ps">Pay in person – Accra</div>
+          </div>
+        </div>
+
+        <!-- MoMo instructions -->
+        <div id="pay-momo">
+          <div class="om-momo-box">
+            <div class="momo-logo">📱</div>
+            <div class="momo-label">Send deposit to MTN MoMo</div>
+            <div class="momo-number">0539929190</div>
+            <div class="momo-name">Samuel AHIABA · SamzyDigital</div>
+            <div class="momo-amount" id="om-deposit-amount">GHS 750 deposit</div>
+          </div>
+          <div class="om-steps-note">
+            <strong>How to pay:</strong>
+            <ol>
+              <li>Dial <strong>*170#</strong> on your MTN SIM</li>
+              <li>Select <strong>Transfer Money → MoMo User</strong></li>
+              <li>Enter number <strong>0539929190</strong></li>
+              <li>Enter the deposit amount shown above</li>
+              <li>Use your name + "<strong>SamzyDigital</strong>" as the reference</li>
+              <li>Click <strong>"Confirm Payment"</strong> below once sent</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Cash instructions -->
+        <div id="pay-cash" style="display:none">
+          <div class="om-cash-box">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>We'll arrange a meeting at a convenient location in <strong>Accra</strong>. Samuel will contact you within <strong>2 hours</strong> to confirm the time and place.</p>
+            <p style="margin-top:.75rem">Full payment or 50% deposit (<strong id="om-cash-deposit">GHS 750</strong>) accepted on the day.</p>
+          </div>
+          <div class="om-steps-note">
+            <strong>What to bring:</strong> Just yourself and your business ideas! We'll discuss the full project scope at the meeting and get started same day.
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 – Success -->
+      <div id="om-step3" style="display:none">
+        <div class="om-success">
+          <i class="fas fa-check-circle"></i>
+          <h3>Order Confirmed! 🎉</h3>
+          <p>Thanks, <strong id="om-confirm-name">there</strong>! Samuel will contact you on <strong id="om-confirm-phone"></strong> within <strong>2 hours</strong> to confirm next steps and get your project started.</p>
+          <p style="margin-top:.5rem">You'll also receive a WhatsApp message with your order summary.</p>
+        </div>
+      </div>
+
+    </div><!-- /om-body -->
+
+    <!-- Footer buttons -->
+    <div class="om-footer" id="om-footer">
+      <button class="btn bub" id="om-back-btn" onclick="omBack()" style="display:none">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+      <button class="btn bb" id="om-next-btn" onclick="omNext()">
+        Continue <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+
+  </div><!-- /order-modal -->
+</div><!-- /order-overlay -->
+
+<!-- ORDER MODAL JS -->
+<script>
+(function() {
+  let currentPlan = '', currentPrice = 0, currentStep = 1, currentPayMethod = 'momo';
+
+  window.openOrder = function(plan, price) {
+    currentPlan  = plan;
+    currentPrice = price;
+    currentStep  = 1;
+    currentPayMethod = 'momo';
+
+    document.getElementById('om-plan-name').textContent  = plan + ' Plan';
+    document.getElementById('om-plan-price').textContent = 'GHS ' + price.toLocaleString();
+    const deposit = Math.round(price * 0.5);
+    document.getElementById('om-deposit-amount').textContent = 'GHS ' + deposit.toLocaleString() + ' deposit';
+    document.getElementById('om-cash-deposit').textContent   = 'GHS ' + deposit.toLocaleString();
+
+    // Reset form
+    ['om-name','om-phone','om-email','om-business','om-notes'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    selectPay('momo');
+    showStep(1);
+    document.getElementById('orderOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeOrder = function() {
+    document.getElementById('orderOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  document.getElementById('orderOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeOrder();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeOrder();
+  });
+
+  function showStep(n) {
+    currentStep = n;
+    document.getElementById('om-step1').style.display = n === 1 ? '' : 'none';
+    document.getElementById('om-step2').style.display = n === 2 ? '' : 'none';
+    document.getElementById('om-step3').style.display = n === 3 ? '' : 'none';
+
+    [1,2,3].forEach(function(i) {
+      var dot = document.getElementById('sdot' + i);
+      dot.classList.remove('active','done');
+      if (i < n)  dot.classList.add('done');
+      if (i === n) dot.classList.add('active');
+    });
+    document.getElementById('sline1').classList.toggle('done', n > 1);
+    document.getElementById('sline2').classList.toggle('done', n > 2);
+
+    var backBtn = document.getElementById('om-back-btn');
+    var nextBtn = document.getElementById('om-next-btn');
+    backBtn.style.display = (n > 1 && n < 3) ? '' : 'none';
+
+    if (n === 1) nextBtn.innerHTML = 'Continue <i class="fas fa-arrow-right"></i>';
+    if (n === 2) nextBtn.innerHTML = (currentPayMethod === 'momo' ? 'Confirm Payment Sent' : 'Confirm Meeting Request') + ' <i class="fas fa-check"></i>';
+    if (n === 3) nextBtn.innerHTML = '<i class="fab fa-whatsapp"></i> WhatsApp Samuel';
+    nextBtn.style.display = '';
+
+    var titles = ['', 'Your Details', 'Payment', 'Order Confirmed'];
+    document.getElementById('om-title').textContent = titles[n];
+  }
+
+  function buildMsg() {
+    var name     = document.getElementById('om-name').value.trim();
+    var business = document.getElementById('om-business').value.trim();
+    var notes    = document.getElementById('om-notes').value.trim();
+    var deposit  = Math.round(currentPrice * 0.5);
+    var payLabel = currentPayMethod === 'momo' ? 'MTN MoMo' : 'Cash';
+    return encodeURIComponent(
+      '\uD83D\uDC4B Hi Samuel! I just placed an order on SamzyDigital.\n\n' +
+      '\uD83D\uDCE6 *Plan:* ' + currentPlan + ' \u2013 GHS ' + currentPrice.toLocaleString() + '\n' +
+      '\uD83C\uDFE2 *Business:* ' + business + '\n' +
+      '\uD83D\uDCB3 *Payment:* ' + payLabel + ' (Deposit: GHS ' + deposit.toLocaleString() + ')\n' +
+      (notes ? '\uD83D\uDCDD *Notes:* ' + notes + '\n' : '') +
+      '\nPlease confirm receipt. Thank you!'
+    );
+  }
+
+  window.omNext = function() {
+    if (currentStep === 1) {
+      var name     = document.getElementById('om-name').value.trim();
+      var phone    = document.getElementById('om-phone').value.trim();
+      var business = document.getElementById('om-business').value.trim();
+      if (!name || !phone || !business) {
+        alert('Please fill in your Name, Phone Number, and Business Name to continue.');
+        return;
+      }
+      showStep(2);
+
+    } else if (currentStep === 2) {
+      var name  = document.getElementById('om-name').value.trim();
+      var phone = document.getElementById('om-phone').value.trim();
+      document.getElementById('om-confirm-name').textContent  = name;
+      document.getElementById('om-confirm-phone').textContent = phone;
+      showStep(3);
+      setTimeout(function() {
+        window.open('https://wa.me/233539929190?text=' + buildMsg(), '_blank');
+      }, 1200);
+
+    } else if (currentStep === 3) {
+      window.open('https://wa.me/233539929190?text=' + buildMsg(), '_blank');
+    }
+  };
+
+  window.omBack = function() {
+    if (currentStep > 1 && currentStep < 3) showStep(currentStep - 1);
+  };
+
+  window.selectPay = function(method) {
+    currentPayMethod = method;
+    document.getElementById('opt-momo').classList.toggle('selected', method === 'momo');
+    document.getElementById('opt-cash').classList.toggle('selected', method === 'cash');
+    document.getElementById('pay-momo').style.display = method === 'momo' ? '' : 'none';
+    document.getElementById('pay-cash').style.display = method === 'cash' ? '' : 'none';
+    if (currentStep === 2) {
+      var nextBtn = document.getElementById('om-next-btn');
+      nextBtn.innerHTML = (method === 'momo' ? 'Confirm Payment Sent' : 'Confirm Meeting Request') + ' <i class="fas fa-check"></i>';
+    }
+  };
+})();
+</script>
+
+</body>
+</html>

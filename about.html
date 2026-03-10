@@ -91,7 +91,6 @@
   <!-- EXACT ORIGINAL ORDER -->
   <link rel="stylesheet" href="header-footer.css">
   <link rel="stylesheet" href="samzy-chatbot.css">
-  <link rel="stylesheet" href="about.css">
 
   <style>
   /* =====================================================
@@ -568,7 +567,7 @@
 </footer>
 
 <!-- SCRIPTS – EXACT ORDER -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="header-footer.js"></script>
 
 <!-- CHATBOT -->
@@ -595,4 +594,14 @@
 </div>
 <script src="samzy-chatbot.js"></script>
 
-<!-- PAG
+<!-- PAGE-SPECIFIC: scroll reveal -->
+<script>
+  document.querySelectorAll('.reveal').forEach(el => {
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { el.classList.add('on'); io.disconnect(); }
+    }, { threshold: .07 });
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
