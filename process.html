@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>Our Process | SamzyDigital – How We Build Websites in Ghana</title>
+<meta name="description" content="From discovery call to launch — see SamzyDigital's proven 4-step process for building websites for Ghanaian businesses. Fast, transparent, results-driven.">
+<meta name="author" content="Samuel AHIABA – SamzyDigital">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://samzy-digital-gh.github.io/agency-site/process.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ========== DESIGN SYSTEM (same as other pages) ========== */
+:root{
+  --gd:#C9960A;  --gd2:#F0B429;
+  --gl:rgba(201,150,10,.10);  --gb:rgba(201,150,10,.22);
+  --em:#10B981;  --el:rgba(16,185,129,.10);
+  --or:#FF6B35;  --ol:rgba(255,107,53,.10);
+  --wh:#FFFFFF;  --off:#F9F7F2;  --warm:#F5F0E8;
+  --ch:#0F1117;  --nv:#1a1a2e;
+  --tx:#0A0A0A;  --mu:#5C6B7A;  --li:#94A3B8;
+  --bd:#E8E2D9;  --bd2:#D4CEC4;
+  --ssm:0 2px 12px rgba(0,0,0,.06);
+  --smd:0 8px 32px rgba(0,0,0,.10);
+  --slg:0 24px 64px rgba(0,0,0,.14);
+  --sgd:0 8px 32px rgba(201,150,10,.22);
+  --pill:999px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--wh);color:var(--tx);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--off)}::-webkit-scrollbar-thumb{background:var(--gd);border-radius:3px}
+
+/* Navbar (same as index) */
+.navbar{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:92%;max-width:1240px;z-index:9999;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.navbar.scrolled{top:8px;width:97%}
+.nav-container{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 10px 20px;background:rgba(255,255,255,.62);backdrop-filter:blur(30px) saturate(200%) brightness(106%);-webkit-backdrop-filter:blur(30px) saturate(200%) brightness(106%);border:1px solid rgba(255,255,255,.80);border-radius:var(--pill);box-shadow:0 8px 32px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.95);transition:all .4s;gap:8px}
+.navbar.scrolled .nav-container{background:rgba(255,255,255,.90)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.05rem;color:var(--tx);flex-shrink:0;transition:.2s}.logo:hover{transform:scale(1.04)}
+.logo-ic{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--gd);font-size:1.3rem;flex-shrink:0}.logo span{color:var(--gd)}
+.nav-links{display:flex;list-style:none;gap:1px;align-items:center}
+.nav-links>li{position:relative}
+.nav-links>li>a{color:var(--mu);font-weight:600;font-size:.83rem;padding:8px 12px;border-radius:var(--pill);transition:all .25s;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.nav-links>li>a:hover{color:var(--tx);background:rgba(0,0,0,.05)}
+.nav-links>li>a.active{background:linear-gradient(135deg,var(--gd),var(--gd2));color:white;box-shadow:0 3px 12px rgba(201,150,10,.3)}
+.nav-links>li>a i.drop-arrow{font-size:.6rem;transition:transform .25s}
+.nav-links>li:hover>a i.drop-arrow{transform:rotate(180deg)}
+.dropdown{
+  position:absolute;top:calc(100% + 10px);left:0;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--bd);border-radius:14px;
+  box-shadow:var(--slg);min-width:200px;
+  opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity .25s cubic-bezier(.4,0,.2,1), visibility .25s, transform .25s;
+  transition-delay:0s, 0.3s, 0s;
+  z-index:100;
+  padding:8px;
+}
+.nav-links>li:hover .dropdown{
+  opacity:1;visibility:visible;transform:translateY(0);
+  transition-delay:0s, 0s, 0s;
+}
+.dropdown a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;border-radius:10px;
+  font-size:.83rem;font-weight:600;color:var(--mu);
+  transition:.2s;white-space:nowrap;
+}
+.dropdown a i{width:16px;text-align:center;color:var(--gd);font-size:.78rem}
+.dropdown a:hover{background:var(--gl);color:var(--gd)}
+.btn-quote{
+  display:flex;align-items:center;gap:7px;
+  padding:9px 20px;background:linear-gradient(135deg,var(--gd),var(--gd2));
+  color:var(--ch);border:none;border-radius:var(--pill);
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;
+  cursor:pointer;transition:all .25s;box-shadow:var(--sgd);flex-shrink:0;
+  white-space:nowrap;
+}
+.btn-quote:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(201,150,10,.35)}
+.mobile-toggle{display:none;width:42px;height:42px;background:rgba(255,255,255,.7);border:1.5px solid var(--bd);border-radius:10px;cursor:pointer;color:var(--tx);font-size:1.1rem;align-items:center;justify-content:center;transition:.2s;backdrop-filter:blur(10px);flex-shrink:0;padding:0;outline:none}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9997;backdrop-filter:blur(2px)}
+.mob-overlay.on{display:block}
+.mobile-menu{position:fixed;top:0;right:-105%;width:100%;max-width:320px;height:100%;padding:72px 20px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(32px) saturate(200%);border-left:1px solid rgba(255,255,255,.7);box-shadow:-20px 0 60px rgba(0,0,0,.15);z-index:9998;transition:right .4s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+.mobile-menu.open{right:0}
+.mobile-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--bd);background:rgba(255,255,255,.8);cursor:pointer;color:var(--tx);font-size:1rem;display:flex;align-items:center;justify-content:center;transition:.2s}
+.mobile-close:hover{background:var(--gd);color:white;border-color:var(--gd)}
+.mob-logo{display:flex;align-items:center;gap:10px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--bd)}
+.mob-section{margin-bottom:8px}
+.mob-section-title{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--li);margin-bottom:6px;padding:0 4px;font-family:'DM Mono',monospace}
+.mob-links{list-style:none;display:flex;flex-direction:column;gap:2px}
+.mob-links a{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:11px;color:var(--tx);font-weight:600;font-size:.88rem;transition:.2s}
+.mob-links a:hover{background:var(--gl);color:var(--gd);transform:translateX(4px)}
+.mob-links a.active{background:linear-gradient(135deg,var(--gd),var(--gd2));color:white}
+.mob-links a i{width:16px;text-align:center;font-size:.8rem;color:var(--gd)}
+.mob-links a.active i{color:white}
+.mob-cta{margin-top:20px}
+.mob-cta a{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px;border-radius:13px;background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);font-weight:700;font-size:.9rem;width:100%;box-shadow:var(--sgd);transition:all .25s}
+.mob-cta a:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,150,10,.35)}
+
+/* Animations */
+.sl-left{opacity:0;transform:translateX(-60px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+.sl-left.on{opacity:1;transform:translateX(0)}
+.sl-right{opacity:0;transform:translateX(60px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+.sl-right.on{opacity:1;transform:translateX(0)}
+.fu{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+.si{opacity:0;transform:scale(.88);transition:opacity .65s ease,transform .65s ease}
+.si.on{opacity:1;transform:scale(1)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* Shared */
+.mx{max-width:1200px;margin:0 auto;padding:90px 5%}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--pill);font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.ey-gd{background:var(--gl);color:var(--gd);border:1px solid var(--gb)}
+.ey-em{background:var(--el);color:var(--em);border:1px solid rgba(16,185,129,.2)}
+.ey-or{background:var(--ol);color:var(--or);border:1px solid rgba(255,107,53,.2)}
+.ey-wh{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.2)}
+.h-ttl{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:900;letter-spacing:-1px;line-height:1.1;color:var(--tx);margin-bottom:14px}
+.h-ttl em{font-style:italic;color:var(--gd)}.h-ttl.wh{color:white}.h-ttl.wh em{color:var(--gd2)}
+.sub{font-size:.95rem;line-height:1.8;color:var(--mu)}
+.hd{margin-bottom:52px}.hd.c{text-align:center}.hd.c .sub{max-width:560px;margin:0 auto}
+.btn-p{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:var(--pill);background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);border:none;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .25s;box-shadow:var(--sgd)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(201,150,10,.32)}
+.btn-wh{display:inline-flex;align-items:center;gap:9px;padding:14px 28px;border-radius:var(--pill);background:white;color:var(--ch);border:none;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .25s}
+.btn-wh:hover{background:var(--gd);color:var(--ch);transform:translateY(-2px);box-shadow:var(--sgd)}
+.btn-gh{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:var(--pill);background:transparent;color:white;border:1.5px solid rgba(255,255,255,.35);font-family:'DM Sans',sans-serif;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .25s}
+.btn-gh:hover{background:rgba(255,255,255,.1);border-color:white;transform:translateY(-2px)}
+
+/* Hero */
+#pg-hero{min-height:52vh;position:relative;overflow:hidden;display:flex;align-items:center;background:linear-gradient(135deg,var(--ch) 0%,#16213e 100%)}
+#pg-hero::before{content:'';position:absolute;top:-150px;right:-150px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,150,10,.08) 0%,transparent 70%);pointer-events:none}
+#pg-hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.05) 0%,transparent 70%);pointer-events:none}
+.pg-hero-inner{max-width:1200px;margin:0 auto;padding:clamp(120px, 18vh, 180px) 5% clamp(60px, 8vh, 100px);width:100%;position:relative;z-index:1;text-align:center}
+.pg-h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:900;letter-spacing:-2px;line-height:1.06;color:white;margin-bottom:20px;animation:fadeUp .6s ease both}
+.pg-h1 em{font-style:italic;color:var(--gd2)}
+.pg-sub{font-size:1rem;line-height:1.8;color:rgba(255,255,255,.65);max-width:560px;margin:0 auto 32px;animation:fadeUp .6s .12s ease both}
+.pg-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp .6s .2s ease both}
+
+/* Overview cards */
+#overview{background:var(--wh)}
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.ov-card{background:var(--off);border:1px solid var(--bd);border-radius:20px;padding:30px 22px;text-align:center;position:relative;overflow:hidden;transition:all .3s;cursor:default}
+.ov-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:.35s}
+.ov-card.s1::before{background:linear-gradient(90deg,var(--gd),var(--gd2))}
+.ov-card.s2::before{background:linear-gradient(90deg,var(--em),#34D399)}
+.ov-card.s3::before{background:linear-gradient(90deg,var(--or),#FFA166)}
+.ov-card.s4::before{background:linear-gradient(90deg,#7C3AED,#9f67fa)}
+.ov-card:hover{transform:translateY(-8px);box-shadow:var(--smd);background:white}
+.ov-card:hover::before{transform:scaleX(1)}
+.ov-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--bd);line-height:1;margin-bottom:14px;transition:.3s}
+.ov-card:hover .ov-num{color:var(--gl)}
+.ov-ico{font-size:1.6rem;margin-bottom:14px;display:block}
+.ov-ttl{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--tx)}
+.ov-desc{font-size:.82rem;color:var(--mu);line-height:1.65}
+
+/* Detailed steps */
+.step-section{padding:90px 5%}
+.step-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.step-grid.rev{direction:rtl}.step-grid.rev>*{direction:ltr}
+.step-img{position:relative;border-radius:24px;overflow:hidden;height:440px;box-shadow:var(--slg)}
+.step-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.step-img:hover img{transform:scale(1.04)}
+.step-badge{position:absolute;top:22px;left:22px;width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;box-shadow:var(--smd)}
+.sb-gd{background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch)}
+.sb-em{background:linear-gradient(135deg,var(--em),#34D399);color:white}
+.sb-or{background:linear-gradient(135deg,var(--or),#FFA166);color:white}
+.sb-pu{background:linear-gradient(135deg,#7C3AED,#9f67fa);color:white}
+.step-checklist{list-style:none;display:flex;flex-direction:column;gap:12px;margin:22px 0}
+.step-check{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:var(--off);border:1px solid var(--bd);border-radius:11px;transition:.2s}
+.step-check:hover{border-color:var(--gb);transform:translateX(6px)}
+.step-check i{color:var(--em);font-size:.9rem;flex-shrink:0;margin-top:2px}
+.step-check span{font-size:.87rem;color:var(--mu);line-height:1.55}
+.step-tag{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;font-weight:700;padding:4px 12px;border-radius:var(--pill);margin-bottom:16px;font-family:'DM Mono',monospace}
+
+/* Timeline */
+#timeline{background:linear-gradient(135deg,var(--ch),var(--nv));position:relative;overflow:hidden}
+#timeline::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,150,10,.07) 0%,transparent 70%);pointer-events:none}
+.tl-inner{max-width:1200px;margin:0 auto;padding:90px 5%;position:relative;z-index:1}
+.tl-track{display:flex;flex-direction:column;gap:0;max-width:760px;margin:0 auto}
+.tl-item{display:flex;gap:24px;align-items:flex-start;padding-bottom:40px;position:relative}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:19px;top:48px;bottom:0;width:2px;background:rgba(255,255,255,.08)}
+.tl-item:last-child::before{display:none}
+.tl-circle{width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.78rem;font-weight:700;color:var(--gd2);flex-shrink:0;background:rgba(255,255,255,.05);transition:.3s}
+.tl-item:hover .tl-circle{background:var(--gd);color:var(--ch);border-color:var(--gd)}
+.tl-content{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px 24px;transition:.3s}
+.tl-item:hover .tl-content{background:rgba(255,255,255,.09);transform:translateX(4px)}
+.tl-day{font-family:'DM Mono',monospace;font-size:.68rem;font-weight:700;color:var(--gd2);letter-spacing:1px;margin-bottom:6px}
+.tl-title{font-weight:700;font-size:.9rem;color:white;margin-bottom:6px}
+.tl-desc{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.65}
+
+/* Payment section */
+#payment{background:var(--off)}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.pay-methods{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.pay-item{display:flex;align-items:center;gap:16px;background:white;border:1px solid var(--bd);border-radius:14px;padding:18px 20px;transition:.25s}
+.pay-item:hover{transform:translateX(8px);border-color:var(--gb);box-shadow:var(--ssm)}
+.pay-ico{width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.pi-momo{background:rgba(255,193,7,.12);color:#FFC107}
+.pi-card{background:var(--el);color:var(--em)}
+.pi-bank{background:var(--gl);color:var(--gd)}
+.pi-voda{background:rgba(220,38,38,.1);color:#DC2626}
+.pay-ttl{font-weight:700;font-size:.9rem;color:var(--tx)}
+.pay-sub{font-size:.72rem;color:var(--mu);margin-top:2px;font-family:'DM Mono',monospace}
+.pay-img{border-radius:24px;overflow:hidden;height:420px;box-shadow:var(--slg)}
+.pay-img img{width:100%;height:100%;object-fit:cover}
+
+/* CTA */
+#cta{background:var(--off);padding:0}
+.cta-w{max-width:1200px;margin:0 auto;padding:90px 5%}
+.cta-in{background:linear-gradient(135deg,var(--ch) 0%,#16213e 100%);border-radius:28px;padding:72px 60px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-in::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,150,10,.08) 0%,transparent 70%);pointer-events:none}
+.cta-txt{position:relative;z-index:1;max-width:560px}
+.cta-ey{display:block;font-family:'DM Mono',monospace;font-size:.67rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gd2);font-weight:600;margin-bottom:14px}
+.cta-ttl{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:white;letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+.cta-ttl em{font-style:italic;color:var(--gd2)}
+.cta-sb{font-size:.93rem;color:rgba(255,255,255,.55);line-height:1.75}
+.cta-bts{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;flex-shrink:0}
+
+/* Footer (no community links) */
+footer{background:linear-gradient(135deg,var(--ch) 0%,#16213e 100%);color:white;padding:68px 5% 28px}
+.footer-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px}
+.footer-logo{font-family:'DM Sans',sans-serif;font-weight:900;font-size:1.35rem;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.footer-logo i{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gd),var(--gd2));display:flex;align-items:center;justify-content:center;color:var(--ch);font-size:.82rem}
+.footer-logo span{color:white}.footer-logo span span{color:var(--gd2)}
+.footer-description{font-size:.84rem;color:rgba(255,255,255,.48);line-height:1.75;margin-bottom:22px}
+.footer-contact{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.contact-item{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.66)}
+.contact-item i{color:var(--gd2);width:14px;flex-shrink:0}
+.contact-item a{color:rgba(255,255,255,.66);transition:.2s}
+.contact-item a:hover{color:var(--gd2)}
+.footer-social{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.social-link{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:.82rem;text-decoration:none;transition:all .2s}
+.social-link:hover{background:var(--gd);color:var(--ch);border-color:var(--gd);transform:translateY(-3px) rotate(5deg)}
+.footer-title{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:18px;font-family:'DM Mono',monospace}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:rgba(255,255,255,.55);font-size:.855rem;transition:all .2s;display:inline-block}
+.footer-links a:hover{color:var(--gd2);transform:translateX(5px)}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:.76rem;color:rgba(255,255,255,.28);font-family:'DM Mono',monospace}
+.footer-bottom span{color:var(--gd2)}
+.wa-float{position:fixed;bottom:26px;right:26px;width:52px;height:52px;border-radius:50%;background:#25D366;color:white;display:flex;align-items:center;justify-content:center;font-size:1.35rem;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all .2s;z-index:8000;animation:wap 2.5s ease infinite}
+.wa-float:hover{transform:scale(1.12)}
+@keyframes wap{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.45)}50%{box-shadow:0 6px 40px rgba(37,211,102,.7),0 0 0 8px rgba(37,211,102,.1)}}
+
+/* Responsive */
+@media(max-width:1024px){
+  .navbar{top:10px}
+  .nav-links,.btn-quote{display:none!important}
+  .mobile-toggle{display:flex!important}
+  .ov-grid{grid-template-columns:repeat(2,1fr)}
+  .step-grid,.step-grid.rev{grid-template-columns:1fr;direction:ltr;gap:40px}
+  .step-img{height:280px}
+  .pay-grid{grid-template-columns:1fr;gap:40px}
+  .pay-img{height:280px}
+  .footer-container{grid-template-columns:1fr 1fr;gap:32px}
+  .cta-in{flex-direction:column;padding:48px 36px;text-align:center}
+  .cta-bts{justify-content:center}
+}
+@media(max-width:767px){
+  .ov-grid{grid-template-columns:1fr 1fr}
+  .footer-container{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .navbar{top:8px;width:96%}
+  .mx{padding:70px 5%}
+  .ov-grid{grid-template-columns:1fr}
+  .footer-container{grid-template-columns:1fr}
+  .cta-bts{flex-direction:column;align-items:center;width:100%}
+  .cta-bts .btn-wh,.cta-bts .btn-gh{justify-content:center;width:100%}
+  .pg-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><div class="logo-ic"><i class="fas fa-code"></i></div>SAMZY<span>DIGITAL</span></a>
+    <button type="button" class="mobile-toggle" id="mobToggle" onclick="toggleNav()"><i class="fas fa-bars" id="mobIco"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About <i class="fas fa-chevron-down drop-arrow"></i></a><div class="dropdown"><a href="about.html#our-story"><i class="fas fa-book-open"></i> Our Story</a><a href="samuel-ahiaba.html"><i class="fas fa-user"></i> Samuel AHIABA</a><a href="our-values.html"><i class="fas fa-heart"></i> Our Values</a><a href="process.html"><i class="fas fa-cogs"></i> Our Process</a><a href="testimonials.html"><i class="fas fa-star"></i> Testimonials</a><a href="faqs.html"><i class="fas fa-question-circle"></i> FAQs</a></div></li>
+      <li><a href="business.html">Services <i class="fas fa-chevron-down drop-arrow"></i></a><div class="dropdown"><a href="business.html#web"><i class="fas fa-globe"></i> Web Design & Dev</a><a href="business.html#ecommerce"><i class="fas fa-shopping-cart"></i> E-Commerce</a><a href="business.html#automation"><i class="fas fa-robot"></i> Automation</a><a href="business.html#seo"><i class="fas fa-search"></i> SEO & Marketing</a><a href="business.html#branding"><i class="fas fa-paint-brush"></i> Branding</a></div></li>
+      <li><a href="industries.html">Industries <i class="fas fa-chevron-down drop-arrow"></i></a><div class="dropdown"><a href="industries.html#beauty"><i class="fas fa-spa"></i> Beauty & Wellness</a><a href="industries.html#restaurant"><i class="fas fa-utensils"></i> Food & Restaurant</a><a href="industries.html#school"><i class="fas fa-graduation-cap"></i> Schools</a><a href="industries.html#church"><i class="fas fa-church"></i> Churches & NGOs</a><a href="industries.html#realestate"><i class="fas fa-home"></i> Real Estate</a><a href="industries.html#sme"><i class="fas fa-store"></i> SMEs & Retail</a></div></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn-quote"><i class="fas fa-paper-plane"></i> Get Quote</a>
+  </div>
+</nav>
+<div class="mob-overlay" id="mobOverlay" onclick="toggleNav()"></div>
+<div class="mobile-menu" id="mobMenu" role="dialog" aria-label="Navigation menu">
+  <button type="button" class="mobile-close" onclick="toggleNav()"><i class="fas fa-times"></i></button>
+  <div class="mob-logo"><div class="logo-ic"><i class="fas fa-code"></i></div><div style="font-weight:900;font-size:1rem;color:var(--tx)">SAMZY<span style="color:var(--gd)">DIGITAL</span></div></div>
+  <div class="mob-section"><div class="mob-section-title">About</div><ul class="mob-links"><li><a href="about.html#our-story"><i class="fas fa-book-open"></i> Our Story</a></li><li><a href="samuel-ahiaba.html"><i class="fas fa-user"></i> Samuel AHIABA</a></li><li><a href="our-values.html"><i class="fas fa-heart"></i> Our Values</a></li><li><a href="process.html" class="active"><i class="fas fa-cogs"></i> Our Process</a></li><li><a href="testimonials.html"><i class="fas fa-star"></i> Testimonials</a></li><li><a href="faqs.html"><i class="fas fa-question-circle"></i> FAQs</a></li></ul></div>
+  <div class="mob-section" style="margin-top:12px"><div class="mob-section-title">Navigate</div><ul class="mob-links"><li><a href="index.html"><i class="fas fa-home"></i> Home</a></li><li><a href="business.html"><i class="fas fa-tools"></i> Services</a></li><li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li><li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li></ul></div>
+  <div class="mob-cta"><a href="contact.html"><i class="fas fa-paper-plane"></i> Get Free Quote</a></div>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section id="pg-hero">
+  <div class="pg-hero-inner">
+    <span class="eyebrow ey-gd" style="animation:fadeUp .5s ease both">How We Work</span>
+    <h1 class="pg-h1">Our <em>4‑Step</em> Process</h1>
+    <p class="pg-sub">From your first hello to your website going live — every step is clear, structured and designed to get you results fast.</p>
+    <div class="pg-btns">
+      <a href="contact.html" class="btn-p"><i class="fas fa-calendar-check"></i> Start Your Project</a>
+      <a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="btn-gh"><i class="fab fa-whatsapp"></i> Talk to Samuel</a>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW CARDS -->
+<section id="overview">
+  <div class="mx">
+    <div class="hd c">
+      <span class="eyebrow ey-gd fu">The Process</span>
+      <h2 class="h-ttl fu d1">Four Steps to Your <em>Dream Website</em></h2>
+      <p class="sub fu d2">Every SamzyDigital project follows the same proven process — so you always know what's happening and what comes next.</p>
+    </div>
+    <div class="ov-grid">
+      <div class="ov-card s1 fu"><div class="ov-num">01</div><span class="ov-ico"><i class="fas fa-comments" style="color:var(--gd)"></i></span><div class="ov-ttl">Listen & Discover</div><p class="ov-desc">We start by understanding your business, your audience, your goals and your budget — before writing a single line of code.</p></div>
+      <div class="ov-card s2 fu d1"><div class="ov-num">02</div><span class="ov-ico"><i class="fas fa-pencil-ruler" style="color:var(--em)"></i></span><div class="ov-ttl">Design & Plan</div><p class="ov-desc">A tailored strategy, wireframes and clear project roadmap. You know exactly what you're getting, when, and for how much.</p></div>
+      <div class="ov-card s3 fu d2"><div class="ov-num">03</div><span class="ov-ico"><i class="fas fa-code" style="color:var(--or)"></i></span><div class="ov-ttl">Build & Refine</div><p class="ov-desc">We develop, test and perfect every detail. Weekly updates keep you informed and your feedback shapes the final product.</p></div>
+      <div class="ov-card s4 fu d3"><div class="ov-num">04</div><span class="ov-ico"><i class="fas fa-rocket" style="color:#7C3AED"></i></span><div class="ov-ttl">Launch & Grow</div><p class="ov-desc">We deploy, train your team, and continue supporting with SEO, updates and optimisations long after your site goes live.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 1 DETAIL -->
+<section class="step-section" id="step1" style="background:var(--off)">
+  <div class="step-grid">
+    <div class="step-img sl-left"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80" alt="Discovery call SamzyDigital Ghana" loading="lazy"><div class="step-badge sb-gd">01</div></div>
+    <div class="sl-right"><span class="step-tag ey-gd">Step One</span><h2 class="h-ttl">Listen & <em>Discover</em></h2><p class="sub">Every great website starts with a great conversation. We take time to deeply understand your world before anything else.</p><ul class="step-checklist"><li class="step-check"><i class="fas fa-check-circle"></i><span>Free 30–60 minute discovery call — no commitment required</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>We study your industry, competitors and target customers in Ghana</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>We review your existing digital presence and identify gaps</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Budget discussion — we find a package that genuinely fits</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Clear expectations set from day one — no hidden extras</span></li></ul><a href="contact.html" class="btn-p"><i class="fas fa-calendar-check"></i> Book Discovery Call</a></div>
+  </div>
+</section>
+
+<!-- STEP 2 DETAIL -->
+<section class="step-section" id="step2" style="background:var(--wh)">
+  <div class="step-grid rev">
+    <div class="step-img sl-right"><img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80" alt="Website design planning Ghana" loading="lazy"><div class="step-badge sb-em">02</div></div>
+    <div class="sl-left"><span class="step-tag ey-em">Step Two</span><h2 class="h-ttl">Design & <em>Plan</em></h2><p class="sub">We turn your goals into a clear, structured plan — wireframes, content structure, tech stack and a timeline you can count on.</p><ul class="step-checklist"><li class="step-check"><i class="fas fa-check-circle"></i><span>Custom proposal delivered within 24 hours — full breakdown</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Wireframes and design mockups shared for your approval</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Content structure planned — copy, images and SEO strategy</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Tech stack confirmed — what tools will power your site</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>50% deposit to begin — balance only on completion</span></li></ul><a href="contact.html" class="btn-p"><i class="fas fa-arrow-right"></i> Get a Custom Proposal</a></div>
+  </div>
+</section>
+
+<!-- STEP 3 DETAIL -->
+<section class="step-section" id="step3" style="background:var(--off)">
+  <div class="step-grid">
+    <div class="step-img sl-left"><img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&q=80" alt="Web development coding Ghana" loading="lazy"><div class="step-badge sb-or">03</div></div>
+    <div class="sl-right"><span class="step-tag ey-or">Step Three</span><h2 class="h-ttl">Build & <em>Refine</em></h2><p class="sub">This is where the magic happens. We build fast, test thoroughly and involve you every step of the way.</p><ul class="step-checklist"><li class="step-check"><i class="fas fa-check-circle"></i><span>Custom coded — no generic WordPress templates used</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Weekly progress updates with live previews you can click through</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Two rounds of revisions included before launch</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Mobile-first design — perfect on every screen size</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Speed optimised — fast loading even on Ghana's mobile data</span></li></ul></div>
+  </div>
+</section>
+
+<!-- STEP 4 DETAIL -->
+<section class="step-section" id="step4" style="background:var(--wh)">
+  <div class="step-grid rev">
+    <div class="step-img sl-right"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80" alt="Website launch Ghana SamzyDigital" loading="lazy"><div class="step-badge sb-pu">04</div></div>
+    <div class="sl-left"><span class="step-tag" style="background:rgba(124,58,237,.1);color:#7C3AED;border:1px solid rgba(124,58,237,.2);display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--pill);font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px">Step Four</span><h2 class="h-ttl">Launch & <em>Grow</em></h2><p class="sub">Going live is just the beginning. We stay by your side with support, training and ongoing growth strategies.</p><ul class="step-checklist"><li class="step-check"><i class="fas fa-check-circle"></i><span>Full handover training — we teach you to manage your site</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>30-day post-launch support included in every package</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Google Search Console and Analytics setup and verification</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>SEO baseline — meta tags, schema markup and sitemap submitted</span></li><li class="step-check"><i class="fas fa-check-circle"></i><span>Optional maintenance retainer for ongoing updates and growth</span></li></ul><a href="contact.html" class="btn-p"><i class="fas fa-rocket"></i> Let's Launch Yours</a></div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="tl-inner">
+    <div class="hd c"><span class="eyebrow ey-wh fu">What to Expect</span><h2 class="h-ttl wh fu d1">Your Project <em>Timeline</em></h2><p class="sub fu d2" style="color:rgba(255,255,255,.55)">From first contact to live website — here's a typical week-by-week breakdown for a standard website project.</p></div>
+    <div class="tl-track"><div class="tl-item fu"><div class="tl-circle">D1</div><div class="tl-content"><div class="tl-day">DAY 1</div><div class="tl-title">Discovery Call</div><div class="tl-desc">30–60 minute call. We understand your goals, audience and budget. No commitment needed yet.</div></div></div><div class="tl-item fu d1"><div class="tl-circle">D2</div><div class="tl-content"><div class="tl-day">DAY 2</div><div class="tl-title">Proposal Delivered</div><div class="tl-desc">You receive a full written proposal — scope, timeline, pricing and payment terms. Everything clear.</div></div></div><div class="tl-item fu d2"><div class="tl-circle">D3</div><div class="tl-content"><div class="tl-day">DAY 3</div><div class="tl-title">Deposit & Kickoff</div><div class="tl-desc">50% deposit received. Project officially begins. Wireframes and content plan shared within 48 hours.</div></div></div><div class="tl-item fu d3"><div class="tl-circle">W2</div><div class="tl-content"><div class="tl-day">WEEK 2</div><div class="tl-title">Design Preview</div><div class="tl-desc">First visual preview of your website. You review, give feedback and approve the direction.</div></div></div><div class="tl-item fu d4"><div class="tl-circle">W2</div><div class="tl-content"><div class="tl-day">DAYS 10–14</div><div class="tl-title">Build Complete</div><div class="tl-desc">Full website built, tested on all devices and browsers. Final revisions applied based on your feedback.</div></div></div><div class="tl-item fu d5"><div class="tl-circle">🚀</div><div class="tl-content"><div class="tl-day">DAY 14</div><div class="tl-title">Launch Day!</div><div class="tl-desc">Your website goes live. Balance payment received. Training session held. Support period begins.</div></div></div></div>
+  </div>
+</section>
+
+<!-- PAYMENT OPTIONS -->
+<section id="payment">
+  <div class="mx">
+    <div class="pay-grid">
+      <div class="sl-left"><span class="eyebrow ey-gd">How to Pay</span><h2 class="h-ttl">Flexible <em>Payment</em> Options</h2><p class="sub">We accept all major payment methods used in Ghana — making it easy to start your project today.</p><div class="pay-methods"><div class="pay-item"><div class="pay-ico pi-momo"><i class="fas fa-mobile-alt"></i></div><div><div class="pay-ttl">MTN Mobile Money</div><div class="pay-sub">Instant MoMo transfers accepted</div></div></div><div class="pay-item"><div class="pay-ico pi-voda"><i class="fas fa-sim-card"></i></div><div><div class="pay-ttl">Vodafone Cash</div><div class="pay-sub">Vodafone Cash transfers accepted</div></div></div><div class="pay-item"><div class="pay-ico pi-card"><i class="fas fa-credit-card"></i></div><div><div class="pay-ttl">Visa / Mastercard</div><div class="pay-sub">Secure card payments accepted</div></div></div><div class="pay-item"><div class="pay-ico pi-bank"><i class="fas fa-university"></i></div><div><div class="pay-ttl">Bank Transfer</div><div class="pay-sub">GHS and USD bank transfers</div></div></div></div></div>
+      <div class="pay-img sl-right"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Mobile payment Ghana MTN MoMo" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-w">
+    <div class="cta-in fu">
+      <div class="cta-txt"><span class="cta-ey">Ready to Begin?</span><h2 class="cta-ttl">Step 1 Starts with a <em>Free Call</em></h2><p class="cta-sb">Book your free discovery call today. 30 minutes — no obligation, no pressure. Just a helpful conversation about your business.</p></div>
+      <div class="cta-bts"><a href="contact.html" class="btn-wh"><i class="fas fa-calendar-check"></i> Book Free Call</a><a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="btn-gh"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div><div class="footer-logo"><i class="fas fa-code"></i><span>SAMZY<span>DIGITAL</span></span></div><p class="footer-description">Professional digital solutions for Ghanaian businesses. Founded by Samuel AHIABA. Based in Accra.</p><div class="footer-contact"><div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+233539929190">0539929190</a></div><div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:samuelahiaba3@gmail.com">samuelahiaba3@gmail.com</a></div><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Accra, Ghana 🇬🇭</span></div></div><div class="footer-social"><a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="social-link"><i class="fab fa-whatsapp"></i></a><a href="#" class="social-link"><i class="fab fa-facebook"></i></a><a href="#" class="social-link"><i class="fab fa-instagram"></i></a><a href="#" class="social-link"><i class="fab fa-linkedin"></i></a></div></div>
+    <div><h3 class="footer-title">About</h3><ul class="footer-links"><li><a href="about.html#our-story">Our Story</a></li><li><a href="samuel-ahiaba.html">Samuel AHIABA</a></li><li><a href="process.html">Our Process</a></li><li><a href="testimonials.html">Testimonials</a></li><li><a href="faqs.html">FAQs</a></li></ul></div>
+    <div><h3 class="footer-title">Services</h3><ul class="footer-links"><li><a href="business.html#web">Web Design</a></li><li><a href="business.html#ecommerce">E-Commerce</a></li><li><a href="business.html#automation">Automation</a></li><li><a href="business.html#seo">SEO & Marketing</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+    <div><h3 class="footer-title">Quick Links</h3><ul class="footer-links"><li><a href="portfolio.html">Portfolio</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 <span>SamzyDigital</span>. All rights reserved. Built by Samuel AHIABA 🇬🇭</p><p style="color:rgba(255,255,255,.22)">Made in Accra · Available Worldwide</p></div>
+</footer>
+<a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+const mobMenu = document.getElementById('mobMenu');
+const mobOverlay = document.getElementById('mobOverlay');
+const mobToggle = document.getElementById('mobToggle');
+const mobIco = document.getElementById('mobIco');
+function toggleNav() {
+  const isOpen = mobMenu.classList.toggle('open');
+  mobOverlay.classList.toggle('on', isOpen);
+  mobIco.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+  mobToggle.setAttribute('aria-expanded', String(isOpen));
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobMenu.classList.contains('open')) toggleNav(); });
+mobMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { if (mobMenu.classList.contains('open')) toggleNav(); }); });
+const ao = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ao.unobserve(e.target); } }); }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.sl-left,.sl-right,.fu,.si').forEach(el => ao.observe(el));
+</script>
+</body>
+</html>

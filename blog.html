@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>Samzy Community – Ghana's Developer Hub | SamzyDigital</title>
+<meta name="description" content="Join Ghana's fastest-growing developer community. Free resources, mentorship, coding games, and a network of 17+ tech professionals. Start growing today.">
+<meta name="author" content="Samuel AHIABA – SamzyDigital">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://samzy-digital-gh.github.io/agency-site/blog.html">
+<meta property="og:title" content="Samzy Community – Ghana's Developer Hub">
+<meta property="og:description" content="Join Ghana's developer community. Free resources, mentorship, games, and a network of tech professionals.">
+<meta property="og:image" content="https://samzy-digital-gh.github.io/agency-site/samzy.jpg">
+<meta name="google-site-verification" content="OtItKdjksBvZmtclLf-EJFSeS1O406RxOavsIQ35Qxk">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ========== DESIGN SYSTEM (enhanced) ========== */
+:root{
+  --gd:#C9960A;  --gd2:#F0B429;
+  --gl:rgba(201,150,10,.12);  --gb:rgba(201,150,10,.25);
+  --em:#10B981;  --el:rgba(16,185,129,.12);
+  --or:#FF6B35;  --ol:rgba(255,107,53,.12);
+  --wh:#FFFFFF;  --off:#F9F7F2;  --warm:#F5F0E8;
+  --ch:#0F1117;  --nv:#1a1a2e;
+  --tx:#0A0A0A;  --mu:#5C6B7A;  --li:#94A3B8;
+  --bd:#E8E2D9;  --bd2:#D4CEC4;
+  --ssm:0 2px 12px rgba(0,0,0,.06);
+  --smd:0 12px 32px rgba(0,0,0,.12);
+  --slg:0 30px 60px rgba(0,0,0,.15);
+  --sgd:0 10px 30px rgba(201,150,10,.3);
+  --pill:999px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--wh);color:var(--tx);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--off)}
+::-webkit-scrollbar-thumb{background:var(--gd);border-radius:3px}
+
+/* Navbar */
+.navbar{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:92%;max-width:1240px;z-index:9999;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.navbar.scrolled{top:8px;width:97%}
+.nav-container{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 10px 20px;background:rgba(255,255,255,.65);backdrop-filter:blur(30px) saturate(200%) brightness(106%);border:1px solid rgba(255,255,255,.85);border-radius:var(--pill);box-shadow:0 8px 32px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.95);transition:all .4s;gap:8px}
+.navbar.scrolled .nav-container{background:rgba(255,255,255,.92);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.05rem;color:var(--tx);flex-shrink:0;transition:.2s}.logo:hover{transform:scale(1.04)}
+.logo-ic{width:36px;height:36px;border-radius:9px;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--gd);font-size:1.3rem;flex-shrink:0}.logo span{color:var(--gd)}
+.nav-links{display:flex;list-style:none;gap:1px;align-items:center}
+.nav-links>li{position:relative}
+.nav-links>li>a{color:var(--mu);font-weight:600;font-size:.83rem;padding:8px 12px;border-radius:var(--pill);transition:all .25s;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.nav-links>li>a:hover{color:var(--tx);background:rgba(0,0,0,.05)}
+.nav-links>li>a.active{background:linear-gradient(135deg,var(--gd),var(--gd2));color:white;box-shadow:0 3px 12px rgba(201,150,10,.3)}
+.nav-links>li>a i.drop-arrow{font-size:.6rem;transition:transform .25s}
+.nav-links>li:hover>a i.drop-arrow{transform:rotate(180deg)}
+.dropdown{
+  position:absolute;top:calc(100% + 10px);left:0;
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--bd);border-radius:14px;
+  box-shadow:var(--slg);min-width:200px;
+  opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity .25s cubic-bezier(.4,0,.2,1), visibility .25s, transform .25s;
+  transition-delay:0s, 0.3s, 0s;
+  z-index:100;
+  padding:8px;
+}
+.nav-links>li:hover .dropdown{
+  opacity:1;visibility:visible;transform:translateY(0);
+  transition-delay:0s, 0s, 0s;
+}
+.dropdown a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;border-radius:10px;
+  font-size:.83rem;font-weight:600;color:var(--mu);
+  transition:.2s;white-space:nowrap;
+}
+.dropdown a i{width:16px;text-align:center;color:var(--gd);font-size:.78rem}
+.dropdown a:hover{background:var(--gl);color:var(--gd)}
+.btn-quote{display:flex;align-items:center;gap:7px;padding:9px 20px;background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);border:none;border-radius:var(--pill);font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;transition:all .25s;box-shadow:var(--sgd);flex-shrink:0;white-space:nowrap}
+.btn-quote:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(201,150,10,.35)}
+.mobile-toggle{display:none;width:42px;height:42px;background:rgba(255,255,255,.7);border:1.5px solid var(--bd);border-radius:10px;cursor:pointer;color:var(--tx);font-size:1.1rem;align-items:center;justify-content:center;transition:.2s;backdrop-filter:blur(10px);flex-shrink:0;padding:0;outline:none}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9997;backdrop-filter:blur(2px)}
+.mob-overlay.on{display:block}
+.mobile-menu{position:fixed;top:0;right:-105%;width:100%;max-width:320px;height:100%;padding:72px 20px 32px;background:rgba(255,255,255,.98);backdrop-filter:blur(32px) saturate(200%);border-left:1px solid rgba(255,255,255,.7);box-shadow:-20px 0 60px rgba(0,0,0,.15);z-index:9998;transition:right .4s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+.mobile-menu.open{right:0}
+.mobile-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--bd);background:rgba(255,255,255,.8);cursor:pointer;color:var(--tx);font-size:1rem;display:flex;align-items:center;justify-content:center;transition:.2s}
+.mobile-close:hover{background:var(--gd);color:white;border-color:var(--gd)}
+.mob-logo{display:flex;align-items:center;gap:10px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--bd)}
+.mob-section{margin-bottom:8px}
+.mob-section-title{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--li);margin-bottom:6px;padding:0 4px;font-family:'DM Mono',monospace}
+.mob-links{list-style:none;display:flex;flex-direction:column;gap:2px}
+.mob-links a{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:11px;color:var(--tx);font-weight:600;font-size:.88rem;transition:.2s}
+.mob-links a:hover{background:var(--gl);color:var(--gd);transform:translateX(4px)}
+.mob-links a.active{background:linear-gradient(135deg,var(--gd),var(--gd2));color:white}
+.mob-links a i{width:16px;text-align:center;font-size:.8rem;color:var(--gd)}
+.mob-links a.active i{color:white}
+.mob-cta{margin-top:20px}
+.mob-cta a{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px;border-radius:13px;background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);font-weight:700;font-size:.9rem;width:100%;box-shadow:var(--sgd);transition:all .25s}
+.mob-cta a:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,150,10,.35)}
+
+/* ========== ANIMATIONS ========== */
+.sl-left{opacity:0;transform:translateX(-60px);transition:opacity .8s cubic-bezier(.2,.9,.4,1),transform .8s cubic-bezier(.2,.9,.4,1)}
+.sl-left.on{opacity:1;transform:translateX(0)}
+.sl-right{opacity:0;transform:translateX(60px);transition:opacity .8s cubic-bezier(.2,.9,.4,1),transform .8s cubic-bezier(.2,.9,.4,1)}
+.sl-right.on{opacity:1;transform:translateX(0)}
+.fu{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+.si{opacity:0;transform:scale(.92);transition:opacity .7s cubic-bezier(.2,.9,.4,1),transform .7s cubic-bezier(.2,.9,.4,1)}
+.si.on{opacity:1;transform:scale(1)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+.floating{animation:float 5s ease-in-out infinite}
+
+/* Shared */
+.mx{max-width:1200px;margin:0 auto;padding:90px 5%}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--pill);font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px}
+.ey-gd{background:var(--gl);color:var(--gd);border:1px solid var(--gb)}
+.ey-em{background:var(--el);color:var(--em);border:1px solid rgba(16,185,129,.2)}
+.ey-or{background:var(--ol);color:var(--or);border:1px solid rgba(255,107,53,.2)}
+.h-ttl{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-1px;line-height:1.2;color:var(--tx);margin-bottom:14px}
+.h-ttl em{font-style:italic;color:var(--gd)}
+.sub{font-size:.95rem;line-height:1.8;color:var(--mu)}
+.hd{margin-bottom:52px}.hd.c{text-align:center}.hd.c .sub{max-width:560px;margin:0 auto}
+.btn-p{display:inline-flex;align-items:center;gap:9px;padding:14px 32px;border-radius:var(--pill);background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);border:none;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .3s;box-shadow:var(--sgd)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(201,150,10,.35)}
+.btn-wh{display:inline-flex;align-items:center;gap:9px;padding:14px 32px;border-radius:var(--pill);background:white;color:var(--ch);border:none;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .3s;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.btn-wh:hover{background:var(--gd);color:var(--ch);transform:translateY(-2px);box-shadow:var(--sgd)}
+.btn-gh{display:inline-flex;align-items:center;gap:9px;padding:13px 28px;border-radius:var(--pill);background:transparent;color:white;border:1.5px solid rgba(255,255,255,.4);font-weight:600;font-size:.88rem;cursor:pointer;transition:all .3s}
+.btn-gh:hover{background:rgba(255,255,255,.15);border-color:white;transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:9px;padding:14px 32px;border-radius:var(--pill);background:white;color:var(--tx);border:1px solid var(--bd);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .3s}
+.btn-o:hover{background:var(--gd);color:var(--ch);border-color:var(--gd);transform:translateY(-2px);box-shadow:var(--sgd)}
+
+/* Hero */
+.hero {
+  min-height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(115deg, rgba(10, 12, 18, .45), rgba(22, 30, 46, .4)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=85&auto=format') center/cover no-repeat;
+  background-attachment: fixed;
+}
+.hero-inner{max-width:1200px;margin:0 auto;padding:160px 5% 100px;text-align:center;color:white}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,4.8rem);font-weight:900;letter-spacing:-2px;margin-bottom:20px}
+.hero h1 em{color:var(--gd2);font-style:italic}
+.hero p{font-size:1.1rem;max-width:600px;margin:0 auto 32px;color:rgba(255,255,255,.8)}
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* Stats */
+.stats-banner{background:linear-gradient(135deg,var(--ch),var(--nv));padding:60px 5%}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1200px;margin:0 auto}
+.stat-card{text-align:center}
+.stat-number{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--gd2);line-height:1;margin-bottom:8px}
+.stat-label{font-size:.8rem;color:rgba(255,255,255,.7);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:1px}
+
+/* Features */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.feature-card{
+  background:white;
+  border-radius:28px;
+  padding:36px 28px;
+  text-align:center;
+  transition:all .4s;
+  box-shadow:var(--ssm);
+  border:1px solid var(--bd);
+}
+.feature-card:hover{
+  transform:translateY(-12px);
+  box-shadow:var(--smd);
+  border-color:var(--gb);
+}
+.feature-icon{
+  width:80px;
+  height:80px;
+  border-radius:24px;
+  background:var(--gl);
+  color:var(--gd);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  margin:0 auto 24px;
+  transition:.3s;
+}
+.feature-card:hover .feature-icon{transform:scale(1.1) rotate(-4deg);background:var(--gd);color:white}
+.feature-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:12px}
+.feature-card p{font-size:.88rem;color:var(--mu);line-height:1.65}
+
+/* Steps */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.step-card{
+  background:white;
+  border-radius:24px;
+  padding:32px 24px;
+  text-align:center;
+  border:1px solid var(--bd);
+  transition:.3s;
+}
+.step-card:hover{transform:translateY(-8px);box-shadow:var(--smd);border-color:var(--gb)}
+.step-number{
+  width:56px;
+  height:56px;
+  background:linear-gradient(135deg,var(--gd),var(--gd2));
+  color:var(--ch);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;
+  font-weight:900;
+  margin:0 auto 20px;
+}
+.step-card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:10px}
+.step-card p{font-size:.84rem;color:var(--mu);line-height:1.6}
+
+/* Testimonials */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{
+  background:white;
+  border-radius:24px;
+  padding:32px;
+  border:1px solid var(--bd);
+  transition:.3s;
+}
+.testimonial-card:hover{transform:translateY(-6px);box-shadow:var(--smd)}
+.testimonial-text{
+  font-size:.88rem;
+  line-height:1.7;
+  color:var(--mu);
+  font-style:italic;
+  margin-bottom:24px;
+  position:relative;
+}
+.testimonial-text::before{
+  content:'"';
+  font-size:3rem;
+  color:var(--gd);
+  opacity:.3;
+  position:absolute;
+  top:-10px;
+  left:-8px;
+}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-avatar{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--gd),var(--gd2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:700;
+  font-size:.9rem;
+}
+.author-name{font-weight:700;font-size:.9rem;color:var(--tx)}
+.author-role{font-size:.68rem;color:var(--mu);font-family:'DM Mono',monospace}
+
+/* Benefits */
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.benefit-card{
+  background:white;
+  border-radius:20px;
+  padding:24px;
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  border:1px solid var(--bd);
+  transition:.3s;
+}
+.benefit-card:hover{transform:translateX(8px);border-color:var(--gb);box-shadow:var(--ssm)}
+.benefit-icon{
+  width:54px;
+  height:54px;
+  border-radius:16px;
+  background:var(--gl);
+  color:var(--gd);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.3rem;
+  flex-shrink:0;
+}
+.benefit-text h4{font-weight:700;font-size:.95rem;margin-bottom:6px}
+.benefit-text p{font-size:.84rem;color:var(--mu);line-height:1.6}
+
+/* FAQ */
+.faq-inner{max-width:800px;margin:0 auto}
+.faq-item{
+  background:white;
+  border:1px solid var(--bd);
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:12px;
+}
+.faq-question{
+  width:100%;
+  padding:20px 24px;
+  background:none;
+  border:none;
+  text-align:left;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:700;
+  font-size:.95rem;
+  cursor:pointer;
+  transition:.2s;
+}
+.faq-question:hover{color:var(--gd)}
+.faq-question i{transition:transform .3s}
+.faq-item.open .faq-question i{transform:rotate(45deg)}
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s cubic-bezier(.2,.9,.4,1);
+  padding:0 24px;
+}
+.faq-item.open .faq-answer{padding:0 24px 20px;max-height:300px}
+.faq-answer p{color:var(--mu);font-size:.86rem;line-height:1.7}
+
+/* Community CTA */
+.community-banner{
+  background:linear-gradient(135deg,var(--ch),var(--nv));
+  border-radius:32px;
+  padding:64px 48px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.community-banner::before{
+  content:'';
+  position:absolute;
+  top:-50%;
+  left:-20%;
+  width:140%;
+  height:200%;
+  background:radial-gradient(circle,rgba(201,150,10,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.community-banner h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:white;margin-bottom:16px}
+.community-banner p{color:rgba(255,255,255,.7);margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto}
+.community-banner .btn-wh{background:white;color:var(--ch);box-shadow:0 4px 20px rgba(0,0,0,.15)}
+
+/* Blog Posts */
+.blog-section{background:var(--off);padding:80px 5%}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.blog-card{
+  background:white;
+  border-radius:24px;
+  overflow:hidden;
+  transition:.4s;
+  box-shadow:var(--ssm);
+}
+.blog-card:hover{transform:translateY(-10px);box-shadow:var(--smd)}
+.blog-img{height:200px;overflow:hidden}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.blog-card:hover .blog-img img{transform:scale(1.06)}
+.blog-content{padding:24px}
+.blog-cat{
+  display:inline-block;
+  font-size:.65rem;
+  font-weight:700;
+  padding:4px 12px;
+  border-radius:var(--pill);
+  background:var(--gl);
+  color:var(--gd);
+  margin-bottom:12px;
+}
+.blog-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:10px;line-height:1.4}
+.blog-title a{transition:.2s}
+.blog-title a:hover{color:var(--gd)}
+.blog-excerpt{font-size:.8rem;color:var(--mu);margin-bottom:12px;line-height:1.6}
+.blog-meta{font-size:.7rem;color:var(--li);display:flex;gap:12px}
+
+/* Final CTA */
+.final-cta{
+  background:white;
+  border-radius:32px;
+  padding:64px 48px;
+  text-align:center;
+  border:1px solid var(--bd);
+  box-shadow:var(--ssm);
+}
+.final-cta h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;margin-bottom:16px}
+.final-cta p{margin-bottom:28px}
+.final-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* Footer */
+footer{background:linear-gradient(135deg,var(--ch) 0%,#16213e 100%);color:white;padding:68px 5% 28px}
+.footer-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px}
+.footer-logo{font-family:'DM Sans',sans-serif;font-weight:900;font-size:1.35rem;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.footer-logo i{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gd),var(--gd2));display:flex;align-items:center;justify-content:center;color:var(--ch);font-size:.82rem}
+.footer-logo span{color:white}.footer-logo span span{color:var(--gd2)}
+.footer-description{font-size:.84rem;color:rgba(255,255,255,.48);line-height:1.75;margin-bottom:22px}
+.footer-contact{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.contact-item{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.66)}
+.contact-item i{color:var(--gd2);width:14px;flex-shrink:0}
+.contact-item a{color:rgba(255,255,255,.66);transition:.2s}
+.contact-item a:hover{color:var(--gd2)}
+.footer-social{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.social-link{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:.82rem;text-decoration:none;transition:all .2s}
+.social-link:hover{background:var(--gd);color:var(--ch);border-color:var(--gd);transform:translateY(-3px) rotate(5deg)}
+.footer-title{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:18px;font-family:'DM Mono',monospace}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:rgba(255,255,255,.55);font-size:.855rem;transition:all .2s;display:inline-block}
+.footer-links a:hover{color:var(--gd2);transform:translateX(5px)}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:.76rem;color:rgba(255,255,255,.28);font-family:'DM Mono',monospace}
+.footer-bottom span{color:var(--gd2)}
+.wa-float{position:fixed;bottom:26px;right:26px;width:52px;height:52px;border-radius:50%;background:#25D366;color:white;display:flex;align-items:center;justify-content:center;font-size:1.35rem;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all .2s;z-index:8000;animation:wap 2.5s ease infinite}
+.wa-float:hover{transform:scale(1.12)}
+@keyframes wap{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.45)}50%{box-shadow:0 6px 40px rgba(37,211,102,.7),0 0 0 8px rgba(37,211,102,.1)}}
+
+/* Responsive */
+@media(max-width:1024px){
+  .navbar{top:10px}
+  .nav-links,.btn-quote{display:none!important}
+  .mobile-toggle{display:flex!important}
+}
+@media(max-width:1023px){
+  .features-grid,.steps-grid,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .benefits-grid{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+  .footer-container{grid-template-columns:1fr 1fr}
+}
+@media(max-width:767px){
+  .navbar{top:10px}
+  .nav-links,.btn-quote{display:none!important}
+  .mobile-toggle{display:flex!important}
+  .features-grid,.steps-grid,.testimonials-grid,.blog-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr}
+  .footer-container{grid-template-columns:1fr}
+  .hero h1{font-size:clamp(2rem,10vw,3rem)}
+}
+@media(max-width:480px){
+  .navbar{top:8px;width:96%}
+  .hero-buttons{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><div class="logo-ic"><i class="fas fa-code"></i></div>SAMZY<span>DIGITAL</span></a>
+    <button type="button" class="mobile-toggle" id="mobToggle" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
+      <i class="fas fa-bars" id="mobIco"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About <i class="fas fa-chevron-down drop-arrow"></i></a>
+        <div class="dropdown">
+          <a href="about.html#our-story"><i class="fas fa-book-open"></i> Our Story</a>
+          <a href="samuel-ahiaba.html"><i class="fas fa-user"></i> Samuel AHIABA</a>
+          <a href="our-values.html"><i class="fas fa-heart"></i> Our Values</a>
+          <a href="process.html"><i class="fas fa-cogs"></i> Our Process</a>
+          <a href="testimonials.html"><i class="fas fa-star"></i> Testimonials</a>
+          <a href="faqs.html"><i class="fas fa-question-circle"></i> FAQs</a>
+        </div>
+      </li>
+      <li><a href="business.html">Services <i class="fas fa-chevron-down drop-arrow"></i></a>
+        <div class="dropdown">
+          <a href="business.html#web"><i class="fas fa-globe"></i> Web Design & Dev</a>
+          <a href="business.html#ecommerce"><i class="fas fa-shopping-cart"></i> E-Commerce</a>
+          <a href="business.html#automation"><i class="fas fa-robot"></i> Automation</a>
+          <a href="business.html#seo"><i class="fas fa-search"></i> SEO & Marketing</a>
+          <a href="business.html#branding"><i class="fas fa-paint-brush"></i> Branding & Design</a>
+        </div>
+      </li>
+      <li><a href="industries.html">Industries <i class="fas fa-chevron-down drop-arrow"></i></a>
+        <div class="dropdown">
+          <a href="industries.html#beauty"><i class="fas fa-spa"></i> Beauty & Wellness</a>
+          <a href="industries.html#restaurant"><i class="fas fa-utensils"></i> Food & Restaurant</a>
+          <a href="industries.html#school"><i class="fas fa-graduation-cap"></i> Schools & Education</a>
+          <a href="industries.html#church"><i class="fas fa-church"></i> Churches & NGOs</a>
+          <a href="industries.html#realestate"><i class="fas fa-home"></i> Real Estate</a>
+          <a href="industries.html#sme"><i class="fas fa-store"></i> SMEs & Retail</a>
+        </div>
+      </li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn-quote"><i class="fas fa-paper-plane"></i> Get Quote</a>
+  </div>
+</nav>
+<div class="mob-overlay" id="mobOverlay" onclick="toggleNav()"></div>
+<div class="mobile-menu" id="mobMenu" role="dialog" aria-label="Navigation menu">
+  <button type="button" class="mobile-close" onclick="toggleNav()" aria-label="Close menu"><i class="fas fa-times"></i></button>
+  <div class="mob-logo"><div class="logo-ic" style="color:var(--gd);font-size:1.3rem"><i class="fas fa-code"></i></div><div style="font-weight:900;font-size:1rem;color:var(--tx)">SAMZY<span style="color:var(--gd)">DIGITAL</span></div></div>
+  <div class="mob-section"><div class="mob-section-title">Main</div><ul class="mob-links"><li><a href="index.html"><i class="fas fa-home"></i> Home</a></li><li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li><li><a href="pricing.html"><i class="fas fa-tag"></i> Pricing</a></li><li><a href="blog.html" class="active"><i class="fas fa-pen-nib"></i> Blog</a></li><li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li></ul></div>
+  <div class="mob-section" style="margin-top:12px"><div class="mob-section-title">About</div><ul class="mob-links"><li><a href="about.html"><i class="fas fa-building"></i> Our Story</a></li><li><a href="samuel-ahiaba.html"><i class="fas fa-user"></i> Samuel AHIABA</a></li><li><a href="our-values.html"><i class="fas fa-heart"></i> Our Values</a></li><li><a href="process.html"><i class="fas fa-cogs"></i> Our Process</a></li></ul></div>
+  <div class="mob-section" style="margin-top:12px"><div class="mob-section-title">Services</div><ul class="mob-links"><li><a href="business.html#web"><i class="fas fa-globe"></i> Web Design</a></li><li><a href="business.html#ecommerce"><i class="fas fa-shopping-cart"></i> E-Commerce</a></li><li><a href="business.html#automation"><i class="fas fa-robot"></i> Automation</a></li><li><a href="business.html#seo"><i class="fas fa-search"></i> SEO & Marketing</a></li></ul></div>
+  <div class="mob-section" style="margin-top:12px"><div class="mob-section-title">Community</div><ul class="mob-links"><li><a href="https://samzy-digital-gh.github.io/Community-/"><i class="fas fa-users"></i> Join Community</a></li></ul></div>
+  <div class="mob-cta"><a href="https://samzy-digital-gh.github.io/Community-/"><i class="fas fa-paper-plane"></i> Join the Community</a></div>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Join Ghana's <em>Developer Community</em></h1>
+    <p>Connect with 17+ developers, access free resources, mentorship, and exclusive coding games. It's where Ghana's tech talent grows together.</p>
+    <div class="hero-buttons">
+      <a href="https://samzy-digital-gh.github.io/Community-/" target="_blank" class="btn-p"><i class="fas fa-users"></i> Join the Community →</a>
+      <a href="https://wa.me/233539929190" target="_blank" class="btn-gh"><i class="fab fa-whatsapp"></i> Ask Samuel</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BANNER -->
+<div class="stats-banner">
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-number">17+</div><div class="stat-label">Active Members</div></div>
+    <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label">Workshops Held</div></div>
+    <div class="stat-card"><div class="stat-number">200+</div><div class="stat-label">Resources Shared</div></div>
+    <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">Coding Games</div></div>
+  </div>
+</div>
+
+<!-- FEATURE CARDS -->
+<div class="mx">
+  <div class="hd c">
+    <span class="eyebrow ey-gd">Why Join?</span>
+    <h2 class="h-ttl">Everything You Need to <em>Succeed</em></h2>
+    <p class="sub">A community built for Ghanaian developers, by Ghanaian developers.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon"><i class="fas fa-fire"></i></div><h3>Dev Feed</h3><p>Share projects, ask questions, get real feedback from fellow developers.</p></div>
+    <div class="feature-card"><div class="feature-icon"><i class="fas fa-book-open"></i></div><h3>Learning Resources</h3><p>Curated tutorials, guides, and workshops on React, Python, Supabase, and more.</p></div>
+    <div class="feature-card"><div class="feature-icon"><i class="fas fa-comment-dots"></i></div><h3>Direct Messaging</h3><p>Chat one‑on‑one and build collaborations that lead to opportunities.</p></div>
+    <div class="feature-card"><div class="feature-icon"><i class="fas fa-trophy"></i></div><h3>Gamified Learning</h3><p>Earn XP, climb the leaderboard, and compete in coding challenges.</p></div>
+    <div class="feature-card"><div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div><h3>Mentorship</h3><p>Get 1:1 guidance from experienced developers who've built careers in Ghana.</p></div>
+    <div class="feature-card"><div class="feature-icon"><i class="fas fa-briefcase"></i></div><h3>Job Board</h3><p>Access exclusive freelance gigs, internships, and full‑time roles.</p></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="mx" style="padding-top:0">
+  <div class="hd c">
+    <span class="eyebrow ey-em">Simple Steps</span>
+    <h2 class="h-ttl">Get Started in <em>Minutes</em></h2>
+    <p class="sub">No complex setup. Just sign up and start connecting.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-number">1</div><h3>Create Account</h3><p>Sign up with email or Google – takes less than 60 seconds.</p></div>
+    <div class="step-card"><div class="step-number">2</div><h3>Complete Profile</h3><p>Tell us your skills, role, and what you're looking to achieve.</p></div>
+    <div class="step-card"><div class="step-number">3</div><h3>Join the Feed</h3><p>Introduce yourself, share a project, or ask a question.</p></div>
+    <div class="step-card"><div class="step-number">4</div><h3>Grow & Connect</h3><p>Attend workshops, earn XP, and land opportunities.</p></div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="mx" style="padding-top:0">
+  <div class="hd c">
+    <span class="eyebrow ey-or">Member Stories</span>
+    <h2 class="h-ttl">What Members <em>Say</em></h2>
+    <p class="sub">Real voices from Ghana's growing developer community.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card"><div class="testimonial-text">"The Samzy Community helped me land my first freelance client. The feedback I got on my portfolio was game‑changing."</div><div class="testimonial-author"><div class="author-avatar">K</div><div><div class="author-name">Kwame Asante</div><div class="author-role">Frontend Dev</div></div></div></div>
+    <div class="testimonial-card"><div class="testimonial-text">"I've attended 3 workshops so far. The mentorship sessions alone are worth more than any paid course. Highly recommended!"</div><div class="testimonial-author"><div class="author-avatar">A</div><div><div class="author-name">Ama Boateng</div><div class="author-role">UI/UX Designer</div></div></div></div>
+    <div class="testimonial-card"><div class="testimonial-text">"Finally a community where Ghanaian developers actually help each other. I've connected with mentors who genuinely care."</div><div class="testimonial-author"><div class="author-avatar">F</div><div><div class="author-name">Fiifi Darko</div><div class="author-role">Backend Dev</div></div></div></div>
+  </div>
+</div>
+
+<!-- BENEFITS (2-COLUMN) -->
+<div class="mx" style="padding-top:0">
+  <div class="hd c">
+    <span class="eyebrow ey-gd">What's Inside</span>
+    <h2 class="h-ttl">Built for <em>Ghanaian Developers</em></h2>
+    <p class="sub">Everything is designed with local context – MoMo, local SEO, and the Ghanaian tech ecosystem.</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card"><div class="benefit-icon"><i class="fas fa-gamepad"></i></div><div class="benefit-text"><h4>Samzy Games 🎮</h4><p>5 exclusive coding games: Coding Quiz, Debug Hunt, Type Speed, Ghana Tech Trivia, and CSS Art. Earn points and climb the leaderboard.</p></div></div>
+    <div class="benefit-card"><div class="benefit-icon"><i class="fas fa-calendar-alt"></i></div><div class="benefit-text"><h4>Live Workshops</h4><p>Monthly workshops on React, Node.js, freelancing, and digital marketing for Ghanaian freelancers.</p></div></div>
+    <div class="benefit-card"><div class="benefit-icon"><i class="fas fa-code-branch"></i></div><div class="benefit-text"><h4>Project Collaboration</h4><p>Find teammates for open‑source projects, hackathons, or client work. Build your portfolio together.</p></div></div>
+    <div class="benefit-card"><div class="benefit-icon"><i class="fas fa-chart-line"></i></div><div class="benefit-text"><h4>Career Accelerator</h4><p>Get access to job postings, resume reviews, and interview prep from Ghanaian tech recruiters.</p></div></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="mx" style="padding-top:0">
+  <div class="hd c">
+    <span class="eyebrow ey-em">Got Questions?</span>
+    <h2 class="h-ttl">Community <em>FAQs</em></h2>
+  </div>
+  <div class="faq-inner">
+    <div class="faq-item"><button class="faq-question">Is the Samzy Community really free? <i class="fas fa-plus"></i></button><div class="faq-answer"><p>Yes! The community is 100% free to join. No hidden fees, no subscriptions. We believe in making tech education and networking accessible to every Ghanaian developer.</p></div></div>
+    <div class="faq-item"><button class="faq-question">Who can join? <i class="fas fa-plus"></i></button><div class="faq-answer"><p>Anyone interested in tech – developers (all levels), designers, students, freelancers, and business founders. If you're passionate about technology and want to grow, you're welcome.</p></div></div>
+    <div class="faq-item"><button class="faq-question">What kind of events do you have? <i class="fas fa-plus"></i></button><div class="faq-answer"><p>We host monthly workshops, coding challenges, live Q&A sessions with industry experts, and occasional virtual meetups. Members can also suggest topics they'd like to learn.</p></div></div>
+    <div class="faq-item"><button class="faq-question">How do I get mentorship? <i class="fas fa-plus"></i></button><div class="faq-answer"><p>Once you join, you can request mentorship in the feed or through direct messages. We have experienced mentors in frontend, backend, UI/UX, and freelancing.</p></div></div>
+  </div>
+</div>
+
+<!-- COMMUNITY CTA BANNER -->
+<div class="mx" style="padding-top:0">
+  <div class="community-banner">
+    <h3>🚀 Ready to Level Up Your Career?</h3>
+    <p>Join hundreds of Ghanaian developers who are learning, building, and growing together – for free.</p>
+    <a href="https://samzy-digital-gh.github.io/Community-/" target="_blank" class="btn-wh"><i class="fas fa-users"></i> Join the Community →</a>
+  </div>
+</div>
+
+<!-- BLOG POSTS (original content) -->
+<div class="blog-section">
+  <div class="hd c">
+    <span class="eyebrow ey-or">From the Blog</span>
+    <h2 class="h-ttl">Latest <em>Insights</em></h2>
+    <p class="sub">Tips, tutorials, and case studies from Samuel and the community.</p>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" alt="Why businesses need websites"></div>
+      <div class="blog-content">
+        <span class="blog-cat">Web Design</span>
+        <h3 class="blog-title"><a href="why-ghana-business-needs-website.html">Why Every Ghana Business Needs a Website in 2026</a></h3>
+        <p class="blog-excerpt">Facebook can shut your page down tomorrow. Here's why your own website is the only permanent digital asset you own.</p>
+        <div class="blog-meta"><span>Samuel AHIABA</span><span>March 2026</span></div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&q=80" alt="MoMo payments"></div>
+      <div class="blog-content">
+        <span class="blog-cat">E-Commerce</span>
+        <h3 class="blog-title"><a href="momo-payments-website.html">How to Accept MoMo Payments on Your Website</a></h3>
+        <p class="blog-excerpt">A step-by-step guide to integrating Mobile Money so Ghanaian customers can pay instantly.</p>
+        <div class="blog-meta"><span>Samuel AHIABA</span><span>Feb 2026</span></div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80" alt="Samzy Community"></div>
+      <div class="blog-content">
+        <span class="blog-cat">Community</span>
+        <h3 class="blog-title"><a href="samzy-community-ghana-tech.htm">How the Samzy Community is Changing Ghana's Tech Landscape</a></h3>
+        <p class="blog-excerpt">17 developers learning, building, and collaborating together. Here's the story behind SamzyDigital's community.</p>
+        <div class="blog-meta"><span>Samuel AHIABA</span><span>Jan 2026</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:40px">
+    <a href="industries.html" class="btn-p"><i class="fas fa-arrow-right"></i> Read All Posts</a>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="mx" style="padding-top:0">
+  <div class="final-cta">
+    <h3>Still Have Questions?</h3>
+    <p>Samuel is always happy to chat. Pick your favourite way to connect.</p>
+    <div class="final-buttons">
+      <a href="https://samzy-digital-gh.github.io/Community-/" target="_blank" class="btn-p"><i class="fas fa-users"></i> Join the Community</a>
+      <a href="https://wa.me/233539929190" target="_blank" class="btn-p" style="background:#25D366"><i class="fab fa-whatsapp"></i> WhatsApp Samuel</a>
+      <a href="contact.html" class="btn-o"><i class="fas fa-envelope"></i> Contact Us</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div><div class="footer-logo"><i class="fas fa-code"></i><span>SAMZY<span>DIGITAL</span></span></div><p class="footer-description">Professional digital solutions for Ghanaian businesses. Founded by Samuel AHIABA. Based in Accra.</p><div class="footer-contact"><div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+233539929190">0539929190</a></div><div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:samuelahiaba3@gmail.com">samuelahiaba3@gmail.com</a></div><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Accra, Ghana 🇬🇭</span></div></div><div class="footer-social"><a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="social-link"><i class="fab fa-whatsapp"></i></a><a href="#" class="social-link"><i class="fab fa-facebook"></i></a><a href="#" class="social-link"><i class="fab fa-twitter"></i></a><a href="#" class="social-link"><i class="fab fa-instagram"></i></a><a href="#" class="social-link"><i class="fab fa-linkedin"></i></a></div></div>
+    <div><h3 class="footer-title">Quick Links</h3><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="business.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3 class="footer-title">Resources</h3><ul class="footer-links"><li><a href="blog.html">Blog</a></li><li><a href="testimonials.html">Reviews</a></li><li><a href="faqs.html">FAQs</a></li></ul></div>
+    <div><div style="margin-top:16px;background:rgba(201,150,10,.1);border:1px solid rgba(201,150,10,.2);border-radius:12px;padding:14px"><div style="font-size:.6rem;color:rgba(255,255,255,.3);font-family:'DM Mono',monospace;margin-bottom:4px">STARTING FROM</div><div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gd2)">GHS 1,500</div><div style="font-size:.72rem;color:rgba(255,255,255,.45)">for a full website</div></div></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 <span>SamzyDigital</span>. All rights reserved. Built by Samuel AHIABA 🇬🇭</p><p style="color:rgba(255,255,255,.22)">Made in Accra · Available Worldwide</p></div>
+</footer>
+<a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="wa-float" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+const mobMenu = document.getElementById('mobMenu');
+const mobOverlay = document.getElementById('mobOverlay');
+const mobToggle = document.getElementById('mobToggle');
+const mobIco = document.getElementById('mobIco');
+function toggleNav() {
+  const isOpen = mobMenu.classList.toggle('open');
+  mobOverlay.classList.toggle('on', isOpen);
+  mobIco.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+  mobToggle.setAttribute('aria-expanded', String(isOpen));
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobMenu.classList.contains('open')) toggleNav(); });
+mobMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { if (mobMenu.classList.contains('open')) toggleNav(); }); });
+
+// FAQ accordion with icon rotation
+document.querySelectorAll('.faq-item').forEach(item => {
+  const btn = item.querySelector('.faq-question');
+  btn.addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+});
+
+// Scroll animations
+const ao = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ao.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.sl-left,.sl-right,.fu,.si').forEach(el => ao.observe(el));
+</script>
+</body>
+</html>

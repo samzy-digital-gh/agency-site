@@ -120,754 +120,798 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="header-footer.css">
-<link rel="stylesheet" href="samzy-chatbot.css">
-
 <style>
-/* =====================================================
-HOME PAGE ONLY – does NOT override navbar/footer
-header-footer.css handles ALL nav + footer styling
-===================================================== */
-
-/* body already has padding-top:100px from header-footer.css */
-body { font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
-a { text-decoration: none; color: inherit; }
-img { max-width: 100%; display: block; }
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #f0f4f8; }
-::-webkit-scrollbar-thumb { background: #2872A1; border-radius: 3px; }
-
-:root {
---blue: #2872A1; --blue-l: #4d9fff; --blue-d: #1a5280;
---sky: #CBDDE9; --orange: #FD802E; --orange-d: #e06520;
---charcoal: #233D4C; --off: #f7fafc; --off2: #EEF5FA;
---muted: #5a7a8a; --border: #dbe8f0;
+/* ========== DESIGN SYSTEM ========== */
+:root{
+  --gd:#C9960A;  --gd2:#F0B429;
+  --gl:rgba(201,150,10,.10);  --gb:rgba(201,150,10,.22);
+  --em:#10B981;  --el:rgba(16,185,129,.10);
+  --or:#FF6B35;  --ol:rgba(255,107,53,.10);
+  --wh:#FFFFFF;  --off:#F9F7F2;  --warm:#F5F0E8;
+  --ch:#0F1117;  --nv:#1a1a2e;
+  --tx:#0A0A0A;  --mu:#5C6B7A;  --li:#94A3B8;
+  --bd:#E8E2D9;  --bd2:#D4CEC4;
+  --ssm:0 2px 12px rgba(0,0,0,.06);
+  --smd:0 8px 32px rgba(0,0,0,.10);
+  --slg:0 24px 64px rgba(0,0,0,.14);
+  --sgd:0 8px 32px rgba(201,150,10,.22);
+  --pill:999px;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--wh);color:var(--tx);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--off)}
+::-webkit-scrollbar-thumb{background:var(--gd);border-radius:3px}
 
-/* ---- UTILS ---- */
-.sw { max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; }
-.sw.tight { padding: 4rem 2rem; }
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 40px; font-size: .76rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.25rem; }
-.ey-b { background: rgba(40,114,161,.1); color: var(--blue); border: 1px solid rgba(40,114,161,.2); }
-.ey-o { background: rgba(253,128,46,.1); color: var(--orange); border: 1px solid rgba(253,128,46,.2); }
-.ey-w { background: rgba(255,255,255,.15); color: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.2); }
-.stitle { font-family: 'Syne', sans-serif; font-size: clamp(1.9rem,4.5vw,3rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: var(--charcoal); margin-bottom: 1rem; }
-.stitle .ab { color: var(--blue); }
-.stitle .ao { color: var(--orange); }
-.stitle.wh { color: #fff; }
-.ssub { font-size: .98rem; line-height: 1.8; color: var(--muted); max-width: 540px; }
-.sh { margin-bottom: 3.5rem; }
-.sh.c { text-align: center; }
-.sh.c .ssub { margin: 0 auto; }
-.btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 28px; border-radius: 50px; font-weight: 700; font-size: .9rem; transition: all .25s; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; }
-.bb { background: var(--blue); color: #fff; box-shadow: 0 8px 24px rgba(40,114,161,.28); }
-.bb:hover { background: var(--blue-d); transform: translateY(-2px); }
-.bo { background: var(--orange); color: #fff; box-shadow: 0 8px 24px rgba(253,128,46,.25); }
-.bo:hover { background: var(--orange-d); transform: translateY(-2px); }
-.bub { background: transparent; border: 2px solid var(--blue); color: var(--blue); }
-.bub:hover { background: var(--blue); color: #fff; }
-.buw { background: transparent; border: 2px solid rgba(255,255,255,.5); color: #fff; }
-.buw:hover { background: rgba(255,255,255,.12); border-color: #fff; }
-.bwh { background: #fff; color: var(--blue); font-weight: 700; }
-.bwh:hover { background: var(--off2); transform: translateY(-2px); }
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.on { opacity: 1; transform: translateY(0); }
+/* Navbar */
+.navbar{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:92%;max-width:1240px;z-index:9999;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.navbar.scrolled{top:8px;width:97%}
+.nav-container{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 10px 20px;background:rgba(255,255,255,.62);backdrop-filter:blur(30px) saturate(200%) brightness(106%);-webkit-backdrop-filter:blur(30px) saturate(200%) brightness(106%);border:1px solid rgba(255,255,255,.80);border-radius:var(--pill);box-shadow:0 8px 32px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.95);transition:all .4s;gap:8px}
+.navbar.scrolled .nav-container{background:rgba(255,255,255,.90)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.05rem;color:var(--tx);flex-shrink:0;transition:.2s}.logo:hover{transform:scale(1.04)}
+.logo-ic{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--gd);font-size:1.3rem;flex-shrink:0}.logo span{color:var(--gd)}
+.nav-links{display:flex;list-style:none;gap:1px;align-items:center}
+.nav-links>li{position:relative}
+.nav-links>li>a{color:var(--mu);font-weight:600;font-size:.83rem;padding:8px 12px;border-radius:var(--pill);transition:all .25s;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.nav-links>li>a:hover{color:var(--tx);background:rgba(0,0,0,.05)}
+.nav-links>li>a.active{background:linear-gradient(135deg,var(--gd),var(--gd2));color:white;box-shadow:0 3px 12px rgba(201,150,10,.3)}
+.nav-links>li>a i.drop-arrow{font-size:.6rem;transition:transform .25s}
+.nav-links>li:hover>a i.drop-arrow{transform:rotate(180deg)}
+.dropdown{position:absolute;top:calc(100% + 10px);left:0;background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border:1px solid var(--bd);border-radius:14px;box-shadow:var(--slg);min-width:200px;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s cubic-bezier(.4,0,.2,1), visibility .25s, transform .25s;transition-delay:0s, 0.3s, 0s;z-index:100;padding:8px}
+.nav-links>li:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0);transition-delay:0s, 0s, 0s}
+.dropdown a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-size:.83rem;font-weight:600;color:var(--mu);transition:.2s;white-space:nowrap}
+.dropdown a i{width:16px;text-align:center;color:var(--gd);font-size:.78rem}
+.dropdown a:hover{background:var(--gl);color:var(--gd)}
+.btn-quote{display:flex;align-items:center;gap:7px;padding:9px 20px;background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);border:none;border-radius:var(--pill);font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;transition:all .25s;box-shadow:var(--sgd);flex-shrink:0;white-space:nowrap}
+.btn-quote:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(201,150,10,.35)}
+.mobile-toggle{display:none;width:42px;height:42px;background:rgba(255,255,255,.7);border:1.5px solid var(--bd);border-radius:10px;cursor:pointer;color:var(--tx);font-size:1.1rem;align-items:center;justify-content:center;transition:.2s;backdrop-filter:blur(10px);flex-shrink:0;padding:0;outline:none}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9997;backdrop-filter:blur(2px)}
+.mob-overlay.on{display:block}
+.mobile-menu{position:fixed;top:0;right:-105%;width:100%;max-width:320px;height:100%;padding:72px 20px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(32px) saturate(200%);border-left:1px solid rgba(255,255,255,.7);box-shadow:-20px 0 60px rgba(0,0,0,.15);z-index:9998;transition:right .4s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+.mobile-menu.open{right:0}
+.mobile-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--bd);background:rgba(255,255,255,.8);cursor:pointer;color:var(--tx);font-size:1rem;display:flex;align-items:center;justify-content:center;transition:.2s}
+.mobile-close:hover{background:var(--gd);color:white;border-color:var(--gd)}
+.mob-logo{display:flex;align-items:center;gap:10px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--bd)}
+.mob-section{margin-bottom:8px}
+.mob-section-title{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--li);margin-bottom:6px;padding:0 4px;font-family:'DM Mono',monospace}
+.mob-links{list-style:none;display:flex;flex-direction:column;gap:2px}
+.mob-links a{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:11px;color:var(--tx);font-weight:600;font-size:.88rem;transition:.2s}
+.mob-links a:hover{background:var(--gl);color:var(--gd);transform:translateX(4px)}
+.mob-links a.active{background:linear-gradient(135deg,var(--gd),var(--gd2));color:white}
+.mob-links a i{width:16px;text-align:center;font-size:.8rem;color:var(--gd)}
+.mob-links a.active i{color:white}
+.mob-cta{margin-top:20px}
+.mob-cta a{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px;border-radius:13px;background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);font-weight:700;font-size:.9rem;width:100%;box-shadow:var(--sgd);transition:all .25s}
+.mob-cta a:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,150,10,.35)}
 
-/* ========== HERO ========== */
-#home {
-background: linear-gradient(135deg, var(--off) 0%, var(--sky) 100%);
-position: relative; overflow: hidden;
-/* NO extra padding-top – body already has 100px from header-footer.css */
+/* Animations */
+.sl-left{opacity:0;transform:translateX(-60px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+.sl-left.on{opacity:1;transform:translateX(0)}
+.sl-right{opacity:0;transform:translateX(60px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+.sl-right.on{opacity:1;transform:translateX(0)}
+.fu{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+.si{opacity:0;transform:scale(.88);transition:opacity .65s ease,transform .65s ease}
+.si.on{opacity:1;transform:scale(1)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d4{transition-delay:.32s}.d5{transition-delay:.40s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* Shared */
+.mx{max-width:1200px;margin:0 auto;padding:90px 5%}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--pill);font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.ey-gd{background:var(--gl);color:var(--gd);border:1px solid var(--gb)}
+.ey-em{background:var(--el);color:var(--em);border:1px solid rgba(16,185,129,.2)}
+.ey-or{background:var(--ol);color:var(--or);border:1px solid rgba(255,107,53,.2)}
+.ey-wh{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.2)}
+.h-ttl{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:900;letter-spacing:-1px;line-height:1.1;color:var(--tx);margin-bottom:14px}
+.h-ttl em{font-style:italic;color:var(--gd)}.h-ttl.wh{color:white}.h-ttl.wh em{color:var(--gd2)}
+.sub{font-size:.95rem;line-height:1.8;color:var(--mu)}
+.hd{margin-bottom:52px}.hd.c{text-align:center}.hd.c .sub{max-width:560px;margin:0 auto}
+.btn-p{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:var(--pill);background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);border:none;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .25s;box-shadow:var(--sgd)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(201,150,10,.32)}
+.btn-o{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:var(--pill);background:transparent;color:var(--tx);border:1.5px solid var(--bd2);font-family:'DM Sans',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .25s}
+.btn-o:hover{border-color:var(--em);color:var(--em);transform:translateY(-2px)}
+.btn-wh{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:var(--pill);background:white;color:var(--ch);border:none;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .25s}
+.btn-wh:hover{background:var(--gd);color:var(--ch);transform:translateY(-2px);box-shadow:var(--sgd)}
+.btn-gh{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:var(--pill);background:transparent;color:white;border:1.5px solid rgba(255,255,255,.35);font-family:'DM Sans',sans-serif;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .25s}
+.btn-gh:hover{background:rgba(255,255,255,.1);border-color:white;transform:translateY(-2px)}
+
+/* Hero */
+#home{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1400&q=85&auto=format&fit=crop');background-size:cover;background-position:center top}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,12,18,.84) 0%,rgba(10,12,18,.62) 55%,rgba(10,12,18,.32) 100%)}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:clamp(120px, 18vh, 180px) 5% clamp(60px, 8vh, 100px);width:100%}
+.hero-content{max-width:620px}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px);padding:7px 16px;border-radius:var(--pill);font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:24px;animation:fadeUp .6s ease both}
+.hero-pill i{color:var(--gd2)}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,4.4rem);font-weight:900;letter-spacing:-2px;line-height:1.04;color:white;margin-bottom:22px;animation:fadeUp .6s .1s ease both}
+.hero-h1 .gd{color:var(--gd2)}.hero-h1 .em{color:#4ADE80}
+.hero-sub{font-size:1.05rem;line-height:1.8;color:rgba(255,255,255,.78);max-width:520px;margin-bottom:30px;animation:fadeUp .6s .18s ease both}
+.hero-bullets{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:36px;animation:fadeUp .6s .24s ease both}
+.hero-bullets li{display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:600;color:rgba(255,255,255,.88)}
+.hero-bullets li i{color:var(--gd2);font-size:.85rem}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .6s .3s ease both}
+.trust-strip{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,.15);animation:fadeUp .6s .38s ease both}
+.trust-badge{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:8px 14px}
+.trust-badge .stars{color:#F59E0B;font-size:.8rem;letter-spacing:1px}
+.trust-badge .score{font-size:.82rem;font-weight:700;color:white}
+.trust-badge .source{font-size:.7rem;color:rgba(255,255,255,.55);font-family:'DM Mono',monospace}
+.hero-stats-float{display:flex;flex-direction:column;gap:12px;position:absolute;right:5%;top:50%;transform:translateY(-50%);z-index:1}
+.hstat-f{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.9);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--smd);min-width:190px;animation:flt 4s ease-in-out infinite}
+.hstat-f:nth-child(2){animation-delay:1.5s}.hstat-f:nth-child(3){animation-delay:3s}
+.hstat-ic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.hsi-gd{background:var(--gl);color:var(--gd)}.hsi-em{background:var(--el);color:var(--em)}.hsi-or{background:var(--ol);color:var(--or)}
+.hstat-lbl{font-size:.65rem;color:var(--mu);font-weight:500;font-family:'DM Mono',monospace}
+.hstat-val{font-size:.9rem;font-weight:800;color:var(--tx);line-height:1.2}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* Marquee */
+.marquee-sec{background:linear-gradient(135deg,var(--ch),var(--nv));padding:18px 0;overflow:hidden}
+.mqt{display:flex;animation:mq 32s linear infinite;width:max-content}
+.mqt:hover{animation-play-state:paused}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mqi{display:flex;align-items:center;gap:10px;padding:0 28px;font-weight:700;font-size:.8rem;color:rgba(255,255,255,.8);letter-spacing:.5px;text-transform:uppercase;white-space:nowrap;font-family:'DM Mono',monospace}
+.mqd{width:5px;height:5px;border-radius:50%;background:var(--gd);flex-shrink:0}
+
+/* Vision */
+#vision{background:var(--wh)}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.vm-grid.rev{direction:rtl}.vm-grid.rev>*{direction:ltr}
+.vm-img{position:relative;border-radius:24px;overflow:hidden;height:460px;box-shadow:var(--slg)}
+.vm-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.vm-img:hover img{transform:scale(1.04)}
+.vm-badge{position:absolute;bottom:22px;left:22px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border:1px solid var(--bd);border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;box-shadow:var(--smd)}
+.vm-badge i{font-size:1.2rem}.vmb-t{font-size:.65rem;color:var(--mu);font-weight:600;font-family:'DM Mono',monospace}
+.vmb-v{font-size:.88rem;font-weight:800;color:var(--tx)}
+.vm-text p{font-size:.95rem;line-height:1.85;color:var(--mu);margin-bottom:16px}
+.vm-text strong{color:var(--tx)}
+.vm-mini{display:flex;gap:12px;margin-top:26px}
+.vmst{flex:1;text-align:center;padding:16px 10px;background:var(--off);border:1px solid var(--bd);border-radius:14px;transition:.25s}
+.vmst:hover{transform:translateY(-4px);box-shadow:var(--smd);border-color:var(--gb)}
+.vmst .n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--gd);line-height:1}
+.vmst .l{font-size:.68rem;color:var(--mu);font-weight:600;margin-top:4px;font-family:'DM Mono',monospace}
+.vm-divider{border:none;border-top:1px solid var(--bd);margin:60px 0}
+
+/* Services */
+#services{background:var(--off)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{background:var(--wh);border:1px solid var(--bd);border-radius:20px;padding:32px 26px;position:relative;overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1)}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gd),var(--gd2));transform:scaleX(0);transform-origin:left;transition:.35s}
+.svc-card:hover{transform:translateY(-8px);box-shadow:var(--smd);border-color:var(--gb)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-card.featured{background:linear-gradient(135deg,var(--ch),var(--nv));border:none;color:white}
+.svc-card.featured::before{background:linear-gradient(90deg,var(--gd2),var(--em))}
+.svc-ico-wrap{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px;transition:.3s}
+.ico-gd{background:var(--gl);color:var(--gd)}.ico-em{background:var(--el);color:var(--em)}.ico-or{background:var(--ol);color:var(--or)}
+.ico-bl{background:rgba(59,130,246,.1);color:#3B82F6}.ico-pu{background:rgba(124,58,237,.1);color:#7C3AED}.ico-wh{background:rgba(255,255,255,.12);color:var(--gd2)}
+.svc-card:hover .svc-ico-wrap{transform:scale(1.1) rotate(-4deg)}
+.svc-ttl{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:700;margin-bottom:10px;color:var(--tx)}
+.svc-card.featured .svc-ttl{color:white}
+.svc-ds{font-size:.83rem;line-height:1.65;color:var(--mu);margin-bottom:16px}
+.svc-card.featured .svc-ds{color:rgba(255,255,255,.65)}
+.svc-link{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;color:var(--gd);transition:.2s;border-bottom:1px solid transparent}
+.svc-card.featured .svc-link{color:var(--gd2)}
+.svc-link:hover{border-bottom-color:var(--gd);transform:translateX(4px)}
+.svc-card.big{grid-column:span 2;display:flex;gap:28px;align-items:flex-start}
+.svc-big-img{width:200px;height:180px;border-radius:16px;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.12)}
+
+/* Why us */
+#why{background:var(--wh)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.why-imgs{position:relative;height:480px}
+.why-main{width:80%;height:390px;border-radius:22px;overflow:hidden;box-shadow:var(--slg);position:absolute;top:0;left:0}
+.why-main img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.why-main:hover img{transform:scale(1.05)}
+.why-acc{width:54%;height:225px;border-radius:16px;overflow:hidden;border:4px solid white;box-shadow:var(--smd);position:absolute;bottom:0;right:0}
+.why-acc img{width:100%;height:100%;object-fit:cover}
+.why-badge{position:absolute;top:24px;right:-8px;background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);border-radius:14px;padding:14px 18px;text-align:center;box-shadow:var(--sgd);width:100px;animation:flt 3.5s ease-in-out infinite}
+.why-badge .n{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;line-height:1}
+.why-badge .l{font-size:.6rem;font-weight:700;letter-spacing:1px;margin-top:2px;font-family:'DM Mono',monospace}
+.why-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.why-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:var(--off);border:1px solid var(--bd);border-radius:13px;transition:all .25s}
+.why-item:hover{transform:translateX(8px);border-color:var(--gb);box-shadow:var(--ssm)}
+.why-item i{color:var(--em);font-size:.95rem;flex-shrink:0;margin-top:2px}
+.why-item span{font-size:.87rem;color:var(--mu);line-height:1.6}
+
+/* Stats */
+#stats{background:linear-gradient(135deg,var(--ch),var(--nv));position:relative;overflow:hidden}
+#stats::before{content:'';position:absolute;top:-150px;right:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,150,10,.08) 0%,transparent 70%);pointer-events:none}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
+.stat-card{padding:52px 32px;text-align:center;border-right:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden;transition:.3s}
+.stat-card:last-child{border-right:none}
+.stat-card:hover{background:rgba(255,255,255,.04)}
+.stat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gd),var(--gd2));transform:scaleX(0);transform-origin:left;transition:.4s}
+.stat-card:hover::after{transform:scaleX(1)}
+.stat-card i{font-size:1.8rem;color:var(--gd);margin-bottom:16px;display:block}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:white;line-height:1;margin-bottom:8px}
+.stat-num .sf{font-size:1.6rem;color:var(--gd2)}
+.stat-lbl{font-size:.7rem;color:rgba(255,255,255,.45);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-family:'DM Mono',monospace}
+
+/* Featured work */
+#work{background:var(--off)}
+.work-card{display:grid;grid-template-columns:1fr 1fr;border-radius:24px;overflow:hidden;box-shadow:var(--slg);border:1px solid var(--bd)}
+.work-img{position:relative;overflow:hidden;height:440px}
+.work-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.work-card:hover .work-img img{transform:scale(1.05)}
+.work-body{padding:48px 44px;display:flex;flex-direction:column;justify-content:center;background:white}
+.work-tag{display:inline-flex;align-items:center;gap:8px;background:var(--gl);color:var(--gd);border:1px solid var(--gb);padding:5px 14px;border-radius:var(--pill);font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;font-family:'DM Mono',monospace}
+.work-body h3{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--tx);margin-bottom:14px}
+.work-body p{font-size:.92rem;line-height:1.8;color:var(--mu);margin-bottom:28px}
+.work-results{display:flex;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.wr{flex:1;min-width:80px;text-align:center;padding:14px;background:var(--off);border:1px solid var(--bd);border-radius:12px}
+.wr .n{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--gd);line-height:1}
+.wr .l{font-size:.68rem;color:var(--mu);margin-top:4px;font-family:'DM Mono',monospace}
+.work-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* Testimonials */
+#testimonials{background:var(--wh)}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.t-card{background:var(--off);border:1px solid var(--bd);border-radius:20px;padding:30px;transition:all .3s;position:relative;overflow:hidden}
+.t-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gd),var(--gd2));transform:scaleY(0);transform-origin:top;transition:.35s}
+.t-card:hover{transform:translateY(-6px);box-shadow:var(--smd);background:white}
+.t-card:hover::after{transform:scaleY(1)}
+.t-qi{font-size:2rem;color:var(--gd);opacity:.4;margin-bottom:12px}
+.t-stars{color:var(--gd);font-size:.88rem;letter-spacing:2px;margin-bottom:12px}
+.t-text{font-size:.87rem;line-height:1.8;color:var(--mu);font-style:italic;margin-bottom:22px}
+.t-auth{display:flex;align-items:center;gap:12px}
+.t-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:.95rem;color:white;flex-shrink:0}
+.t-nm{font-weight:700;font-size:.86rem;color:var(--tx)}
+.t-rl{font-size:.72rem;color:var(--mu);margin-top:2px;font-family:'DM Mono',monospace}
+
+/* Industries */
+#industries{background:var(--off)}
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ind-card{position:relative;border-radius:18px;overflow:hidden;height:220px;cursor:pointer;transition:all .35s}
+.ind-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .4s}
+.ind-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,12,18,.8) 0%,rgba(10,12,18,.2) 60%,transparent 100%)}
+.ind-card:hover img{transform:scale(1.08);filter:brightness(.7)}
+.ind-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.ind-overlay{position:absolute;inset:0;z-index:1;padding:18px;display:flex;flex-direction:column;justify-content:flex-end}
+.ind-ic{width:40px;height:40px;border-radius:10px;background:rgba(201,150,10,.2);border:1px solid rgba(201,150,10,.3);display:flex;align-items:center;justify-content:center;color:var(--gd2);font-size:.95rem;margin-bottom:10px;transition:.3s}
+.ind-card:hover .ind-ic{background:var(--gd);border-color:var(--gd);color:var(--ch)}
+.ind-ttl{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:white}
+.ind-link{font-size:.72rem;color:rgba(255,255,255,.6);font-family:'DM Mono',monospace;margin-top:4px;display:flex;align-items:center;gap:5px;opacity:0;transform:translateY(8px);transition:.3s}
+.ind-card:hover .ind-link{opacity:1;transform:translateY(0)}
+
+/* Founder */
+#founder{background:var(--wh)}
+.fn-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.fn-img{position:relative;border-radius:24px;overflow:hidden;height:520px;box-shadow:var(--slg)}
+.fn-img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .7s}
+.fn-img:hover img{transform:scale(1.04)}
+.fn-name-badge{position:absolute;bottom:22px;left:22px;right:22px;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border:1px solid var(--bd);border-radius:14px;padding:16px 20px}
+.fn-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--tx)}
+.fn-role{font-size:.72rem;color:var(--mu);font-family:'DM Mono',monospace;margin-top:3px}
+.fn-sub{font-family:'DM Mono',monospace;font-size:.74rem;color:var(--mu);margin-bottom:18px;letter-spacing:.5px}
+.fn-text p{font-size:.93rem;line-height:1.85;color:var(--mu);margin-bottom:14px}
+.fn-text strong{color:var(--tx)}
+.fn-skills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.fsk{padding:5px 13px;border-radius:var(--pill);font-size:.72rem;font-weight:700;background:var(--off);border:1px solid var(--bd);color:var(--mu);transition:.2s;cursor:default}
+.fsk:hover{border-color:var(--gb);color:var(--gd)}
+.fn-q{font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;color:var(--mu);line-height:1.75;border-left:3px solid var(--gd);padding-left:18px;margin-bottom:24px}
+.fn-soc{display:flex;gap:10px}
+.fsoc{width:38px;height:38px;border-radius:50%;background:var(--off);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;color:var(--mu);transition:all .2s}
+.fsoc:hover{background:var(--gd);color:var(--ch);border-color:var(--gd);transform:translateY(-3px) rotate(5deg)}
+
+/* Process */
+#process{background:var(--off)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative}
+.proc-grid::before{content:'';position:absolute;top:48px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--gd),var(--em),var(--or),var(--gd));opacity:.25}
+.proc-step{background:white;border:1px solid var(--bd);border-radius:20px;padding:28px 22px;text-align:center;position:relative;z-index:1;transition:all .3s}
+.proc-step:hover{transform:translateY(-8px);box-shadow:var(--smd);border-color:var(--gb)}
+.proc-step:hover .proc-n{background:var(--gd);color:white;border-color:var(--gd)}
+.proc-n{width:52px;height:52px;border-radius:50%;background:var(--off);border:2px solid var(--bd);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--mu);margin:0 auto 16px;transition:all .35s}
+.proc-ico{font-size:1.5rem;margin-bottom:12px;display:block}
+.proc-step h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--tx)}
+.proc-step p{font-size:.82rem;color:var(--mu);line-height:1.65}
+
+/* Tech stack */
+#tech{background:var(--ch)}
+.tech-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.tech-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px 16px;text-align:center;transition:all .3s}
+.tech-item:hover{background:rgba(255,255,255,.10);transform:translateY(-6px);border-color:rgba(201,150,10,.3)}
+.tech-item i{font-size:2rem;margin-bottom:10px;display:block;color:rgba(255,255,255,.65)}
+.tech-item:hover i{color:var(--gd2)}
+.tech-item span{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.45);font-family:'DM Mono',monospace;letter-spacing:.5px}
+.tech-item:hover span{color:rgba(255,255,255,.8)}
+
+/* FAQ */
+#faq{background:var(--off)}
+.faq-inner{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{background:white;border:1px solid var(--bd);border-radius:16px;overflow:hidden;transition:all .3s}
+.faq-item.open{border-color:var(--gb);box-shadow:var(--ssm)}
+.faq-btn{width:100%;padding:20px 22px;background:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;color:var(--tx);text-align:left;transition:.2s}
+.faq-btn:hover{color:var(--gd)}
+.faq-item.open .faq-btn{color:var(--gd)}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:var(--off);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--mu);flex-shrink:0;transition:all .35s}
+.faq-item.open .faq-icon{background:var(--gd);color:white;border-color:var(--gd);transform:rotate(45deg)}
+.faq-ans{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.faq-item.open .faq-ans{max-height:200px}
+.faq-ans p{padding:0 22px 20px;font-size:.87rem;color:var(--mu);line-height:1.75}
+
+/* CTA */
+#cta{background:var(--wh);padding:0}
+.cta-w{max-width:1200px;margin:0 auto;padding:90px 5%}
+.cta-in{background:linear-gradient(135deg,var(--ch) 0%,#16213e 100%);border-radius:28px;padding:72px 60px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-in::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,150,10,.08) 0%,transparent 70%);pointer-events:none}
+.cta-txt{position:relative;z-index:1;max-width:560px}
+.cta-ey{display:block;font-family:'DM Mono',monospace;font-size:.67rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gd2);font-weight:600;margin-bottom:14px}
+.cta-ttl{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:white;letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+.cta-ttl em{font-style:italic;color:var(--gd2)}
+.cta-sb{font-size:.93rem;color:rgba(255,255,255,.55);line-height:1.75}
+.cta-bts{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;flex-shrink:0}
+
+/* Footer */
+footer{background:linear-gradient(135deg,var(--ch) 0%,#16213e 100%);color:white;padding:68px 5% 28px}
+.footer-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px}
+.footer-logo{font-family:'DM Sans',sans-serif;font-weight:900;font-size:1.35rem;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.footer-logo i{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gd),var(--gd2));display:flex;align-items:center;justify-content:center;color:var(--ch);font-size:.82rem}
+.footer-logo span{color:white}.footer-logo span span{color:var(--gd2)}
+.footer-description{font-size:.84rem;color:rgba(255,255,255,.48);line-height:1.75;margin-bottom:22px}
+.footer-contact{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.contact-item{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.66)}
+.contact-item i{color:var(--gd2);width:14px;flex-shrink:0}
+.contact-item a{color:rgba(255,255,255,.66);transition:.2s}
+.contact-item a:hover{color:var(--gd2)}
+.footer-social{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.social-link{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:.82rem;text-decoration:none;transition:all .2s}
+.social-link:hover{background:var(--gd);color:var(--ch);border-color:var(--gd);transform:translateY(-3px) rotate(5deg)}
+.footer-title{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:18px;font-family:'DM Mono',monospace}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:rgba(255,255,255,.55);font-size:.855rem;transition:all .2s;display:inline-block}
+.footer-links a:hover{color:var(--gd2);transform:translateX(5px)}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:.76rem;color:rgba(255,255,255,.28);font-family:'DM Mono',monospace}
+.footer-bottom span{color:var(--gd2)}
+.wa-float{position:fixed;bottom:26px;right:26px;width:52px;height:52px;border-radius:50%;background:#25D366;color:white;display:flex;align-items:center;justify-content:center;font-size:1.35rem;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all .2s;z-index:8000;animation:wap 2.5s ease infinite}
+.wa-float:hover{transform:scale(1.12)}
+@keyframes wap{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.45)}50%{box-shadow:0 6px 40px rgba(37,211,102,.7),0 0 0 8px rgba(37,211,102,.1)}}
+
+/* Responsive — tablet breakpoint at 1024px */
+@media(max-width:1024px){
+  .navbar{top:10px}
+  .nav-links,.btn-quote{display:none!important}
+  .mobile-toggle{display:flex!important}
+  .vm-grid,.vm-grid.rev{grid-template-columns:1fr;direction:ltr}
+  .why-grid,.fn-grid{grid-template-columns:1fr;gap:40px}
+  .why-imgs{height:300px}
+  .why-main{width:72%;height:260px}
+  .why-acc{width:50%;height:165px}
+  .work-card{grid-template-columns:1fr}
+  .work-img{height:280px}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .svc-card.big{grid-column:span 2;flex-direction:column}
+  .svc-big-img{width:100%;height:180px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-card{border-bottom:1px solid rgba(255,255,255,.07)}
+  .tech-grid{grid-template-columns:repeat(4,1fr)}
+  .proc-grid{grid-template-columns:repeat(2,1fr)}
+  .proc-grid::before{display:none}
+  .t-grid{grid-template-columns:1fr 1fr}
+  .ind-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-container{grid-template-columns:1fr 1fr;gap:32px}
+  .cta-in{flex-direction:column;padding:48px 36px;text-align:center}
+  .cta-bts{justify-content:center}
+  .fn-img{height:400px}
+  .hero-stats-float{display:none}
 }
-#home::before { content: ''; position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; border-radius: 50%; background: rgba(40,114,161,.07); pointer-events: none; }
-#home::after { content: ''; position: absolute; bottom: -100px; left: -60px; width: 400px; height: 400px; border-radius: 50%; background: rgba(253,128,46,.06); pointer-events: none; }
-
-.hero-inner {
-position: relative; z-index: 2;
-max-width: 1280px; margin: 0 auto; padding: 4rem 2rem 0;
-display: grid; grid-template-columns: 1fr 1fr;
-gap: 3rem; align-items: flex-end; min-height: calc(100vh - 100px);
+@media(max-width:767px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card.big{grid-column:span 1;flex-direction:column}
+  .svc-big-img{width:100%;height:160px}
+  .tech-grid{grid-template-columns:repeat(3,1fr)}
+  .hero-h1{font-size:clamp(2rem,8vw,3rem);letter-spacing:-1.5px}
+  .cta-in{padding:40px 28px}
+  .footer-container{grid-template-columns:1fr}
+  .fn-img{height:340px}
+  .t-grid{grid-template-columns:1fr}
+  .ind-grid{grid-template-columns:repeat(2,1fr)}
+  .work-body{padding:32px 28px}
 }
-.hero-left { padding-bottom: 5rem; }
-.hero-pill { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--border); padding: 7px 16px; border-radius: 40px; font-size: .8rem; font-weight: 600; color: var(--muted); margin-bottom: 1.75rem; box-shadow: 0 2px 12px rgba(40,114,161,.07); }
-.hero-pill span { color: var(--orange); font-weight: 700; }
-.hero-title { font-family: 'Syne', sans-serif; font-size: clamp(2.6rem,5.5vw,4.4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.04; color: var(--charcoal); margin-bottom: 1.5rem; }
-.hero-title .tb { color: var(--blue); }
-.hero-title .to { color: var(--orange); }
-.hero-sub { font-size: 1.05rem; line-height: 1.8; color: var(--muted); margin-bottom: 2.5rem; max-width: 460px; }
-.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.75rem; }
-.hero-tag { padding: 7px 14px; border-radius: 40px; font-size: .8rem; font-weight: 600; background: #fff; border: 1px solid var(--border); color: var(--charcoal); box-shadow: 0 2px 8px rgba(0,0,0,.04); }
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-
-/* Hero image – MTN style */
-.hero-right { position: relative; align-self: flex-end; }
-.hero-person-wrap { position: relative; height: 560px; display: flex; align-items: flex-end; }
-.hero-person { height: 100%; width: 100%; object-fit: cover; object-position: top center; border-radius: 28px 28px 0 0; filter: drop-shadow(0 20px 40px rgba(40,114,161,.18)); }
-.h-stat { position: absolute; background: #fff; border-radius: 16px; padding: 13px 18px; box-shadow: 0 12px 40px rgba(40,114,161,.13); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
-.h-stat.s1 { bottom: 140px; left: -28px; animation: flt 5s ease-in-out infinite; }
-.h-stat.s2 { top: 80px; right: -20px; animation: flt 4s ease-in-out 1s infinite; }
-.h-stat.s3 { bottom: 55px; right: -10px; animation: flt 6s ease-in-out .5s infinite; }
-@keyframes flt { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-.hs-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-.hs-icon.bl { background: rgba(40,114,161,.11); color: var(--blue); }
-.hs-icon.or { background: rgba(253,128,46,.11); color: var(--orange); }
-.hs-icon.gr { background: rgba(34,197,94,.11); color: #16a34a; }
-.hs-label { font-size: .68rem; color: var(--muted); font-weight: 500; }
-.hs-val { font-size: .92rem; font-weight: 800; color: var(--charcoal); white-space: nowrap; }
-
-/* ========== MARQUEE ========== */
-.mqs { background: var(--blue); padding: 16px 0; overflow: hidden; }
-.mqt { display: flex; animation: mq 30s linear infinite; width: max-content; }
-.mqt:hover { animation-play-state: paused; }
-@keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-.mqi { display: flex; align-items: center; gap: 12px; padding: 0 32px; font-weight: 700; font-size: .83rem; color: rgba(255,255,255,.9); letter-spacing: .5px; text-transform: uppercase; white-space: nowrap; }
-.mqd { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.4); flex-shrink: 0; }
-
-/* ========== VISION & MISSION ========== */
-.vms { background: #fff; }
-.vmg { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.vmg + .vmg { margin-top: 5rem; }
-.vmw { position: relative; border-radius: 28px; overflow: hidden; height: 460px; }
-.vmw img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s; }
-.vmw:hover img { transform: scale(1.04); }
-.vmb { position: absolute; bottom: 24px; left: 24px; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 16px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
-.vmb i { font-size: 1.3rem; }
-.vbt { font-size: .7rem; color: var(--muted); font-weight: 600; }
-.vbv { font-size: .9rem; font-weight: 800; color: var(--charcoal); }
-.vmc p { font-size: .98rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.4rem; }
-.vmc strong { color: var(--charcoal); }
-.vmst { display: flex; gap: 1rem; margin-top: 2.5rem; }
-.vmsi { flex: 1; text-align: center; padding: 1.25rem; background: var(--off2); border: 1px solid var(--border); border-radius: 16px; }
-.vmsi .n { font-family: 'Syne',sans-serif; font-size: 1.7rem; font-weight: 800; color: var(--blue); }
-.vmsi .l { font-size: .76rem; color: var(--muted); font-weight: 600; margin-top: 4px; }
-
-/* ========== SERVICES – charcoal ========== */
-.svs { background: var(--charcoal); }
-.svg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-.svc { border-radius: 22px; overflow: hidden; position: relative; cursor: pointer; height: 290px; }
-.svc.lg { grid-column: span 2; height: 350px; }
-.svc img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; filter: brightness(.42); }
-.svc:hover img { transform: scale(1.08); filter: brightness(.28); }
-.svo { position: absolute; inset: 0; padding: 2rem; display: flex; flex-direction: column; justify-content: flex-end; }
-.svic { width: 52px; height: 52px; border-radius: 14px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: #fff; margin-bottom: 1rem; transition: all .3s; }
-.svc:hover .svic { background: var(--orange); border-color: var(--orange); }
-.svc h3 { font-family: 'Syne',sans-serif; font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: .45rem; }
-.svc p { font-size: .84rem; color: rgba(255,255,255,.72); line-height: 1.6; }
-.svl { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; color: var(--orange); font-weight: 700; font-size: .82rem; opacity: 0; transform: translateY(8px); transition: all .3s; }
-.svc:hover .svl { opacity: 1; transform: translateY(0); }
-
-/* ========== WHY US – sky ========== */
-.wys { background: var(--sky); }
-.wyg { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.wist { position: relative; height: 520px; }
-.wim { position: absolute; top: 0; left: 0; width: 72%; height: 400px; object-fit: cover; border-radius: 28px; box-shadow: 0 24px 60px rgba(40,114,161,.18); }
-.wia { position: absolute; bottom: 0; right: 0; width: 54%; height: 260px; object-fit: cover; border-radius: 22px; box-shadow: 0 16px 40px rgba(40,114,161,.15); border: 4px solid var(--sky); }
-.wib { position: absolute; top: 42%; left: 50%; transform: translate(-50%,-50%); background: var(--orange); border-radius: 50%; width: 96px; height: 96px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; text-align: center; box-shadow: 0 8px 24px rgba(253,128,46,.38); font-family: 'Syne',sans-serif; font-weight: 800; color: #fff; }
-.wib .n { font-size: 1.7rem; line-height: 1; }
-.wib .l { font-size: .58rem; letter-spacing: .5px; }
-.wyl { margin: 2rem 0; display: flex; flex-direction: column; gap: 10px; }
-.wyi { display: flex; align-items: flex-start; gap: 14px; padding: 13px 17px; background: #fff; border: 1px solid rgba(40,114,161,.1); border-radius: 14px; border-left: 3px solid var(--blue); transition: all .22s; }
-.wyi:hover { border-left-color: var(--orange); transform: translateX(4px); box-shadow: 0 4px 16px rgba(40,114,161,.08); }
-.wyi i { color: var(--blue); margin-top: 3px; flex-shrink: 0; }
-.wyi:hover i { color: var(--orange); }
-.wyi span { font-size: .91rem; font-weight: 500; color: var(--charcoal); line-height: 1.5; }
-
-/* ========== STATS – blue ========== */
-.sts { background: var(--blue); position: relative; overflow: hidden; }
-.sts::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=1600&q=40') center/cover; opacity: .07; }
-.stg { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; position: relative; }
-.stc { text-align: center; padding: 2.5rem 1.5rem; border-radius: 22px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); transition: all .25s; }
-.stc:hover { background: rgba(255,255,255,.18); transform: translateY(-4px); }
-.stc i { font-size: 1.9rem; color: rgba(255,255,255,.8); margin-bottom: 1rem; display: block; }
-.stnum { font-family: 'Syne',sans-serif; font-size: 3rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 6px; }
-.stnum .sf { color: var(--orange); }
-.stlb { font-size: .86rem; color: rgba(255,255,255,.7); font-weight: 600; }
-
-/* ========== FEATURED WORK ========== */
-.fts { background: #fff; }
-.ftc { border-radius: 28px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); box-shadow: 0 16px 48px rgba(40,114,161,.09); }
-.ftiw { overflow: hidden; }
-.fti { height: 100%; min-height: 420px; object-fit: cover; transition: transform .5s; width: 100%; display: block; }
-.ftc:hover .fti { transform: scale(1.04); }
-.ftct { padding: 3.5rem; display: flex; flex-direction: column; justify-content: center; background: #fff; }
-.fttag { display: inline-flex; align-items: center; gap: 6px; background: rgba(253,128,46,.1); color: var(--orange); border: 1px solid rgba(253,128,46,.2); padding: 5px 14px; border-radius: 40px; font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 1.5rem; }
-.ftct h3 { font-family: 'Syne',sans-serif; font-size: 1.95rem; font-weight: 800; letter-spacing: -.5px; color: var(--charcoal); margin-bottom: 1rem; }
-.ftct p { color: var(--muted); line-height: 1.78; margin-bottom: 2rem; font-size: .93rem; }
-.ftrs { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-.ftr .n { font-family: 'Syne',sans-serif; font-size: 2rem; font-weight: 800; color: var(--orange); }
-.ftr .l { font-size: .76rem; color: var(--muted); font-weight: 600; }
-.ftbs { display: flex; gap: 12px; flex-wrap: wrap; }
-
-/* ========== TESTIMONIALS ========== */
-.tss { background: var(--off); }
-.tsg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-.tsc { padding: 2.25rem; background: #fff; border: 1px solid var(--border); border-radius: 22px; position: relative; transition: all .25s; }
-.tsc:hover { border-color: var(--blue); transform: translateY(-6px); box-shadow: 0 20px 48px rgba(40,114,161,.09); }
-.tsqi { font-size: 2.2rem; color: var(--blue); opacity: .12; position: absolute; top: 1.5rem; right: 1.5rem; }
-.tsst { display: flex; gap: 3px; color: #fbbf24; font-size: .9rem; margin-bottom: 1rem; }
-.tstx { font-size: .91rem; line-height: 1.78; color: var(--muted); margin-bottom: 1.75rem; }
-.tsau { display: flex; align-items: center; gap: 12px; }
-.tsav { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: #fff; flex-shrink: 0; border: 2px solid rgba(255,255,255,.35); }
-.tsnm { font-weight: 700; font-size: .88rem; color: var(--charcoal); }
-.tstl { font-size: .76rem; color: var(--muted); }
-
-/* ========== FOUNDER ========== */
-.fns { background: var(--off2); }
-.fng { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: center; }
-.fniw { position: relative; border-radius: 28px; overflow: hidden; height: 520px; box-shadow: 0 24px 60px rgba(40,114,161,.15); }
-.fniw img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-.fnb { position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 2; background: rgba(255,255,255,.9); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 16px; padding: 16px 20px; text-align: center; }
-.fnb .fbn { font-family: 'Syne',sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--charcoal); }
-.fnb .fbt { font-size: .8rem; color: var(--blue); font-weight: 600; }
-.fnst { color: var(--blue); font-weight: 700; font-size: .97rem; margin-bottom: 1.75rem; }
-.fnc p { color: var(--muted); line-height: 1.82; margin-bottom: 1.2rem; font-size: .96rem; }
-.fnc strong { color: var(--charcoal); }
-.fnq { border-left: 3px solid var(--orange); padding: 1rem 1.5rem; margin: 2rem 0; background: rgba(253,128,46,.05); border-radius: 0 14px 14px 0; font-style: italic; font-size: 1rem; color: var(--charcoal); font-weight: 500; }
-.fnso { display: flex; gap: 10px; margin-top: 2rem; }
-.fsb { width: 44px; height: 44px; border-radius: 12px; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1rem; transition: all .2s; }
-.fsb:hover { background: var(--blue); color: #fff; border-color: var(--blue); transform: translateY(-2px); }
-.fnsk { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
-.fsk { padding: 5px 13px; border-radius: 40px; background: rgba(40,114,161,.1); border: 1px solid rgba(40,114,161,.2); font-size: .78rem; font-weight: 600; color: var(--blue); }
-
-/* ========== PROCESS ========== */
-.prs { background: #fff; }
-.prg { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; position: relative; }
-.prg::before { content: ''; position: absolute; top: 52px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg,var(--blue),var(--orange)); opacity: .2; pointer-events: none; }
-.prp { text-align: center; padding: 2.5rem 1.5rem; background: var(--off); border: 1px solid var(--border); border-radius: 22px; position: relative; z-index: 1; transition: all .25s; }
-.prp:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(40,114,161,.09); border-color: var(--blue); }
-.prn { width: 52px; height: 52px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Syne',sans-serif; font-weight: 800; font-size: 1.1rem; margin: 0 auto 1rem; box-shadow: 0 8px 20px rgba(40,114,161,.28); }
-.pri { font-size: 1.7rem; color: var(--orange); margin-bottom: 1rem; display: block; }
-.prp h3 { font-family: 'Syne',sans-serif; font-size: 1rem; font-weight: 800; color: var(--charcoal); margin-bottom: .6rem; }
-.prp p { font-size: .84rem; color: var(--muted); line-height: 1.65; }
-
-/* ========== TECH STACK ========== */
-.tcs { background: var(--charcoal); }
-.tcg { display: grid; grid-template-columns: repeat(6,1fr); gap: 1rem; }
-.tci { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 1.5rem 1rem; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; text-align: center; transition: all .25s; }
-.tci:hover { background: rgba(40,114,161,.15); border-color: rgba(40,114,161,.3); transform: translateY(-4px); }
-.tci i { font-size: 2.2rem; }
-.tci span { font-size: .76rem; font-weight: 600; color: rgba(255,255,255,.58); }
-.tci i.fa-html5{color:#e44d26}.tci i.fa-css3-alt{color:#1572b6}.tci i.fa-js{color:#f0db4f}
-.tci i.fa-react{color:#61dafb}.tci i.fa-node{color:#68a063}.tci i.fa-python{color:#3776ab}
-.tci i.fa-php{color:#8892be}.tci i.fa-git-alt{color:#f05032}.tci i.fa-figma{color:#f24e1e}
-.tci i.fa-wordpress{color:#21759b}.tci i.fa-aws{color:#ff9900}.tci i.fa-database{color:#4fc3f7}
-
-/* ========== COMMUNITY ========== */
-.cms { background: var(--off2); }
-.cmg { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: center; }
-.cmst { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: 2rem 0; }
-.cmsi { padding: 1.5rem 1rem; text-align: center; background: #fff; border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 4px 12px rgba(40,114,161,.05); }
-.cmsi .n { font-family: 'Syne',sans-serif; font-size: 1.75rem; font-weight: 800; color: var(--orange); }
-.cmsi .l { font-size: .76rem; color: var(--muted); font-weight: 600; margin-top: 4px; }
-.cmf { display: flex; flex-direction: column; gap: 10px; margin-bottom: 2.5rem; }
-.cmfi { display: flex; align-items: center; gap: 12px; padding: 11px 16px; background: #fff; border: 1px solid var(--border); border-radius: 12px; font-size: .88rem; color: var(--charcoal); font-weight: 500; }
-.cmfi i { color: var(--blue); width: 20px; text-align: center; }
-.cmiw { border-radius: 28px; overflow: hidden; height: 480px; box-shadow: 0 16px 48px rgba(40,114,161,.13); }
-.cmiw img { width: 100%; height: 100%; object-fit: cover; }
-
-/* ========== FAQ ========== */
-.fqs { background: #fff; }
-.fqw { max-width: 860px; margin: 0 auto; }
-.fqi { border-bottom: 1px solid var(--border); overflow: hidden; }
-.fqb { width: 100%; background: none; border: none; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; cursor: pointer; color: var(--charcoal); text-align: left; gap: 1rem; transition: all .2s; font-family: 'DM Sans',sans-serif; }
-.fqb:hover { color: var(--blue); }
-.fqb span { font-weight: 600; font-size: .97rem; }
-.fqb i { color: var(--orange); transition: transform .3s; flex-shrink: 0; }
-.fqi.open .fqb i { transform: rotate(45deg); color: var(--blue); }
-.fqa { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; color: var(--muted); font-size: .93rem; line-height: 1.78; }
-.fqi.open .fqa { max-height: 300px; padding-bottom: 1.5rem; }
-
-/* ========== CTA ========== */
-.ctas { background: linear-gradient(135deg,var(--blue-d) 0%,var(--blue) 60%,#2d9cdb 100%); position: relative; overflow: hidden; }
-.ctas::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=50') center/cover; opacity: .07; }
-.ctai { position: relative; z-index: 2; text-align: center; max-width: 700px; margin: 0 auto; padding: 7rem 2rem; }
-.ctai h2 { font-family: 'Syne',sans-serif; font-size: clamp(2.2rem,5vw,3.2rem); font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 1rem; }
-.ctai p { color: rgba(255,255,255,.75); font-size: 1.02rem; line-height: 1.78; margin-bottom: 3rem; }
-.ctabs { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 1024px) {
-.hero-inner { grid-template-columns: 1fr; gap: 0; min-height: auto; padding-bottom: 3rem; }
-.hero-left { padding-bottom: 0; }
-.hero-right { display: none; } /* hide on tablet/mobile, text only */
-.vmg, .wyg, .fng, .cmg { grid-template-columns: 1fr; gap: 3rem; }
-.svg { grid-template-columns: repeat(2,1fr); }
-.svc.lg { grid-column: span 2; }
-.stg { grid-template-columns: repeat(2,1fr); }
-.tcg { grid-template-columns: repeat(4,1fr); }
-.tsg { grid-template-columns: repeat(2,1fr); }
+@media(max-width:480px){
+  .navbar{top:8px;width:96%}
+  .hero-btns{flex-direction:column}
+  .hero-btns .btn-p,.hero-btns .btn-gh{justify-content:center;width:100%}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .tech-grid{grid-template-columns:repeat(3,1fr)}
+  .proc-grid{grid-template-columns:1fr}
+  .mx{padding:70px 5%}
+  .trust-strip{flex-direction:column;align-items:flex-start;gap:12px}
+  .vm-mini{flex-direction:column}
+  .why-imgs{height:240px}
+  .why-main{width:70%;height:205px}
+  .why-acc{width:52%;height:135px}
+  .ind-grid{grid-template-columns:1fr 1fr}
+  .cta-bts{flex-direction:column;align-items:stretch}
+  .cta-bts .btn-wh,.cta-bts .btn-gh{justify-content:center}
+  .fn-img{height:300px}
+  .work-body{padding:24px 20px}
+  .work-body h3{font-size:1.4rem}
+  footer{padding:48px 5% 24px}
 }
-@media (max-width: 768px) {
-.sw { padding: 3.5rem 1.25rem; }
-.vmw { height: 280px; }
-.svc.lg { grid-column: span 1; height: 250px; }
-.svg { grid-template-columns: 1fr; }
-.wist { height: 280px; }
-.wim { width: 80%; height: 230px; }
-.wia { width: 55%; height: 165px; }
-.ftc { grid-template-columns: 1fr; }
-.ftct { padding: 2rem; }
-.fti { min-height: 240px; }
-.tsg { grid-template-columns: 1fr; }
-.fniw { height: 300px; }
-.prg { grid-template-columns: repeat(2,1fr); }
-.prg::before { display: none; }
-.tcg { grid-template-columns: repeat(3,1fr); }
-.vmg + .vmg { margin-top: 3rem; }
-.stg { grid-template-columns: repeat(2,1fr); }
+@media(max-width:360px){
+  .hero-h1{font-size:1.85rem}
+  .ind-grid{grid-template-columns:1fr}
+  .tech-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media (max-width: 480px) {
-.sw { padding: 3rem 1rem; }
-.stg, .prg { grid-template-columns: 1fr; }
-.tcg { grid-template-columns: repeat(3,1fr); }
-.hero-btns { flex-direction: column; }
-.hero-btns .btn { width: 100%; justify-content: center; }
-.ctabs { flex-direction: column; align-items: center; }
-.ftrs { gap: 1rem; }
-.vmst { flex-direction: column; }
-.cmst { grid-template-columns: 1fr; }
-.hero-title { font-size: clamp(1.9rem, 8.5vw, 2.6rem); letter-spacing: -1px; }
-.hero-sub { font-size: .95rem; }
-.hero-pill { font-size: .75rem; }
-.hero-tags { gap: 6px; }
-.hero-tag { font-size: .75rem; padding: 6px 11px; }
-}
-/* ---- Skinny phones: 375px ---- */
-@media (max-width: 375px) {
-.sw { padding: 2.5rem .9rem; }
-.hero-title { font-size: clamp(1.65rem, 9vw, 1.95rem); letter-spacing: -.5px; line-height: 1.08; }
-.hero-sub { font-size: .88rem; line-height: 1.7; margin-bottom: 1.75rem; }
-.hero-pill { font-size: .72rem; padding: 6px 12px; }
-.hero-tags { gap: 5px; }
-.hero-tag { font-size: .72rem; padding: 5px 10px; }
-.hero-btns .btn { padding: 13px 20px; font-size: .88rem; }
-.sh { margin-bottom: 2.5rem; }
-}
-/* ---- Very skinny phones: 320px (Galaxy Fold, iPhone SE) ---- */
-@media (max-width: 320px) {
-.sw { padding: 2rem .75rem; }
-.hero-title { font-size: 1.5rem; letter-spacing: -.3px; line-height: 1.1; }
-.hero-sub { font-size: .84rem; }
-.hero-pill { display: none; }
-.hero-tag { font-size: .7rem; padding: 5px 9px; }
-.hero-btns .btn { padding: 12px 16px; font-size: .84rem; }
-.stg { grid-template-columns: 1fr; }
+@media(max-height:600px) and (orientation:landscape){
+  .hero-inner{padding:100px 5% 40px}
+  .hero-h1{font-size:clamp(1.6rem,5vw,2.4rem)}
+  .hero-bullets{gap:6px;margin-bottom:20px}
+  .trust-strip{margin-top:20px;padding-top:16px}
 }
 </style>
 </head>
 <body>
 
-<nav class="navbar">
-<div class="nav-container glass-panel">
-<div class="logo">
-<i class="fas fa-code"></i>
-SAMZY<span>DIGITAL</span>
-</div>
-<button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
-<div class="mobile-menu glass-panel" id="mobileMenu">
-<button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
-<ul class="mobile-nav-links">
-<li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
-<li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
-<li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
-<li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-<li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-</ul>
-</div>
-<ul class="nav-links">
-<li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
-<li><a href="business.html"><i class="fas fa-briefcase"></i> Business</a></li>
-<li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
-<li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-<li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-</ul>
-</div>
+<!-- ════ NAVBAR ════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <div class="logo-ic"><i class="fas fa-code"></i></div>
+      SAMZY<span>DIGITAL</span>
+    </a>
+    <button type="button" class="mobile-toggle" id="mobToggle" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
+      <i class="fas fa-bars" id="mobIco"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About <i class="fas fa-chevron-down drop-arrow"></i></a>
+        <div class="dropdown">
+          <a href="about.html#our-story"><i class="fas fa-book-open"></i> Our Story</a>
+          <a href="samuel-ahiaba.html"><i class="fas fa-user"></i> Samuel AHIABA</a>
+          <a href="our-values.html"><i class="fas fa-heart"></i> Our Values</a>
+          <a href="process.html"><i class="fas fa-cogs"></i> Our Process</a>
+          <a href="testimonials.html"><i class="fas fa-star"></i> Testimonials</a>
+          <a href="faqs.html"><i class="fas fa-question-circle"></i> FAQs</a>
+        </div>
+      </li>
+      <li><a href="business.html">Services <i class="fas fa-chevron-down drop-arrow"></i></a>
+        <div class="dropdown">
+          <a href="business.html#web"><i class="fas fa-globe"></i> Web Design &amp; Dev</a>
+          <a href="business.html#ecommerce"><i class="fas fa-shopping-cart"></i> E-Commerce</a>
+          <a href="business.html#automation"><i class="fas fa-robot"></i> Automation</a>
+          <a href="business.html#seo"><i class="fas fa-search"></i> SEO &amp; Marketing</a>
+          <a href="business.html#branding"><i class="fas fa-paint-brush"></i> Branding &amp; Design</a>
+        </div>
+      </li>
+      <li><a href="industries.html">Industries <i class="fas fa-chevron-down drop-arrow"></i></a>
+        <div class="dropdown">
+          <a href="industries.html#beauty"><i class="fas fa-spa"></i> Beauty &amp; Wellness</a>
+          <a href="industries.html#restaurant"><i class="fas fa-utensils"></i> Food &amp; Restaurant</a>
+          <a href="industries.html#school"><i class="fas fa-graduation-cap"></i> Schools &amp; Education</a>
+          <a href="industries.html#church"><i class="fas fa-church"></i> Churches &amp; NGOs</a>
+          <a href="industries.html#realestate"><i class="fas fa-home"></i> Real Estate</a>
+          <a href="industries.html#sme"><i class="fas fa-store"></i> SMEs &amp; Retail</a>
+        </div>
+      </li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn-quote">
+      <i class="fas fa-paper-plane"></i> Get Quote
+    </a>
+  </div>
 </nav>
+
+<!-- Mobile overlay and menu (includes Blog link) -->
+<div class="mob-overlay" id="mobOverlay" onclick="toggleNav()"></div>
+<div class="mobile-menu" id="mobMenu" role="dialog" aria-label="Navigation menu">
+  <button type="button" class="mobile-close" onclick="toggleNav()" aria-label="Close menu">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="mob-logo">
+    <div class="logo-ic" style="color:var(--gd);font-size:1.3rem"><i class="fas fa-code"></i></div>
+    <div style="font-family:'DM Sans',sans-serif;font-weight:900;font-size:1rem;color:var(--tx)">SAMZY<span style="color:var(--gd)">DIGITAL</span></div>
+  </div>
+  <div class="mob-section">
+    <div class="mob-section-title">Main</div>
+    <ul class="mob-links">
+      <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+      <li><a href="pricing.html"><i class="fas fa-tag"></i> Pricing</a></li>
+      <li><a href="blog.html"><i class="fas fa-pen-nib"></i> Blog</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </div>
+  <div class="mob-section" style="margin-top:12px">
+    <div class="mob-section-title">About</div>
+    <ul class="mob-links">
+      <li><a href="about.html"><i class="fas fa-building"></i> Our Story</a></li>
+      <li><a href="samuel-ahiaba.html"><i class="fas fa-user"></i> Samuel AHIABA</a></li>
+      <li><a href="our-values.html"><i class="fas fa-heart"></i> Our Values</a></li>
+      <li><a href="process.html"><i class="fas fa-cogs"></i> Our Process</a></li>
+    </ul>
+  </div>
+  <div class="mob-section" style="margin-top:12px">
+    <div class="mob-section-title">Services</div>
+    <ul class="mob-links">
+      <li><a href="business.html#web"><i class="fas fa-globe"></i> Web Design</a></li>
+      <li><a href="business.html#ecommerce"><i class="fas fa-shopping-cart"></i> E-Commerce</a></li>
+      <li><a href="business.html#automation"><i class="fas fa-robot"></i> Automation</a></li>
+      <li><a href="business.html#seo"><i class="fas fa-search"></i> SEO &amp; Marketing</a></li>
+    </ul>
+  </div>
+  <div class="mob-cta">
+    <a href="contact.html"><i class="fas fa-paper-plane"></i> Get Free Quote</a>
+  </div>
+</div>
 
 <main>
 
+<!-- ══════ HERO (UPDATED TITLE) ══════ -->
 <section id="home">
-<div class="hero-inner">
-<div class="hero-left">
-<div class="hero-pill"><i class="fas fa-map-marker-alt" style="color:var(--orange)"></i> Based in <span>Accra, Ghana &#127468;&#127469;</span></div>
-<h1 class="hero-title">Professional Digital<br><span class="tb">Solutions for</span><br><span class="to">Ghanaian Businesses</span></h1>
-<p class="hero-sub">We help Ghanaian businesses grow online with custom websites, smart automation, and powerful digital marketing — tailored for the local market.</p>
-<div class="hero-tags">
-<span class="hero-tag">&#127760; Web Development</span>
-<span class="hero-tag">&#9881;&#65039; Business Automation</span>
-<span class="hero-tag">&#128200; Digital Marketing</span>
-<span class="hero-tag">&#128722; E&#8209;Commerce</span>
-<span class="hero-tag">&#129309; Community</span>
-</div>
-<div class="hero-btns">
-<a href="contact.html" class="btn bb"><i class="fas fa-calendar-check"></i> Get Free Consultation</a>
-<a href="business.html" class="btn bo"><i class="fas fa-rocket"></i> Explore Services</a>
-</div>
-</div>
-<div class="hero-right">
-<div class="hero-person-wrap">
-<img class="hero-person"
-src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80"
-alt="Professional digital solutions team Accra Ghana – SamzyDigital"
-loading="eager">
-<div class="h-stat s1">
-<div class="hs-icon or"><i class="fas fa-briefcase"></i></div>
-<div><div class="hs-label">Projects Completed</div><div class="hs-val">15+ Delivered</div></div>
-</div>
-<div class="h-stat s2">
-<div class="hs-icon bl"><i class="fas fa-star"></i></div>
-<div><div class="hs-label">Client Rating</div><div class="hs-val">5.0 &#11088; Reviews</div></div>
-</div>
-<div class="h-stat s3">
-<div class="hs-icon gr"><i class="fas fa-users"></i></div>
-<div><div class="hs-label">Community</div><div class="hs-val">17 Members</div></div>
-</div>
-</div>
-</div>
-</div>
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-pill">
+        <i class="fas fa-map-marker-alt"></i>
+        Based in Accra, Ghana 🇬🇭
+      </div>
+      <h1 class="hero-h1">
+        Digital Solutions for <span class="gd">Ghanaian Businesses</span>
+      </h1>
+      <p class="hero-sub">We help Ghanaian businesses grow online with custom websites, smart automation, and powerful digital marketing — tailored for the local market.</p>
+      <ul class="hero-bullets">
+        <li><i class="fas fa-chevron-right"></i> 15+ Websites Delivered</li>
+        <li><i class="fas fa-chevron-right"></i> Accra-Based Team</li>
+        <li><i class="fas fa-chevron-right"></i> Serving Ghana &amp; West Africa</li>
+        <li><i class="fas fa-chevron-right"></i> Starting from GHS 1,500</li>
+      </ul>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn-p"><i class="fas fa-calendar-check"></i> Get Free Consultation</a>
+        <a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="btn-gh"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+      <div class="trust-strip">
+        <div class="trust-badge"><div><div class="stars">★★★★★</div><div class="score">5.0 Rating</div></div><div class="source">Google Reviews</div></div>
+        <div class="trust-badge"><div><div class="stars">★★★★★</div><div class="score">100% Satisfaction</div></div><div class="source">Client Feedback</div></div>
+        <div class="trust-badge"><div><div class="stars" style="color:#25D366">✓✓✓</div><div class="score">Fast Delivery</div></div><div class="source">7–14 Days</div></div>
+      </div>
+    </div>
+    <div class="hero-stats-float">
+      <div class="hstat-f"><div class="hstat-ic hsi-gd"><i class="fas fa-briefcase"></i></div><div><div class="hstat-lbl">Projects Completed</div><div class="hstat-val">15+ Delivered</div></div></div>
+      <div class="hstat-f"><div class="hstat-ic hsi-em"><i class="fas fa-star"></i></div><div><div class="hstat-lbl">Client Rating</div><div class="hstat-val">5.0 ⭐ Reviews</div></div></div>
+      <div class="hstat-f"><div class="hstat-ic hsi-or"><i class="fas fa-users"></i></div><div><div class="hstat-lbl">Dev Community</div><div class="hstat-val">17 Members</div></div></div>
+    </div>
+  </div>
 </section>
 
-<div class="mqs" aria-hidden="true">
-<div class="mqt">
-<span class="mqi"><span class="mqd"></span>Web Development</span><span class="mqi"><span class="mqd"></span>Business Automation</span><span class="mqi"><span class="mqd"></span>Digital Marketing</span><span class="mqi"><span class="mqd"></span>E&#8209;Commerce</span><span class="mqi"><span class="mqd"></span>SEO Optimization</span><span class="mqi"><span class="mqd"></span>UI / UX Design</span><span class="mqi"><span class="mqd"></span>Community Building</span><span class="mqi"><span class="mqd"></span>Mobile Apps</span><span class="mqi"><span class="mqd"></span>Branding &amp; Identity</span><span class="mqi"><span class="mqd"></span>Cloud Solutions</span>
-<span class="mqi"><span class="mqd"></span>Web Development</span><span class="mqi"><span class="mqd"></span>Business Automation</span><span class="mqi"><span class="mqd"></span>Digital Marketing</span><span class="mqi"><span class="mqd"></span>E&#8209;Commerce</span><span class="mqi"><span class="mqd"></span>SEO Optimization</span><span class="mqi"><span class="mqd"></span>UI / UX Design</span><span class="mqi"><span class="mqd"></span>Community Building</span><span class="mqi"><span class="mqd"></span>Mobile Apps</span><span class="mqi"><span class="mqd"></span>Branding &amp; Identity</span><span class="mqi"><span class="mqd"></span>Cloud Solutions</span>
-</div>
+<!-- ══════ MARQUEE ══════ -->
+<div class="marquee-sec" aria-hidden="true">
+  <div class="mqt">
+    <span class="mqi"><span class="mqd"></span>Web Development</span>
+    <span class="mqi"><span class="mqd"></span>Business Automation</span>
+    <span class="mqi"><span class="mqd"></span>Digital Marketing</span>
+    <span class="mqi"><span class="mqd"></span>E-Commerce</span>
+    <span class="mqi"><span class="mqd"></span>SEO Optimization</span>
+    <span class="mqi"><span class="mqd"></span>UI / UX Design</span>
+    <span class="mqi"><span class="mqd"></span>Branding &amp; Identity</span>
+    <span class="mqi"><span class="mqd"></span>MoMo Integration</span>
+    <span class="mqi"><span class="mqd"></span>Cloud Solutions</span>
+    <span class="mqi"><span class="mqd"></span>Web Development</span>
+    <span class="mqi"><span class="mqd"></span>Business Automation</span>
+    <span class="mqi"><span class="mqd"></span>Digital Marketing</span>
+    <span class="mqi"><span class="mqd"></span>E-Commerce</span>
+    <span class="mqi"><span class="mqd"></span>SEO Optimization</span>
+    <span class="mqi"><span class="mqd"></span>UI / UX Design</span>
+    <span class="mqi"><span class="mqd"></span>Branding &amp; Identity</span>
+    <span class="mqi"><span class="mqd"></span>MoMo Integration</span>
+    <span class="mqi"><span class="mqd"></span>Cloud Solutions</span>
+  </div>
 </div>
 
-<section class="vms">
-<div class="sw">
-<div class="vmg reveal">
-<div class="vmw">
-<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Digital transformation vision SamzyDigital Accra Ghana" loading="lazy">
-<div class="vmb"><i class="fas fa-eye" style="color:var(--blue)"></i><div><div class="vbt">Our Vision</div><div class="vbv">Empowering Digital Ghana</div></div></div>
-</div>
-<div class="vmc">
-<span class="eyebrow ey-b">Our Vision</span>
-<h2 class="stitle">Building <span class="ab">Digital Ghana,</span> One Business at a Time</h2>
-<p>Our vision is to empower and build small businesses within <strong>Accra</strong> by providing high-quality digital tools and automation that bridge the gap between local trade and global standards.</p>
-<p>We see a future where every Ghanaian entrepreneur — from the bustling markets of Makola to the startups of Silicon Accra — has the digital tools to compete on a world stage.</p>
-<div class="vmst">
-<div class="vmsi"><div class="n">15+</div><div class="l">Projects Done</div></div>
-<div class="vmsi"><div class="n">17</div><div class="l">Community Members</div></div>
-<div class="vmsi"><div class="n">5&#9733;</div><div class="l">Client Rating</div></div>
-</div>
-</div>
-</div>
-<div class="vmg reveal" style="margin-top:5rem">
-<div class="vmc">
-<span class="eyebrow ey-o">Our Mission</span>
-<h2 class="stitle">No Ghanaian Business <span class="ao">Left Behind</span></h2>
-<p>To equip Ghanaian entrepreneurs with affordable, innovative web solutions and a thriving tech community — ensuring no local business is left behind in the digital age.</p>
-<p>We combine technical expertise with genuine care for our clients&#39; success, providing <strong>end-to-end support</strong> from concept to launch and beyond.</p>
-<div style="margin-top:2rem"><a href="about.html" class="btn bub"><i class="fas fa-arrow-right"></i> Our Full Story</a></div>
-</div>
-<div class="vmw">
-<img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80" alt="Mission driven digital agency Ghana SamzyDigital" loading="lazy">
-<div class="vmb"><i class="fas fa-bullseye" style="color:var(--orange)"></i><div><div class="vbt">Mission-Driven</div><div class="vbv">Built for Ghana &#127468;&#127469;</div></div></div>
-</div>
-</div>
-</div>
+<!-- VISION -->
+<section id="vision">
+  <div class="mx">
+    <div class="vm-grid">
+      <div class="vm-img sl-left"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Digital transformation SamzyDigital Ghana" loading="lazy"><div class="vm-badge"><i class="fas fa-eye" style="color:var(--gd)"></i><div><div class="vmb-t">Our Vision</div><div class="vmb-v">Empowering Digital Ghana</div></div></div></div>
+      <div class="sl-right"><span class="eyebrow ey-gd">Our Vision</span><h2 class="h-ttl">Building <em>Digital Ghana,</em><br>One Business at a Time</h2><div class="vm-text"><p>Our vision is to empower small businesses within <strong>Accra</strong> by providing high-quality digital tools and automation that bridge the gap between local trade and global standards.</p><p>We see a future where every Ghanaian entrepreneur — from the markets of Makola to the startups of Silicon Accra — has the digital tools to compete on a world stage.</p></div><div class="vm-mini"><div class="vmst"><div class="n">15+</div><div class="l">Projects Done</div></div><div class="vmst"><div class="n">17</div><div class="l">Community Members</div></div><div class="vmst"><div class="n">5★</div><div class="l">Client Rating</div></div></div></div>
+    </div>
+    <hr class="vm-divider">
+    <div class="vm-grid rev">
+      <div class="sl-left"><span class="eyebrow ey-or">Our Mission</span><h2 class="h-ttl">No Ghanaian Business <em>Left Behind</em></h2><div class="vm-text"><p>To equip Ghanaian entrepreneurs with affordable, innovative web solutions and a thriving tech community — ensuring no local business is left behind in the digital age.</p><p>We combine technical expertise with genuine care for our clients' success, providing <strong>end-to-end support</strong> from concept to launch and beyond.</p></div><div style="margin-top:28px"><a href="about.html" class="btn-p"><i class="fas fa-arrow-right"></i> Our Full Story</a></div></div>
+      <div class="vm-img sl-right"><img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80" alt="SamzyDigital mission Ghana" loading="lazy"><div class="vm-badge"><i class="fas fa-bullseye" style="color:var(--or)"></i><div><div class="vmb-t">Mission-Driven</div><div class="vmb-v">Built for Ghana 🇬🇭</div></div></div></div>
+    </div>
+  </div>
 </section>
 
-<section class="svs">
-<div class="sw">
-<div class="sh c reveal">
-<span class="eyebrow ey-w">What We Do</span>
-<h2 class="stitle wh">Services Built for <span class="ao">Your Growth</span></h2>
-<p class="ssub" style="color:rgba(255,255,255,.6)">From stunning websites to full business automation — everything your business needs to thrive online.</p>
-</div>
-<div class="svg">
-<div class="svc lg reveal"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1400&q=80" alt="Web development Ghana SamzyDigital" loading="lazy"><div class="svo"><div class="svic"><i class="fas fa-laptop-code"></i></div><h3>Web Development</h3><p>Responsive, high-performance websites that convert visitors into paying customers.</p><a href="business.html#services" class="svl">Explore <i class="fas fa-arrow-right"></i></a></div></div>
-<div class="svc reveal"><img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80" alt="Business automation Ghana" loading="lazy"><div class="svo"><div class="svic"><i class="fas fa-robot"></i></div><h3>Business Automation</h3><p>Smart workflows and custom tools that save you hours every week.</p><a href="business.html#services" class="svl">Explore <i class="fas fa-arrow-right"></i></a></div></div>
-<div class="svc reveal"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Digital marketing Ghana" loading="lazy"><div class="svo"><div class="svic"><i class="fas fa-chart-line"></i></div><h3>Digital Marketing</h3><p>SEO, social campaigns, and strategies that drive real, measurable growth.</p><a href="business.html#services" class="svl">Explore <i class="fas fa-arrow-right"></i></a></div></div>
-<div class="svc reveal"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80" alt="E-commerce Ghana" loading="lazy"><div class="svo"><div class="svic"><i class="fas fa-shopping-cart"></i></div><h3>E&#8209;Commerce Stores</h3><p>Sell online with MTN MoMo, Vodafone Cash and card payment integration.</p><a href="business.html#services" class="svl">Explore <i class="fas fa-arrow-right"></i></a></div></div>
-<div class="svc reveal"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="Tech community Ghana" loading="lazy"><div class="svo"><div class="svic"><i class="fas fa-users"></i></div><h3>Tech Community</h3><p>Join 17 Ghanaian developers — mentorship, workshops, and a job board.</p><a href="community.html" class="svl">Join <i class="fas fa-arrow-right"></i></a></div></div>
-<div class="svc reveal"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" alt="Branding design Ghana" loading="lazy"><div class="svo"><div class="svic"><i class="fas fa-paint-brush"></i></div><h3>Branding &amp; Design</h3><p>Visual identity and brand strategy that makes your business unforgettable.</p><a href="business.html#services" class="svl">Explore <i class="fas fa-arrow-right"></i></a></div></div>
-</div>
-</div>
+<!-- SERVICES -->
+<section id="services">
+  <div class="mx">
+    <div class="hd c"><span class="eyebrow ey-gd fu">What We Do</span><h2 class="h-ttl fu d1">Services Built for <em>Your Growth</em></h2><p class="sub fu d2">From stunning websites to full business automation — everything your Ghanaian business needs to thrive online.</p></div>
+    <div class="svc-grid">
+      <div class="svc-card big featured fu"><img class="svc-big-img" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&q=80&auto=format&fit=crop" alt="Web development Ghana" loading="lazy"><div><div class="svc-ico-wrap ico-wh"><i class="fas fa-laptop-code"></i></div><div class="svc-ttl">Web Design &amp; Development</div><p class="svc-ds">After 4+ years building websites, we are experts in building custom, responsive, high-performance websites for Ghanaian SMEs that convert visitors into paying customers.</p><a href="business.html#web" class="svc-link">Explore Service <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="svc-card fu d1"><div class="svc-ico-wrap ico-em"><i class="fas fa-shopping-cart"></i></div><div class="svc-ttl">E-Commerce Stores</div><p class="svc-ds">Sell online with MTN MoMo, Vodafone Cash and card payment integration. Full inventory management and order tracking included.</p><a href="business.html#ecommerce" class="svc-link">Explore Service <i class="fas fa-arrow-right"></i></a></div>
+      <div class="svc-card fu d2"><div class="svc-ico-wrap ico-or"><i class="fas fa-chart-line"></i></div><div class="svc-ttl">Digital Marketing &amp; SEO</div><p class="svc-ds">Let's help you dominate on Google, ChatGPT, Gemini and other AI platforms. We are building the best SEO presence in Ghana.</p><a href="business.html#seo" class="svc-link">Explore Service <i class="fas fa-arrow-right"></i></a></div>
+      <div class="svc-card fu d1"><div class="svc-ico-wrap ico-bl"><i class="fas fa-robot"></i></div><div class="svc-ttl">Business Automation</div><p class="svc-ds">Smart workflows and custom tools that save you hours every week. Automate your stock, bookings, invoices and customer management.</p><a href="business.html#automation" class="svc-link">Explore Service <i class="fas fa-arrow-right"></i></a></div>
+      <div class="svc-card fu d2"><div class="svc-ico-wrap ico-pu"><i class="fas fa-paint-brush"></i></div><div class="svc-ttl">Branding &amp; Design</div><p class="svc-ds">Visual identity and brand strategy that makes your business unforgettable — logos, colours, typography and brand guidelines.</p><a href="business.html#branding" class="svc-link">Explore Service <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+  </div>
 </section>
 
-<section class="wys">
-<div class="sw">
-<div class="wyg">
-<div class="wist reveal">
-<img class="wim" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="SamzyDigital team Accra Ghana" loading="lazy">
-<img class="wia" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=500&q=80" alt="Happy business clients Ghana" loading="lazy">
-<div class="wib"><div class="n">4+</div><div class="l">Years of Excellence</div></div>
-</div>
-<div class="reveal">
-<span class="eyebrow ey-b">Why Choose Us</span>
-<h2 class="stitle">Why Ghana&#39;s Businesses <span class="ab">Trust</span> SamzyDigital</h2>
-<p class="ssub" style="max-width:100%">We&#39;re not just developers — we&#39;re your growth partners, deeply rooted in the Ghanaian market.</p>
-<ul class="wyl">
-<li class="wyi"><i class="fas fa-check-circle"></i><span>Tailored solutions built around your business — never generic templates</span></li>
-<li class="wyi"><i class="fas fa-check-circle"></i><span>Local Accra-based team that deeply understands the Ghanaian market</span></li>
-<li class="wyi"><i class="fas fa-check-circle"></i><span>15+ successfully delivered projects and still growing</span></li>
-<li class="wyi"><i class="fas fa-check-circle"></i><span>End-to-end training, aftercare and ongoing support included</span></li>
-<li class="wyi"><i class="fas fa-check-circle"></i><span>Transparent pricing — no hidden fees, ever</span></li>
-<li class="wyi"><i class="fas fa-check-circle"></i><span>Fast delivery — most websites go live in 4–6 weeks</span></li>
-</ul>
-<a href="about.html" class="btn bub">Meet the Team <i class="fas fa-arrow-right"></i></a>
-</div>
-</div>
-</div>
+<!-- WHY US -->
+<section id="why">
+  <div class="mx">
+    <div class="why-grid">
+      <div class="why-imgs sl-left"><div class="why-main"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="SamzyDigital team Accra Ghana" loading="lazy"></div><div class="why-acc"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=500&q=80" alt="Happy business clients Ghana" loading="lazy"></div><div class="why-badge"><div class="n">4+</div><div class="l">Yrs Exp</div></div></div>
+      <div class="sl-right"><span class="eyebrow ey-gd">Why Choose Us</span><h2 class="h-ttl">Why Ghana's Businesses <em>Trust</em> SamzyDigital</h2><p class="sub" style="max-width:100%;margin-bottom:22px">We're not just developers — we're your growth partners, deeply rooted in the Ghanaian market.</p><ul class="why-list"><li class="why-item"><i class="fas fa-check-circle"></i><span>Tailored solutions built around your business — never generic templates</span></li><li class="why-item"><i class="fas fa-check-circle"></i><span>Local Accra-based team that deeply understands the Ghanaian market</span></li><li class="why-item"><i class="fas fa-check-circle"></i><span>15+ successfully delivered projects and still growing</span></li><li class="why-item"><i class="fas fa-check-circle"></i><span>End-to-end training, aftercare and ongoing support included</span></li><li class="why-item"><i class="fas fa-check-circle"></i><span>Transparent pricing — starting from GHS 1,500, no hidden fees</span></li><li class="why-item"><i class="fas fa-check-circle"></i><span>Fast delivery — most websites go live in 7–14 days</span></li></ul><a href="about.html" class="btn-p">Meet the Team <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+  </div>
 </section>
 
-<section class="sts">
-<div class="sw tight">
-<div class="stg">
-<div class="stc reveal"><i class="fas fa-briefcase"></i><div class="stnum"><span class="sc" data-t="15">0</span><span class="sf">+</span></div><div class="stlb">Projects Completed</div></div>
-<div class="stc reveal"><i class="fas fa-users"></i><div class="stnum"><span class="sc" data-t="17">0</span></div><div class="stlb">Community Members</div></div>
-<div class="stc reveal"><i class="fas fa-smile"></i><div class="stnum"><span class="sc" data-t="100">0</span><span class="sf">%</span></div><div class="stlb">Client Satisfaction</div></div>
-<div class="stc reveal"><i class="fas fa-headset"></i><div class="stnum">24<span class="sf">/7</span></div><div class="stlb">Support Available</div></div>
-</div>
-</div>
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-card fu"><i class="fas fa-briefcase"></i><div class="stat-num"><span class="sc" data-t="15">15</span><span class="sf">+</span></div><div class="stat-lbl">Projects Completed</div></div>
+    <div class="stat-card fu d1"><i class="fas fa-users"></i><div class="stat-num"><span class="sc" data-t="17">17</span></div><div class="stat-lbl">Community Members</div></div>
+    <div class="stat-card fu d2"><i class="fas fa-smile"></i><div class="stat-num"><span class="sc" data-t="100">100</span><span class="sf">%</span></div><div class="stat-lbl">Client Satisfaction</div></div>
+    <div class="stat-card fu d3"><i class="fas fa-headset"></i><div class="stat-num">24<span class="sf">/7</span></div><div class="stat-lbl">Support Available</div></div>
+  </div>
 </section>
 
-<section class="fts">
-<div class="sw">
-<div class="sh c reveal">
-<span class="eyebrow ey-o">Success Story</span>
-<h2 class="stitle">Featured: <span class="ao">Ram&#39;s Beauty Salon</span></h2>
-<p class="ssub">How we transformed a walk-in salon into a thriving digital brand.</p>
-</div>
-<div class="ftc reveal">
-<div class="ftiw"><img class="fti" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80" alt="Ram's Beauty Salon website project SamzyDigital" loading="lazy"></div>
-<div class="ftct">
-<div class="fttag"><i class="fas fa-store"></i> Beauty &amp; Wellness · Accra</div>
-<h3>Ram&#39;s Beauty Salon</h3>
-<p>We built a complete digital presence — booking website, online scheduling, local SEO, and social media integration — transforming their walk-in model into a fully automated digital operation.</p>
-<div class="ftrs">
-<div class="ftr"><div class="n">+200%</div><div class="l">Online Bookings</div></div>
-<div class="ftr"><div class="n">Fast</div><div class="l">ROI Achieved</div></div>
-<div class="ftr"><div class="n">Live</div><div class="l">Right Now</div></div>
-</div>
-<div class="ftbs">
-<a href="https://samzy-digital-gh.github.io/rams_beauty_salon/" target="_blank" class="btn bub"><i class="fas fa-external-link-alt"></i> Visit Site</a>
-<a href="business.html#case-studies" class="btn bo"><i class="fas fa-file-alt"></i> Case Study</a>
-</div>
-</div>
-</div>
-</div>
+<!-- FEATURED WORK -->
+<section id="work">
+  <div class="mx">
+    <div class="hd c"><span class="eyebrow ey-or fu">Success Story</span><h2 class="h-ttl fu d1">Featured: <em>Ram's Beauty Salon</em></h2><p class="sub fu d2">How we transformed a walk-in salon into a thriving digital brand in Accra.</p></div>
+    <div class="work-card fu">
+      <div class="work-img"><img src="assets/screen-shot.jpg" alt="Ram's Beauty Salon website project SamzyDigital" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80'"></div>
+      <div class="work-body"><div class="work-tag"><i class="fas fa-store"></i> Beauty &amp; Wellness · Accra</div><h3>Ram's Beauty Salon</h3><p>We built a complete digital presence — booking website, online scheduling, local SEO, and social media integration — transforming their walk-in model into a fully automated digital operation.</p><div class="work-results"><div class="wr"><div class="n">+200%</div><div class="l">Online Bookings</div></div><div class="wr"><div class="n">Fast</div><div class="l">ROI Achieved</div></div><div class="wr"><div class="n">Live</div><div class="l">Right Now</div></div></div><div class="work-btns"><a href="https://samzy-digital-gh.github.io/rams_beauty_salon/" target="_blank" rel="noopener" class="btn-p"><i class="fas fa-external-link-alt"></i> Visit Site</a><a href="rams-beauty-salon-case-study.html" class="btn-o"><i class="fas fa-file-alt"></i> Case Study</a></div></div>
+    </div>
+  </div>
 </section>
 
-<section class="tss">
-<div class="sw">
-<div class="sh c reveal">
-<span class="eyebrow ey-b">Client Reviews</span>
-<h2 class="stitle">What Our Clients <span class="ab">Say</span></h2>
-<p class="ssub">Real feedback from real Ghanaian businesses.</p>
-</div>
-<div class="tsg">
-<div class="tsc reveal"><i class="fas fa-quote-right tsqi"></i><div class="tsst">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tstx">&#34;SamzyDigital transformed our online presence. We went from zero bookings to a steady stream of clients every week. Best investment we&#39;ve made!&#34;</p><div class="tsau"><div class="tsav" style="background:linear-gradient(135deg,#2872A1,#4d9fff)">R</div><div><div class="tsnm">Ruby Asante</div><div class="tstl">Owner, Ram&#39;s Beauty Salon · Accra</div></div></div></div>
-<div class="tsc reveal"><i class="fas fa-quote-right tsqi"></i><div class="tsst">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tstx">&#34;The automation tools saved us hours every week. Our stock tracking now runs itself. Samuel truly understands what Ghanaian businesses need.&#34;</p><div class="tsau"><div class="tsav" style="background:linear-gradient(135deg,#FD802E,#e06520)">K</div><div><div class="tsnm">Kofi Mensah</div><div class="tstl">Business Owner, Accra</div></div></div></div>
-<div class="tsc reveal"><i class="fas fa-quote-right tsqi"></i><div class="tsst">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tstx">&#34;Professional and fast. They built our site with local payment integration and customers started coming in almost immediately after launch.&#34;</p><div class="tsau"><div class="tsav" style="background:linear-gradient(135deg,#233D4C,#2872A1)">A</div><div><div class="tsnm">Abena Osei</div><div class="tstl">Entrepreneur, Accra</div></div></div></div>
-</div>
-</div>
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="mx">
+    <div class="hd c"><span class="eyebrow ey-gd fu">Client Reviews</span><h2 class="h-ttl fu d1">What Our Clients <em>Say</em></h2><p class="sub fu d2">Real feedback from real Ghanaian businesses who trusted SamzyDigital.</p></div>
+    <div class="t-grid">
+      <div class="t-card si"><div class="t-qi"><i class="fas fa-quote-right"></i></div><div class="t-stars">★★★★★</div><p class="t-text">"SamzyDigital transformed our online presence. We went from zero bookings to a steady stream of clients every week. Best investment we've made!"</p><div class="t-auth"><div class="t-av" style="background:linear-gradient(135deg,var(--gd),var(--gd2))">R</div><div><div class="t-nm">Ruby Asante</div><div class="t-rl">Owner, Ram's Beauty Salon · Accra</div></div></div></div>
+      <div class="t-card si d1"><div class="t-qi"><i class="fas fa-quote-right"></i></div><div class="t-stars">★★★★★</div><p class="t-text">"The automation tools saved us hours every week. Our stock tracking now runs itself. Samuel truly understands what Ghanaian businesses need."</p><div class="t-auth"><div class="t-av" style="background:linear-gradient(135deg,var(--or),#FFA166)">K</div><div><div class="t-nm">Kofi Mensah</div><div class="t-rl">Business Owner · Accra</div></div></div></div>
+      <div class="t-card si d2"><div class="t-qi"><i class="fas fa-quote-right"></i></div><div class="t-stars">★★★★★</div><p class="t-text">"Professional and fast. They built our site with local payment integration and customers started coming in almost immediately after launch."</p><div class="t-auth"><div class="t-av" style="background:linear-gradient(135deg,var(--em),#34D399)">A</div><div><div class="t-nm">Abena Osei</div><div class="t-rl">Entrepreneur · Accra</div></div></div></div>
+    </div>
+  </div>
 </section>
 
-<section class="fns">
-<div class="sw">
-<div class="fng">
-<div class="fniw reveal">
-<img src="samzy.jpg" alt="Samuel AHIABA founder SamzyDigital web developer Accra Ghana" loading="lazy">
-<div class="fnb"><div class="fbn">Samuel AHIABA</div><div class="fbt">Founder &amp; Lead Developer · SamzyDigital</div></div>
-</div>
-<div class="reveal">
-<span class="eyebrow ey-o">Meet the Founder</span>
-<h2 class="stitle">Samuel <span class="ab">AHIABA</span></h2>
-<div class="fnst">Founder &amp; Lead Developer · Accra, Ghana &#127468;&#127469;</div>
-<p>Samuel AHIABA founded SamzyDigital with a clear vision: bridge the digital gap for Ghanaian businesses. With years of experience in full-stack development and a passion for tech education, he has personally led every project and built a growing community of developers in Accra.</p>
-<p>Born and raised in Ghana, Samuel understands the unique challenges that local entrepreneurs face going digital. Beyond building websites, he also runs the <strong>SamzyDigital Community</strong> — a free network where Ghanaian developers learn, collaborate, and launch careers together.</p>
-<p>Reach him directly at <a href="/cdn-cgi/l/email-protection#f685979b83939a979e9f979497c5b6919b979f9ad895999b" style="color:var(--blue);font-weight:600"><span class="__cf_email__" data-cfemail="3340525e46565f525b5a5251520073545e525a5f1d505c5e">[email&#160;protected]</span></a>.</p>
-<div class="fnsk"><span class="fsk">JavaScript</span><span class="fsk">React</span><span class="fsk">Node.js</span><span class="fsk">Python</span><span class="fsk">UI/UX</span><span class="fsk">Business Automation</span><span class="fsk">Digital Marketing</span><span class="fsk">Firebase</span></div>
-<blockquote class="fnq">&#34;Building digital solutions that empower local businesses — because every Ghanaian entrepreneur deserves a world-class online presence.&#34;</blockquote>
-<div class="fnso">
-<a href="#" class="fsb"><i class="fab fa-linkedin-in"></i></a>
-<a href="#" class="fsb"><i class="fab fa-twitter"></i></a>
-<a href="#" class="fsb"><i class="fab fa-github"></i></a>
-<a href="/cdn-cgi/l/email-protection#2b584a465e4e474a43424a494a186b4c464a424705484446" class="fsb"><i class="fas fa-envelope"></i></a>
-</div>
-</div>
-</div>
-</div>
+<!-- INDUSTRIES -->
+<section id="industries" style="background:var(--off)">
+  <div class="mx">
+    <div class="hd c"><span class="eyebrow ey-em fu">Industries We Serve</span><h2 class="h-ttl fu d1">Built for <em>Every Ghanaian</em> Business</h2><p class="sub fu d2">We have deep experience across 6 key industries in Ghana.</p></div>
+    <div class="ind-grid">
+      <a href="industries.html#beauty" class="ind-card fu"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Beauty salon website Ghana" loading="lazy"><div class="ind-overlay"><div class="ind-ic"><i class="fas fa-spa"></i></div><div class="ind-ttl">Beauty &amp; Wellness</div><div class="ind-link"><i class="fas fa-arrow-right"></i> View Solutions</div></div></a>
+      <a href="industries.html#restaurant" class="ind-card fu d1"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Restaurant website Ghana" loading="lazy"><div class="ind-overlay"><div class="ind-ic"><i class="fas fa-utensils"></i></div><div class="ind-ttl">Food &amp; Restaurant</div><div class="ind-link"><i class="fas fa-arrow-right"></i> View Solutions</div></div></a>
+      <a href="industries.html#school" class="ind-card fu d2"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80" alt="School website Ghana" loading="lazy"><div class="ind-overlay"><div class="ind-ic"><i class="fas fa-graduation-cap"></i></div><div class="ind-ttl">Schools &amp; Education</div><div class="ind-link"><i class="fas fa-arrow-right"></i> View Solutions</div></div></a>
+      <a href="industries.html#sme" class="ind-card fu d3"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80" alt="E-commerce retail Ghana" loading="lazy"><div class="ind-overlay"><div class="ind-ic"><i class="fas fa-store"></i></div><div class="ind-ttl">SMEs &amp; Retail</div><div class="ind-link"><i class="fas fa-arrow-right"></i> View Solutions</div></div></a>
+      <a href="industries.html#realestate" class="ind-card fu d1"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80" alt="Real estate website Ghana" loading="lazy"><div class="ind-overlay"><div class="ind-ic"><i class="fas fa-home"></i></div><div class="ind-ttl">Real Estate</div><div class="ind-link"><i class="fas fa-arrow-right"></i> View Solutions</div></div></a>
+      <a href="industries.html#church" class="ind-card fu d2"><img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?w=600&q=80" alt="Church NGO website Ghana" loading="lazy"><div class="ind-overlay"><div class="ind-ic"><i class="fas fa-church"></i></div><div class="ind-ttl">Churches &amp; NGOs</div><div class="ind-link"><i class="fas fa-arrow-right"></i> View Solutions</div></div></a>
+      <a href="industries.html" class="ind-card fu d3"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Tech startup website Ghana" loading="lazy"><div class="ind-overlay"><div class="ind-ic"><i class="fas fa-laptop-code"></i></div><div class="ind-ttl">Tech Startups</div><div class="ind-link"><i class="fas fa-arrow-right"></i> View Solutions</div></div></a>
+      <a href="industries.html" class="ind-card fu d4"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80" alt="Healthcare website Ghana" loading="lazy"><div class="ind-overlay"><div class="ind-ic"><i class="fas fa-heartbeat"></i></div><div class="ind-ttl">Healthcare &amp; Clinics</div><div class="ind-link"><i class="fas fa-arrow-right"></i> View Solutions</div></div></a>
+    </div>
+  </div>
 </section>
 
-<section class="prs">
-<div class="sw">
-<div class="sh c reveal">
-<span class="eyebrow ey-b">How We Work</span>
-<h2 class="stitle">Our <span class="ab">4-Step Process</span></h2>
-<p class="ssub">From your first call to launch day — here&#39;s exactly how we deliver results.</p>
-</div>
-<div class="prg">
-<div class="prp reveal"><div class="prn">1</div><i class="pri fas fa-comments"></i><h3>Listen &amp; Discover</h3><p>We understand your business goals, audience, and vision first.</p></div>
-<div class="prp reveal"><div class="prn">2</div><i class="pri fas fa-pencil-ruler"></i><h3>Design &amp; Plan</h3><p>A tailored strategy and roadmap that fits your brand and budget.</p></div>
-<div class="prp reveal"><div class="prn">3</div><i class="pri fas fa-code"></i><h3>Build &amp; Refine</h3><p>We develop, test, and perfect every detail. Weekly updates throughout.</p></div>
-<div class="prp reveal"><div class="prn">4</div><i class="pri fas fa-rocket"></i><h3>Launch &amp; Grow</h3><p>We deploy, train your team, and keep supporting with updates and SEO.</p></div>
-</div>
-</div>
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="mx">
+    <div class="fn-grid">
+      <div class="fn-img sl-left"><img src="samzy.jpg" alt="Samuel AHIABA founder SamzyDigital web developer Accra Ghana" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=85&auto=format&fit=crop&facepad=3'"><div class="fn-name-badge"><div class="fn-name">Samuel AHIABA</div><div class="fn-role">Founder &amp; Lead Developer · SamzyDigital</div></div></div>
+      <div class="sl-right"><span class="eyebrow ey-or">Meet the Founder</span><h2 class="h-ttl">Samuel <em>AHIABA</em></h2><div class="fn-sub">Founder &amp; Lead Developer · Accra, Ghana 🇬🇭</div><div class="fn-text"><p>Samuel AHIABA founded SamzyDigital with a clear vision: bridge the digital gap for Ghanaian businesses. With years of experience in full-stack development and a passion for tech education, he has personally led every project.</p><p>Born and raised in Ghana, Samuel understands the unique challenges that local entrepreneurs face going digital. Beyond building websites, he also runs the <strong>SamzyDigital Community</strong> — a free network where Ghanaian developers learn, collaborate, and launch careers together.</p></div><div class="fn-skills"><span class="fsk">JavaScript</span><span class="fsk">React</span><span class="fsk">Node.js</span><span class="fsk">Python</span><span class="fsk">UI/UX</span><span class="fsk">Supabase</span><span class="fsk">Business Automation</span><span class="fsk">Digital Marketing</span></div><blockquote class="fn-q">"Building digital solutions that empower local businesses — because every Ghanaian entrepreneur deserves a world-class online presence."</blockquote><div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px"><a href="samuel-ahiaba.html" class="btn-p" style="font-size:.85rem;padding:11px 22px"><i class="fas fa-user"></i> Full Profile</a></div><div class="fn-soc"><a href="#" class="fsoc" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" class="fsoc" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" class="fsoc" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="mailto:samuelahiaba3@gmail.com" class="fsoc" aria-label="Email"><i class="fas fa-envelope"></i></a></div></div>
+    </div>
+  </div>
 </section>
 
-<section class="tcs">
-<div class="sw">
-<div class="sh c reveal"><span class="eyebrow ey-w">Our Stack</span><h2 class="stitle wh">Technologies We <span class="ao">Master</span></h2></div>
-<div class="tcg">
-<div class="tci reveal"><i class="fab fa-html5"></i><span>HTML5</span></div>
-<div class="tci reveal"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
-<div class="tci reveal"><i class="fab fa-js"></i><span>JavaScript</span></div>
-<div class="tci reveal"><i class="fab fa-react"></i><span>React</span></div>
-<div class="tci reveal"><i class="fab fa-node"></i><span>Node.js</span></div>
-<div class="tci reveal"><i class="fab fa-python"></i><span>Python</span></div>
-<div class="tci reveal"><i class="fab fa-php"></i><span>PHP</span></div>
-<div class="tci reveal"><i class="fas fa-database"></i><span>MySQL</span></div>
-<div class="tci reveal"><i class="fab fa-git-alt"></i><span>Git</span></div>
-<div class="tci reveal"><i class="fab fa-figma"></i><span>Figma</span></div>
-<div class="tci reveal"><i class="fab fa-wordpress"></i><span>WordPress</span></div>
-<div class="tci reveal"><i class="fab fa-aws"></i><span>AWS</span></div>
-</div>
-</div>
+<!-- PROCESS -->
+<section id="process" style="background:var(--off)">
+  <div class="mx">
+    <div class="hd c"><span class="eyebrow ey-gd fu">How We Work</span><h2 class="h-ttl fu d1">Our <em>4-Step</em> Process</h2><p class="sub fu d2">From your first call to launch day — here's exactly how we deliver results every time.</p></div>
+    <div class="proc-grid">
+      <div class="proc-step fu"><div class="proc-n">1</div><span class="proc-ico"><i class="fas fa-comments" style="color:var(--gd)"></i></span><h3>Listen &amp; Discover</h3><p>We understand your business goals, audience, and vision first — before a single line of code.</p></div>
+      <div class="proc-step fu d1"><div class="proc-n">2</div><span class="proc-ico"><i class="fas fa-pencil-ruler" style="color:var(--em)"></i></span><h3>Design &amp; Plan</h3><p>A tailored strategy and roadmap that fits your brand and budget with a clear timeline.</p></div>
+      <div class="proc-step fu d2"><div class="proc-n">3</div><span class="proc-ico"><i class="fas fa-code" style="color:var(--or)"></i></span><h3>Build &amp; Refine</h3><p>We develop, test, and perfect every detail. Weekly updates throughout the build process.</p></div>
+      <div class="proc-step fu d3"><div class="proc-n">4</div><span class="proc-ico"><i class="fas fa-rocket" style="color:var(--gd)"></i></span><h3>Launch &amp; Grow</h3><p>We deploy, train your team, and keep supporting with updates and SEO after launch.</p></div>
+    </div>
+  </div>
 </section>
 
-<section class="cms">
-<div class="sw">
-<div class="cmg">
-<div class="reveal">
-<span class="eyebrow ey-b">Tech Community</span>
-<h2 class="stitle">Ghana&#39;s Growing <span class="ab">Developer Community</span></h2>
-<p class="ssub" style="max-width:100%;margin-bottom:0">Connect with developers across Ghana. Get mentored, collaborate on projects, attend workshops, and find your next opportunity.</p>
-<div class="cmst">
-<div class="cmsi"><div class="n">17</div><div class="l">Active Members</div></div>
-<div class="cmsi"><div class="n">10+</div><div class="l">Workshops Held</div></div>
-<div class="cmsi"><div class="n">5+</div><div class="l">Expert Mentors</div></div>
-</div>
-<div class="cmf">
-<div class="cmfi"><i class="fas fa-chalkboard-teacher"></i> 1:1 Mentorship from industry professionals</div>
-<div class="cmfi"><i class="fas fa-calendar-alt"></i> Regular workshops — React, Flutter, Python, UI/UX</div>
-<div class="cmfi"><i class="fas fa-briefcase"></i> Job board — internships, roles and freelance gigs</div>
-<div class="cmfi"><i class="fas fa-code-branch"></i> Collaborate on open-source and portfolio projects</div>
-<div class="cmfi"><i class="fas fa-rocket"></i> Startup launchpad — from idea to real users</div>
-</div>
-<a href="community.html" class="btn bb"><i class="fas fa-users"></i> Join the Community</a>
-</div>
-<div class="cmiw reveal"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Ghana tech community developers SamzyDigital" loading="lazy"></div>
-</div>
-</div>
+<!-- TECH STACK -->
+<section id="tech">
+  <div class="mx">
+    <div class="hd c"><span class="eyebrow ey-wh fu">Our Stack</span><h2 class="h-ttl wh fu d1">Technologies We <em>Master</em></h2></div>
+    <div class="tech-grid">
+      <div class="tech-item si"><i class="fab fa-html5"></i><span>HTML5</span></div><div class="tech-item si d1"><i class="fab fa-css3-alt"></i><span>CSS3</span></div><div class="tech-item si d2"><i class="fab fa-js"></i><span>JavaScript</span></div><div class="tech-item si d3"><i class="fab fa-react"></i><span>React</span></div><div class="tech-item si d4"><i class="fab fa-node"></i><span>Node.js</span></div><div class="tech-item si d5"><i class="fab fa-python"></i><span>Python</span></div>
+      <div class="tech-item si"><i class="fab fa-php"></i><span>PHP</span></div><div class="tech-item si d1"><i class="fas fa-database"></i><span>Supabase</span></div><div class="tech-item si d2"><i class="fab fa-git-alt"></i><span>Git</span></div><div class="tech-item si d3"><i class="fab fa-figma"></i><span>Figma</span></div><div class="tech-item si d4"><i class="fab fa-wordpress"></i><span>WordPress</span></div><div class="tech-item si d5"><i class="fab fa-aws"></i><span>AWS</span></div>
+    </div>
+  </div>
 </section>
 
-<section class="fqs">
-<div class="sw">
-<div class="sh c reveal"><span class="eyebrow ey-o">FAQ</span><h2 class="stitle">Frequently Asked <span class="ao">Questions</span></h2></div>
-<div class="fqw">
-<div class="fqi reveal"><button class="fqb"><span>What types of businesses do you work with?</span><i class="fas fa-plus"></i></button><div class="fqa">We work with businesses of all sizes — solo entrepreneurs, SMEs and growing companies. Clients include beauty salons, retail shops, restaurants, service providers, and tech startups across Ghana.</div></div>
-<div class="fqi reveal"><button class="fqb"><span>How long does a typical project take?</span><i class="fas fa-plus"></i></button><div class="fqa">Most websites go live in 4–6 weeks. E-commerce and automation projects can take 8–12 weeks depending on complexity. We always provide a clear timeline with regular updates.</div></div>
-<div class="fqi reveal"><button class="fqb"><span>What payment methods do you accept?</span><i class="fas fa-plus"></i></button><div class="fqa">We accept bank transfer, MTN Mobile Money, Vodafone Cash, and card payments. Standard structure is a 50% deposit at project start and 50% on completion.</div></div>
-<div class="fqi reveal"><button class="fqb"><span>Do you offer ongoing support after launch?</span><i class="fas fa-plus"></i></button><div class="fqa">Yes! Every project includes a support period for bug fixes and tweaks after launch. Extended maintenance packages are also available for ongoing updates and SEO.</div></div>
-<div class="fqi reveal"><button class="fqb"><span>How do I get started?</span><i class="fas fa-plus"></i></button><div class="fqa">Click &#34;Get Free Consultation&#34; to book a free discovery call. We&#39;ll understand your needs and propose the best solution — no obligation, just a helpful conversation.</div></div>
-</div>
-</div>
+<!-- FAQ -->
+<section id="faq" style="background:var(--off)">
+  <div class="mx">
+    <div class="hd c"><span class="eyebrow ey-or fu">FAQ</span><h2 class="h-ttl fu d1">Frequently Asked <em>Questions</em></h2></div>
+    <div class="faq-inner">
+      <div class="faq-item fu"><button class="faq-btn"><span>What types of businesses do you work with?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>We work with businesses of all sizes — solo entrepreneurs, SMEs and growing companies. Clients include beauty salons, retail shops, restaurants, service providers, and tech startups across Ghana.</p></div></div>
+      <div class="faq-item fu d1"><button class="faq-btn"><span>How long does a typical project take?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Most websites go live in 7–14 days. E-commerce and automation projects can take 4–6 weeks depending on complexity. We always provide a clear timeline with regular updates.</p></div></div>
+      <div class="faq-item fu d2"><button class="faq-btn"><span>What payment methods do you accept?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>We accept bank transfer, MTN Mobile Money, Vodafone Cash, and card payments. Standard structure is a 50% deposit at project start and 50% on completion.</p></div></div>
+      <div class="faq-item fu d3"><button class="faq-btn"><span>Do you offer ongoing support after launch?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Yes! Every project includes a support period for bug fixes and tweaks after launch. Extended maintenance packages are available for ongoing updates and SEO.</p></div></div>
+      <div class="faq-item fu d4"><button class="faq-btn"><span>How do I get started?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Click "Get Free Consultation" to book a free discovery call. We'll understand your needs and propose the best solution — no obligation, just a helpful conversation.</p></div></div>
+    </div>
+  </div>
 </section>
 
-<section class="ctas">
-<div class="ctai">
-<span class="eyebrow ey-w" style="margin-bottom:1.5rem">Let&#39;s Work Together</span>
-<h2>Ready to Grow Your Business?</h2>
-<p>Join our growing family of Ghanaian businesses who trust SamzyDigital to power their digital growth. Your free consultation is one click away.</p>
-<div class="ctabs">
-<a href="contact.html" class="btn bwh"><i class="fas fa-calendar-check"></i> Get Free Consultation</a>
-<a href="community.html" class="btn bo"><i class="fas fa-users"></i> Join Community</a>
-<a href="business.html" class="btn buw"><i class="fas fa-briefcase"></i> View Pricing</a>
-</div>
-</div>
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-w">
+    <div class="cta-in fu">
+      <div class="cta-txt"><span class="cta-ey">Let's Work Together</span><h2 class="cta-ttl">Ready to <em>Grow</em> Your Business?</h2><p class="cta-sb">Join our growing family of Ghanaian businesses who trust SamzyDigital. Your free consultation is one click away.</p></div>
+      <div class="cta-bts"><a href="contact.html" class="btn-wh"><i class="fas fa-calendar-check"></i> Get Free Consultation</a><a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="btn-gh"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div>
+    </div>
+  </div>
 </section>
 
 </main>
 
-<footer class="business-footer">
-<div class="footer-container">
-<div class="footer-column">
-<div class="footer-logo"><i class="fas fa-code"></i><span>SAMZY<span>DIGITAL</span></span></div>
-<p class="footer-description">Professional digital solutions for Ghanaian businesses. Founded by Samuel AHIABA. Based in Accra, serving clients nationwide.</p>
-<div class="footer-contact">
-<div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+233539929190">0539929190</a></div>
-<div class="contact-item"><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#c7b4a6aab2a2aba6afaea6a5a6f487a0aaa6aeabe9a4a8aa"><span class="__cf_email__" data-cfemail="186b79756d7d74797071797a792b587f75797174367b7775">[email&#160;protected]</span></a></div>
-<div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Accra, Ghana</span></div>
-</div>
-</div>
-<div class="footer-column">
-<h3 class="footer-title">Quick Links</h3>
-<ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="business.html">Business</a></li><li><a href="community.html">Community</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
-</div>
-<div class="footer-column">
-<h3 class="footer-title">Community</h3>
-<ul class="footer-links"><li><a href="community.html#mentors">Mentors</a></li><li><a href="community.html#events">Events</a></li><li><a href="community.html#registration">Join</a></li><li><a href="community.html#faq">FAQ</a></li></ul>
-</div>
-<div class="footer-column">
-<h3 class="footer-title">Connect</h3>
-<div class="footer-social">
-<a href="https://wa.me/233539929190" class="social-link"><i class="fab fa-whatsapp"></i></a>
-<a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-<a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-<a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-<a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-</div>
-<div class="footer-legal"><p>&#169; 2026 Samzy-Digital. All rights reserved.</p></div>
-</div>
-</div>
+<!-- FOOTER (no community links) -->
+<footer>
+  <div class="footer-container">
+    <div><div class="footer-logo"><i class="fas fa-code"></i><span>SAMZY<span>DIGITAL</span></span></div><p class="footer-description">Professional digital solutions for Ghanaian businesses. Founded by Samuel AHIABA. Based in Accra, serving clients nationwide and worldwide.</p><div class="footer-contact"><div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+233539929190">0539929190</a></div><div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:samuelahiaba3@gmail.com">samuelahiaba3@gmail.com</a></div><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Accra, Ghana 🇬🇭</span></div></div><div class="footer-social"><a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="social-link"><i class="fab fa-whatsapp"></i></a><a href="#" class="social-link"><i class="fab fa-facebook"></i></a><a href="#" class="social-link"><i class="fab fa-twitter"></i></a><a href="#" class="social-link"><i class="fab fa-instagram"></i></a><a href="#" class="social-link"><i class="fab fa-linkedin"></i></a></div></div>
+    <div><h3 class="footer-title">Quick Links</h3><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="business.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h3 class="footer-title">Resources</h3><ul class="footer-links"><li><a href="testimonials.html">Reviews</a></li><li><a href="faqs.html">FAQs</a></li></ul></div>
+    <div><div style="margin-top:16px;background:rgba(201,150,10,.1);border:1px solid rgba(201,150,10,.2);border-radius:12px;padding:14px"><div style="font-size:.6rem;color:rgba(255,255,255,.3);font-family:'DM Mono',monospace;margin-bottom:4px">STARTING FROM</div><div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gd2)">GHS 1,500</div><div style="font-size:.72rem;color:rgba(255,255,255,.45)">for a full website</div></div></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 <span>SamzyDigital</span>. All rights reserved. Built by Samuel AHIABA 🇬🇭</p><p style="color:rgba(255,255,255,.22)">Made in Accra · Available Worldwide</p></div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script src="header-footer.js"></script>
-
-<div id="samzy-chatbot-root">
-<div id="samzy-bubble" class="samzy-chat-bubble">
-<svg viewBox="0 0 24 24" width="36" height="36">
-<circle cx="12" cy="12" r="10" fill="white" />
-<circle cx="8" cy="9" r="1.5" fill="black" />
-<circle cx="16" cy="9" r="1.5" fill="black" />
-<path d="M8 14 Q12 18, 16 14" stroke="black" stroke-width="1.8" fill="none" stroke-linecap="round" />
-</svg>
-</div>
-<div id="samzy-window" class="samzy-chat-window">
-<div class="samzy-chat-header">
-<h3><span></span> Samzy Assistant</h3>
-<button id="samzy-close" class="samzy-close-btn">&#215;</button>
-</div>
-<div id="samzy-messages" class="samzy-messages"></div>
-<div class="samzy-input-area">
-<input type="text" id="samzy-user-input" placeholder="Ask me anything..." autocomplete="off">
-<button id="samzy-send" class="samzy-send-btn">Send</button>
-</div>
-</div>
-</div>
-<script src="samzy-chatbot.js"></script>
+<a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="wa-float" title="Chat on WhatsApp" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-// Count-up
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
+const mobMenu = document.getElementById('mobMenu');
+const mobOverlay = document.getElementById('mobOverlay');
+const mobToggle = document.getElementById('mobToggle');
+const mobIco = document.getElementById('mobIco');
+function toggleNav() {
+  const isOpen = mobMenu.classList.toggle('open');
+  mobOverlay.classList.toggle('on', isOpen);
+  mobIco.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+  mobToggle.setAttribute('aria-expanded', String(isOpen));
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobMenu.classList.contains('open')) toggleNav(); });
+mobMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { if (mobMenu.classList.contains('open')) toggleNav(); }); });
+
+const ao = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ao.unobserve(e.target); } }); }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.sl-left,.sl-right,.fu,.si').forEach(el => ao.observe(el));
+
 document.querySelectorAll('.sc').forEach(el => {
-new IntersectionObserver(([e]) => {
-if (!e.isIntersecting) return;
-const t = +el.dataset.t, d = 1800; let s = null;
-const f = ts => { if (!s) s = ts; const p = Math.min((ts - s) / d, 1); el.textContent = Math.floor(p * t); if (p < 1) requestAnimationFrame(f); else el.textContent = t; };
-requestAnimationFrame(f);
-}, { threshold: .5 }).observe(el);
+  new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    const t = +el.dataset.t, dur = 1800; let s = null;
+    const step = ts => {
+      if (!s) s = ts;
+      const p = Math.min((ts - s) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(ease * t);
+      if (p < 1) requestAnimationFrame(step); else el.textContent = t;
+    };
+    requestAnimationFrame(step);
+  }, { threshold: 0.5 }).observe(el);
 });
-// Scroll reveal
-document.querySelectorAll('.reveal').forEach(el => {
-const io = new IntersectionObserver(([e]) => {
-if (e.isIntersecting) { el.classList.add('on'); io.disconnect(); }
-}, { threshold: .07 });
-io.observe(el);
-});
-// FAQ accordion
-document.querySelectorAll('.fqi').forEach(item => {
-item.querySelector('.fqb').addEventListener('click', () => {
-const isOpen = item.classList.contains('open');
-document.querySelectorAll('.fqi').forEach(i => i.classList.remove('open'));
-if (!isOpen) item.classList.add('open');
-});
+
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-btn').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
 });
 </script>
 </body>

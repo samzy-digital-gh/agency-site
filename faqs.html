@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>FAQs | SamzyDigital – Web Design Ghana</title>
+<meta name="description" content="Frequently asked questions about SamzyDigital's web design services in Ghana. Pricing, timelines, payment methods, support and more — all answered.">
+<meta name="author" content="Samuel AHIABA – SamzyDigital">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://samzy-digital-gh.github.io/agency-site/faqs.html">
+<meta property="og:title" content="FAQs | SamzyDigital Ghana">
+<meta property="og:image" content="https://samzy-digital-gh.github.io/agency-site/samzy.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ========== DESIGN SYSTEM (same as all pages) ========== */
+:root{
+  --gd:#C9960A;  --gd2:#F0B429;
+  --gl:rgba(201,150,10,.10);  --gb:rgba(201,150,10,.22);
+  --em:#10B981;  --el:rgba(16,185,129,.10);
+  --or:#FF6B35;  --ol:rgba(255,107,53,.10);
+  --wh:#FFFFFF;  --off:#F9F7F2;  --warm:#F5F0E8;
+  --ch:#0F1117;  --nv:#1a1a2e;
+  --tx:#0A0A0A;  --mu:#5C6B7A;  --li:#94A3B8;
+  --bd:#E8E2D9;  --bd2:#D4CEC4;
+  --ssm:0 2px 12px rgba(0,0,0,.06);
+  --smd:0 8px 32px rgba(0,0,0,.10);
+  --slg:0 24px 64px rgba(0,0,0,.14);
+  --sgd:0 8px 32px rgba(201,150,10,.22);
+  --pill:999px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--wh);color:var(--tx);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--off)}
+::-webkit-scrollbar-thumb{background:var(--gd);border-radius:3px}
+
+/* Navbar (exact same as index) */
+.navbar{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:92%;max-width:1240px;z-index:9999;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.navbar.scrolled{top:8px;width:97%}
+.nav-container{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 10px 20px;background:rgba(255,255,255,.62);backdrop-filter:blur(30px) saturate(200%) brightness(106%);-webkit-backdrop-filter:blur(30px) saturate(200%) brightness(106%);border:1px solid rgba(255,255,255,.80);border-radius:var(--pill);box-shadow:0 8px 32px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.95);transition:all .4s;gap:8px}
+.navbar.scrolled .nav-container{background:rgba(255,255,255,.90)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.05rem;color:var(--tx);flex-shrink:0;transition:.2s}.logo:hover{transform:scale(1.04)}
+.logo-ic{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--gd);font-size:1.3rem;flex-shrink:0}.logo span{color:var(--gd)}
+.nav-links{display:flex;list-style:none;gap:1px;align-items:center}
+.nav-links>li{position:relative}
+.nav-links>li>a{color:var(--mu);font-weight:600;font-size:.83rem;padding:8px 12px;border-radius:var(--pill);transition:all .25s;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.nav-links>li>a:hover{color:var(--tx);background:rgba(0,0,0,.05)}
+.nav-links>li>a.active{background:linear-gradient(135deg,var(--gd),var(--gd2));color:white;box-shadow:0 3px 12px rgba(201,150,10,.3)}
+.nav-links>li>a i.drop-arrow{font-size:.6rem;transition:transform .25s}
+.nav-links>li:hover>a i.drop-arrow{transform:rotate(180deg)}
+.dropdown{
+  position:absolute;top:calc(100% + 10px);left:0;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--bd);border-radius:14px;
+  box-shadow:var(--slg);min-width:200px;
+  opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity .25s cubic-bezier(.4,0,.2,1), visibility .25s, transform .25s;
+  transition-delay:0s, 0.3s, 0s;
+  z-index:100;
+  padding:8px;
+}
+.nav-links>li:hover .dropdown{
+  opacity:1;visibility:visible;transform:translateY(0);
+  transition-delay:0s, 0s, 0s;
+}
+.dropdown a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;border-radius:10px;
+  font-size:.83rem;font-weight:600;color:var(--mu);
+  transition:.2s;white-space:nowrap;
+}
+.dropdown a i{width:16px;text-align:center;color:var(--gd);font-size:.78rem}
+.dropdown a:hover{background:var(--gl);color:var(--gd)}
+.btn-quote{
+  display:flex;align-items:center;gap:7px;
+  padding:9px 20px;background:linear-gradient(135deg,var(--gd),var(--gd2));
+  color:var(--ch);border:none;border-radius:var(--pill);
+  font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;
+  cursor:pointer;transition:all .25s;box-shadow:var(--sgd);flex-shrink:0;
+  white-space:nowrap;
+}
+.btn-quote:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(201,150,10,.35)}
+.mobile-toggle{display:none;width:42px;height:42px;background:rgba(255,255,255,.7);border:1.5px solid var(--bd);border-radius:10px;cursor:pointer;color:var(--tx);font-size:1.1rem;align-items:center;justify-content:center;transition:.2s;backdrop-filter:blur(10px);flex-shrink:0;padding:0;outline:none}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9997;backdrop-filter:blur(2px)}
+.mob-overlay.on{display:block}
+.mobile-menu{position:fixed;top:0;right:-105%;width:100%;max-width:320px;height:100%;padding:72px 20px 32px;background:rgba(255,255,255,.97);backdrop-filter:blur(32px) saturate(200%);border-left:1px solid rgba(255,255,255,.7);box-shadow:-20px 0 60px rgba(0,0,0,.15);z-index:9998;transition:right .4s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+.mobile-menu.open{right:0}
+.mobile-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--bd);background:rgba(255,255,255,.8);cursor:pointer;color:var(--tx);font-size:1rem;display:flex;align-items:center;justify-content:center;transition:.2s}
+.mobile-close:hover{background:var(--gd);color:white;border-color:var(--gd)}
+.mob-logo{display:flex;align-items:center;gap:10px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--bd)}
+.mob-section{margin-bottom:8px}
+.mob-section-title{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--li);margin-bottom:6px;padding:0 4px;font-family:'DM Mono',monospace}
+.mob-links{list-style:none;display:flex;flex-direction:column;gap:2px}
+.mob-links a{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:11px;color:var(--tx);font-weight:600;font-size:.88rem;transition:.2s}
+.mob-links a:hover{background:var(--gl);color:var(--gd);transform:translateX(4px)}
+.mob-links a.active{background:linear-gradient(135deg,var(--gd),var(--gd2));color:white}
+.mob-links a i{width:16px;text-align:center;font-size:.8rem;color:var(--gd)}
+.mob-links a.active i{color:white}
+.mob-cta{margin-top:20px}
+.mob-cta a{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px;border-radius:13px;background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);font-weight:700;font-size:.9rem;width:100%;box-shadow:var(--sgd);transition:all .25s}
+.mob-cta a:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,150,10,.35)}
+
+/* Animations (same) */
+.sl-left{opacity:0;transform:translateX(-60px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+.sl-left.on{opacity:1;transform:translateX(0)}
+.sl-right{opacity:0;transform:translateX(60px);transition:opacity .75s cubic-bezier(.4,0,.2,1),transform .75s cubic-bezier(.4,0,.2,1)}
+.sl-right.on{opacity:1;transform:translateX(0)}
+.fu{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+.si{opacity:0;transform:scale(.88);transition:opacity .65s ease,transform .65s ease}
+.si.on{opacity:1;transform:scale(1)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* Shared */
+.mx{max-width:1200px;margin:0 auto;padding:90px 5%}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--pill);font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.ey-gd{background:var(--gl);color:var(--gd);border:1px solid var(--gb)}
+.ey-em{background:var(--el);color:var(--em);border:1px solid rgba(16,185,129,.2)}
+.ey-or{background:var(--ol);color:var(--or);border:1px solid rgba(255,107,53,.2)}
+.ey-wh{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.2)}
+.h-ttl{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:900;letter-spacing:-1px;line-height:1.1;color:var(--tx);margin-bottom:14px}
+.h-ttl em{font-style:italic;color:var(--gd)}.h-ttl.wh{color:white}.h-ttl.wh em{color:var(--gd2)}
+.sub{font-size:.95rem;line-height:1.8;color:var(--mu)}
+.hd{margin-bottom:52px}.hd.c{text-align:center}.hd.c .sub{max-width:560px;margin:0 auto}
+.btn-p{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:var(--pill);background:linear-gradient(135deg,var(--gd),var(--gd2));color:var(--ch);border:none;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .25s;box-shadow:var(--sgd)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(201,150,10,.32)}
+.btn-wh{display:inline-flex;align-items:center;gap:9px;padding:14px 28px;border-radius:var(--pill);background:white;color:var(--ch);border:none;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .25s}
+.btn-wh:hover{background:var(--gd);color:var(--ch);transform:translateY(-2px);box-shadow:var(--sgd)}
+.btn-gh{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:var(--pill);background:transparent;color:white;border:1.5px solid rgba(255,255,255,.35);font-family:'DM Sans',sans-serif;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .25s}
+.btn-gh:hover{background:rgba(255,255,255,.1);border-color:white;transform:translateY(-2px)}
+
+/* Hero */
+#pg-hero{min-height:52vh;position:relative;overflow:hidden;display:flex;align-items:center;background:linear-gradient(135deg,var(--ch) 0%,#16213e 100%)}
+#pg-hero::before{content:'';position:absolute;top:-150px;right:-150px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,150,10,.08) 0%,transparent 70%);pointer-events:none}
+#pg-hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.05) 0%,transparent 70%);pointer-events:none}
+.pg-hero-inner{max-width:1200px;margin:0 auto;padding:clamp(120px, 18vh, 180px) 5% clamp(60px, 8vh, 100px);width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.pg-h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:900;letter-spacing:-2px;line-height:1.06;color:white;margin-bottom:20px;animation:fadeUp .6s ease both}
+.pg-h1 em{font-style:italic;color:var(--gd2)}
+.pg-sub{font-size:1rem;line-height:1.8;color:rgba(255,255,255,.65);max-width:480px;margin-bottom:32px;animation:fadeUp .6s .12s ease both}
+.pg-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .6s .2s ease both}
+.faq-cats{display:flex;flex-direction:column;gap:10px;animation:fadeUp .6s .1s ease both}
+.faq-cat-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .3s;text-decoration:none}
+.faq-cat-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(201,150,10,.35);transform:translateX(6px)}
+.fcat-ico{width:40px;height:40px;border-radius:10px;background:rgba(201,150,10,.15);border:1px solid rgba(201,150,10,.2);display:flex;align-items:center;justify-content:center;color:var(--gd2);font-size:.9rem;flex-shrink:0}
+.fcat-ttl{font-weight:700;font-size:.88rem;color:white}
+.fcat-sub{font-size:.7rem;color:rgba(255,255,255,.42);font-family:'DM Mono',monospace;margin-top:2px}
+
+/* FAQ sections */
+.faq-section{padding:72px 5%}
+.faq-section-inner{max-width:800px;margin:0 auto}
+.faq-section-hd{display:flex;align-items:center;gap:16px;margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--bd)}
+.fsh-ico{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.fshi-gd{background:var(--gl);color:var(--gd)}.fshi-em{background:var(--el);color:var(--em)}.fshi-or{background:var(--ol);color:var(--or)}.fshi-pu{background:rgba(124,58,237,.1);color:#7C3AED}
+.fsh-ttl{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--tx)}
+.fsh-sub{font-size:.78rem;color:var(--mu);margin-top:3px;font-family:'DM Mono',monospace}
+.faq-stack{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--off);border:1px solid var(--bd);border-radius:16px;overflow:hidden;transition:all .3s}
+.faq-item.open{border-color:var(--gb);box-shadow:var(--ssm);background:white}
+.faq-btn{width:100%;padding:20px 22px;background:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;color:var(--tx);text-align:left;transition:.2s}
+.faq-btn:hover{color:var(--gd)}.faq-item.open .faq-btn{color:var(--gd)}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:white;border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--mu);flex-shrink:0;transition:all .35s}
+.faq-item.open .faq-icon{background:var(--gd);color:white;border-color:var(--gd);transform:rotate(45deg)}
+.faq-ans{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.faq-item.open .faq-ans{max-height:300px}
+.faq-ans p{padding:0 22px 20px;font-size:.87rem;color:var(--mu);line-height:1.75}
+
+/* Still questions */
+#still-q{background:linear-gradient(135deg,var(--ch),var(--nv));position:relative;overflow:hidden}
+#still-q::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,150,10,.07) 0%,transparent 70%);pointer-events:none}
+.sq-inner{max-width:1200px;margin:0 auto;padding:90px 5%;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:1}
+.sq-contacts{display:flex;flex-direction:column;gap:14px;margin-top:28px}
+.sq-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:16px;transition:.3s;text-decoration:none}
+.sq-card:hover{background:rgba(255,255,255,.12);transform:translateX(8px);border-color:rgba(201,150,10,.35)}
+.sq-ico{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.sqi-wa{background:rgba(37,211,102,.15);color:#25D366}.sqi-em{background:var(--gl);color:var(--gd2)}.sqi-ph{background:rgba(255,255,255,.1);color:white}
+.sq-ttl{font-weight:700;font-size:.9rem;color:white}.sq-sub{font-size:.72rem;color:rgba(255,255,255,.45);margin-top:2px;font-family:'DM Mono',monospace}
+.sq-img{border-radius:24px;overflow:hidden;height:400px;box-shadow:var(--slg)}
+.sq-img img{width:100%;height:100%;object-fit:cover}
+
+/* CTA */
+#cta{background:var(--off);padding:0}
+.cta-w{max-width:1200px;margin:0 auto;padding:90px 5%}
+.cta-in{background:linear-gradient(135deg,var(--ch) 0%,#16213e 100%);border-radius:28px;padding:72px 60px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-in::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,150,10,.08) 0%,transparent 70%);pointer-events:none}
+.cta-txt{position:relative;z-index:1;max-width:560px}
+.cta-ey{display:block;font-family:'DM Mono',monospace;font-size:.67rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gd2);font-weight:600;margin-bottom:14px}
+.cta-ttl{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:white;letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+.cta-ttl em{font-style:italic;color:var(--gd2)}
+.cta-sb{font-size:.93rem;color:rgba(255,255,255,.55);line-height:1.75}
+.cta-bts{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;flex-shrink:0}
+
+/* Footer (no community links) */
+footer{background:linear-gradient(135deg,var(--ch) 0%,#16213e 100%);color:white;padding:68px 5% 28px}
+.footer-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px}
+.footer-logo{font-family:'DM Sans',sans-serif;font-weight:900;font-size:1.35rem;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.footer-logo i{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gd),var(--gd2));display:flex;align-items:center;justify-content:center;color:var(--ch);font-size:.82rem}
+.footer-logo span{color:white}.footer-logo span span{color:var(--gd2)}
+.footer-description{font-size:.84rem;color:rgba(255,255,255,.48);line-height:1.75;margin-bottom:22px}
+.footer-contact{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.contact-item{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.66)}
+.contact-item i{color:var(--gd2);width:14px;flex-shrink:0}
+.contact-item a{color:rgba(255,255,255,.66);transition:.2s}
+.contact-item a:hover{color:var(--gd2)}
+.footer-social{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.social-link{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:.82rem;text-decoration:none;transition:all .2s}
+.social-link:hover{background:var(--gd);color:var(--ch);border-color:var(--gd);transform:translateY(-3px) rotate(5deg)}
+.footer-title{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:18px;font-family:'DM Mono',monospace}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:rgba(255,255,255,.55);font-size:.855rem;transition:all .2s;display:inline-block}
+.footer-links a:hover{color:var(--gd2);transform:translateX(5px)}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:.76rem;color:rgba(255,255,255,.28);font-family:'DM Mono',monospace}
+.footer-bottom span{color:var(--gd2)}
+.wa-float{position:fixed;bottom:26px;right:26px;width:52px;height:52px;border-radius:50%;background:#25D366;color:white;display:flex;align-items:center;justify-content:center;font-size:1.35rem;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.45);transition:all .2s;z-index:8000;animation:wap 2.5s ease infinite}
+.wa-float:hover{transform:scale(1.12)}
+@keyframes wap{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.45)}50%{box-shadow:0 6px 40px rgba(37,211,102,.7),0 0 0 8px rgba(37,211,102,.1)}}
+
+/* Responsive */
+@media(max-width:1024px){
+  .navbar{top:10px}
+  .nav-links,.btn-quote{display:none!important}
+  .mobile-toggle{display:flex!important}
+  .pg-hero-inner{grid-template-columns:1fr;gap:0}
+  .faq-cats{display:none}
+  .sq-inner{grid-template-columns:1fr;gap:40px}
+  .sq-img{height:280px}
+  .footer-container{grid-template-columns:1fr 1fr;gap:32px}
+  .cta-in{flex-direction:column;padding:48px 36px;text-align:center}
+  .cta-bts{justify-content:center}
+}
+@media(max-width:767px){
+  .footer-container{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:480px){
+  .navbar{top:8px;width:96%}
+  .mx{padding:70px 5%}
+  .footer-container{grid-template-columns:1fr}
+  .cta-bts{flex-direction:column;align-items:center;width:100%}
+  .cta-bts .btn-wh,.cta-bts .btn-gh{justify-content:center;width:100%}
+  .pg-btns{flex-direction:column}
+  .pg-btns .btn-p,.pg-btns .btn-gh{justify-content:center;width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo"><div class="logo-ic"><i class="fas fa-code"></i></div>SAMZY<span>DIGITAL</span></a>
+    <button type="button" class="mobile-toggle" id="mobToggle" onclick="toggleNav()"><i class="fas fa-bars" id="mobIco"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About <i class="fas fa-chevron-down drop-arrow"></i></a><div class="dropdown"><a href="about.html#our-story"><i class="fas fa-book-open"></i> Our Story</a><a href="samuel-ahiaba.html"><i class="fas fa-user"></i> Samuel AHIABA</a><a href="our-values.html"><i class="fas fa-heart"></i> Our Values</a><a href="process.html"><i class="fas fa-cogs"></i> Our Process</a><a href="testimonials.html"><i class="fas fa-star"></i> Testimonials</a><a href="faqs.html"><i class="fas fa-question-circle"></i> FAQs</a></div></li>
+      <li><a href="business.html">Services <i class="fas fa-chevron-down drop-arrow"></i></a><div class="dropdown"><a href="business.html#web"><i class="fas fa-globe"></i> Web Design & Dev</a><a href="business.html#ecommerce"><i class="fas fa-shopping-cart"></i> E-Commerce</a><a href="business.html#automation"><i class="fas fa-robot"></i> Automation</a><a href="business.html#seo"><i class="fas fa-search"></i> SEO & Marketing</a><a href="business.html#branding"><i class="fas fa-paint-brush"></i> Branding</a></div></li>
+      <li><a href="industries.html">Industries <i class="fas fa-chevron-down drop-arrow"></i></a><div class="dropdown"><a href="industries.html#beauty"><i class="fas fa-spa"></i> Beauty & Wellness</a><a href="industries.html#restaurant"><i class="fas fa-utensils"></i> Food & Restaurant</a><a href="industries.html#school"><i class="fas fa-graduation-cap"></i> Schools</a><a href="industries.html#church"><i class="fas fa-church"></i> Churches & NGOs</a><a href="industries.html#realestate"><i class="fas fa-home"></i> Real Estate</a><a href="industries.html#sme"><i class="fas fa-store"></i> SMEs & Retail</a></div></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn-quote"><i class="fas fa-paper-plane"></i> Get Quote</a>
+  </div>
+</nav>
+<div class="mob-overlay" id="mobOverlay" onclick="toggleNav()"></div>
+<div class="mobile-menu" id="mobMenu" role="dialog" aria-label="Navigation menu">
+  <button type="button" class="mobile-close" onclick="toggleNav()"><i class="fas fa-times"></i></button>
+  <div class="mob-logo"><div class="logo-ic"><i class="fas fa-code"></i></div><div style="font-weight:900;font-size:1rem;color:var(--tx)">SAMZY<span style="color:var(--gd)">DIGITAL</span></div></div>
+  <div class="mob-section"><div class="mob-section-title">About</div><ul class="mob-links"><li><a href="about.html#our-story"><i class="fas fa-book-open"></i> Our Story</a></li><li><a href="samuel-ahiaba.html"><i class="fas fa-user"></i> Samuel AHIABA</a></li><li><a href="our-values.html"><i class="fas fa-heart"></i> Our Values</a></li><li><a href="process.html"><i class="fas fa-cogs"></i> Our Process</a></li><li><a href="testimonials.html"><i class="fas fa-star"></i> Testimonials</a></li><li><a href="faqs.html" class="active"><i class="fas fa-question-circle"></i> FAQs</a></li></ul></div>
+  <div class="mob-section" style="margin-top:12px"><div class="mob-section-title">Navigate</div><ul class="mob-links"><li><a href="index.html"><i class="fas fa-home"></i> Home</a></li><li><a href="business.html"><i class="fas fa-tools"></i> Services</a></li><li><a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li><li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li></ul></div>
+  <div class="mob-cta"><a href="contact.html"><i class="fas fa-paper-plane"></i> Get Free Quote</a></div>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section id="pg-hero">
+  <div class="pg-hero-inner">
+    <div>
+      <span class="eyebrow ey-gd" style="animation:fadeUp .5s ease both">Got Questions?</span>
+      <h1 class="pg-h1">We've Got <em>Answers</em></h1>
+      <p class="pg-sub">Everything you need to know about working with SamzyDigital — from pricing to timelines to how we get paid in Ghana.</p>
+      <div class="pg-btns">
+        <a href="contact.html" class="btn-p"><i class="fas fa-calendar-check"></i> Ask Samuel Directly</a>
+        <a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="btn-gh"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+      </div>
+    </div>
+    <div class="faq-cats">
+      <a href="#general" class="faq-cat-btn"><div class="fcat-ico"><i class="fas fa-globe"></i></div><div><div class="fcat-ttl">General Questions</div><div class="fcat-sub">What we do & who we help</div></div><i class="fas fa-arrow-right" style="color:rgba(255,255,255,.3);margin-left:auto;font-size:.8rem"></i></a>
+      <a href="#pricing" class="faq-cat-btn"><div class="fcat-ico"><i class="fas fa-tag"></i></div><div><div class="fcat-ttl">Pricing & Payment</div><div class="fcat-sub">Costs, deposits & MoMo</div></div><i class="fas fa-arrow-right" style="color:rgba(255,255,255,.3);margin-left:auto;font-size:.8rem"></i></a>
+      <a href="#timeline" class="faq-cat-btn"><div class="fcat-ico"><i class="fas fa-clock"></i></div><div><div class="fcat-ttl">Timelines & Process</div><div class="fcat-sub">How long & what happens</div></div><i class="fas fa-arrow-right" style="color:rgba(255,255,255,.3);margin-left:auto;font-size:.8rem"></i></a>
+      <a href="#technical" class="faq-cat-btn"><div class="fcat-ico"><i class="fas fa-code"></i></div><div><div class="fcat-ttl">Technical Questions</div><div class="fcat-sub">Tech stack & features</div></div><i class="fas fa-arrow-right" style="color:rgba(255,255,255,.3);margin-left:auto;font-size:.8rem"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- GENERAL FAQs -->
+<div class="faq-section" id="general" style="background:var(--wh)">
+  <div class="faq-section-inner">
+    <div class="faq-section-hd fu"><div class="fsh-ico fshi-gd"><i class="fas fa-globe"></i></div><div><div class="fsh-ttl">General Questions</div><div class="fsh-sub">What SamzyDigital does & who we work with</div></div></div>
+    <div class="faq-stack">
+      <div class="faq-item fu"><button type="button" class="faq-btn"><span>What exactly does SamzyDigital do?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>SamzyDigital is a full-service web design and digital agency based in Accra, Ghana. We build custom websites, e-commerce stores, business automation tools and digital marketing strategies for Ghanaian businesses. Founded by Samuel AHIABA, we specialise in helping SMEs, startups and local businesses grow their presence online.</p></div></div>
+      <div class="faq-item fu d1"><button type="button" class="faq-btn"><span>What types of businesses do you work with?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>We work with businesses of all sizes across Ghana — from solo entrepreneurs and small businesses to growing SMEs. Our clients include beauty salons, restaurants, schools, churches, retail shops, real estate agencies, tech startups and professional service providers.</p></div></div>
+      <div class="faq-item fu d2"><button type="button" class="faq-btn"><span>Are you based in Ghana? Where exactly?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Yes! SamzyDigital is based in Kanda, Accra, Ghana. Samuel AHIABA was born and raised in Ghana and leads every project personally. While we're Accra-based, we serve clients across all regions of Ghana and across West Africa.</p></div></div>
+      <div class="faq-item fu d3"><button type="button" class="faq-btn"><span>Do I need a website if I already have Facebook and Instagram?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Yes — absolutely. Facebook and Instagram are marketing tools, not your home on the internet. Social platforms can restrict your account, change their algorithm or even delete your page. A website is your permanent, owned digital property. It also ranks on Google, builds more trust with customers, and lets you take bookings or sell products directly without paying commission to any platform.</p></div></div>
+      <div class="faq-item fu d4"><button type="button" class="faq-btn"><span>Can you redesign my existing website?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Absolutely. We offer full website redesigns — from outdated WordPress or Wix sites to slow, template-based designs that aren't converting. We'll review your existing site, identify what's not working, and rebuild it from scratch with our custom approach.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING FAQs -->
+<div class="faq-section" id="pricing" style="background:var(--off)">
+  <div class="faq-section-inner">
+    <div class="faq-section-hd fu"><div class="fsh-ico fshi-gd"><i class="fas fa-tag"></i></div><div><div class="fsh-ttl">Pricing & Payment</div><div class="fsh-sub">What things cost and how to pay in Ghana</div></div></div>
+    <div class="faq-stack">
+      <div class="faq-item fu"><button type="button" class="faq-btn"><span>How much does a website cost in Ghana?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Our packages start from GHS 1,500 for a simple one-page website all the way up to GHS 6,500+ for full e-commerce or web application builds. Every project is priced based on your specific needs — we never guess or overcharge. Book a free discovery call and we'll tell you exactly what your project will cost.</p></div></div>
+      <div class="faq-item fu d1"><button type="button" class="faq-btn"><span>What payment methods do you accept?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>We accept MTN Mobile Money (MoMo), Vodafone Cash, bank transfer and Visa/Mastercard card payments. We make it easy to pay however works best for you. Our standard structure is a 50% deposit to kick off the project and 50% on completion before launch.</p></div></div>
+      <div class="faq-item fu d2"><button type="button" class="faq-btn"><span>Do I have to pay everything upfront?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>No. We split payments into two — 50% deposit to begin and 50% when you're happy with the final result before launch. We never ask for full payment before delivering your website. This protects you and ensures we stay accountable for quality.</p></div></div>
+      <div class="faq-item fu d3"><button type="button" class="faq-btn"><span>Are there any hidden fees or extra charges?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Never. Everything is laid out clearly in your written proposal before you pay a single cedi. The only additional costs after launch would be optional maintenance retainers or feature additions that you specifically request — and those are always quoted separately before any work begins.</p></div></div>
+      <div class="faq-item fu d4"><button type="button" class="faq-btn"><span>Do you offer payment plans?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>For larger projects, we can discuss flexible payment arrangements. Reach out via WhatsApp or email and we'll find a structure that works for your budget. Our goal is to make quality digital services accessible to every Ghanaian business.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE FAQs -->
+<div class="faq-section" id="timeline" style="background:var(--wh)">
+  <div class="faq-section-inner">
+    <div class="faq-section-hd fu"><div class="fsh-ico fshi-em"><i class="fas fa-clock"></i></div><div><div class="fsh-ttl">Timelines & Process</div><div class="fsh-sub">How long projects take and what the process looks like</div></div></div>
+    <div class="faq-stack">
+      <div class="faq-item fu"><button type="button" class="faq-btn"><span>How long does a website take to build?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Most standard websites go live in 7–14 days after the deposit is received and content is provided. E-commerce stores typically take 3–5 weeks, and full web applications with custom features take 6–10 weeks. We always give you a clear timeline upfront and stick to it.</p></div></div>
+      <div class="faq-item fu d1"><button type="button" class="faq-btn"><span>What do I need to provide to get started?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>We'll need your business information, logo (if you have one), any photos of your products or services, and an idea of what you want the site to do. Don't worry if you don't have everything — we can help with copywriting, stock images and even a basic logo to get you started.</p></div></div>
+      <div class="faq-item fu d2"><button type="button" class="faq-btn"><span>How many revisions are included?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Every project includes two full rounds of revisions after the initial design is shown to you. This covers changes to layout, colours, text and functionality. Major scope changes (like adding new sections or features not in the original proposal) may carry additional charges — but we'll always discuss this before proceeding.</p></div></div>
+      <div class="faq-item fu d3"><button type="button" class="faq-btn"><span>How do you keep me updated during the project?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>We provide weekly progress updates via WhatsApp or email, share live preview links so you can see exactly what's being built, and are always available for questions. You're never left wondering what's happening with your project.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TECHNICAL FAQs -->
+<div class="faq-section" id="technical" style="background:var(--off)">
+  <div class="faq-section-inner">
+    <div class="faq-section-hd fu"><div class="fsh-ico fshi-or"><i class="fas fa-code"></i></div><div><div class="fsh-ttl">Technical Questions</div><div class="fsh-sub">Tech stack, features and how your site actually works</div></div></div>
+    <div class="faq-stack">
+      <div class="faq-item fu"><button type="button" class="faq-btn"><span>Can my website accept MoMo and card payments?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Yes — we integrate local and international payment gateways including MTN Mobile Money, Vodafone Cash, Visa and Mastercard. Your customers can pay however they prefer, and you receive notifications and payments instantly.</p></div></div>
+      <div class="faq-item fu d1"><button type="button" class="faq-btn"><span>Will my website work well on mobile phones?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Absolutely. All SamzyDigital websites are built mobile-first — meaning they're designed to look and perform perfectly on every screen size, from small Android phones to large desktop monitors. We test on real devices before launch.</p></div></div>
+      <div class="faq-item fu d2"><button type="button" class="faq-btn"><span>Do you build on WordPress or custom code?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>We primarily build custom-coded websites using HTML, CSS, JavaScript and modern frameworks like React and Node.js. This gives you faster, lighter sites with no plugin bloat. For businesses that need to manage content themselves, we can build on WordPress or integrate a simple CMS — we choose the right tool for each project.</p></div></div>
+      <div class="faq-item fu d3"><button type="button" class="faq-btn"><span>Will my website be found on Google?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Every site we build comes with SEO foundations — meta tags, structured schema markup, sitemap submission, Google Search Console setup and speed optimisation. This gives you a strong starting point. For ongoing SEO campaigns and content strategy, we offer separate SEO packages.</p></div></div>
+      <div class="faq-item fu d4"><button type="button" class="faq-btn"><span>What happens after launch — will you still support me?</span><div class="faq-icon"><i class="fas fa-plus"></i></div></button><div class="faq-ans"><p>Yes. Every project includes a 30-day post-launch support period for bug fixes and small adjustments. After that, we offer affordable monthly maintenance retainers for ongoing updates, security monitoring and SEO improvements. We don't disappear after launch — we build long-term partnerships with our clients.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- STILL HAVE QUESTIONS -->
+<section id="still-q">
+  <div class="sq-inner">
+    <div><span class="eyebrow ey-wh fu">Still Have Questions?</span><h2 class="h-ttl wh fu d1">Talk to <em>Samuel</em> Directly</h2><p class="sub fu d2" style="color:rgba(255,255,255,.6)">Can't find your answer above? Samuel is always available to chat. Reach him directly through any of these channels — usually responds within 1 hour.</p><div class="sq-contacts"><a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="sq-card"><div class="sq-ico sqi-wa"><i class="fab fa-whatsapp"></i></div><div><div class="sq-ttl">WhatsApp Samuel</div><div class="sq-sub">+233 539 929 190 · Usually replies within 1hr</div></div><i class="fas fa-arrow-right" style="color:rgba(255,255,255,.3);margin-left:auto;font-size:.8rem"></i></a><a href="mailto:samuelahiaba3@gmail.com" class="sq-card"><div class="sq-ico sqi-em"><i class="fas fa-envelope"></i></div><div><div class="sq-ttl">Email Samuel</div><div class="sq-sub">samuelahiaba3@gmail.com · Reply within 24hrs</div></div><i class="fas fa-arrow-right" style="color:rgba(255,255,255,.3);margin-left:auto;font-size:.8rem"></i></a><a href="tel:+233539929190" class="sq-card"><div class="sq-ico sqi-ph"><i class="fas fa-phone"></i></div><div><div class="sq-ttl">Call Us</div><div class="sq-sub">0539929190 · Mon–Sat, 8am–6pm</div></div><i class="fas fa-arrow-right" style="color:rgba(255,255,255,.3);margin-left:auto;font-size:.8rem"></i></a></div></div>
+    <div class="sq-img sl-right"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="SamzyDigital Accra Ghana support" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-w">
+    <div class="cta-in fu">
+      <div class="cta-txt"><span class="cta-ey">Still Unsure?</span><h2 class="cta-ttl">Book a Free <em>Discovery Call</em></h2><p class="cta-sb">30 minutes with Samuel — no pressure, no commitment. Just a helpful conversation about your business and how we can help you grow online.</p></div>
+      <div class="cta-bts"><a href="contact.html" class="btn-wh"><i class="fas fa-calendar-check"></i> Book Free Call</a><a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="btn-gh"><i class="fab fa-whatsapp"></i> WhatsApp Us</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div><div class="footer-logo"><i class="fas fa-code"></i><span>SAMZY<span>DIGITAL</span></span></div><p class="footer-description">Professional digital solutions for Ghanaian businesses. Founded by Samuel AHIABA. Based in Accra.</p><div class="footer-contact"><div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+233539929190">0539929190</a></div><div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:samuelahiaba3@gmail.com">samuelahiaba3@gmail.com</a></div><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Accra, Ghana 🇬🇭</span></div></div><div class="footer-social"><a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="social-link"><i class="fab fa-whatsapp"></i></a><a href="#" class="social-link"><i class="fab fa-facebook"></i></a><a href="#" class="social-link"><i class="fab fa-twitter"></i></a><a href="#" class="social-link"><i class="fab fa-instagram"></i></a><a href="#" class="social-link"><i class="fab fa-linkedin"></i></a></div></div>
+    <div><h3 class="footer-title">About</h3><ul class="footer-links"><li><a href="about.html#our-story">Our Story</a></li><li><a href="samuel-ahiaba.html">Samuel AHIABA</a></li><li><a href="process.html">Our Process</a></li><li><a href="testimonials.html">Testimonials</a></li><li><a href="faqs.html">FAQs</a></li></ul></div>
+    <div><h3 class="footer-title">Services</h3><ul class="footer-links"><li><a href="business.html#web">Web Design</a></li><li><a href="business.html#ecommerce">E-Commerce</a></li><li><a href="business.html#automation">Automation</a></li><li><a href="business.html#seo">SEO & Marketing</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+    <div><h3 class="footer-title">Quick Links</h3><ul class="footer-links"><li><a href="portfolio.html">Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 <span>SamzyDigital</span>. All rights reserved. Built by Samuel AHIABA 🇬🇭</p><p style="color:rgba(255,255,255,.22)">Made in Accra · Available Worldwide</p></div>
+</footer>
+<a href="https://wa.me/233539929190" target="_blank" rel="noopener" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+const mobMenu = document.getElementById('mobMenu');
+const mobOverlay = document.getElementById('mobOverlay');
+const mobToggle = document.getElementById('mobToggle');
+const mobIco = document.getElementById('mobIco');
+function toggleNav() {
+  const isOpen = mobMenu.classList.toggle('open');
+  mobOverlay.classList.toggle('on', isOpen);
+  mobIco.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+  mobToggle.setAttribute('aria-expanded', String(isOpen));
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobMenu.classList.contains('open')) toggleNav(); });
+mobMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { if (mobMenu.classList.contains('open')) toggleNav(); }); });
+const ao = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ao.unobserve(e.target); } }); }, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.sl-left,.sl-right,.fu,.si').forEach(el => ao.observe(el));
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-btn').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
